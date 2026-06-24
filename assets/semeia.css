@@ -1,4 +1,4 @@
-/* Semeia — essay-specific typography layered on eulogikon-base.css.
+/* Semeia: essay-specific typography layered on eulogikon-base.css.
    Base provides the chrome (navbar, footer, container, fonts); this styles the
    prose body of a Semeia essay. Scope everything under .semeia-essay so it can
    never collide with a lifted corpus rule. */

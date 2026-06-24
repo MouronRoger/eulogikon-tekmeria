@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  SEMEIA POST SKELETON — copy this file to a new name and fill it in.
+  SEMEIA POST SKELETON: copy this file to a new name and fill it in.
 
   Checklist for a new post:
    1. Rename: cp new-post.html my-post-name.html   (the filename IS the URL: /my-post-name)
@@ -9,29 +9,55 @@
       never by hand-guessing a slug. From the eulogikon repo:
         EULOGIKON_STRICT_DB=1 venv/bin/python -c \
           "from src.core.url_composer import canonical_work_url; print(canonical_work_url('<eul_wid>'))"
-   4. Add a <a class="post-card"> entry for this post to index.html.
-   5. Preview:  npx wrangler pages dev .    (production-faithful clean URLs)
-   6. Deploy:   npx wrangler pages deploy . --project-name=eulogikon-semeia
+   4. Add a <a class="post-card"> entry for this post to index.html (and its ItemList entry in index.html JSON-LD).
+   5. Add a <url> entry for this post to sitemap.xml.
+   6. Preview:  npx wrangler pages dev .    (production-faithful clean URLs)
+   7. Deploy:   npx wrangler pages deploy . --project-name=eulogikon-semeia
 
-  Keep the navbar/footer/scripts blocks exactly as they are — they are the shared chrome.
+  Style: no em dashes (U+2014). Use colons, commas, parentheses, or middle dots instead.
+  See README.md § Style.
+
+  Keep the navbar/footer/scripts blocks exactly as they are; they are the shared chrome.
 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><!-- TODO: Post title --> — Semeia</title>
+    <title><!-- TODO: Post title --> · Semeia</title>
     <meta name="description" content="<!-- TODO: one-sentence summary for search results -->">
     <meta name="robots" content="index, follow">
+    <meta name="ai-train" content="yes">
     <link rel="canonical" href="https://semeia.eulogikon.org/<!-- TODO: filename-without-.html -->">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Semeia — Eulogikon">
+    <meta property="og:site_name" content="Semeia · Eulogikon">
     <meta property="og:title" content="<!-- TODO: Post title -->">
     <meta property="og:description" content="<!-- TODO: one-sentence summary -->">
     <meta property="og:url" content="https://semeia.eulogikon.org/<!-- TODO: filename-without-.html -->">
+    <meta property="og:image" content="https://eulogikon.org/assets/images/og-default.jpg">
+    <meta property="og:image:alt" content="Semeia: essays from the Eulogikon ancient Greek corpus">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_GB">
+    <meta property="article:published_time" content="<!-- TODO: YYYY-MM-DD -->">
 
-    <!-- Source Sans Pro — same as the main site -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<!-- TODO: Post title -->">
+    <meta name="twitter:description" content="<!-- TODO: one-sentence summary -->">
+    <meta name="twitter:image" content="https://eulogikon.org/assets/images/og-default.jpg">
+    <meta name="twitter:image:alt" content="Semeia: essays from the Eulogikon ancient Greek corpus">
+
+    <!-- Favicon (shared with main Eulogikon site) -->
+    <link rel="icon" href="https://eulogikon.org/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="https://eulogikon.org/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://eulogikon.org/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://eulogikon.org/icons/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://eulogikon.org/apple-touch-icon.png">
+
+    <!-- Source Sans Pro (same as the main site) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap">
@@ -43,12 +69,35 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
+      "@id": "https://semeia.eulogikon.org/TODO-filename-without-html#article",
       "headline": "TODO: Post title",
       "description": "TODO: one-sentence summary",
+      "url": "https://semeia.eulogikon.org/TODO-filename-without-html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://semeia.eulogikon.org/TODO-filename-without-html"
+      },
       "inLanguage": "en",
       "datePublished": "TODO-YYYY-MM-DD",
-      "publisher": { "@type": "Organization", "name": "Eulogikon", "url": "https://eulogikon.org" },
-      "isPartOf": { "@type": "Blog", "name": "Semeia", "url": "https://semeia.eulogikon.org" },
+      "image": "https://eulogikon.org/assets/images/og-default.jpg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://eulogikon.org/#organization",
+        "name": "Eulogikon",
+        "url": "https://eulogikon.org"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://eulogikon.org/#organization",
+        "name": "Eulogikon",
+        "url": "https://eulogikon.org"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://semeia.eulogikon.org/#blog",
+        "name": "Semeia",
+        "url": "https://semeia.eulogikon.org"
+      },
       "citation": [
         "TODO: https://eulogikon.org/works/<display>-<eul_wid> for each work cited"
       ]
@@ -96,11 +145,11 @@
             <article class="semeia-essay">
                 <header class="post-header">
                     <h1><!-- TODO: Post title --></h1>
-                    <div class="post-meta">Σημεῖα — Eulogikon · <!-- TODO: date --> · <!-- TODO: subject line, e.g. on <em>Work</em> 123a --></div>
+                    <div class="post-meta">Σημεῖα · Eulogikon · <!-- TODO: date --> · <!-- TODO: subject line, e.g. on <em>Work</em> 123a --></div>
                 </header>
 
                 <!-- ============================================================
-                     BODY — replace everything between here and the closing note.
+                     BODY: replace everything between here and the closing note.
                      Patterns you can copy:
 
                      Section heading:
@@ -112,11 +161,10 @@
                      Greek source quotation + its translation + a corpus citation:
                        <blockquote lang="grc" class="grc">Greek text…</blockquote>
                        <p class="translation">“English translation…”</p>
-                       <p class="cite">(Author, <em>Work</em>, Eulogikon:
-                         <a href="https://eulogikon.org/works/<display>-<eul_wid>">eul-wid</a>, ref. Loc.123a)</p>
+                       <p class="cite">(Author, <em><a href="https://eulogikon.org/works/<display>-<eul_wid>" title="Work title (<eul_wid>)">Work title</a></em>, ref. Loc.123a)</p>
 
                      Inline citation (mid-sentence):
-                       …as <span class="cite"><a href="https://eulogikon.org/works/<display>-<eul_wid>">eul-wid</a></span> shows…
+                       …as <span class="cite"><a href="https://eulogikon.org/works/<display>-<eul_wid>" title="Work title (<eul_wid>)"><em>Work title</em></a></span> shows…
 
                      Summary table:
                        <table class="summary"><thead><tr><th>…</th><th>…</th></tr></thead>
@@ -134,7 +182,7 @@
     </main>
 
     <div class="footer">
-        <p><strong>Σημεῖα</strong> — Essays from <a href="https://eulogikon.org" style="color: inherit;">Eulogikon</a></p>
+        <p><strong>Σημεῖα</strong> · Essays from <a href="https://eulogikon.org" style="color: inherit;">Eulogikon</a></p>
         <p style="margin-top: 6px; font-size: 0.9em; opacity: 0.8;">
             Greek source texts are public domain. Essay text is <a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: inherit; text-decoration: underline;">CC0 1.0</a>.
         </p>

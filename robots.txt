@@ -1,0 +1,10 @@
+# robots.txt for Semeia (semeia.eulogikon.org)
+# Essays from the Eulogikon ancient Greek corpus
+
+User-agent: *
+Allow: /
+
+# Content signals for search engines and AI training (IETF Content-Signal draft).
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
+Sitemap: https://semeia.eulogikon.org/sitemap.xml
