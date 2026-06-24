@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+  SEMEIA POST SKELETON — copy this file to a new name and fill it in.
+
+  Checklist for a new post:
+   1. Rename: cp new-post.html my-post-name.html   (the filename IS the URL: /my-post-name)
+   2. Fill every  <!-- TODO -->  below: <title>, description, canonical, OG, JSON-LD, article.
+   3. For each ancient-Greek work you cite, get the URL the CORRECT way (identity -> URL),
+      never by hand-guessing a slug. From the eulogikon repo:
+        EULOGIKON_STRICT_DB=1 venv/bin/python -c \
+          "from src.core.url_composer import canonical_work_url; print(canonical_work_url('<eul_wid>'))"
+   4. Add a <a class="post-card"> entry for this post to index.html.
+   5. Preview:  npx wrangler pages dev .    (production-faithful clean URLs)
+   6. Deploy:   npx wrangler pages deploy . --project-name=eulogikon-semeia
+
+  Keep the navbar/footer/scripts blocks exactly as they are — they are the shared chrome.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- TODO: Post title --> — Semeia</title>
+    <meta name="description" content="<!-- TODO: one-sentence summary for search results -->">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://semeia.eulogikon.org/<!-- TODO: filename-without-.html -->">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Semeia — Eulogikon">
+    <meta property="og:title" content="<!-- TODO: Post title -->">
+    <meta property="og:description" content="<!-- TODO: one-sentence summary -->">
+    <meta property="og:url" content="https://semeia.eulogikon.org/<!-- TODO: filename-without-.html -->">
+
+    <!-- Source Sans Pro — same as the main site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap">
+
+    <link rel="stylesheet" href="/assets/eulogikon-base.css">
+    <link rel="stylesheet" href="/assets/semeia.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "TODO: Post title",
+      "description": "TODO: one-sentence summary",
+      "inLanguage": "en",
+      "datePublished": "TODO-YYYY-MM-DD",
+      "publisher": { "@type": "Organization", "name": "Eulogikon", "url": "https://eulogikon.org" },
+      "isPartOf": { "@type": "Blog", "name": "Semeia", "url": "https://semeia.eulogikon.org" },
+      "citation": [
+        "TODO: https://eulogikon.org/works/<display>-<eul_wid> for each work cited"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <button class="hamburger-menu-toggle" onclick="toggleHamburgerMenu()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="hamburger-menu-panel">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="nav-center">
+                <a href="/" class="home-link"><span>Σημεῖα</span></a>
+                <div class="navbar-subtitle">Eulogikon · Essays from the corpus</div>
+            </div>
+            <div class="nav-tabs desktop-only">
+                <a href="/" class="nav-tab">Essays</a>
+                <a href="https://eulogikon.org/" class="nav-tab">Library</a>
+                <a href="https://eulogikon.org/index_alphabetic" class="nav-tab">Authors</a>
+                <a href="https://eulogikon.org/contact" class="nav-tab">Contact</a>
+            </div>
+            <div class="hamburger-menu-overlay" onclick="toggleHamburgerMenu()"></div>
+            <div class="hamburger-menu-panel" id="hamburger-menu-panel" role="navigation">
+                <div class="menu-section menu-navigation">
+                    <h3 class="menu-section-title">Navigation</h3>
+                    <a href="/" class="menu-link">Essays</a>
+                    <a href="https://eulogikon.org/" class="menu-link">Library</a>
+                    <a href="https://eulogikon.org/index_alphabetic" class="menu-link">Authors</a>
+                    <a href="https://eulogikon.org/contact" class="menu-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumbs">
+        <a href="/">Semeia</a> <span class="breadcrumb-separator">›</span> <span class="breadcrumb-current"><!-- TODO: Post title --></span>
+    </div>
+
+    <main>
+    <div class="container">
+        <div class="content-wrapper">
+            <article class="semeia-essay">
+                <header class="post-header">
+                    <h1><!-- TODO: Post title --></h1>
+                    <div class="post-meta">Σημεῖα — Eulogikon · <!-- TODO: date --> · <!-- TODO: subject line, e.g. on <em>Work</em> 123a --></div>
+                </header>
+
+                <!-- ============================================================
+                     BODY — replace everything between here and the closing note.
+                     Patterns you can copy:
+
+                     Section heading:
+                       <h2>1. Section title</h2>
+
+                     Plain paragraph:
+                       <p>Prose…</p>
+
+                     Greek source quotation + its translation + a corpus citation:
+                       <blockquote lang="grc" class="grc">Greek text…</blockquote>
+                       <p class="translation">“English translation…”</p>
+                       <p class="cite">(Author, <em>Work</em>, Eulogikon:
+                         <a href="https://eulogikon.org/works/<display>-<eul_wid>">eul-wid</a>, ref. Loc.123a)</p>
+
+                     Inline citation (mid-sentence):
+                       …as <span class="cite"><a href="https://eulogikon.org/works/<display>-<eul_wid>">eul-wid</a></span> shows…
+
+                     Summary table:
+                       <table class="summary"><thead><tr><th>…</th><th>…</th></tr></thead>
+                         <tbody><tr><td>…</td><td>…</td></tr></tbody></table>
+
+                     Closing caveats box:
+                       <div class="caveats"><h2>Caveats and open questions</h2><ul><li>…</li></ul></div>
+                     ============================================================ -->
+
+                <p><!-- TODO: write the essay --></p>
+
+            </article>
+        </div>
+    </div>
+    </main>
+
+    <div class="footer">
+        <p><strong>Σημεῖα</strong> — Essays from <a href="https://eulogikon.org" style="color: inherit;">Eulogikon</a></p>
+        <p style="margin-top: 6px; font-size: 0.9em; opacity: 0.8;">
+            Greek source texts are public domain. Essay text is <a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: inherit; text-decoration: underline;">CC0 1.0</a>.
+        </p>
+        <nav style="margin-top: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; font-size: 0.9em;">
+            <a href="/" style="color: white; text-decoration: none;">Essays</a>
+            <a href="https://eulogikon.org/" style="color: white; text-decoration: none;">Library</a>
+            <a href="https://eulogikon.org/index_alphabetic" style="color: white; text-decoration: none;">Authors A-Z</a>
+            <a href="https://eulogikon.org/contact" style="color: white; text-decoration: none;">Contact</a>
+        </nav>
+    </div>
+
+    <script>
+        function toggleHamburgerMenu() {
+            const button = document.querySelector('.hamburger-menu-toggle');
+            const panel = document.getElementById('hamburger-menu-panel');
+            const overlay = document.querySelector('.hamburger-menu-overlay');
+            button.classList.toggle('active');
+            panel.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.querySelector('.hamburger-menu-overlay');
+            if (overlay) { overlay.addEventListener('click', toggleHamburgerMenu); }
+        });
+    </script>
+</body>
+</html>

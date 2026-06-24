@@ -1,0 +1,121 @@
+/* Semeia — essay-specific typography layered on eulogikon-base.css.
+   Base provides the chrome (navbar, footer, container, fonts); this styles the
+   prose body of a Semeia essay. Scope everything under .semeia-essay so it can
+   never collide with a lifted corpus rule. */
+
+.semeia-essay {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 8px 4px 64px;
+    color: #2D3748;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 1.12em;
+    line-height: 1.72;
+}
+
+/* --- Title block --- */
+.semeia-essay .post-header {
+    margin: 12px 0 36px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 28px;
+}
+.semeia-essay .post-header h1 {
+    font-weight: 300;
+    font-size: 2.1em;
+    line-height: 1.2;
+    color: #2D3748;
+    margin: 0 0 14px;
+}
+.semeia-essay .post-meta {
+    color: #718096;
+    font-size: 0.92em;
+    font-style: italic;
+}
+.semeia-essay .post-meta a { color: #718096; }
+
+/* --- Section headings --- */
+.semeia-essay h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #2D3748;
+    margin: 2.2em 0 0.6em;
+    line-height: 1.3;
+}
+.semeia-essay h3 {
+    font-weight: 600;
+    font-size: 1.12em;
+    color: #4a5568;
+    margin: 1.8em 0 0.5em;
+}
+
+.semeia-essay p { margin: 0 0 1.1em; }
+
+/* --- Greek source quotations --- */
+.semeia-essay blockquote.grc {
+    margin: 1.4em 0 0.4em;
+    padding: 0.6em 1.1em;
+    border-left: 4px solid #cbd5e0;
+    background: #f7fafc;
+    border-radius: 0 4px 4px 0;
+    font-size: 1.12em;
+    line-height: 1.8;
+    color: #2D3748;
+}
+.semeia-essay .translation {
+    margin: 0 0 1.4em 1.1em;
+    color: #4a5568;
+    font-style: italic;
+    font-size: 0.98em;
+}
+
+/* --- Inline corpus citations --- */
+.semeia-essay .cite {
+    color: #718096;
+    font-size: 0.95em;
+}
+.semeia-essay .cite a {
+    color: #2b6cb0;
+    text-decoration: none;
+    border-bottom: 1px dotted #90cdf4;
+    font-variant-numeric: tabular-nums;
+}
+.semeia-essay .cite a:hover { border-bottom-style: solid; }
+
+/* --- Summary table --- */
+.semeia-essay table.summary {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.4em 0;
+    font-size: 0.98em;
+}
+.semeia-essay table.summary th,
+.semeia-essay table.summary td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.semeia-essay table.summary thead th {
+    border-bottom: 2px solid #cbd5e0;
+    font-weight: 600;
+    color: #4a5568;
+}
+.semeia-essay table.summary td:first-child { white-space: normal; color: #2D3748; }
+
+/* --- Closing caveats block --- */
+.semeia-essay .caveats {
+    margin-top: 2.4em;
+    padding: 1.2em 1.4em;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.98em;
+}
+.semeia-essay .caveats h2 { margin-top: 0; font-size: 1.2em; }
+.semeia-essay .caveats li { margin-bottom: 0.7em; }
+
+@media (max-width: 640px) {
+    .semeia-essay { font-size: 1.05em; padding: 4px 2px 48px; }
+    .semeia-essay .post-header h1 { font-size: 1.65em; }
+}

@@ -1,0 +1,66 @@
+# Semeia — `semeia.eulogikon.org`
+
+Σημεῖα ("signs, marks") — short essays that read the [Eulogikon](https://eulogikon.org)
+ancient-Greek corpus closely: the original text, its commentators, and what the
+words actually meant. A standalone static site, deliberately decoupled from the
+eulogikon corpus pipeline (no database, no generators, no build step).
+
+## Layout
+
+```
+semeia/
+├── index.html        # landing page — lists posts (add a .post-card per essay)
+├── new-post.html     # blank skeleton — copy this to start a new essay
+├── <post-name>.html  # one file per essay; the filename IS the URL (/<post-name>)
+└── assets/
+    ├── eulogikon-base.css   # the main site's chrome + typography, lifted verbatim
+    └── semeia.css           # essay-specific styling (Greek quotes, citations, tables)
+```
+
+## Add a post
+
+1. `cp new-post.html my-essay-name.html` — the filename becomes the URL path.
+2. Fill in every `<!-- TODO -->`: title, description, canonical, Open Graph,
+   JSON-LD, and the article body. The skeleton documents the content patterns
+   (Greek quote + translation + citation, summary table, caveats box).
+3. **Link corpus citations the correct way** — resolve identity → URL, never
+   hand-guess a slug. From the eulogikon repo:
+   ```bash
+   EULOGIKON_STRICT_DB=1 venv/bin/python -c \
+     "from src.core.url_composer import canonical_work_url; print(canonical_work_url('hgw-bj'))"
+   # -> https://eulogikon.org/works/aristotle-metaphysics-hgw-bj
+   ```
+   `eul_wid` is the stable reference key; the display-string prefix is just a
+   mutable attribute. Composing from the DB guarantees the link is live and
+   correct even if a display string later changes.
+4. Add a `<a class="post-card">` entry to `index.html`.
+
+## Preview
+
+```bash
+npx wrangler pages dev .     # production-faithful: serves /my-essay-name without .html
+```
+
+(Plain `python3 -m http.server` works too, but won't do extensionless URLs —
+visit the `.html` form locally in that case.)
+
+## Deploy
+
+```bash
+npx wrangler pages deploy . --project-name=eulogikon-semeia
+```
+
+Then in the Cloudflare dashboard → Pages → `eulogikon-semeia` → **Custom domains**
+→ add `semeia.eulogikon.org`. The zone is already on Cloudflare, so the CNAME is
+provisioned automatically.
+
+## Note on the chrome
+
+`assets/eulogikon-base.css` and the navbar/footer markup are a **lifted copy** of
+the main eulogikon site's chrome (`src/core/site_chrome.py` + a rendered work
+page's `<style>` block). They do not auto-track changes to the main site — this
+is the accepted per-surface duplication trade (see the eulogikon
+`multilingual_sites/deployment/PLAN.md`: shared assets are duplicated across
+sibling repos rather than cross-referenced). The navbar/footer **links** are
+rewritten to absolute `https://eulogikon.org/...` because relative paths would
+resolve against this subdomain and 404.
