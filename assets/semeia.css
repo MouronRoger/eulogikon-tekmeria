@@ -4,10 +4,18 @@
    never collide with a lifted corpus rule. */
 
 .semeia-essay {
+    /* One type scale, three roles. Greek = evidence (dark, primary),
+       transliteration = sound (muted, quietest), translation = sense
+       (readable English). Everything below references these. */
+    --c-evidence: #2D3748;
+    --c-sense: #4a5568;
+    --c-sound: #718096;
+    --indent: 1.1em;
+
     max-width: 760px;
     margin: 0 auto;
     padding: 8px 4px 64px;
-    color: #2D3748;
+    color: var(--c-evidence);
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.12em;
     line-height: 1.72;
@@ -85,6 +93,15 @@
     font-size: 1.12em;
     line-height: 1.8;
     color: #2D3748;
+}
+.semeia-essay p + p.translit,
+.semeia-essay li + p.translit {
+    margin-top: -0.75em;
+    margin-bottom: 1.1em;
+}
+.semeia-essay .translation + p.translit {
+    margin-top: -1em;
+    margin-bottom: 1.4em;
 }
 .semeia-essay .translit {
     margin: 0 0 0.2em 1.1em;
@@ -167,6 +184,9 @@
 }
 .semeia-essay .caveats h2 { margin-top: 0; font-size: 1.2em; }
 .semeia-essay .caveats li { margin-bottom: 0.7em; }
+.semeia-essay .caveats li .translit {
+    margin: 0.35em 0 0 1.1em;
+}
 
 @media (max-width: 640px) {
     .semeia-essay { font-size: 1.05em; padding: 4px 2px 48px; }

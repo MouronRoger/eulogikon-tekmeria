@@ -136,11 +136,11 @@ Index cards, `posts.json` blurbs, and meta descriptions follow the same discipli
 
 ## Every Greek: transliterated
 
-No exceptions anywhere in a Semeia: titles, headings, blurbs, meta tags, and quotations. A reader without Greek must never meet an untransliterated word.
+No exceptions. A reader without Greek must never meet bare Greek — not in titles, headings, station frames, prose, translations, summary tables, caveats, blurbs, or meta tags.
 
-**Quotations** use three lines (below): Greek blockquote, then transliteration, then translation.
+**Quotations** use three lines: Greek blockquote, then transliteration, then translation.
 
-**Titles and section headings** stack Greek and transliteration — do not cram transliteration into the same line as running prose:
+**Titles and Greek section headings** stack Greek and transliteration on separate lines:
 
 ```html
 <h1 lang="grc">παράκλητος</h1>
@@ -150,7 +150,12 @@ No exceptions anywhere in a Semeia: titles, headings, blurbs, meta tags, and quo
 
 For a Greek `h2`, put `<p class="translit">` on the line below the heading.
 
-**Running prose, summary tables, and caveats** keep Greek alone. The title block and quotation stacks carry transliteration; do not add inline `(paráklētos)` after every lemma — that breaks the text.
+**Everywhere else — placement by count:**
+
+- **One Greek word or phrase in the sentence** → transliteration **in line**, immediately after the Greek: `τῶν παρακλήτων (<em>tōn paraklētōn</em>)`.
+- **Two or more Greek words or phrases in the same sentence** → keep the sentence as written; put a `<p class="translit">` line **below** it, with each transliteration in order, separated by middle dots: `<em>paráklētos · parakaléō · pará · kaléō</em>`.
+
+For caveat bullets with several Greek terms, put `<p class="translit">` at the bottom of the `<li>`. The same below-the-line rule applies to translation lines that retain Greek. In summary-table cells, transliterate each Greek term **in line**.
 
 In plain-text contexts (meta tags, JSON, index cards), separate with middle dots: `παράκλητος · paráklētos · the one called to your side`.
 
