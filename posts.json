@@ -1,25 +1,25 @@
 {
   "posts": [
     {
-      "slug": "parakletos-by-your-side",
-      "title": "παράκλητος · paráklētos · the one called to your side",
+      "slug": "parakleton",
+      "title": "παράκλητος: the one called to your side",
       "date": "2026-06-25",
       "date_display": "25 June 2026",
-      "blurb": "81 attestations of παράκλητος · paráklētos in the Eulogikon corpus. Greek, transliterated and translated, with refs."
+      "blurb": "81 attestations of παράκλητος across six centuries in the Eulogikon corpus. Greek, transliterated and translated, each at its station."
     },
     {
       "slug": "the-square-psyche",
-      "title": "τετράγωνος · tetrágōnos · the four-square man and the four-square ψυχή · psychē",
+      "title": "τετράγωνος: the four-square man and the four-square ψυχή",
       "date": "2026-06-24",
       "date_display": "24 June 2026",
-      "blurb": "Eleven passages on τετράγωνος · tetrágōnos in the Eulogikon corpus. Greek, transliterated and translated, with refs."
+      "blurb": "The image of the four-square person from Simonides to Damascius, and the four-square ψυχή of the Pythagorean tradition. Eleven passages across the corpus, in Greek, transliterated and translated, each at its station."
     },
     {
       "slug": "what-aristotle-means-by-socratic-induction",
       "title": "What Aristotle attributes to Socrates",
       "date": "2026-06-24",
       "date_display": "24 June 2026",
-      "blurb": "<em>Metaphysics</em> 1078b and related passages: ἐπαγωγή · epagōgḗ, ὁρισμός · horismós, χωριστά · chōristá. Greek, transliterated and translated, with refs."
+      "blurb": "At <em>Metaphysics</em> 1078b, Aristotle credits Socrates with two things: inductive arguments (ἐπαγωγή) and universal definition (ὁρισμός), and marks one word, χωριστά, that separates him from the Platonists. The passage in Greek, with Alexander and Diogenes."
     }
   ]
 }

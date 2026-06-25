@@ -4,18 +4,10 @@
    never collide with a lifted corpus rule. */
 
 .semeia-essay {
-    /* One type scale, three roles. Greek = evidence (dark, primary),
-       transliteration = sound (muted, quietest), translation = sense
-       (readable English). Everything below references these. */
-    --c-evidence: #2D3748;
-    --c-sense: #4a5568;
-    --c-sound: #718096;
-    --indent: 1.1em;
-
     max-width: 760px;
     margin: 0 auto;
     padding: 8px 4px 64px;
-    color: var(--c-evidence);
+    color: #2D3748;
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.12em;
     line-height: 1.72;
@@ -32,39 +24,8 @@
     font-weight: 300;
     font-size: 2.1em;
     line-height: 1.2;
-    color: var(--c-evidence);
+    color: #2D3748;
     margin: 0 0 14px;
-}
-.semeia-essay .post-header h1[lang="grc"] {
-    margin-bottom: 0.12em;
-}
-/* Title block mirrors the three roles: headword (dark) -> sound (muted) ->
-   sense (English subtitle). The sound sits between, quietest of the three. */
-.semeia-essay .post-header .translit {
-    font-size: 1.05em;
-    line-height: 1.3;
-    color: var(--c-sound);
-    margin: 0 0 0.3em;
-    text-align: center;
-}
-.semeia-essay .post-header .title-en {
-    font-weight: 300;
-    font-size: 1.35em;
-    line-height: 1.35;
-    color: var(--c-sense);
-    margin: 0 0 0.2em;
-}
-.semeia-essay .post-header .title-en-translit {
-    font-size: 0.95em;
-    margin: 0 0 0.6em;
-    text-align: center;
-}
-.semeia-essay h2[lang="grc"] {
-    margin-bottom: 0.12em;
-}
-.semeia-essay h2[lang="grc"] + .translit {
-    font-size: 1em;
-    margin: 0 0 0.9em;
 }
 .semeia-essay .post-meta {
     color: #718096;
@@ -90,85 +51,28 @@
 
 .semeia-essay p { margin: 0 0 1.1em; }
 
-/* --- Witness frame: the station opener (author + work + ref + wid) ---
-   The witness name leads, larger and heavier; the work, reference, and wid
-   follow quietly. This is the single citation — it is not repeated below. */
-.semeia-essay .witness {
-    margin: 1.9em 0 0.3em;
-    line-height: 1.35;
-}
-.semeia-essay .witness-author {
-    font-size: 1.18em;
-    font-weight: 600;
-    color: var(--c-evidence);
-}
-.semeia-essay .witness-work {
-    font-style: italic;
-}
-.semeia-essay .witness-ref,
-.semeia-essay .witness .wid {
-    color: var(--c-sound);
-    font-size: 0.9em;
-}
-.semeia-essay .witness .wid {
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-}
-/* An optional note about what is on the page, under the witness line. */
-.semeia-essay .witness-note {
-    margin: 0 0 0.2em;
-    color: var(--c-sense);
-}
-
-/* --- Greek source quotations ---
-   The evidence, brought down close to reading size so the eye moves easily
-   from it into the transliteration and translation beneath. */
+/* --- Greek source quotations --- */
 .semeia-essay blockquote.grc {
-    margin: 0.6em 0 0.5em;
-    padding: 0.5em 1.1em;
-    border-left: 3px solid #cbd5e0;
+    margin: 1.4em 0 0.4em;
+    padding: 0.6em 1.1em;
+    border-left: 4px solid #cbd5e0;
     background: #f7fafc;
     border-radius: 0 4px 4px 0;
-    font-size: 1em;
-    line-height: 1.55;
-    color: var(--c-evidence);
+    font-size: 1.12em;
+    line-height: 1.8;
+    color: #2D3748;
 }
-.semeia-essay p + p.translit,
-.semeia-essay li + p.translit {
-    margin-top: -0.75em;
-    margin-bottom: 1.1em;
-}
-.semeia-essay .translation + p.translit {
-    margin-top: -1em;
-    margin-bottom: 1.4em;
-}
-/* Sound: the quietest line. Muted, roman, smallest. */
 .semeia-essay .translit {
-    margin: 0 0 0.25em var(--indent);
-    color: var(--c-sound);
-    font-size: 0.92em;
-    line-height: 1.5;
+    margin: 0 0 0.2em 1.1em;
+    color: #718096;
+    font-size: 0.94em;
     letter-spacing: 0.01em;
 }
-/* Sense: readable English. No quote marks needed — being in English already
-   marks it as the translation. Italic distinguishes it from the sound line. */
 .semeia-essay .translation {
-    margin: 0 0 1.4em var(--indent);
-    color: var(--c-sense);
+    margin: 0 0 1.4em 1.1em;
+    color: #4a5568;
     font-style: italic;
-    font-size: 1em;
-    line-height: 1.55;
-}
-
-/* --- Links: one convention, the site's bronze accent (not bare blue) --- */
-.semeia-essay a {
-    color: #9A8555;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease;
-}
-.semeia-essay a:hover {
-    color: #7A6A45;
-    text-decoration: underline;
+    font-size: 0.98em;
 }
 
 /* --- Inline corpus citations --- */
@@ -177,16 +81,12 @@
     font-size: 0.95em;
 }
 .semeia-essay .cite a {
-    color: #9A8555;
+    color: #2b6cb0;
     text-decoration: none;
-    border-bottom: 1px dotted #cdbd92;
+    border-bottom: 1px dotted #90cdf4;
     font-variant-numeric: tabular-nums;
 }
-.semeia-essay .cite a:hover {
-    color: #7A6A45;
-    border-bottom-style: solid;
-    text-decoration: none;
-}
+.semeia-essay .cite a:hover { border-bottom-style: solid; }
 
 /* --- Summary table --- */
 .semeia-essay table.summary {
@@ -194,8 +94,6 @@
     border-collapse: collapse;
     margin: 1.4em 0;
     font-size: 0.98em;
-    border-top: 1px solid #cbd5e0;
-    border-bottom: 1px solid #cbd5e0;
 }
 /* Override lifted corpus table rules: ref column is hover-only on work pages,
    but Semeia summary tables use the first column as visible row labels. */
@@ -207,22 +105,12 @@
     text-align: left;
     vertical-align: top;
     padding: 10px 14px;
-    border-bottom: 1px solid #d6dde5;
+    border-bottom: 1px solid #e2e8f0;
 }
-/* Header: light fill, readable text, accent rule. The base layer paints th a
-   dark slate; reset both fill and colour here so it is never dark-on-dark. */
 .semeia-essay table.summary thead th {
-    background: #eef1f5;
-    color: var(--c-sense);
+    border-bottom: 2px solid #cbd5e0;
     font-weight: 600;
-    border-bottom: 2px solid #9A8555;
-}
-/* Row structure: light zebra so the rules are reinforced, not relied on. */
-.semeia-essay table.summary tbody tr:nth-child(even) td {
-    background: #f7fafc;
-}
-.semeia-essay table.summary tbody tr:hover td {
-    background: #f1f4f8;
+    color: #4a5568;
 }
 .semeia-essay table.summary td:first-child,
 .semeia-essay table.summary th:first-child {
@@ -234,7 +122,7 @@
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: inherit;
     font-weight: 600;
-    color: var(--c-evidence);
+    color: #2D3748;
     white-space: normal;
 }
 .semeia-essay table.summary td:last-child {
@@ -242,18 +130,6 @@
     font-size: inherit;
     line-height: inherit;
     font-weight: 400;
-}
-.semeia-essay table.summary a {
-    color: #9A8555;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-    transition: color 0.2s ease, border-color 0.2s ease;
-}
-.semeia-essay table.summary a:hover {
-    color: #7A6A45;
-    border-bottom-color: currentColor;
 }
 
 /* --- Closing caveats block --- */
@@ -267,9 +143,6 @@
 }
 .semeia-essay .caveats h2 { margin-top: 0; font-size: 1.2em; }
 .semeia-essay .caveats li { margin-bottom: 0.7em; }
-.semeia-essay .caveats li .translit {
-    margin: 0.35em 0 0 1.1em;
-}
 
 @media (max-width: 640px) {
     .semeia-essay { font-size: 1.05em; padding: 4px 2px 48px; }

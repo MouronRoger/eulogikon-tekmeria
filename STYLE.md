@@ -42,12 +42,6 @@ Cut every word that ranks, dramatises, or announces significance:
 
 Set two marks beside each other and let the opposition be caught whole. The moment you write "where the first reveals, the second conceals," you have walked the reader through it in sequence — you have made it διάνοια. Put the revealing φύσις next to the concealing φύσις, both anchored, both translated, and the reader's eye does the work.
 
-Cut **bridge verbs** that tell the reader what a passage means or leads to — the same move as fanfare, in academic dress:
-
-> ~~turns on~~ · ~~draws a distinction between~~ · ~~continues with a consequence~~ · ~~this is consistent with~~ · ~~states the relation of~~ · ~~the word is now~~ · ~~marks the moment when~~ · ~~glosses and corroborates~~
-
-If the verb says what the passage is *about* or *leads to*, cut it. Name author, work, and what is on the page.
-
 ### 2. No hedging
 
 When the text says it, state it plainly. The reference is there; the reader can check.
@@ -78,107 +72,6 @@ The test: framing tells the reader what they are looking at. Editorialising tell
 
 ---
 
-## Form tells
-
-LLM prose often passes a *content* lint (no hype, no hedge) while failing a *form* lint: the same sentence skeleton repeated station after station. The rules below catch the machine voice without banning legitimate factual framing.
-
-### No roadmaps
-
-Do not describe the piece's own structure in prose:
-
-> ~~set out below in chronological order~~ · ~~given below in full, then X, then Y~~ · ~~the distribution is given in the apparatus~~ · ~~each anchored to its work and reference~~
-
-Headings, quotations, and the summary table *are* the structure. Do not announce them.
-
-### Vary the station opener
-
-Do not begin every station with `[Author], in *[Work]*, [quotes/gives/records/places/renders]…` Do not repeat `The word stands/appears/names` as the grammatical subject of consecutive paragraphs. Prefer subjects taken from the Greek: a case form, a governing preposition, a paired term.
-
-One line of framing, then the blockquote. Vary the grammar.
-
-### No mini-scenes
-
-Do not add narrative the source does not contain:
-
-> ~~Asked by a persistent man to intercede for him, Bion replied…~~ · ~~Two sentences later…~~
-
-If an interval between references matters, cite the ref (Flac 21, Flac 23). Do not stage it.
-
-### Etymology once
-
-Morphology belongs in the opening paragraph or the summary table — not in both opening and closing, and not in three consecutive sections with the same shape (`X is formed from Y, from Z…`). Lead with the anchored passage; let the table hold the root.
-
-### Statistics and chronology in prose
-
-Corpus counts, period breakdowns, and chronological claims (`earliest attestation`, `first attested`, `the word is now`) belong in the summary table or in a real caveat (corpus boundary, empty interval). Do not narrate development in framing prose:
-
-> ~~63 of 81 fall in this period. The word is now the term for…~~
-
-### Summary table columns
-
-Cells name what is **on the page**: case, governs, paired with, a phrase from the Greek. Not what it **signifies**:
-
-> ~~Called to the side of a party~~ → `gen. pl. τῶν παρακλήτων` · ~~Holy Spirit, Trinitarian creed~~ → `τὸ Πνεῦμα τὸ Ἅγιον (creed)`
-
-### Period headings
-
-Chronological `<h2>` bands are allowed for navigation. Name date and source type, not the outcome the writer expects the reader to infer:
-
-> ~~Late-antique: the Holy Spirit~~ → `Late-antique theological texts (3rd–5th c.)`
-
-Within a section, do not narrate development. Period order is navigation, not argument.
-
-### Blurbs and meta
-
-Index cards, `posts.json` blurbs, and meta descriptions follow the same discipline as the prose core. State scope: the term, how many attestations or which passage, what the reader gets (Greek, transliteration, translation, refs). No arcs (`from X to Y`), no theses (`separates him from the Platonists`), no signature boilerplate (`each at its station` in every blurb).
-
----
-
-## Every Greek: transliterated
-
-No exceptions. A reader without Greek must never meet bare Greek — not in titles, headings, station frames, prose, translations, summary tables, caveats, blurbs, or meta tags.
-
-**Quotations** use three lines: Greek blockquote, then transliteration, then translation.
-
-**Titles and Greek section headings** stack Greek and transliteration on separate lines:
-
-```html
-<h1 lang="grc">παράκλητος</h1>
-<p class="translit"><em>paráklētos</em></p>
-<p class="title-en">the one called to your side</p>
-```
-
-For a Greek `h2`, put `<p class="translit">` on the line below the heading.
-
-### Placement: by length, not by count — not negotiable
-
-The placement of the transliteration is decided by **how much Greek there is**, never by how many pieces:
-
-1. **Continuous Greek text** — a quoted passage, a clause, any run of Greek set as its own unit → **transliterate below**, on a `<p class="translit">` line. This is the quotation stack.
-2. **Short Greek** — a single word, a lemma, a case-form, or a short phrase embedded in an English sentence → **transliterate in line**, in parentheses immediately after the Greek: `πρὸς τὸν πατέρα (<em>pròs tòn patéra</em>)`.
-
-The test is the reading eye. Short Greek inside running prose must carry its sound *with it*, in parentheses, so the reader never leaves the sentence. A separate line below is only for continuous Greek the reader is already reading as a block; for a short tag it sends the reader hunting, which breaks the text.
-
-Count is irrelevant. A sentence with three short Greek phrases gets three in-line parentheticals, **not** one line below:
-
-> πρὸς τὸν πατέρα (<em>pròs tòn patéra</em>). Eusebius, … (John 14:16, quoted; ἄλλον παράκλητον (<em>állon paráklēton</em>)):
-
-This applies the same in **prose, station frames, translations that retain Greek, caveats, and summary-table cells**: short Greek → in line.
-
-In plain-text contexts (meta tags, JSON, index cards), separate with middle dots: `παράκλητος · paráklētos · the one called to your side`.
-
-### Transliteration checklist
-
-Run this over every Semeia before it ships. Each item is pass/fail:
-
-- [ ] **No bare Greek anywhere.** Every Greek character has a transliteration — titles, headings, prose, station frames, translations, table cells, caveats, blurbs, meta tags.
-- [ ] **Continuous Greek → below.** Every Greek blockquote/quoted passage is followed by a `<p class="translit">` line.
-- [ ] **Short Greek → in line.** Every Greek word or short phrase in running text carries `(<em>translit</em>)` immediately after it. No `<p class="translit">` lines sitting under a prose sentence.
-- [ ] **Translations with embedded Greek** transliterate each Greek term in line, not below.
-- [ ] **Table cells** transliterate each Greek term in line.
-- [ ] **ALA-LC throughout** — `η→ē`, `ω→ō`, `θ→th`, `φ→ph`, `χ→ch`, `ψ→ps`, `ξ→x`, rough breathing → leading `h`, final `ς→s`.
-- [ ] **Plain-text contexts** (meta, JSON, index) use `·` separators, never `(translit)` markup.
-
 ## Every Greek quotation: three lines
 
 No exceptions. A reader without Greek must be able to follow every mark.
@@ -201,7 +94,7 @@ The pieces published so far run longer in total because the apparatus is heavy. 
 
 ## Before composing
 
-- **Check the blacklist.** These glosses import post-Latin scholastic frameworks the corpus does not support. They are banned in translations exactly as much as in commentary. Translating δύναμις as "potentiality" defeats the entire purpose, however careful the surrounding prose. The core banned set: **soul, mind, reason, substance, potentiality, essence** (for οὐσία where the Greek should stand), **faculty** (as a fixed slot for ψυχή-parts), **universal** (where καθόλου or τὸ καθόλου should be kept or glossed from the Greek). Replacing every technical term with the same English philosophical noun is the same failure in a softer register.
+- **Check the blacklist.** The banned glosses (soul, mind, reason, substance, potentiality, and the rest) import the post-Latin scholastic frameworks the corpus does not support. They are banned in translations exactly as much as in commentary. Translating δύναμις as "potentiality" defeats the entire purpose, however careful the surrounding prose.
 - **Recall prior Semeia and lexicon entries** on the term. A reading already taken should inform the new mark, not be silently reinvented or contradicted.
 - **Resolve every corpus reference against the database** before writing it. Confirm the passage is really at the reference, in the form claimed. Never compose a citation from memory. (Mechanics in the README.)
 
