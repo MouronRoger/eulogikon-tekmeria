@@ -36,7 +36,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://eulogikon.org/icons/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://eulogikon.org/apple-touch-icon.png">
 
-    <script type="application/ld+json">
+    <!-- semeia:ld+json:start -->
+<script type="application/ld+json">
 [
   {
     "@context": "https://schema.org",
@@ -75,7 +76,9 @@
       "name": "Eulogikon",
       "url": "https://eulogikon.org"
     },
-    "isPartOf": { "@id": "https://semeia.eulogikon.org/#website" }
+    "isPartOf": {
+      "@id": "https://semeia.eulogikon.org/#website"
+    }
   },
   {
     "@context": "https://schema.org",
@@ -83,11 +86,17 @@
     "@id": "https://semeia.eulogikon.org/#posts",
     "name": "Semeia essays",
     "itemListOrder": "https://schema.org/ItemListOrderDescending",
-    "numberOfItems": 1,
+    "numberOfItems": 2,
     "itemListElement": [
       {
         "@type": "ListItem",
         "position": 1,
+        "url": "https://semeia.eulogikon.org/the-square-psyche",
+        "name": "The Square ψυχή"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
         "url": "https://semeia.eulogikon.org/what-aristotle-means-by-socratic-induction",
         "name": "What Aristotle attributes to Socrates, and what it means"
       }
@@ -95,6 +104,7 @@
   }
 ]
     </script>
+<!-- semeia:ld+json:end -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +167,7 @@
                 </div>
                 <p class="index-lead">Short essays reading the <a href="https://eulogikon.org/">Eulogikon</a> corpus closely: the ancient Greek text, its commentators, and what the words actually meant.</p>
 
+                <!-- semeia:post-cards:start -->
                 <a class="post-card" href="/the-square-psyche">
                     <div class="post-card-date">24 June 2026</div>
                     <h2>The Square ψυχή</h2>
@@ -168,6 +179,7 @@
                     <h2>What Aristotle attributes to Socrates, and what it means</h2>
                     <p>Aristotle credits Socrates with two things (inductive arguments and universal definition) and draws the single word (χωριστά) that separates Socrates from Plato. A close reading of <em>Metaphysics</em> 1078b17–31 with Alexander and the ancient commentators.</p>
                 </a>
+<!-- semeia:post-cards:end -->
             </div>
         </div>
     </div>

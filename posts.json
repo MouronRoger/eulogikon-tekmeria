@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "slug": "the-square-psyche",
+      "title": "The Square ψυχή",
+      "date": "2026-06-24",
+      "date_display": "24 June 2026",
+      "blurb": "From Simonides to Proclus: how the image of the square man (τετράγωνος ἄνευ ψόγου) became the square soul. A corpus-grounded survey across six centuries, from Aristotle's εὐδαίμων through Aspasius's square stones to the Pythagorean tetrad of cognitive faculties."
+    },
+    {
+      "slug": "what-aristotle-means-by-socratic-induction",
+      "title": "What Aristotle attributes to Socrates, and what it means",
+      "date": "2026-06-24",
+      "date_display": "24 June 2026",
+      "blurb": "Aristotle credits Socrates with two things (inductive arguments and universal definition) and draws the single word (χωριστά) that separates Socrates from Plato. A close reading of <em>Metaphysics</em> 1078b17–31 with Alexander and the ancient commentators."
+    }
+  ]
+}

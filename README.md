@@ -24,7 +24,10 @@ En dashes (U+2013) in reference ranges (e.g. `1078b17–31`, `740–741`) are fi
 
 ```
 semeia/
-├── index.html        # landing page: lists posts (add a .post-card per essay)
+├── posts.json        # essay registry (single source of truth for index + sitemap)
+├── scripts/
+│   └── sync_semeia_site.py   # sync/check index cards, ItemList, sitemap from posts.json
+├── index.html        # landing page (post cards + ItemList generated from posts.json)
 ├── new-post.html     # blank skeleton: copy this to start a new essay
 ├── <post-name>.html  # one file per essay; the filename IS the URL (/<post-name>)
 └── assets/
@@ -48,9 +51,21 @@ semeia/
    `eul_wid` is the stable reference key; the display-string prefix is just a
    mutable attribute. Composing from the DB guarantees the link is live and
    correct even if a display string later changes.
-4. Add a `<a class="post-card">` entry to `index.html` (and its `ItemList` entry in the
-   index JSON-LD).
-5. Add a `<url>` entry for the post to `sitemap.xml`.
+4. **Register the post** in `posts.json` (slug, title, date, date_display,
+   blurb). Newest first in the array.
+5. **Sync derived files** (index post cards, JSON-LD `ItemList`, `sitemap.xml`):
+   ```bash
+   python scripts/sync_semeia_site.py
+   ```
+6. **Verify before commit** (also runs in GitHub Actions on every push/PR):
+   ```bash
+   python scripts/sync_semeia_site.py --check
+   ```
+
+The sync script reads `posts.json` as the single registry. It rewrites the
+marked blocks in `index.html` and regenerates `sitemap.xml`. CI fails if you
+forget step 5, so `numberOfItems`, sitemap entries, and index cards cannot
+drift apart again.
 
 ## Preview
 

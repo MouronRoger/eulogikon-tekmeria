@@ -9,10 +9,12 @@
       never by hand-guessing a slug. From the eulogikon repo:
         EULOGIKON_STRICT_DB=1 venv/bin/python -c \
           "from src.core.url_composer import canonical_work_url; print(canonical_work_url('<eul_wid>'))"
-   4. Add a <a class="post-card"> entry for this post to index.html (and its ItemList entry in index.html JSON-LD).
-   5. Add a <url> entry for this post to sitemap.xml.
+   4. Add an entry for this post to posts.json (newest first), then run:
+        python scripts/sync_semeia_site.py
+      This updates index post cards, JSON-LD ItemList numberOfItems, and sitemap.xml.
+   5. Before commit: python scripts/sync_semeia_site.py --check   (CI runs this too)
    6. Preview:  npx wrangler pages dev .    (production-faithful clean URLs)
-   7. Deploy:   npx wrangler pages deploy . --project-name=eulogikon-semeia
+   7. Push to main: Cloudflare Pages deploys automatically from GitHub.
 
   Style: no em dashes (U+2014). Use colons, commas, parentheses, or middle dots instead.
   See README.md § Style.
