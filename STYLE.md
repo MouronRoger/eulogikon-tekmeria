@@ -150,14 +150,34 @@ No exceptions. A reader without Greek must never meet bare Greek — not in titl
 
 For a Greek `h2`, put `<p class="translit">` on the line below the heading.
 
-**Everywhere else — placement by count:**
+### Placement: by length, not by count — not negotiable
 
-- **One Greek word or phrase in the sentence** → transliteration **in line**, immediately after the Greek: `τῶν παρακλήτων (<em>tōn paraklētōn</em>)`.
-- **Two or more Greek words or phrases in the same sentence** → keep the sentence as written; put a `<p class="translit">` line **below** it, with each transliteration in order, separated by middle dots: `<em>paráklētos · parakaléō · pará · kaléō</em>`.
+The placement of the transliteration is decided by **how much Greek there is**, never by how many pieces:
 
-For caveat bullets with several Greek terms, put `<p class="translit">` at the bottom of the `<li>`. The same below-the-line rule applies to translation lines that retain Greek. In summary-table cells, transliterate each Greek term **in line**.
+1. **Continuous Greek text** — a quoted passage, a clause, any run of Greek set as its own unit → **transliterate below**, on a `<p class="translit">` line. This is the quotation stack.
+2. **Short Greek** — a single word, a lemma, a case-form, or a short phrase embedded in an English sentence → **transliterate in line**, in parentheses immediately after the Greek: `πρὸς τὸν πατέρα (<em>pròs tòn patéra</em>)`.
+
+The test is the reading eye. Short Greek inside running prose must carry its sound *with it*, in parentheses, so the reader never leaves the sentence. A separate line below is only for continuous Greek the reader is already reading as a block; for a short tag it sends the reader hunting, which breaks the text.
+
+Count is irrelevant. A sentence with three short Greek phrases gets three in-line parentheticals, **not** one line below:
+
+> πρὸς τὸν πατέρα (<em>pròs tòn patéra</em>). Eusebius, … (John 14:16, quoted; ἄλλον παράκλητον (<em>állon paráklēton</em>)):
+
+This applies the same in **prose, station frames, translations that retain Greek, caveats, and summary-table cells**: short Greek → in line.
 
 In plain-text contexts (meta tags, JSON, index cards), separate with middle dots: `παράκλητος · paráklētos · the one called to your side`.
+
+### Transliteration checklist
+
+Run this over every Semeia before it ships. Each item is pass/fail:
+
+- [ ] **No bare Greek anywhere.** Every Greek character has a transliteration — titles, headings, prose, station frames, translations, table cells, caveats, blurbs, meta tags.
+- [ ] **Continuous Greek → below.** Every Greek blockquote/quoted passage is followed by a `<p class="translit">` line.
+- [ ] **Short Greek → in line.** Every Greek word or short phrase in running text carries `(<em>translit</em>)` immediately after it. No `<p class="translit">` lines sitting under a prose sentence.
+- [ ] **Translations with embedded Greek** transliterate each Greek term in line, not below.
+- [ ] **Table cells** transliterate each Greek term in line.
+- [ ] **ALA-LC throughout** — `η→ē`, `ω→ō`, `θ→th`, `φ→ph`, `χ→ch`, `ψ→ps`, `ξ→x`, rough breathing → leading `h`, final `ς→s`.
+- [ ] **Plain-text contexts** (meta, JSON, index) use `·` separators, never `(translit)` markup.
 
 ## Every Greek quotation: three lines
 
