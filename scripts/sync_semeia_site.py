@@ -16,7 +16,14 @@ ROOT = Path(__file__).resolve().parent.parent
 POSTS_FILE = ROOT / "posts.json"
 INDEX_FILE = ROOT / "index.html"
 SITEMAP_FILE = ROOT / "sitemap.xml"
-SKIP_HTML = frozenset({"index.html", "new-post.html"})
+SKIP_HTML = frozenset({
+    "index.html",
+    "new-post.html",
+    # Drafts / alternate builds not registered in posts.json
+    "_preview-aristotle.html",
+    "parakletos.html",
+    "parakletos-by-your-side.html",
+})
 
 POST_CARDS_START = "<!-- semeia:post-cards:start -->"
 POST_CARDS_END = "<!-- semeia:post-cards:end -->"

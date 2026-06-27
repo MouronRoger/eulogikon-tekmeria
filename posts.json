@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "peri-philias",
+      "title": "Περὶ φιλίας: love in Epictetus and Marcus Aurelius",
+      "date": "2026-06-27",
+      "date_display": "27 June 2026",
+      "blurb": "Do the Later Stoics talk about love? A word-search for the usual nouns returns almost nothing; the passages use <em>phileîn</em>, <em>eúnoia</em>, <em>sympátheia</em>, and <em>philánthrōpos</em> instead. Eight stations in Epictetus and Marcus, in Greek, transliterated and translated."
+    },
+    {
       "slug": "parakleton",
       "title": "παράκλητος: the one called to your side",
       "date": "2026-06-25",
