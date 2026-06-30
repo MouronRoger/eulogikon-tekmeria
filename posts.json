@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "kolasis",
+      "title": "Corrective punishment: kólasis in the Greek corpus",
+      "date": "2026-06-30",
+      "date_display": "30 June 2026",
+      "blurb": "From physical ordeal to soul therapy: a diachronic survey of <em>kólasis</em> (643 attestations) from the Greek Anthology through Aristotle, Chrysippus, and the patristic tradition. Ten passages in Greek, transliterated and translated."
+    },
+    {
       "slug": "peri-philias",
       "title": "Περὶ φιλίας: love in the Stoa",
       "date": "2026-06-27",
