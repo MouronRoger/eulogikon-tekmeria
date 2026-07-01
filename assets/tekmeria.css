@@ -168,6 +168,31 @@
     border-bottom-style: solid;
 }
 
+/* Diachronic shape: Period | Count | Character */
+.tekmeria-essay table.summary.diachronic {
+    min-width: 0;
+    table-layout: auto;
+}
+.tekmeria-essay table.summary.diachronic th,
+.tekmeria-essay table.summary.diachronic td {
+    padding: 10px 12px;
+}
+.tekmeria-essay table.summary.diachronic th:first-child,
+.tekmeria-essay table.summary.diachronic td:first-child {
+    width: 32%;
+    font-weight: 600;
+}
+.tekmeria-essay table.summary.diachronic th:nth-child(2),
+.tekmeria-essay table.summary.diachronic td:nth-child(2) {
+    width: 12%;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.tekmeria-essay table.summary.diachronic th:nth-child(3),
+.tekmeria-essay table.summary.diachronic td:nth-child(3) {
+    width: 56%;
+}
+
 /* Passage survey: Period | Author | wid | ref | note */
 .tekmeria-essay table.summary.survey {
     min-width: 36em;
