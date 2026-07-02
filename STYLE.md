@@ -1,137 +1,249 @@
 # The Tekmerion: a style guide
 
-*What a Tekmerion is, and how to write one. This governs the prose and the evidence. The README governs the file mechanics and the chrome.*
+*What a Tekmerion is, and how to write one. This governs the prose and the
+evidence. The README governs file mechanics and site chrome.*
 
 ---
 
 ## What a Tekmerion is
 
-A **Tekmerion** (τεκμήριον, plural **Tekmeria**) is an evidence token:
-one observed passage, recorded at a fixed station in the corpus, anchored so
-that anyone can return to the exact segment and see it for themselves. It does
-not announce a conclusion. It gives the reader the thing from which a conclusion
-could be drawn.
+A **Tekmerion** (τεκμήριον, plural **Tekmeria**) is an evidence-led corpus
+note. It begins from a question about what the Eulogikon corpus contains, then
+sets down the passages that answer that question: original Greek, transliteration,
+translation, and enough framing for the reader to know what they are looking at.
 
-A Tekmerion presents evidence. **The reader reads the evidence. The Tekmerion does not read it for them.**
+It is not a conventional essay with a thesis imposed on the evidence. It is also
+not a bare concordance. A good Tekmerion has shape: a question, a sequence of
+witnesses, and a restrained account of what the witnesses place in view.
 
-It is not an essay in the ordinary sense, not an argument, not a thesis with supporting citations. It is the corpus material itself — the passages, in their order, in the original Greek, transcribed and translated so a reader without Greek can follow — framed only as much as is needed to make each passage legible. The pattern across the passages, if there is one, is something the reader sees by reading. It is never something the writer asserts.
+The writer may orient the reader. The writer may name a visible pattern. The
+writer may say where a term changes function, where a later witness preserves an
+earlier usage, or where the corpus does not contain an expected phrase. What the
+writer must not do is make the evidence carry more than it actually bears.
 
-The form is **νόησις-shaped**: caught whole, no traversal required. A conventional paper is διάνοια-shaped — it forces the reader to walk a single fixed path to a conclusion the author has prepared. A Tekmerion lays the evidence down and lets the reader's eye move among it in any order. The lineage is the Hippocratic aphorism, Walter Benjamin's *Arcades Project*, Wittgenstein's *Bemerkungen*, and Anne Carson's *Eros the Bittersweet*: grounded observation, collage rather than march, coherence that lives in the material and not in the author's rhetoric.
-
----
-
-## The reader reads the evidence
-
-This is the whole of it. Everything below follows from this one rule.
-
-When the writer tells the reader what is striking, what is decisive, what is famous, what absorbs and transcends — the writer has stepped between the reader and the evidence. The reader is no longer looking at the corpus. They are looking at the writer's judgement of the corpus, with the corpus arranged to support it. That is the move a Tekmerion exists to refuse.
-
-A reading stays a reading until a human adjudicates it into a finding. A Tekmerion that announces its own conclusion has already promoted a reading into a claim and handed the reader the result. The evidence is reorderable for a reason: if a real pattern is in the corpus, it survives the reader walking the passages in any order. If the pattern appears only because the writer narrated the reader through it in a fixed sequence with signposts, then it was in the arrangement, not in the evidence — which is the confabulation the form exists to prevent.
+The best Tekmeria are evidence-first, but not evidence-only. They leave the
+reader with the evidential landscape: what appears, where it appears, how the
+witnesses stand beside one another, and what the corpus cannot show.
 
 ---
 
-## Three disciplines
+## One Question, One Trajectory
 
-### 1. No editorialising
+Every Tekmerion should have one controlling corpus question. The question may be
+explicit or implicit, but the reader should quickly know why these witnesses are
+being placed together.
 
-Lay the evidence down. The reader sees the pattern.
+Good controlling questions:
 
-Cut every word that ranks, dramatises, or announces significance:
+- What does the corpus contain about *pneûma* from early physics to medicine and
+  Stoicism?
+- How does *kólasis* move from restraint and ordeal to corrective discipline?
+- Where is *tetrágōnos* applied to a person, to the *psychē*, and to number?
 
-> ~~This is one of the most famous fragments in the Greek tradition.~~
-> ~~This is the decisive technical redefinition.~~
-> ~~What is striking here is how the forensic sense survives.~~
-> ~~This double definition absorbs and transcends all previous uses.~~
-> ~~perhaps the most physicalist use of the term before Aristotle~~
+The body should then follow one clear trajectory. Chronology is often best, but
+not mandatory. A trajectory can be lexical, conceptual, textual, or evidential:
 
-Set two passages beside each other and let the opposition be caught whole. The moment you write "where the first reveals, the second conceals," you have walked the reader through it in sequence — you have made it διάνοια. Put the revealing φύσις next to the concealing φύσις, both anchored, both translated, and the reader's eye does the work.
+- Anaximenes -> Epicharmus -> Hippocratic medicine -> Aristotle -> Stoics -> Galen
+- Archaic root -> classical definition -> Hellenistic usage -> late-antique
+  tension
+- Earliest witness -> later quotation -> parallel report -> corpus absence
 
-### 2. No hedging
-
-When the text says it, state it plainly. The reference is there; the reader can check.
-
-The reflexive AI caveat — *of course this is only tentative, one must be cautious, the evidence is complex* — is the same vice as the fanfare, inverted. The fanfare says *look what I found*. The hedge says *do not hold me to this*. Both make the piece about the writer's stance toward the evidence instead of the evidence. A passage either appears at its reference or it does not. That is not a claim requiring defence. It is a fact the reader can verify.
-
-### 3. Real caveats only
-
-A real caveat states a fact about the evidence that the reader needs in order to read it correctly. It is not defensive. It is part of presenting the evidence accurately. Three kinds qualify:
-
-- **Provenance.** "This is a testimonium from Themistius, not Heraclitus' own words." A paraphrase five centuries later is a different object from a direct fragment, and the reader must know which they are looking at.
-- **Corpus boundaries.** "The New Testament is not in this corpus." What the evidence cannot show is itself a fact about the evidence. An empty search is a finding, not a failure: report what was searched, what was expected, what was found.
-- **Genuine ambiguity in the text.** Where the Greek itself is contested, divided, or unclear, say so. That is the terrain, recorded honestly.
-
-State each once, without apology or drama, and move on.
+The trajectory is not an argument that forces a conclusion. It is an arrangement
+that lets the evidence become readable.
 
 ---
 
-## What framing earns its place
+## Stay Close To The Evidence
 
-The writer is not silent. Some framing is not judgement but the condition of legibility, and the reader needs it:
+The old danger is overclaiming: turning a corpus note into a thesis, a manifesto,
+or a miniature reference article. The opposite danger is overcorrection: making
+the piece so rigid that it becomes a list of passages with no felt reason to read
+it.
 
-- **Who the author is and what kind of text this is.** "Demosthenes, addressing the jury." "The *Excerpts from Theodotus*, a Valentinian Gnostic text." "A testimonium preserved in Diogenes Laertius." The frame that lets the reader place the passage.
-- **The plain sense of a technical term.** "*Krasis*, the blend of elemental powers — hot, cold, wet, dry." Telling the reader what a word means is not telling them what to conclude.
-- **What is on the page, factually.** Where the word sits, what governs it, what it is paired with. Not *what it signifies* — what is *there*.
+The rule is not "never interpret." The rule is: interpret only at the distance
+the evidence allows.
 
-The test: framing tells the reader what they are looking at. Editorialising tells the reader what to think about it. The first names the station. The second tells you what to see there.
+Allowed:
+
+> The contrast is already visible. Earth returns downward; *pneûma* rises.
+
+Allowed:
+
+> Compared with Aristotle, the Stoic texts restore *pneûma* to the role of
+> active principle and distinguish grades organized by function.
+
+Allowed:
+
+> The earliest use pairs *kólasis* with *basánoi* (tortures, ordeals) and
+> *desmós* (bond, fetter).
+
+Avoid:
+
+> This is the decisive transformation of the entire tradition.
+
+Avoid:
+
+> The Stoic innovation absorbs and transcends all previous uses.
+
+Avoid:
+
+> What is striking here is the astonishing survival of the archaic sense.
+
+Prefer verbs that describe what the passage does on the page: pairs, distinguishes,
+equates, preserves, applies, quotes, glosses, defines, contrasts, repeats, omits.
+Be sparing with verbs that announce judgment: proves, reveals, transforms,
+transcends, revolutionizes.
 
 ---
 
-## Every Greek quotation: three lines
+## Framing That Earns Its Place
 
-No exceptions. A reader without Greek must be able to follow every witness.
+Framing is part of the form. Without it, the reader cannot know what kind of
+witness they are reading.
 
-1. **The original Greek**, exactly as the corpus yields it, kept and never replaced.
-2. **A transliteration**, ALA-LC (the standard American romanisation: η → ē, ω → ō, θ → th, φ → ph, χ → ch, ψ → ps, ξ → x, rough breathing → h). παράκλητος → *paráklētos*; ψυχή → *psychē*; νόησις → *noēsis*.
-3. **An English translation** — no quotation marks around the whole line. The three lines are parallel witness; wrapping only the English in quotes makes it look like reported speech when it is not. Use quotation marks inside the translation only where the Greek itself embeds a quotation (Origen quoting John, Demosthenes quoting a speaker).
+Useful framing includes:
 
-The Greek is the evidence; the transliteration lets the non-reader hear it; the translation lets them read it. All three, every time.
+- **The station.** Who is speaking, in what text, and what kind of source this is:
+  a dialogue, a medical treatise, a testimonium, a scholium, a lexicon, a
+  commentary, a fragment preserved by a later author.
+- **The local fact.** What word is paired with what, what grammatical form is
+  used, what object receives the adjective, what contrast is made in the line.
+- **The visible shift.** A later passage defines what an earlier passage equates;
+  a medical passage keeps a physical usage while philosophical texts technicalize
+  the term; a quotation becomes an anthology item.
+- **The corpus boundary.** The corpus does not contain the expected phrase; a
+  witness is late; a work is represented only through quotation.
 
----
-
-## Greek in English prose and translations
-
-No raw Greek script in English-running text. This applies to framing paragraphs, commentary, translation lines, table cells, and caveats — everywhere the reader is reading English.
-
-- **Translation lines** are English. No Greek script. Name a lemma by its transliteration (*paráklētos*) or by a plain-English gloss ("one called to the side"), not by untransliterated Greek.
-- **Framing and commentary** name Greek terms by ALA-LC transliteration in italics: *paráklētos*, *logismós*, *peithō*. Give a plain-English gloss where the reader needs one.
-- **Greek script belongs in blockquotes** (the evidence line) and in the post header (*h1*). Nowhere else in the body.
-
-A reader without Greek must never hit an untransliterated word mid-sentence. If they cannot read the script, they cannot read the sentence — which defeats the form.
-
----
-
-## Shape and length
-
-The prose core runs roughly **500 to 900 words**. The apparatus — Greek quotations, transliterations, translations, the summary table, the caveats — is additional and load-bearing; it does not count against the core. If the prose cannot be held in that compass, the reading is not yet caught whole: it is still mid-traversal, not yet a τεκμήριον.
-
-The pieces published so far run longer in total because the apparatus is heavy. That is fine. What must stay tight is the writer's own voice. The evidence can be as long as the evidence is.
+Bad framing tells the reader what to admire. Good framing tells the reader what
+they are looking at.
 
 ---
 
-## Before composing
+## Evidence Blocks
 
-- **Check the blacklist.** The banned glosses (soul, mind, reason, substance, potentiality, and the rest) import the post-Latin scholastic frameworks the corpus does not support. They are banned in translations exactly as much as in commentary. Translating δύναμις as "potentiality" defeats the entire purpose, however careful the surrounding prose.
-- **Recall prior Tekmeria and lexicon entries** on the term. A reading already taken should inform the new witness, not be silently reinvented or contradicted.
-- **Resolve every corpus reference against the database** before writing it. Confirm the passage is really at the reference, in the form claimed. Never compose a citation from memory. (Mechanics in the README.)
+Every Greek witness gets three lines. A reader without Greek must be able to
+follow the witness.
+
+1. **The original Greek**, exactly as the corpus yields it, kept and never
+   replaced.
+2. **A transliteration**, normally ALA-LC: η -> ē, ω -> ō, θ -> th, φ -> ph,
+   χ -> ch, ψ -> ps, ξ -> x, rough breathing -> h.
+3. **An English translation**, without quotation marks around the whole line.
+
+The Greek is the evidence; the transliteration lets the non-reader hear it; the
+translation lets them read it. All three belong together.
+
+Long witnesses may be excerpted when the omitted material is not needed for the
+point at hand. Mark omissions plainly with ellipses in the Greek and in the
+translation where needed.
+
+---
+
+## Greek In English Prose
+
+Use transliteration in running English by default: *pneûma*, *psychē*,
+*tetrágōnos*, *kólasis*. Give a plain-English gloss where useful.
+
+Greek script is allowed in running prose when exact form matters:
+
+- morphology: `τετράγωνον` is neuter, not feminine;
+- corpus absence: the phrase `ἡ τετράγωνος ψυχή` does not occur;
+- lexical contrast: `πνεῦμα` is paired with `ἀήρ` in the witness;
+- table cells where the Greek form itself is the datum.
+
+Do not make English prose unreadable for a reader without Greek. If a sentence
+uses Greek script, give enough transliteration, gloss, or context for the sentence
+to remain legible.
+
+Translations should usually be English. Use Greek script in a translation only
+when the untranslated form is itself the object of the note.
+
+---
+
+## Shape And Length
+
+Keep the writer's voice economical. Let the number and density of witnesses set
+the total length.
+
+A short Tekmerion may have three witnesses and a small "On the evidence" ending.
+A larger one may need a diachronic table, a sources table, and caveats. The danger
+is not length by itself. The danger is unfocused genre drift: etymology, dictionary
+entry, philosophical survey, medical survey, and theological history all competing
+inside one piece.
+
+When a draft feels too broad, narrow it by asking:
+
+- What is the one corpus question?
+- Which witnesses are essential to that question?
+- Which later materials are only afterlife or background?
+- Can the ending be reduced to factual points about the evidence?
+
+---
+
+## Endings
+
+Prefer restrained evidential endings. Good headings include:
+
+- **On the evidence**
+- **What the passages show**
+- **Corpus boundaries**
+- **Caveats and open questions**
+
+The ending should not become a theoretical synthesis. It should leave the reader
+with checkable facts:
+
+- The earliest witness applies the word to a man, not to the *psychē*.
+- The New Testament is not in the Eulogikon Greek corpus as a primary text.
+- In Anaximenes, *pneûma*, *aēr*, and *psychē* are brought into synonymy.
+- Aristotle distinguishes *pneûma* from *aēr*: *pneûma* is moved air, not air
+  simply.
+
+Tables are useful when they make the evidential landscape easier to see. Do not
+include a table merely because a table is available.
+
+---
+
+## Before Composing
+
+- **Recall prior Tekmeria and lexicon entries.** A reading already taken should
+  inform the new witness, not be silently reinvented or contradicted.
+- **Check terminology.** Avoid importing later scholastic or theological concepts
+  into earlier witnesses unless the passage itself warrants them.
+- **Resolve every corpus reference against the database.** Confirm the passage is
+  really at the reference, in the form claimed. Never compose a citation from
+  memory. Mechanics are in the README.
+- **Decide the center of gravity.** If the early evidence is the point, do not let
+  late-antique afterlife take over the piece. If the late-antique development is
+  the point, say so at the start.
 
 ---
 
 ## Citations
 
-Both the linked work title and the visible wid. The reader sees the identifier and can follow the link:
+Each primary witness needs both the linked work title and the visible `wid`:
 
 > Demosthenes, *On the Embassy*, Eulogikon: fsm-cc, ref. Or19 1
 
-The wid is the stable key. The reference (Or19 1, Metaph.1078b, Opif 165) locates the passage inside the work. Resolve the URL from the database; never hand-guess a slug.
+The `wid` is the stable key. The reference locates the passage inside the work.
+Resolve the URL from the database; never hand-guess a slug.
 
-### One citation per witness
+### One Citation Per Witness
 
-Each Greek blockquote is one **witness**: one station in the corpus. It gets **one citation**, placed **above** the three lines (Greek, transliteration, translation), in `<p class="witness-ref">`. Optional framing prose may sit above that; commentary follows the translation.
+Each Greek blockquote is one witness: one station in the corpus. It gets one
+citation, placed above the three lines in `<p class="witness-ref">`.
 
-Do not repeat the reference in the framing prose and again after the translation. Do not bury the station identifier in a footnote-sized line below the evidence while duplicating it in the lead-in.
+Optional framing prose may sit above the citation. Commentary follows the
+translation.
 
-Inline `<span class="cite">` is for secondary pointers only (parallel witnesses, cross-references, lexicographical glosses) — not for the primary witness block.
+Do not repeat the reference in the framing prose and again after the translation.
+Do not bury the station identifier below the evidence while duplicating it in the
+lead-in.
+
+Inline `<span class="cite">` is for secondary pointers only: parallel witnesses,
+cross-references, lexicographical glosses, or corpus-boundary notes. It is not for
+the primary witness block.
 
 ---
 
-*A Tekmerion is the evidence, framed just enough to be read, placed in the reader's hands. The writer takes the readings, records them honestly, and steps back. The reader walks them in any order. The land is what it is.*
+*A Tekmerion is evidence arranged until it can be read: not a thesis imposed on
+the corpus, and not a list without a pulse.*

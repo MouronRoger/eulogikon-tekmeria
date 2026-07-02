@@ -21,8 +21,6 @@ SKIP_HTML = frozenset({
     "new-post.html",
     # Drafts / alternate builds not registered in posts.json
     "_preview-aristotle.html",
-    "parakletos.html",
-    "parakletos-by-your-side.html",
 })
 
 POST_CARDS_START = "<!-- tekmeria:post-cards:start -->"

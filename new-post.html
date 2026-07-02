@@ -1,54 +1,32 @@
 <!DOCTYPE html>
-<!--
-  TEKMERIA POST SKELETON: copy this file to a new name and fill it in.
-
-  Checklist for a new post:
-   1. Rename: cp new-post.html my-post-name.html   (the filename IS the URL: /my-post-name)
-   2. Fill every  <!-- TODO -->  below: <title>, description, canonical, OG, JSON-LD, article.
-   3. For each ancient-Greek work you cite, get the URL the CORRECT way (identity -> URL),
-      never by hand-guessing a slug. From the eulogikon repo:
-        EULOGIKON_STRICT_DB=1 venv/bin/python -c \
-          "from src.core.url_composer import canonical_work_url; print(canonical_work_url('<eul_wid>'))"
-   4. Add an entry for this post to posts.json (newest first), then run:
-        python scripts/sync_tekmeria_site.py
-      This updates index post cards, JSON-LD ItemList numberOfItems, and sitemap.xml.
-   5. Before commit: python scripts/sync_tekmeria_site.py --check   (CI runs this too)
-   6. Preview:  npx wrangler pages dev .    (production-faithful clean URLs)
-   7. Push to main: Cloudflare Pages deploys automatically from GitHub.
-
-  Style: no em dashes (U+2014). Use colons, commas, parentheses, or middle dots instead.
-  See README.md § Style.
-
-  Keep the navbar/footer/scripts blocks exactly as they are; they are the shared chrome.
--->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><!-- TODO: Post title --> · Tekmeria</title>
-    <meta name="description" content="<!-- TODO: one-sentence summary for search results -->">
+    <title>Pneûma: wind, breath, and tension · Tekmeria</title>
+    <meta name="description" content="A corpus sequence showing pneûma from Anaximenes' cosmic air, through Hippocratic physiology and Aristotle, to Stoic physics and Galenic medicine.">
     <meta name="robots" content="index, follow">
     <meta name="ai-train" content="yes">
-    <link rel="canonical" href="https://tekmeria.eulogikon.org/<!-- TODO: filename-without-.html -->">
+    <link rel="canonical" href="https://tekmeria.eulogikon.org/pneuma">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Tekmeria · Eulogikon">
-    <meta property="og:title" content="<!-- TODO: Post title -->">
-    <meta property="og:description" content="<!-- TODO: one-sentence summary -->">
-    <meta property="og:url" content="https://tekmeria.eulogikon.org/<!-- TODO: filename-without-.html -->">
+    <meta property="og:title" content="Pneûma: wind, breath, and tension">
+    <meta property="og:description" content="A corpus sequence from Anaximenes' cosmic air to Hippocratic physiology, Aristotle, Stoic physics, and Galenic medicine.">
+    <meta property="og:url" content="https://tekmeria.eulogikon.org/pneuma">
     <meta property="og:image" content="https://eulogikon.org/assets/images/og-default.jpg">
     <meta property="og:image:alt" content="Tekmeria: essays from the Eulogikon ancient Greek corpus">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_GB">
-    <meta property="article:published_time" content="<!-- TODO: YYYY-MM-DD -->">
+    <meta property="og:locale" content="en">
+    <meta property="article:published_time" content="2026-07-02">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<!-- TODO: Post title -->">
-    <meta name="twitter:description" content="<!-- TODO: one-sentence summary -->">
+    <meta name="twitter:title" content="Pneûma: wind, breath, and tension">
+    <meta name="twitter:description" content="A corpus sequence from Anaximenes' cosmic air to Hippocratic physiology, Aristotle, Stoic physics, and Galenic medicine.">
     <meta name="twitter:image" content="https://eulogikon.org/assets/images/og-default.jpg">
     <meta name="twitter:image:alt" content="Tekmeria: essays from the Eulogikon ancient Greek corpus">
 
@@ -71,16 +49,16 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "@id": "https://tekmeria.eulogikon.org/TODO-filename-without-html#article",
-      "headline": "TODO: Post title",
-      "description": "TODO: one-sentence summary",
-      "url": "https://tekmeria.eulogikon.org/TODO-filename-without-html",
+      "@id": "https://tekmeria.eulogikon.org/pneuma#article",
+      "headline": "Pneûma: wind, breath, and tension",
+      "description": "A corpus sequence showing pneûma from Anaximenes' cosmic air, through Hippocratic physiology and Aristotle, to Stoic physics and Galenic medicine.",
+      "url": "https://tekmeria.eulogikon.org/pneuma",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://tekmeria.eulogikon.org/TODO-filename-without-html"
+        "@id": "https://tekmeria.eulogikon.org/pneuma"
       },
       "inLanguage": "en",
-      "datePublished": "TODO-YYYY-MM-DD",
+      "datePublished": "2026-07-02",
       "image": "https://eulogikon.org/assets/images/og-default.jpg",
       "author": {
         "@type": "Organization",
@@ -101,7 +79,15 @@
         "url": "https://tekmeria.eulogikon.org"
       },
       "citation": [
-        "TODO: https://eulogikon.org/works/<display>-<eul_wid> for each work cited"
+        "https://eulogikon.org/works/anaximenes-miletus-cold-heat-bcm-ab",
+        "https://eulogikon.org/works/epicharmus-syracuse-gnomic-comic-wisdom-bhm-ag",
+        "https://eulogikon.org/works/hippocrates-nature-child-bww-ad",
+        "https://eulogikon.org/works/hippocrates-meats-bww-bz",
+        "https://eulogikon.org/works/hippocrates-sacred-disease-bww-ao",
+        "https://eulogikon.org/works/aristotle-topics-hgw-cd",
+        "https://eulogikon.org/works/rufus-ephesus-human-body-terms-ojc-ab",
+        "https://eulogikon.org/works/chrysippus-soli-logical-physical-kms-ac",
+        "https://eulogikon.org/works/galen-pergamon-difficulty-breathing-qmm-ck"
       ]
     }
     </script>
@@ -138,7 +124,7 @@
     </nav>
 
     <div class="breadcrumbs">
-        <a href="/">Tekmeria</a> <span class="breadcrumb-separator">›</span> <span class="breadcrumb-current"><!-- TODO: Post title --></span>
+        <a href="/">Tekmeria</a> <span class="breadcrumb-separator">›</span> <span class="breadcrumb-current">Pneûma: wind, breath, and tension</span>
     </div>
 
     <main>
@@ -146,49 +132,230 @@
         <div class="content-wrapper">
             <article class="tekmeria-essay">
                 <header class="post-header">
-                    <h1><!-- TODO: Post title --></h1>
-                    <div class="post-meta">Τεκμήρια · Eulogikon · <!-- TODO: date --> · <!-- TODO: subject line, e.g. on <em>Work</em> 123a --></div>
+                    <h1>Pneûma: wind, breath, and tension</h1>
+                    <div class="post-meta">Τεκμήρια · Eulogikon · 2 July 2026 · pneûma from Anaximenes to Galen</div>
                 </header>
+                <p><em>Pneûma</em> begins as wind and breath. In the early evidence it names cosmic air and the upward-moving element at death. Across Greek philosophy and medicine it then becomes the vehicle of bodily and cognitive function, a debated definition in Aristotle, and the Stoic medium of cohesion, life, perception, and movement. The passages below trace that line from Anaximenes to Galen.</p>
 
-                <!-- ============================================================
-                     BODY: replace everything between here and the closing note.
-                     Patterns you can copy:
+                <p>Corpus frequency: 14,604 total attestations. The period counts below belong to the Eulogikon corpus at the time of composition; they show both the survival pattern of Greek literature and the increasing technicalization of <em>pneûma</em> in medicine, Stoicism, and later Christian writing.</p>
 
-                     Section heading:
-                       <h2>1. Section title</h2>
+                <h2>Anaximenes: pneûma, air, and psychē</h2>
 
-                     Plain paragraph:
-                       <p>Prose…</p>
+                <p>Anaximenes equates <em>pneûma</em> with <em>aēr</em> and <em>psychē</em> in a cosmological frame:</p>
 
-                     Optional framing prose, then ONE station citation, then three lines:
-                       <p>Framing prose without repeating author, wid, or ref…</p>
-                       <p class="witness-ref">Author, <em><a href="https://eulogikon.org/works/<display>-<eul_wid>" title="Work title (<eul_wid>)">Work title</a></em>, Eulogikon: <eul_wid>, ref. Loc.123a</p>
-                       <blockquote lang="grc" class="grc">Greek text…</blockquote>
-                       <p class="translit"><em>transliteration…</em></p>
-                       <p class="translation">English translation without wrapping quote marks…</p>
+                <p class="witness-ref">Anaximenes of Miletus, <em><a href="https://eulogikon.org/works/anaximenes-miletus-cold-heat-bcm-ab" title="Fragments on Cold and Heat (bcm-ab)">Fragments on Cold and Heat</a></em>, Eulogikon: bcm-ab, ref. frag. 2</p>
+                <blockquote lang="grc" class="grc">ἡ ψυχὴ ἡ ἡμετέρα ἀὴρ οὖσα συγκρατεῖ ἡμᾶς, καὶ ὅλον τὸν κόσμον πνεῦμα καὶ ἀὴρ περιέχει (λέγεται δὲ συνωνύμως ἀὴρ καὶ πνεῦμα)</blockquote>
+                <p class="translit"><em>hē psychē hē hēmetéra aēr oûsa synkrateî hēmâs, kaì hólon tòn kósmon pneûma kaì aēr periéchei (légetai dè synōnýmōs aēr kaì pneûma)</em></p>
+                <p class="translation">Our psychē, being air, holds us together, and the whole cosmos is encompassed by pneûma and air (air and pneûma are said synonymously).</p>
 
-                     Greek terms in English prose: transliteration in italics only
-                     (<em>paráklētos</em>, <em>logismós</em>). No raw Greek script outside blockquotes.
-                     Secondary cross-refs only: <span class="cite">(Eulogikon: wid, ref. …)</span>
+                <p>Anaximenes places <em>pneûma</em>, <em>aēr</em>, and <em>psychē</em> in the same physical field. The fragment uses <em>pneûma</em> and <em>aēr</em> synonymously, and describes this air as what holds both the person and the cosmos together.</p>
 
-                     Inline citation (mid-sentence):
-                       …as <span class="cite"><a href="https://eulogikon.org/works/<display>-<eul_wid>" title="Work title (<eul_wid>)"><em>Work title</em></a></span> shows…
+                <h2>Epicharmus: pneûma upward</h2>
 
-                     Summary table (passage survey):
-                       <table class="summary survey"><thead><tr><th>…</th><th>…</th></tr></thead>
-                         <tbody><tr><td>…</td><td>…</td></tr></tbody></table>
+                <p>A fragment on death preserves another early use:</p>
 
-                     Sources cited table:
-                       <div class="table-scroll">
-                       <table class="summary sources"><thead><tr><th>Author</th><th>Title</th><th>wid</th><th>Passages cited</th></tr></thead>
-                         <tbody><tr><td>…</td><td>…</td></tr></tbody></table>
-                       </div>
+                <p class="witness-ref">Epicharmus of Syracuse, <em><a href="https://eulogikon.org/works/epicharmus-syracuse-gnomic-comic-wisdom-bhm-ag" title="Gnomic and Comic Wisdom Fragments (bhm-ag)">Gnomic and Comic Wisdom Fragments</a></em>, Eulogikon: bhm-ag, ref. frag. 9</p>
+                <blockquote lang="grc" class="grc">συνεκρίθη καὶ διεκρίθη κἀπῆλθεν ὅθεν ἦλθεν πάλιν, γᾶ μὲν εἰς γᾶν, πνεῦμα δ' ἄνω</blockquote>
+                <p class="translit"><em>synekríthē kaì diekríthē kapêlthen hóthen êlthen pálin, gâ mèn eis gân, pneûma d' ánō</em></p>
+                <p class="translation">It was compounded and separated and returned whence it came: earth to earth, pneûma upward.</p>
 
-                     Closing caveats box:
-                       <div class="caveats"><h2>Caveats and open questions</h2><ul><li>…</li></ul></div>
-                     ============================================================ -->
+                <p>The contrast is already visible. Earth returns downward; <em>pneûma</em> rises. The distinction remains physical rather than theological, but it introduces an opposition later philosophers repeatedly revisit.</p>
 
-                <p><!-- TODO: write the essay --></p>
+                <h2>Hippocratic medicine: breath and cognition</h2>
+
+                <p>The Hippocratic writers use <em>pneûma</em> in physiological contexts: embryonic heat, voice, respiration, movement, and understanding.</p>
+
+                <p class="witness-ref">Hippocrates and the Hippocratic Corpus, <em><a href="https://eulogikon.org/works/hippocrates-nature-child-bww-ad" title="On the Nature of the Child (bww-ad)">On the Nature of the Child</a></em>, Eulogikon: bww-ad, ref. 12.1</p>
+                <blockquote lang="grc" class="grc">Ἔπειτα πνεῦμα ἴσχει, ἅτε ἐν θερμῷ ἐοῦσα... τὸ δὲ πνεῦμα ῥήγνυσι καὶ ποιέει οἱ ὁδὸν αὐτὸ ἑωυτῷ καὶ χωρέει ἔξω</blockquote>
+                <p class="translit"><em>épeita pneûma íschei, háte en thermō̂i eoûsa... tò dè pneûma rhḗgnysi kaì poiéei hoi hodòn autò heōutō̂i kaì chōréei éxō</em></p>
+                <p class="translation">Then it gets pneûma, since it is in a warm place... and the pneûma breaks through and makes a path for itself and moves outward.</p>
+
+                <p class="witness-ref">Hippocrates and the Hippocratic Corpus, <em><a href="https://eulogikon.org/works/hippocrates-meats-bww-bz" title="On Meats (bww-bz)">On Meats</a></em>, Eulogikon: bww-bz, ref. 18</p>
+                <blockquote lang="grc" class="grc">οἱ ἄνθρωποι ὁκόταν βούλωνται μέγα φωνῆσαι, ἕλκοντες τὸ πνεῦμα τὸ ἔξω ὠθέουσι θύραζε καὶ φθέγγονται μέγα ὡς ἀντηχῇ τὸ πνεῦμα</blockquote>
+                <p class="translit"><em>hoi ánthrōpoi hokótan boúlōntai méga phōnêsai, hélkontes tò pneûma tò éxō ōthéousi thýraze kaì phthéngontai méga hōs antēchêi tò pneûma</em></p>
+                <p class="translation">When people wish to shout loudly, drawing the pneûma, they push it outward and speak loudly so that the pneûma resounds.</p>
+
+                <p class="witness-ref">Hippocrates and the Hippocratic Corpus, <em><a href="https://eulogikon.org/works/hippocrates-sacred-disease-bww-ao" title="On the Sacred Disease (bww-ao)">On the Sacred Disease</a></em>, Eulogikon: bww-ao, ref. 7</p>
+                <blockquote lang="grc" class="grc">ὅταν γὰρ λάβῃ ἄνθρωπος κατὰ τὸ στόμα καὶ τοὺς μυκτῆρας τὸ πνεῦμα, πρῶτον μὲν ἐς τὸν ἐγκέφαλον ἔρχεται, ἔπειτα δὲ ἐς τὴν κοιλίην τὸ πλεῖστον μέρος, τὸ δὲ ἐπὶ τὸν πλεύμονα, τὸ δὲ ἐπὶ τὰς φλέβας. Ἐκ τουτέων δὲ σκίδναται ἐς τὰ λοιπὰ μέρεα κατὰ τὰς φλέβας... ὁ δ' ἐς τὸν πλεύμονά τε καὶ τὰς φλέβας ἀὴρ ξυμβάλλεται ἐς τὰς κοιλίας ἐσιὼν καὶ ἐς τὸν ἐγκέφαλον, καὶ οὕτω τὴν φρόνησιν καὶ τὴν κίνησιν τοῖσι μέλεσι παρέχει</blockquote>
+                <p class="translit"><em>hótan gàr lábēi ánthrōpos katà tò stóma kaì toùs myktêras tò pneûma, prôton mèn es tòn enképhalon érchetai, épeita dè es tḕn koilíēn tò pleîston méros, tò dè epì tòn pleúmona, tò dè epì tàs phlébas. Ek toutéōn dè skídnatai es tà loipà mérea katà tàs phlébas... ho d' es tòn pleúmoná te kaì tàs phlébas aēr xymbálletai es tàs koilías esiṑn kaì es tòn enképhalon, kaì hoútō tḕn phrónēsin kaì tḕn kínēsin toîsi mélesi paréchei</em></p>
+                <p class="translation">For when a person takes pneûma through the mouth and nostrils, first it goes to the brain, then mostly to the belly, some to the lungs, some to the veins. From these it is dispersed to the remaining parts through the veins... and the air that goes to the lungs and veins contributes to the cavities and to the brain, and thus provides understanding and movement to the limbs.</p>
+
+                <p>In these medical passages, <em>pneûma</em> is physiological: embryonic heat, vocal force, respiratory movement, and air moving through the body. The passage from <em>On the Sacred Disease</em> gives it cognitive consequence: air and <em>pneûma</em> reach the brain and provide <em>phrónēsis</em> and bodily movement.</p>
+
+                <h2>Aristotle: pneûma as moved air</h2>
+
+                <p>Aristotle separates <em>pneûma</em> from <em>aēr</em> by treating it as moving air rather than air as such:</p>
+
+                <p class="witness-ref">Aristotle, <em><a href="https://eulogikon.org/works/aristotle-topics-hgw-cd" title="Topics (hgw-cd)">Topics</a></em>, Eulogikon: hgw-cd, ref. Top. 127a</p>
+                <blockquote lang="grc" class="grc">τὸ πνεῦμα ἀέρα κινούμενον. μᾶλλον γὰρ κίνησις ἀέρος τὸ πνεῦμα... ὥστ' οὐκ ἔστιν ὅλως ἀὴρ τὸ πνεῦμα</blockquote>
+                <p class="translit"><em>tò pneûma aéra kinoúmenon. mâllon gàr kínēsis aéros tò pneûma... hṓst' ouk éstin hólōs aēr tò pneûma</em></p>
+                <p class="translation">Pneûma is air being moved. For pneûma is rather a movement of air... so pneûma is not air simply.</p>
+
+                <p>Aristotle's definition changes the relation between the terms. <em>Pneûma</em> is not simply <em>aēr</em>; it is <em>aēr</em> under motion. The same air may be still or moving, but only moving air is called <em>pneûma</em>.</p>
+
+                <h2>The Stoics: heat, function, and tension</h2>
+
+                <p>Zeno identifies <em>pneûma</em> with heat, as reported by Rufus of Ephesus:</p>
+
+                <p class="witness-ref">Rufus of Ephesus, <em><a href="https://eulogikon.org/works/rufus-ephesus-human-body-terms-ojc-ab" title="On the Terms of the Human Body (ojc-ab)">On the Terms of the Human Body</a></em>, Eulogikon: ojc-ab, ref. 228</p>
+                <blockquote lang="grc" class="grc">Θερμασίαν δὲ καὶ πνεῦμα Ζήνων μὲν τὸ αὐτὸ εἶναί φησιν</blockquote>
+                <p class="translit"><em>thermasían dè kaì pneûma Zḗnōn mèn tò autò eînaí phēsin</em></p>
+                <p class="translation">Zeno says that heat and pneûma are the same thing.</p>
+
+                <p>Chrysippus makes <em>pneûma</em> the medium of psychic function. Vision and hearing are described as <em>pneûma</em> stretched from the ruling part to the organs:</p>
+
+                <p class="witness-ref">Chrysippus of Soli, <em><a href="https://eulogikon.org/works/chrysippus-soli-logical-physical-kms-ac" title="Fragments Logical and Physical (kms-ac)">Fragments Logical and Physical</a></em>, Eulogikon: kms-ac, ref. frag. 836</p>
+                <blockquote lang="grc" class="grc">ἡ μὲν ὅρασις ἐστὶ πνεῦμα διατεῖνον ἀπὸ ἡγεμονικοῦ μέχρις ὀφθαλμῶν, ἀκοὴ δὲ πνεῦμα διατεῖνον ἀπὸ τοῦ ἡγεμονικοῦ μέχρις ὤτων... αὐτὸ δὲ τὸ ἡγεμονικόν... ἐν τῇ ἡμετέρᾳ σφαιροειδεῖ κεφαλῇ</blockquote>
+                <p class="translit"><em>hē mèn hórasis estì pneûma diateînon apò hēgemonikoû méchris ophthalmôn, akoḕ dè pneûma diateînon apò toû hēgemonikoû méchris ōtōn... autò dè tò hēgemonikón... en tē̂i hēmetérāi sphairoeideî kephalē̂i</em></p>
+                <p class="translation">Vision is pneûma stretching from the ruling part to the eyes, and hearing is pneûma stretching from the ruling part to the ears... and the ruling part itself is in our spherical head.</p>
+
+                <p>The Stoic fragments also distinguish three grades of <em>pneûma</em>:</p>
+
+                <p class="witness-ref">Chrysippus of Soli, <em><a href="https://eulogikon.org/works/chrysippus-soli-logical-physical-kms-ac" title="Fragments Logical and Physical (kms-ac)">Fragments Logical and Physical</a></em>, Eulogikon: kms-ac, ref. frag. 716</p>
+                <blockquote lang="grc" class="grc">ἑκτικὸν μὲν οὖν ἐστι πνεῦμα τὸ συνέχον τοὺς λίθους, φυσικὸν δὲ τὸ τρέφον τὰ ζῷα καὶ τὰ φυτά, ψυχικὸν δὲ τὸ ἐπὶ τῶν ἐμψύχων αἰσθητικά τε ποιοῦν τὰ ζῷα καὶ κινούμενα πᾶσαν κίνησιν</blockquote>
+                <p class="translit"><em>hektikòn mèn oûn esti pneûma tò synéchon toùs líthous, physikòn dè tò tréphon tà zō̂ia kaì tà phytá, psychikòn dè tò epì tō̂n empsýchōn aisthētiká te poioûn tà zō̂ia kaì kinoúmena pâsan kínēsin</em></p>
+                <p class="translation">Cohesive pneûma is what holds stones together; natural pneûma is what nourishes animals and plants; psychic pneûma is what, in ensouled beings, makes animals capable of perception and moves them in every movement.</p>
+
+                <p>The coherence of bodies is described through <em>tónos</em>, the tension of <em>pneûma</em>:</p>
+
+                <p class="witness-ref">Chrysippus of Soli, <em><a href="https://eulogikon.org/works/chrysippus-soli-logical-physical-kms-ac" title="Fragments Logical and Physical (kms-ac)">Fragments Logical and Physical</a></em>, Eulogikon: kms-ac, ref. frag. 441</p>
+                <blockquote lang="grc" class="grc">τίς γὰρ καὶ ὁ τόνος τοῦ πνεύματος, ὑφ' οὗ συνδούμενα τήν τε συνέχειαν ἔχει τὰ οἰκεῖα μέρη καὶ συνῆπται τοῖς παρακειμένοις;</blockquote>
+                <p class="translit"><em>tís gàr kaì ho tónos toû pneúmatos, hyph' hoû syndoúmena tḗn te synécheian échei tà oikeîa mérē kaì synêptai toîs parakeiménois?</em></p>
+                <p class="translation">For what is the tension of the pneûma, by which the proper parts are bound together, have coherence, and are joined to their neighbors?</p>
+
+                <p>Compared with Aristotle, the Stoic texts restore <em>pneûma</em> to the role of active principle and distinguish grades organized by function: <em>hektikón</em> for cohesion, <em>physikón</em> for growth and nourishment, and <em>psychikón</em> for perception and movement. The account of <em>tónos</em> describes that principle as tension within bodies.</p>
+
+                <h2>Galen: medical pneûma retained</h2>
+
+                <p>Galen keeps the medical vocabulary of <em>pneûma</em> in contexts of respiration and diagnostic description:</p>
+
+                <p class="witness-ref">Galen of Pergamon, <em><a href="https://eulogikon.org/works/galen-pergamon-difficulty-breathing-qmm-ck" title="On Difficulty of Breathing (qmm-ck)">On Difficulty of Breathing</a></em>, Eulogikon: qmm-ck, ref. 7.845</p>
+                <blockquote lang="grc" class="grc">πνεῦμα ἀραιὸν, μέγα, διὰ χρόνου</blockquote>
+                <p class="translit"><em>pneûma araiòn, méga, dià chrónou</em></p>
+                <p class="translation">Pneûma: rare, large, at intervals.</p>
+
+                <p class="witness-ref">Galen of Pergamon, <em><a href="https://eulogikon.org/works/galen-pergamon-difficulty-breathing-qmm-ck" title="On Difficulty of Breathing (qmm-ck)">On Difficulty of Breathing</a></em>, Eulogikon: qmm-ck, ref. 7.910</p>
+                <blockquote lang="grc" class="grc">μικρὸν καὶ πυκνὸν γενέσθαι τὸ πνεῦμα</blockquote>
+                <p class="translit"><em>mikròn kaì pyknòn genésthai tò pneûma</em></p>
+                <p class="translation">The pneûma becomes small and frequent.</p>
+
+                <p>Galen preserves the medical usage of <em>pneûma</em> while writing in a world where Stoic and theological meanings already exist. His diagnostic vocabulary remains physiological rather than metaphysical: rare or dense, large or small, intermittent or frequent.</p>
+
+                <h2>The diachronic shape</h2>
+
+                <div class="table-scroll">
+                <table class="summary diachronic">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Count</th>
+                            <th>Character</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Archaic</td>
+                            <td>66</td>
+                            <td>Cosmic air, breath, upward movement at death</td>
+                        </tr>
+                        <tr>
+                            <td>Classical</td>
+                            <td>717</td>
+                            <td>Medical physiology, meteorology, Aristotelian definition</td>
+                        </tr>
+                        <tr>
+                            <td>Hellenistic</td>
+                            <td>889</td>
+                            <td>Stoic technicalization: cohesion, growth, perception, movement</td>
+                        </tr>
+                        <tr>
+                            <td>Roman</td>
+                            <td>3,013</td>
+                            <td>Medical synthesis and philosophical commentary</td>
+                        </tr>
+                        <tr>
+                            <td>Late Antique</td>
+                            <td>3,979</td>
+                            <td>Theological expansion beyond the scope of this survey</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <p>The dramatic increase in attestations after the Hellenistic period reflects both the expansion of surviving literature and the increasing technicalization of <em>pneûma</em> in medicine, Stoicism, and later Christian writing.</p>
+
+                <div class="caveats">
+                    <h2>On the evidence</h2>
+                    <ul>
+                        <li>In Anaximenes, <em>pneûma</em>, <em>aēr</em>, and <em>psychē</em> are explicitly brought into synonymy.</li>
+                        <li>In Epicharmus, earth returns downward and <em>pneûma</em> rises upward. The contrast is physical, not yet theological.</li>
+                        <li>In the Hippocratic passages, <em>pneûma</em> remains physiological: breath, heat, voice, bodily movement, and air reaching the brain.</li>
+                        <li>Aristotle distinguishes <em>pneûma</em> from <em>aēr</em>: <em>pneûma</em> is moved air, not air simply.</li>
+                        <li>The Stoic fragments restore <em>pneûma</em> as an active principle of cohesion, growth, perception, and movement.</li>
+                        <li>Medical writers retain the physiological sense throughout. Later theological writers inherit these earlier layers rather than replacing them.</li>
+                    </ul>
+                </div>
+
+                <section class="sources-cited">
+                    <h2>Sources cited</h2>
+                    <div class="table-scroll">
+                    <table class="summary sources">
+                        <thead>
+                            <tr>
+                                <th>Author</th>
+                                <th>Title</th>
+                                <th>wid</th>
+                                <th>Passages cited</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Anaximenes of Miletus</td>
+                                <td><em><a href="https://eulogikon.org/works/anaximenes-miletus-cold-heat-bcm-ab">Fragments on Cold and Heat</a></em></td>
+                                <td>bcm-ab</td>
+                                <td>frag. 2</td>
+                            </tr>
+                            <tr>
+                                <td>Epicharmus of Syracuse</td>
+                                <td><em><a href="https://eulogikon.org/works/epicharmus-syracuse-gnomic-comic-wisdom-bhm-ag">Gnomic and Comic Wisdom Fragments</a></em></td>
+                                <td>bhm-ag</td>
+                                <td>frag. 9</td>
+                            </tr>
+                            <tr>
+                                <td>Hippocrates and the Hippocratic Corpus</td>
+                                <td><em><a href="https://eulogikon.org/works/hippocrates-nature-child-bww-ad">On the Nature of the Child</a></em>; <em><a href="https://eulogikon.org/works/hippocrates-meats-bww-bz">On Meats</a></em>; <em><a href="https://eulogikon.org/works/hippocrates-sacred-disease-bww-ao">On the Sacred Disease</a></em></td>
+                                <td>bww-ad; bww-bz; bww-ao</td>
+                                <td>12.1; 18; 7</td>
+                            </tr>
+                            <tr>
+                                <td>Aristotle</td>
+                                <td><em><a href="https://eulogikon.org/works/aristotle-topics-hgw-cd">Topics</a></em></td>
+                                <td>hgw-cd</td>
+                                <td>Top. 127a</td>
+                            </tr>
+                            <tr>
+                                <td>Rufus of Ephesus</td>
+                                <td><em><a href="https://eulogikon.org/works/rufus-ephesus-human-body-terms-ojc-ab">On the Terms of the Human Body</a></em></td>
+                                <td>ojc-ab</td>
+                                <td>228</td>
+                            </tr>
+                            <tr>
+                                <td>Chrysippus of Soli</td>
+                                <td><em><a href="https://eulogikon.org/works/chrysippus-soli-logical-physical-kms-ac">Fragments Logical and Physical</a></em></td>
+                                <td>kms-ac</td>
+                                <td>frag. 441; frag. 716; frag. 836</td>
+                            </tr>
+                            <tr>
+                                <td>Galen of Pergamon</td>
+                                <td><em><a href="https://eulogikon.org/works/galen-pergamon-difficulty-breathing-qmm-ck">On Difficulty of Breathing</a></em></td>
+                                <td>qmm-ck</td>
+                                <td>7.845; 7.910</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p style="margin-top: 1em; font-size: 0.9em; color: #718096;"><strong>Note on Eulogikon references.</strong> A work is keyed by its wid; the display string supplies the public URL. Citation format: Author, <em>Title</em>, Eulogikon: wid, ref.</p>
+                </section>
 
             </article>
         </div>
