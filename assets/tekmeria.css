@@ -193,6 +193,26 @@
     width: 56%;
 }
 
+/* Lemma counts by period: Period + N lemma columns */
+.tekmeria-essay table.summary.lemma-counts {
+    min-width: 46em;
+    table-layout: auto;
+}
+.tekmeria-essay table.summary.lemma-counts thead th {
+    white-space: normal;
+    line-height: 1.3;
+}
+.tekmeria-essay table.summary.lemma-counts th:first-child,
+.tekmeria-essay table.summary.lemma-counts td:first-child {
+    font-weight: 600;
+    white-space: nowrap;
+}
+.tekmeria-essay table.summary.lemma-counts th:not(:first-child),
+.tekmeria-essay table.summary.lemma-counts td:not(:first-child) {
+    text-align: right;
+    white-space: nowrap;
+}
+
 /* Passage survey: Period | Author | wid | ref | note */
 .tekmeria-essay table.summary.survey {
     min-width: 36em;
