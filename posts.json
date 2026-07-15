@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "slug": "what-marcus-prays-for",
+      "title": "What Marcus Aurelius prays for",
+      "date": "2026-07-15",
+      "date_display": "15 July 2026",
+      "blurb": "Marcus redirects prayer from external outcomes to the absence of fear, desire, and distress. Seventeen passages from Homer to Epictetus set <em>eúchomai</em> / <em>euchḗ</em> beside the terms he never uses."
+    },
+    {
       "slug": "aletheia-not-quite-true",
       "title": "Ἀλήθεια: the word that fights, lights, and is a body",
       "date": "2026-07-13",
