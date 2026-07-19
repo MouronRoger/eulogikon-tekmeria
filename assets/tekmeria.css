@@ -3,14 +3,23 @@
    prose body of a Tekmeria essay. Scope everything under .tekmeria-essay so it can
    never collide with a lifted corpus rule. */
 
+/* Page column: ~75% of the viewport (was a fixed 760px / ~50%).
+   Width 100% keeps mobile pages full-bleed inside the padded card. */
 .tekmeria-essay {
-    max-width: 760px;
+    width: 100%;
+    max-width: 75vw;
     margin: 0 auto;
     padding: 8px 4px 64px;
     color: #2D3748;
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     font-size: 1.12em;
     line-height: 1.72;
+}
+
+/* Let the card grow with the wider column on large screens. */
+body:has(.tekmeria-essay) .container,
+body:has(.tekmeria-index) .container {
+    max-width: min(1600px, 90vw);
 }
 
 /* --- Title block --- */
@@ -107,16 +116,24 @@
 /* --- Summary tables ---
    eulogikon-base.css styles all tables as corpus passage viewers (hidden
    thead, hover-only ref column, enlarged Greek in last column). Reset
-   everything under .tekmeria-essay table.summary and use modifier classes for
-   column widths. */
+   everything under .tekmeria-essay table.summary.
+
+   Layout rules (no horizontal scroll):
+   1. Text and tables share the widened essay column (max-width: 75vw).
+   2. table-layout: fixed + width 100% keeps every column inside the page.
+   3. Cells always wrap; never nowrap long titles or Greek phrases (that is
+      what caused work/phrase collisions).
+   4. Per-table customization: modifier classes, cell utilities, or
+      <col class="col-*"> width hints (percentages of the table). */
+
 .tekmeria-essay .table-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     margin: 1.4em 0;
+    overflow-x: visible;
 }
 .tekmeria-essay .table-scroll table.summary {
     margin: 0;
 }
+
 .tekmeria-essay table.summary {
     display: table;
     width: 100%;
@@ -140,7 +157,7 @@
     opacity: 1 !important;
     text-align: left;
     vertical-align: top;
-    padding: 10px 14px;
+    padding: 10px 12px;
     border-bottom: 1px solid #e2e8f0;
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
         'Segoe UI', Arial, sans-serif;
@@ -149,125 +166,115 @@
     font-weight: 400;
     color: #2D3748;
     white-space: normal;
+    overflow-wrap: anywhere;
     word-wrap: break-word;
-    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: manual;
 }
 .tekmeria-essay table.summary thead th {
     border-bottom: 2px solid #cbd5e0;
     background-color: #4A5568;
     color: #E2E8F0;
     font-weight: 600;
-    white-space: nowrap;
+    white-space: normal;
+    line-height: 1.3;
 }
 .tekmeria-essay table.summary td a {
     color: #2b6cb0;
     text-decoration: none;
     border-bottom: 1px dotted #90cdf4;
+    overflow-wrap: anywhere;
 }
 .tekmeria-essay table.summary td a:hover {
     border-bottom-style: solid;
 }
 
-/* Diachronic shape: Period | Count | Character */
-.tekmeria-essay table.summary.diachronic {
-    min-width: 0;
-    table-layout: auto;
+/* --- Column / cell utilities (opt-in per table) --- */
+.tekmeria-essay table.summary .wrap,
+.tekmeria-essay table.summary .cell-wrap {
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
+/* nowrap only for short tokens that fit their column (wid codes, counts) */
+.tekmeria-essay table.summary .nowrap,
+.tekmeria-essay table.summary .cell-nowrap {
+    white-space: nowrap;
+}
+.tekmeria-essay table.summary .cell-mono {
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 0.92em;
+}
+
+/* <col> width hints: percentages of the table width */
+.tekmeria-essay table.summary col.col-narrow { width: 9%; }
+.tekmeria-essay table.summary col.col-meta { width: 11%; }
+.tekmeria-essay table.summary col.col-author { width: 14%; }
+.tekmeria-essay table.summary col.col-work { width: 28%; }
+.tekmeria-essay table.summary col.col-phrase { width: 38%; }
+.tekmeria-essay table.summary col.col-note { width: 36%; }
+
+/* Diachronic shape: Period | Count | Character */
 .tekmeria-essay table.summary.diachronic th,
 .tekmeria-essay table.summary.diachronic td {
     padding: 10px 12px;
 }
 .tekmeria-essay table.summary.diachronic th:first-child,
 .tekmeria-essay table.summary.diachronic td:first-child {
-    width: 32%;
+    width: 22%;
     font-weight: 600;
 }
 .tekmeria-essay table.summary.diachronic th:nth-child(2),
 .tekmeria-essay table.summary.diachronic td:nth-child(2) {
     width: 12%;
     font-weight: 600;
-    white-space: nowrap;
+    text-align: right;
 }
 .tekmeria-essay table.summary.diachronic th:nth-child(3),
 .tekmeria-essay table.summary.diachronic td:nth-child(3) {
-    width: 56%;
+    width: 66%;
 }
 
 /* Lemma counts by period: Period + N lemma columns */
-.tekmeria-essay table.summary.lemma-counts {
-    min-width: 46em;
-    table-layout: auto;
-}
 .tekmeria-essay table.summary.lemma-counts thead th {
     white-space: normal;
     line-height: 1.3;
 }
 .tekmeria-essay table.summary.lemma-counts th:first-child,
 .tekmeria-essay table.summary.lemma-counts td:first-child {
+    width: 18%;
     font-weight: 600;
-    white-space: nowrap;
 }
 .tekmeria-essay table.summary.lemma-counts th:not(:first-child),
 .tekmeria-essay table.summary.lemma-counts td:not(:first-child) {
     text-align: right;
-    white-space: nowrap;
 }
 
-/* Passage survey: Period | Author | wid | ref | note */
-.tekmeria-essay table.summary.survey {
-    min-width: 36em;
-}
+/* Passage / reference survey: column order varies by essay.
+   Default: first col slightly emphatic; last col takes remaining space. */
 .tekmeria-essay table.summary.survey th:first-child,
 .tekmeria-essay table.summary.survey td:first-child {
-    width: 12%;
     font-weight: 600;
-}
-.tekmeria-essay table.summary.survey th:nth-child(2),
-.tekmeria-essay table.summary.survey td:nth-child(2) {
-    width: 16%;
-    font-weight: 600;
-}
-.tekmeria-essay table.summary.survey th:nth-child(3),
-.tekmeria-essay table.summary.survey td:nth-child(3) {
-    width: 10%;
-    font-family: ui-monospace, 'Courier New', monospace;
-    font-size: 0.92em;
-    white-space: nowrap;
-}
-.tekmeria-essay table.summary.survey th:nth-child(4),
-.tekmeria-essay table.summary.survey td:nth-child(4) {
-    width: 14%;
-    white-space: nowrap;
-}
-.tekmeria-essay table.summary.survey th:nth-child(5),
-.tekmeria-essay table.summary.survey td:nth-child(5) {
-    width: 48%;
 }
 
 /* Sources cited: Author | Title | wid | Passages cited */
-.tekmeria-essay table.summary.sources {
-    min-width: 34em;
-}
 .tekmeria-essay table.summary.sources th:first-child,
 .tekmeria-essay table.summary.sources td:first-child {
-    width: 18%;
+    width: 20%;
     font-weight: 600;
 }
 .tekmeria-essay table.summary.sources th:nth-child(2),
 .tekmeria-essay table.summary.sources td:nth-child(2) {
-    width: 40%;
+    width: 42%;
 }
 .tekmeria-essay table.summary.sources th:nth-child(3),
 .tekmeria-essay table.summary.sources td:nth-child(3) {
     width: 12%;
     font-family: ui-monospace, 'Courier New', monospace;
     font-size: 0.92em;
-    white-space: nowrap;
 }
 .tekmeria-essay table.summary.sources th:nth-child(4),
 .tekmeria-essay table.summary.sources td:nth-child(4) {
-    width: 30%;
-    white-space: nowrap;
+    width: 26%;
 }
 
 /* Term gloss: Term | Root | In the passage */
@@ -279,7 +286,6 @@
 .tekmeria-essay table.summary.terms th:nth-child(2),
 .tekmeria-essay table.summary.terms td:nth-child(2) {
     width: 18%;
-    white-space: nowrap;
 }
 .tekmeria-essay table.summary.terms th:nth-child(3),
 .tekmeria-essay table.summary.terms td:nth-child(3) {
@@ -301,9 +307,13 @@
 @media (max-width: 768px) {
     /* Keep Tekmeria tables as real tables; base.css switches all tables to
        display:block and hides thead on small screens. */
+    .tekmeria-essay {
+        max-width: 100%;
+    }
     .tekmeria-essay table.summary {
         display: table !important;
-        table-layout: fixed;
+        width: 100% !important;
+        table-layout: fixed !important;
     }
     .tekmeria-essay table.summary thead {
         display: table-header-group !important;
@@ -313,14 +323,27 @@
     }
     .tekmeria-essay table.summary tr {
         display: table-row !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+    .tekmeria-essay table.summary thead,
+    .tekmeria-essay table.summary tbody {
+        width: 100% !important;
+        table-layout: fixed !important;
     }
     .tekmeria-essay table.summary th,
     .tekmeria-essay table.summary td {
         display: table-cell !important;
+        white-space: normal !important;
     }
 }
 
 @media (max-width: 640px) {
     .tekmeria-essay { font-size: 1.05em; padding: 4px 2px 48px; }
     .tekmeria-essay .post-header h1 { font-size: 1.65em; }
+    .tekmeria-essay table.summary th,
+    .tekmeria-essay table.summary td {
+        padding: 8px 8px;
+        font-size: 0.95em;
+    }
 }
