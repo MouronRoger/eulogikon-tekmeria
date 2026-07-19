@@ -30,3 +30,9 @@ alwaysApply: true
    content-bound guard. A change is made to the hub's canonical copy and re-synced — the cycle is
    drivable from any family repo ([`WRITE_ACCESS.md`](.eukoine/WRITE_ACCESS.md)).
 4. **Drift** — fix the implementation; never patch the spec to match broken code.
+5. **Code-lexicon compatibility** — every member's code and governing prose must
+   stay compatible with
+   [`.eukoine/predicate_lexicon.yaml`](.eukoine/predicate_lexicon.yaml). Consult
+   [`.eukoine/predicate_vocabulary.md`](.eukoine/predicate_vocabulary.md) before
+   coining. Do not introduce retired signifiers (`slug`, bare `unit`/`Unit`, bare
+   `witness`, …). Existing debt is a finding to clear, not a licence to mint more.
