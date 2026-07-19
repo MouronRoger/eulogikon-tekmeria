@@ -1,0 +1,2639 @@
+# =============================================================================
+# Eulogikon predicate lexicon — the positive referent registry
+# =============================================================================
+#
+# WHAT THIS IS
+#   A positive, generative registry of the signifiers (terms) the system reasons
+#   over, each pinned to ONE canonical referent. It is the artefact you consult
+#   BEFORE coining a name — class, field, JSON key, CLI flag, formal-logic
+#   universe member, prose noun — so that polysemy is never minted in the first
+#   place. Procedure: docs/predicate_vocabulary/one_system.md (the four-step
+#   priority-order walk).
+#
+# WHY IT EXISTS
+#   The "witness" disaster: one signifier grew SEVEN referents (data-source file,
+#   comparison edition, testimonium citation, audit script, parallel stream, ...)
+#   across 37 files before anyone noticed, then cost a repo-wide ban sweep and a
+#   frozen 297-hit baseline to contain (work_reports/2026-06-08_00-04_witness_
+#   terminology_ban_sweep_and_guardian.yaml). A ban list catches the disease
+#   AFTER it spreads. This registry prevents it: the author of "witness sense #2"
+#   consults the lexicon, finds the signifier already baptised, and is forced to
+#   pick another. Saussure: the signifier is arbitrary, so rename is mechanical
+#   churn; polysemy under one sign is unbounded cognitive cost that grows with
+#   every reader. The registry retires the polysemy direction; baptismal_naming.md
+#   (CDP-051) retires the orphaning direction (one referent, many names). Two
+#   duals, one shared registry.
+#
+# AUTHORITY
+#   This is the SINGLE positive vocabulary authority for the repo. The ban list in
+#   docs/governance/source_terminology.md is a DERIVED VIEW of this file: a banned
+#   signifier is simply an entry with status: retired (its ban_cell / replacement
+#   feed the generated table). Keeping the ban list a projection rather than a
+#   peer authority is what makes this registry comply with the repo's own CDP-006
+#   (single authority per concern) and avoid AP-001 (parallel overlays).
+#
+#   This is also the per-subsystem baptismal registry that baptismal_naming.md
+#   §7.1 and CDP-051's registry entry name as "not yet built" — the finite set of
+#   christened heads a boundary-crossing name's head must be drawn from.
+#
+# STATUS OF THIS FILE
+#   Seeded pilot (2026-06-10). It covers the live polyseme cluster and the
+#   identity/witness/sidecar families, plus a worked binding of the text-pipeline
+#   formal-logic universe. It is NOT yet exhaustive over src/core and scripts;
+#   the registry is rolling — every agent appends an entry when an audit surfaces
+#   a term, per one_system.md.
+# =============================================================================
+
+artefact_kind: predicate_lexicon
+repo: eulogikon                            # the owning repository of this lexicon
+authored: 2026-06-10
+# Cross-repo: the sister repo EuGraphikon imports the corpus-identity terms below
+# (eul_wid, eul_aid, SID, Unit, comparison_edition, citing_author, …) and
+# verifies them against THIS file via EuGraphikon/scripts/check_shared_vocabulary.py.
+# This lexicon does not list its consumers (dependency points importer -> owner,
+# one-system.md); it just stays the stable source of truth.
+companion_doctrine: one_system.md          # the consult-before-coining procedure
+companion_inventory: inventory_2026-06-10.md  # the per-disagreement reconciliation workspace
+baptismal_registry: true                   # fills baptismal_naming.md §7.1 (CDP-051)
+governing_cdps: [CDP-006, CDP-038, CDP-050, CDP-051]
+
+# The "spine" of eulogikon is the text pipeline. A term that traverses these
+# phases carries the strongest single-vocabulary duty (one_system.md). A term
+# local to one phase is lower-risk.
+pipeline_spine: [raw, canonical, sid_assigned, translated, bilingual_paired, rendered]
+
+# -----------------------------------------------------------------------------
+# Per-entry schema (fields are optional unless marked *required*):
+#   signifier_form        *  the token, or [aliases]
+#   canonical_referent    *  what it denotes (Peirce: object) — one sentence
+#   canonical_sense          meaning-in-use (Peirce: interpretant)
+#   owner                    {domain, file} — the single authority that baptised it
+#   pipeline_reach           which spine phases it traverses, or "local"
+#   used_at                  [{path, role: owner|import|cite-only}]
+#   variant_senses           [{signifier, referent, status}] — historical/retired senses
+#   polysemy_debt            {has_debt, kind, cause, preferred_cure}
+#   status                *  aligned | open-with-residue | open-unresolved | retired
+#   cites                    [CDP-…, AP-…, INV-…]
+#   # Ban-table projection (present only on retired identity/overload signifiers):
+#   ban_order                integer — row order in the generated Banned table
+#   ban_cell                 verbatim left-column markdown
+#   replacement_cell         verbatim right-column markdown
+# -----------------------------------------------------------------------------
+
+entries:
+
+  # ===========================================================================
+  # A. The closed predicate set — the four iconic identity tokens.
+  #    The strictest entries: cardinality-1 referents, no synonyms admitted.
+  #    This is the one registry section eulogikon already had (INV-WID-14); it
+  #    is transcribed here so the lexicon is the single home for it.
+  # ===========================================================================
+
+  eul_wid:
+    signifier_form: eul_wid
+    canonical_referent: >-
+      The canonical primary database key of a Work — `eulogikon.works.eul_wid`
+      PRIMARY KEY (schema_v2.sql) — and thus the unique identifier for each work;
+      it begins with its eul_aid (before the first hyphen); the only
+      token by which a Work may be identified anywhere in code, schema, or prose.
+    canonical_sense: >-
+      eul_wid IS the identity (the token equals its meaning) AND the storage
+      primary key — one referent across the application and the database, no split.
+      The owning eul_aid is parseable as the substring before the first '-'; no
+      separate author_id column is needed.
+    owner: {domain: WID, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [raw, canonical, sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt:
+      has_debt: false
+      kind: clean
+      cause: One signifier, one referent (the work primary key), enforced by a closed-predicate-set audit.
+    cites: [CDP-038, CDP-050, INV-WID-14, AP-021]
+
+  eul_aid:
+    signifier_form: eul_aid
+    canonical_referent: >-
+      The canonical primary database key of an Author — `eulogikon.authors.eul_aid`
+      PRIMARY KEY (schema_v2.sql) — and thus the unique identifier for each author;
+      an arbitrary 3-character code, explicitly NOT an abbreviation of any name.
+    canonical_sense: "eul_aid IS the author identity and the storage primary key — one referent across application and database."
+    owner: {domain: WID, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One signifier, one referent (the author primary key); closed predicate set.}
+    cites: [CDP-038, CDP-050, INV-WID-14, AP-021]
+
+  identifier:
+    signifier_form: [identifier, "canonical identifier"]
+    canonical_referent: >-
+      The GENUS of the internal identity tokens — the ones the project mints and owns
+      as the index of record: `eul_aid` (author), `eul_wid` (work), `sid` (a semantic
+      unit), `rid` (a range of semantic units, serialized `start..end`). Each member is
+      scoped to its level; together they are "the identifier" family. Two delimiters, never
+      confused (.eukoine §1.4/§1.6): `-` joins the location-descent chain (AID/WID/SID/TID);
+      `..` is the RID range operator — so an RID never collides with a TID. Within a work file
+      the sid/rid are serialized **work-relative** (bare, `aaa`), the `eul_wid` the file head. NOT a reference (an external citation is) and NOT a
+      legacy_reference (the courtesy citation strings `ref` / `unit_ref` are).
+    canonical_sense: >-
+      Use "identifier" for the genus (e.g. "eul_wid and eul_aid are the only permitted
+      identifiers for works and authors"; sid/rid are the within-work identifiers). For
+      a SPECIFIC token, cite the iconic token directly (eul_wid / eul_aid / sid / rid) —
+      never the retired prose descriptor "reference key" / "the work key" (§10, ADR-014).
+    owner: {domain: WID, file: docs/architecture/ADR-014-reference-names-external-citations-only.md}
+    status: aligned
+    variant_senses:
+      - {signifier: "reference key", referent: "an identity token as a prose descriptor", status: "retired -> identifier (genus) / cite the iconic token; §10 + ADR-014"}
+      - {signifier: "reference method", referent: "an identity token as a prose descriptor", status: "retired -> identifier; ADR-014"}
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Genus with level-scoped members (eul_aid/eul_wid/sid/rid); ADR-014 registers it so the retired 'reference key' descriptor has a baptised home."}
+    cites: [CDP-005, CDP-038, CDP-051]
+
+  work_display_string:
+    signifier_form: work_display_string
+    canonical_referent: >-
+      A lowercase URL-safe human-readable prefix for a Work. A mutable ATTRIBUTE,
+      never an identifier; the prefix piece of /works/{display}-{eul_wid}.
+    canonical_sense: >-
+      Decorates the URL/filename; carries no identity. The composition
+      {work_display_string}-{eul_wid} is composed inline at every site and has no
+      predicate of its own (coining one is the substitution defect).
+    owner: {domain: WID, file: docs/governance/source_terminology.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Attribute, not identity; closed set.}
+    cites: [CDP-050, INV-WID-14, AP-020, AP-021]
+
+  author_display_string:
+    signifier_form: author_display_string
+    canonical_referent: >-
+      A lowercase URL-safe human-readable prefix for an Author. A mutable
+      ATTRIBUTE, never an identifier.
+    owner: {domain: WID, file: docs/governance/source_terminology.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Attribute, not identity; closed set.}
+    cites: [CDP-050, INV-WID-14, AP-020, AP-021]
+
+  # ===========================================================================
+  # B. Retired identity synonyms — the §10 banned families.
+  #    status: retired. Each carries the ban-table projection so the generated
+  #    Banned table in source_terminology.md reproduces from here.
+  # ===========================================================================
+
+  slug:
+    signifier_form: [slug, slugs, url_slug, auth_slug, work_slug, slugify]
+    canonical_referent: >-
+      RETIRED. Imported "slug-as-key" thinking from CMS/static-site tooling, where
+      a slug IS a key. In eulogikon the only identifiers are eul_wid / eul_aid.
+    status: retired
+    variant_senses:
+      - {signifier: slug, referent: "the work/author identity", status: "retired -> eul_wid / eul_aid"}
+      - {signifier: slug, referent: "the URL/filename prefix", status: "retired -> work_display_string / author_display_string"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: Both senses retired into the closed predicate set; migration in progress (~3k residual).
+    cites: [CDP-050, INV-WID-14, AP-021]
+    ban_order: 3
+    ban_cell: "*slug*, *slugs*, and any identifier containing `slug` (`url_slug`, `auth_slug`, `slugify`, …)"
+    replacement_cell: "§10 below; **CDP-050**"
+
+  file_id:
+    signifier_form: [file_id, fileId, "file-id"]
+    canonical_referent: "RETIRED. A file-identity coinage that competes with eul_wid / eul_aid."
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Retired into closed predicate set.}
+    cites: [CDP-050, INV-WID-14, AP-021]
+    ban_order: 4
+    ban_cell: "*file_id* and camelCase/snake_case variants"
+    replacement_cell: "§10 below; **CDP-050**"
+
+  stem:
+    signifier_form: [stem, file_stem, work_stem, author_stem, store_stem]
+    canonical_referent: >-
+      RETIRED. A name for the composition {work_display_string}-{eul_wid}. The
+      composition has no predicate — it is composed inline at each emission site.
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Composition has no predicate (AP-021).}
+    cites: [INV-WID-14, AP-021]
+    ban_order: 5
+    ban_cell: "*stem*, *file_stem*, *work_stem*, *author_stem*, *store_stem*"
+    replacement_cell: "§10 below; **INV-WID-14**, **AP-021**"
+
+  name_identity:
+    signifier_form: name
+    canonical_referent: >-
+      RETIRED in the work/author-identity sense. "name" for a Work or Author
+      identity, or for the composition, re-privatises identity the system keeps
+      public.
+    status: retired
+    variant_senses:
+      - {signifier: work_name, referent: "work identity / composition", status: retired}
+      - {signifier: author_name, referent: "author identity / composition", status: retired}
+      - {signifier: universal_name, referent: "the composition", status: retired}
+      - {signifier: artefact_name, referent: "the composition", status: retired}
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Identity sense retired; ordinary-prose "name" of a person/work title is unaffected.}
+    cites: [INV-WID-14, AP-021]
+    ban_order: 6
+    ban_cell: "*name* when referring to a work or author identity or to the composition `{display_string}-{eul_*}` (including `work_name`, `author_name`, `universal_name`, `artefact_name`)"
+    replacement_cell: "§10 below; **INV-WID-14**, **AP-021**"
+
+  display_name:
+    signifier_form: [display_name, display_prefix, decorative_prefix]
+    canonical_referent: "RETIRED synonyms for the one display predicate per row (work_display_string / author_display_string)."
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: One predicate per row; no synonyms.}
+    cites: [INV-WID-14, AP-021]
+    ban_order: 7
+    ban_cell: "*display_name*, *display_prefix*, *decorative_prefix*"
+    replacement_cell: "§10 below; **INV-WID-14**, **AP-021**"
+
+  wid_aid_abbreviations:
+    signifier_form: [wid, aid, work_id, author_id, work_key, author_key]
+    canonical_referent: >-
+      RETIRED SPELLINGS of the canonical primary keys. These denote the RIGHT,
+      canonical referent — the work/author primary key, the unique reference (see
+      `eul_wid` / `eul_aid`) — but with a non-iconic spelling. Retirement is about
+      the spelling only, not the concept: the referent is the most canonical thing
+      in the system.
+    canonical_sense: >-
+      Distinct from the wrong-concept retirements (`slug`, `file_id`, `work_key`,
+      `stem`, `name`), which import a FOREIGN referent (key-as-slug,
+      composition-as-name). `wid` / `aid` / `work_id` / `author_id` point at the
+      correct referent; the cure is the iconic spelling `eul_wid` / `eul_aid`, the
+      only sanctioned one. (`work_key` / `author_key` straddle: right referent,
+      but "key" is the descriptor §10 also bans.)
+    status: retired
+    variant_senses:
+      - {signifier: "wid / aid / work_id / author_id", referent: "the work/author primary key", status: "retired spelling -> eul_wid / eul_aid (right referent)"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: Right referent, retired spelling — the iconic eul_wid / eul_aid is the only sanctioned form; not a wrong-concept import.
+    cites: [INV-WID-14, AP-021]
+    ban_order: 8
+    ban_cell: "*wid*, *aid*, *work_id*, *author_id*, *work_key*, *author_key* (as parameter, attribute, key, or prose label)"
+    replacement_cell: "§10 below; **INV-WID-14**, **AP-021**"
+
+  english_descriptors:
+    signifier_form: ["the work key", "the WID", "the display piece", "the reference key"]
+    canonical_referent: "RETIRED. Code-adjacent prose descriptors for the predicates; cite the iconic token directly instead."
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Cite the iconic token, not a descriptor.}
+    cites: [INV-WID-14, AP-021]
+    ban_order: 9
+    ban_cell: "English descriptors referring to the predicates (\"the work key\", \"the WID\", \"the display piece\", \"the reference key\" in code-adjacent prose)"
+    replacement_cell: "§10 below; **INV-WID-14**, **AP-021**"
+
+  prefix_suffix:
+    signifier_form: [prefix, suffix, work_suffix, work_prefix, author_prefix, author_suffix]
+    canonical_referent: >-
+      RETIRED as names for any part of a canonical identifier. Generic
+      string-operation words that, applied to an eul_wid / eul_aid, re-derive an
+      identity already given and rename it: the part before the hyphen IS the
+      eul_aid (the author, prior to its works — recoverable operationally by
+      eul_aid_of(), never renamed "prefix"), and the letters after the eul_aid,
+      composed, ARE the proper identifiers — a WID (`abe-ac`), a SID
+      (`abe-aca-aaa`), an RID (`abe-aca-aaa..abe-aca-aam`, serialized `start..end` with
+      the `..` range operator — a range of SIDs). A fragment in isolation
+      acquires no generic alias (`suffix` / `work_suffix`, AP-021): name the
+      composed identifier by its proper name (WID / SID / RID), never the
+      fragment. The iconic predicates are immutable and acquire no generic alias.
+    canonical_sense: >-
+      Owner ruling (2026-06-14): a generic string op on a canonical identifier is
+      the WORST place for these words, not a safe one — it is the exact route by
+      which `slug` came to stand in for `wid`. The ban is therefore NOT scoped
+      away from string operations; it bites precisely when the operated-on string
+      is an eul_wid / eul_aid (the parts produced by split / rsplit / slice /
+      startswith included). `prefix` / `suffix` on a genuinely unrelated,
+      non-identity string is a separate usage and is untouched. Operational
+      recovery of the eul_aid is allowed (eul_aid_of()); what is forbidden is
+      letting the recovered part be thought a derivative of the work — the author
+      is prior to the work, not parsed out of it (the foreign key, not the string,
+      is the authority).
+    status: retired
+    variant_senses:
+      - {signifier: prefix, referent: "the eul_aid (the part of an eul_wid before the hyphen)", status: "retired -> eul_aid; recover operationally via eul_aid_of(), never name it 'prefix'"}
+      - {signifier: suffix, referent: "the letters of an eul_wid after the eul_aid", status: "retired -> no predicate (AP-021); describe positionally"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: >-
+        Sense-scoped retirement; generic prefix/suffix on non-identity strings
+        unaffected. The law layer already migrated prefix() -> eul_aid_of() and
+        deleted suffix(); a cross-doc/code sweep of the {eul_aid}-{suffix} formula
+        (CDP-038, cdp_registry.yaml, the EuKoine corpus identity spec, code) remains, intersecting the
+        unratified ADR-013.
+    cites: [CDP-038, CDP-050, CDP-051, INV-WID-14, AP-019, AP-020, AP-021]
+    ban_order: 10
+    ban_cell: "*prefix* / *suffix* (and *work_prefix*, *work_suffix*, *author_prefix*, *author_suffix*) as a name for any part of an `eul_wid` / `eul_aid` — the part before the hyphen IS the `eul_aid`, the letters after it have no name — including the result of a generic string op (`split`, `rsplit`, slice) on a canonical identifier"
+    replacement_cell: "§10 below; **CDP-038**, **AP-021**"
+
+  # ===========================================================================
+  # C. The witness cluster — the founding disease and its five baptised cures.
+  #    The retired `witness` entry IS the source the ban-table row derives from;
+  #    its variant_senses enumerate the seven historical referents.
+  # ===========================================================================
+
+  witness:
+    signifier_form: witness
+    canonical_referent: >-
+      RETIRED. A signifier that accreted seven referents at once. No live referent;
+      every sense is reassigned to a precise term below.
+    canonical_sense: >-
+      The overloading the registry exists to kill: one word for source files AND
+      comparison editions AND citing authors AND audit scripts AND parallel
+      streams, so no reader could disambiguate without already knowing the
+      subsystem.
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}
+    status: retired
+    variant_senses:
+      - {signifier: witness, referent: "conversion-input HTML/TSV under z_no_git/", status: "retired -> data_source_file"}
+      - {signifier: witness, referent: "external TEI/plaintext for scar-audit", status: "retired -> comparison_edition"}
+      - {signifier: witness, referent: "source citation in fragment/compendium (who quoted whom)", status: "retired -> citing_author"}
+      - {signifier: witness, referent: "a corpus-scope INV check", status: "retired -> audit_script"}
+      - {signifier: witness, referent: "future TLA multi-text layer", status: "retired -> parallel_stream"}
+      - {signifier: witness, referent: "plain-English 'authoritative arbiter'", status: "retired -> arbiter / source"}
+      - {signifier: witness, referent: "legacy JSON unit field / DB columns / CSS class / render sentinel", status: "deferred (bucket-2 schema migration); frozen in check_no_witness_baseline.json"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: >-
+        Seven referents fully separated into five baptised prose terms plus the
+        formal-logic entity ComparisonEdition; the only residue is the deferred
+        on-disk bucket-2 identifier set, held at a frozen baseline pending the
+        coordinated schema/editor migration.
+      preferred_cure: Use the precise §1–§5 term; retire the bucket-2 field set in a coordinated migration.
+    enforcement: "scripts/audit/check_no_witness.py (ratchet baseline; check_no_witness_baseline.json — 268 hits / 40 files)"
+    cites: [INV-TXT-09]
+    ban_order: 1
+    ban_cell: "bare *witness* / *witnesses* (overloaded prose token); legacy bucket-2 identifiers (frozen baseline)"
+    replacement_cell: "§1–§5 below; qualified `*_witness_*` signifiers per lexicon"
+
+  v18:
+    signifier_form: v18
+    canonical_referent: >-
+      RETIRED as a bare token. "version 18" names a source-extraction lineage that exists in
+      distinct forms a bare "v18" cannot disambiguate. Always qualify: restructured_v18 (the
+      HTML), v18_tsv (the TSV comparison stream), or — for the generic fold/align/containment
+      engine that runs against EITHER stream — comparison.
+    canonical_sense: >-
+      Polysemy caught early (the witness disease in miniature): one signifier for the trusted
+      restructured HTML AND the downstream post-processed TSV AND the format-agnostic
+      comparison engine, so no reader could tell which a "v18" denoted.
+    owner: {domain: TXT, file: docs/predicate_vocabulary/lexicon.yaml}
+    status: retired
+    variant_senses:
+      - {signifier: v18, referent: "the restructured v18 HTML (z_no_git/provenance/restructured_v18[_speakers]/) — headless-browser render of the raw Russian source; the TRUSTED reference, and the source the semantic verifier judges against", status: "retired -> restructured_v18"}
+      - {signifier: v18, referent: "the post-processed source-text layer (data/canonical_txt_clean/) — the HTML further processed by the upstream philofree1 pipeline (hyphen rejoin, marker strip, verse-keep/prose-merge baked in); a downstream, less-certain helper named canonical_txt", status: "retired -> canonical_txt"}
+      - {signifier: v18, referent: "the generic published-vs-other fold/align/dense-containment engine in stream_fidelity, fed EITHER the TSV or the HTML", status: "retired -> comparison"}
+    polysemy_debt:
+      has_debt: false
+      kind: live-rename
+      cause: >-
+        The three referents are separated by the rename: restructured_v18 (HTML, kept),
+        v18_tsv (TSV stream), comparison (the generic engine). HTML-provenance parsers
+        (v18_margin / v18_geometry / v18_can) are the restructured_v18 form.
+      preferred_cure: Use restructured_v18 (HTML, the God Source) / canonical_txt (source-text layer) / comparison (engine); never bare v18.
+    enforcement: "rename pass (this session); bare v18 retired across the fidelity + provenance subsystems"
+
+  canonical_txt:
+    signifier_form: canonical_txt
+    canonical_referent: >-
+      The post-processed source-text layer at data/canonical_txt_clean/*-{eul_wid}.txt
+      (ref<TAB><TAB>greek): the restructured_v18 HTML extracted by the upstream philofree1
+      pipeline to canonical_v2.0 _can.json and post-processed (hyphen rejoin, editorial-marker
+      strip, verse-keep-lines / prose-merge). Historically mislabelled "v18"/"v18_tsv" — it
+      carries no version stamp and is a later generation than v18. A triangulation/verification
+      HELPER, DOWNSTREAM of the God Source restructured_v18; trusted per-work only where it
+      corroborates the God Source (CDP-060), never an authority.
+    naming_exception: >-
+      "canonical" is otherwise reserved for the published work JSON (CDP-042). canonical_txt is a
+      SANCTIONED exception (owner decision, 2026-07-01): the source-text layer keeps its name
+      canonical_txt_clean. The bijection (CDP-051) holds because "canonical" is reserved by CDP-042
+      for the published work JSON (it is not itself a lexicon signifier), while canonical_txt is the
+      separately registered signifier for this source layer — two distinct referents.
+    owner: {domain: TXT, file: scripts/audit/check_source_completeness.py}
+    status: active
+
+  v18_tsv:
+    signifier_form: v18_tsv
+    canonical_referent: "RETIRED -> canonical_txt. The post-processed source-text layer was renamed to its directory name (canonical_txt_clean / canonical_txt) and promoted to data/canonical_txt_clean/; 'v18_tsv' is a retired mislabel (no version stamp; a later generation than v18)."
+    owner: {domain: TXT, file: scripts/audit/check_source_completeness.py}
+    status: retired
+
+  human_face:
+    signifier_form: human_face
+    canonical_referent: >-
+      The EuLogikon public reading face (CDP-065): book-quality reflowing layout across
+      web/ebook/print delivery surfaces — genre-correct flow/keep/list; not a print facsimile.
+    owner:
+      domain: TXT
+      file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_dual_face_telos.md
+    pipeline_reach: [canonical, rendered]
+    status: aligned
+    cites: [CDP-054, CDP-065, TAP-001, TAP-004]
+
+  machine_substrate:
+    signifier_form: machine_substrate
+    canonical_referent: >-
+      The monolingual Greek SID-grid substrate (CDP-054): embeddable body text with every
+      lifted mark recoverable via overlays — co-equal with human_face.
+    owner:
+      domain: TXT
+      file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_dual_face_telos.md
+    status: aligned
+    cites: [CDP-053, CDP-054]
+
+  russian_source:
+    signifier_form: [russian_source, russians]
+    canonical_referent: >-
+      The original edition pseudo-HTML at z_no_git/provenance/russians/: broken HTML, upstream of
+      restructured_v18. The SECOND of the TWO God Sources (CDP-060, owner declaration) — the God
+      Source for the RAW structural signals the v18 restructure destroyed: the ekthesis paragraph
+      INDENTATION (leading-space geometry, read as raw bytes) and the ~50-marker JS/CSS markup
+      vocabulary + col_span (var IL, tips.js, base.css). Complementary to restructured_v18 — each
+      sovereign over its axis, neither alone the source of truth; you cannot derive parseable
+      structure from it (malformed HTML — only raw-byte signals are readable, never a DOM), which
+      is why it is authoritative only for those raw signals. Not universally coherent — incoherent
+      cases fall back to knowledge-based classification and direct inspection. See
+      cleaning_substrate/source_derivation_stack.md.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/russian_markup.py}
+    status: aligned
+
+
+  restructured_v18:
+    signifier_form: restructured_v18
+    canonical_referent: >-
+      The version-18 HTML at z_no_git/provenance/restructured_v18[_speakers]/: the headless-
+      browser render of the raw Russian source pseudo-HTML. ONE of the TWO God Sources (CDP-060,
+      owner declaration) — the God Source for the FIDELITY axis: the single authority for
+      fidelity/triangulation and every fact readable from its repaired well-formed DOM (Greek
+      body, margins, line counters, speakers, titles, references, line geometry). A lossy
+      restructure of russian_source that fixes broken HTML; the closest faithful extraction of
+      the transmitted Greek, and the source the semantic verifier (src/core/semantic_verifier.py)
+      judges the cleaned text against. Complementary to russian_source (the second God Source, for
+      the raw structure v18 flattened) — each sovereign over its axis, neither alone the source of
+      truth. Every other layer (notably canonical_txt) is a derived helper, trusted per-work only
+      where it corroborates this stream; on a fidelity disagree, believe this stream. Parsed by
+      the restructured_v18_* provenance helpers (margin / geometry / _can).
+    owner: {domain: TXT, file: scripts/audit/comparison_streams.py}
+    status: aligned
+
+  canon_genre:
+    signifier_form: [canon_genre, CanonEpi]
+    canonical_referent: >-
+      The edition's declared literary genre — the `CanonEpi` label in the russian_source
+      Card markup (e.g. `Epic.`, `Phil.`, `Med.`), decoded by russian_markup and harvested
+      per work into the provenance index at `source.canon_genre` = {raw, tokens}. A source
+      corroboration HINT for classification, never an authority. A DUAL signal: it asserts
+      `domain` for nearly every work but `form_family` only for the form-bearing genres
+      (Epic./Trag./Comic./Lyr./Orat./Epist./…) — subject genres (Phil./Med./Math./Theol./
+      Alchem.) assert `domain` only. russian_source-only: restructured_v18 collapses the
+      Card, so a v18 cross-check would be a tautology.
+    owner: {domain: TXT, file: scripts/provenance/build_provenance_index.py}
+    status: aligned
+
+  source_overlay_reconcile:
+    signifier_form: source_overlay_reconcile
+    canonical_referent: >-
+      The Perspective-3 reconciliation leg of the classification-coherence engine: it
+      cross-checks the source canon_genre against the knowledge catalogue's domain /
+      form_family (ADR-018 §4) and returns a per-axis verdict
+      {corroborates | conflicts | source_uninformative | source_missing}. Knowledge is the
+      authority and corrector; a clean conflict raises a loud SOURCE_OVERLAY suspect for owner
+      review — it never overrides the catalogue and never populates form_family / domain.
+      The single reconciliation owner (CDP-006); not a second module (the task-4 design gate).
+    owner: {domain: TXT, file: scripts/audit/check_classification_coherence.py}
+    status: aligned
+
+  SOURCE_OVERLAY:
+    signifier_form: SOURCE_OVERLAY
+    canonical_referent: >-
+      The lowest-precedence classification-coherence status: the knowledge classification and
+      the source canon_genre cleanly conflict on domain or form_family
+      (source_overlay_reconcile). Marks the work is_suspect for owner review; a structural
+      (Perspective-1) finding still wins the status slot while the P3 verdict is recorded.
+      Never a source override (ADR-018 preserved). Distinct from the retired profile field
+      `structure_source` (a coarse source-structure LABEL retired in task 3 for colliding with
+      classification.structure_source and for lossiness — do not reintroduce it).
+    owner: {domain: TXT, file: scripts/audit/check_classification_coherence.py}
+    status: aligned
+
+  data_source_file:
+    signifier_form: "data source file"
+    canonical_referent: "An external file under z_no_git/ from which canonical v3.0 JSON is derived in a conversion campaign."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §1
+    pipeline_reach: [raw]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised by the witness ban sweep (§1).}
+    cites: [CDP-042]
+
+  comparison_edition:
+    signifier_form: ["comparison edition", ComparisonEdition]
+    canonical_referent: >-
+      External keyed text (TEI XML or cleaned plaintext) kept ONLY to audit or
+      repair mechanical extraction scars in existing canonical JSON; not
+      identity-bearing.
+    canonical_sense: >-
+      The prose term "comparison edition" and the formal-logic universe head
+      `ComparisonEdition` are ONE baptised subject conserved across the
+      prose/logic boundary (baptismal_naming.md §4). Participates only in the
+      raw -> canonical transition (INV-TXT-09).
+    owner: {domain: TXT, file: docs/formal_logic/text_pipeline_formal_logic.yaml}  # §2
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent across prose and formal logic.}
+    cites: [INV-TXT-09]
+
+  citing_author:
+    signifier_form: [citing_author, citing_work]
+    canonical_referent: "A source citation in fragment or compendium text — who quoted whom (Athen., Schol., Diog. Laert., …)."
+    canonical_sense: "The witness relation (X cites Y) — a `citing_author` (with `citing_work`) overlay kind (overlay_kind = citing_author), home of the FGrH capital-`T` testimonia. The work/passage classification value is `testimony` (paired with `fragment`), rendered as a WorkRow kind / CSS — never an overlay kind. (legacy `witness` key deferred, bucket 2)."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §3
+    pipeline_reach: [canonical, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised by the witness ban sweep (§3); the witness relation is citing_author, the classification value is testimony (v2 §5).}
+    cites: [INV-TXT-09]
+
+  audit_script:
+    signifier_form: "audit script"
+    canonical_referent: "A corpus-scope check that verifies a formal invariant (INV-*)."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §4
+    pipeline_reach: local
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised by the witness ban sweep (§4).}
+
+  parallel_stream:
+    signifier_form: "parallel stream"
+    canonical_referent: >-
+      A parallel textual stream in the future TLA multi-text model: aligned body
+      text on a shared TLA grid with insertions/omissions between streams.
+    canonical_sense: "Provisional (not in corpus production as of 2026-05). Distinct from comparison edition and data source file."
+    owner: {domain: TXT, file: docs/specification/tla_parallel_stream_collation_and_insertions.md}  # §5
+    pipeline_reach: [translated, bilingual_paired]
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: false
+      kind: provisional
+      cause: Working term pending a final TLA label; do not use "witness" for this layer.
+
+  # ===========================================================================
+  # D. The sidecar cluster — second overloaded signifier, four baptised cures.
+  # ===========================================================================
+
+  sidecar:
+    signifier_form: [sidecar, sidecars]
+    canonical_referent: "RETIRED. Overloaded across agent-facing markdown, translation companion, phrase-alignment, and provenance files."
+    status: retired
+    variant_senses:
+      - {signifier: sidecar, referent: "public/works|authors/*.md", status: "retired -> agent_facing_markdown_variant"}
+      - {signifier: sidecar, referent: "flow.json / blocks.json", status: "retired -> translation_companion_file; the flow/blocks shape itself withdrawn 2026-06-16 (TAP-022), so this referent no longer exists in the live tree"}
+      - {signifier: sidecar, referent: "data/tla/*.json", status: "retired -> phrase_alignment_file"}
+      - {signifier: sidecar, referent: "data/provenance/*.yaml", status: "retired -> provenance_record"}
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Four referents split into four baptised terms (§6–§9).}
+    enforcement: "scripts/audit/check_banned_terminology.py"
+    ban_order: 2
+    ban_cell: "*sidecar* / *sidecars* (any sense)"
+    replacement_cell: "§6–§9 below"
+
+  agent_facing_markdown_variant:
+    signifier_form: "agent-facing markdown variant"
+    canonical_referent: "The published .md file emitted alongside each work/author HTML page for agent content negotiation; a first-class published artefact."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §6
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised (§6).}
+
+  translation_companion_file:
+    signifier_form: "translation companion file"
+    canonical_referent: "A phrase-keyed bilingual file pair carrying segment identity and aligned translation text outside the canonical v3.0 work JSON."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §7
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised (§7).}
+
+  phrase_alignment_file:
+    signifier_form: "phrase-alignment file"
+    canonical_referent: "A JSON file storing phrase-level TLA suffixes and aligned Greek/English spans for the legacy TLA pipeline."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §8
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised (§8).}
+
+  provenance_record:
+    signifier_form: "provenance record"
+    canonical_referent: "A YAML file recording how a published work was ingested when that path is not obvious from the work JSON alone."
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}  # §9
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Baptised (§9).}
+
+  # ===========================================================================
+  # E. Formal-logic universe binding (worked example over the text pipeline).
+  #    These are the universe.entities of text_pipeline_formal_logic.yaml,
+  #    registered so code identifiers and formal-logic symbols import from ONE
+  #    registry — the same binding panoptikon enforces over code+logic alike.
+  #    Pilot binds the TXT set only; other domains are follow-on.
+  # ===========================================================================
+
+  segment:
+    signifier_form: [segment, Segment]
+    canonical_referent: >-
+      RETIRED as a BARE noun for the addressable unit of meaning (ADR-017). A brief
+      interim proposal used `segment` on the premise that "SID = Segment ID" — retracted:
+      the S in SID is SEMANTIC, not Segment (assign_sids.py performs "semantic phrase
+      identification"; the formal logic says "a semantically-discrete passage"). The premise
+      is void and the bare noun is wrong twice: free-floating (CDP-055, "segment of what?")
+      AND mis-descriptive — "segment" implies an arbitrary slice, but the thing is a
+      coherent unit of meaning (a clause; a word at finer grain) carved at semantic
+      boundaries, which is the only reason it aligns Greek<->English 1:1.
+    canonical_sense: >-
+      Name the thing by its IDENTIFIER (ADR-017): a clause is its `SID`, a range its `RID`,
+      a word a word-grain `SID` (the clause tail extended rightward). The identifier IS the
+      entity-noun: name the unit by its `SID`, a range by its `RID` — never a separate bound
+      noun, and never bare `segment` / `unit` / `portion` / `piece` / `span`. ONE referent across the JSON passage-array
+      element, the `eulogikon.units` DB row, and the in-memory unit of meaning. The
+      legacy_references `ref` / `unit_ref` are courtesy citations carried ON it, never its
+      identity (CDP-054); an embedding chunk is the text an `RID` covers — address it by RID.
+      The `units` stem is v5-eliminated (CDP-055), not renamed to `segments`.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [canonical, sid_assigned, translated, bilingual_paired, rendered]
+    status: retired   # bare `segment` -> name by SID/RID; the identifier is the entity-noun (ADR-017)
+    variant_senses:
+      - {signifier: segment, referent: "the addressable unit of meaning", status: "retired bare -> SID (clause/word) / RID (range); the identifier is the entity-noun (ADR-017)"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: >-
+        Bare `segment` retired (ADR-017): free-floating (CDP-055) and mis-descriptive of a
+        semantic unit. The referent is named by its identifier (SID/RID); the identifier is
+        the entity-noun.
+    cites: [AX-TXT-02, INV-TXT-02, CDP-054, CDP-055]
+
+  Unit:
+    signifier_form: [Unit, unit]
+    canonical_referent: >-
+      RETIRED as a name for the addressable unit of meaning. The unit of meaning is named
+      by its IDENTIFIER — its `SID` (a range its `RID`); the identifier is the entity-noun,
+      no separate bound noun (ADR-017). "Unit" was a redundant generic wrapper (anti-synonymy retired,
+      ADR-017). The entry is kept — with meaning —
+      because EuGraphikon still imports `Unit` read-only; its import re-keys to the SID/RID
+      identity at the coordinated v5 cutover (ADR-017 / `.eukoine/` §3.6).
+    canonical_sense: >-
+      The bare signifier "unit" was a generic wrapper over >=5 referents, and that wrapper
+      hid the `ref` vs `unit_ref` grain split. Each is now named by what it is: the unit of
+      meaning is named by its `SID` (a clause; a word at finer grain) / `RID` (a range) —
+      the identifier is the entity-noun, never a separate bound noun and never a bare generic noun;
+      `ref` / `unit_ref` are distinct legacy_references; an embedding chunk IS an RID. The
+      live DB tables `units` / `units_index` and the column `unit_ref` retain the stem ONLY
+      until the v5 cutover dissolves them (CDP-055-eliminated); `validation unit` stays qualified.
+    canonical_term: SID   # ADR-017: name the unit of meaning by its SID/RID; the
+                          # identifier is the entity-noun. DB `units` dissolves at v5.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [canonical, sid_assigned, translated, bilingual_paired, rendered]
+    status: retired   # -> named by SID/RID; the identifier is the entity-noun (ADR-017)
+    variant_senses:
+      - {signifier: unit, referent: "the addressable unit of meaning", status: "retired -> named by SID (clause/word) / RID (range); the identifier is the entity-noun (ADR-017)"}
+      - {signifier: unit, referent: "the eulogikon.units.ref locator", status: "distinct -> ref (legacy_reference)"}
+      - {signifier: unit, referent: "the eulogikon.units_index.unit_ref locator", status: "distinct -> unit_ref (legacy_reference)"}
+      - {signifier: unit, referent: "an embedding chunk", status: "it IS an RID (range of SIDs); EuGraphikon's embedding_unit/ordinal retire to RID"}
+      - {signifier: unit, referent: "the work-JSON units[] array element — the source-edition display block (verse line | prose paragraph | speaker turn)", status: "retired -> render_block (a render-hint overlay over the RID it groups). NOT the unit of meaning: a prose block is MANY SIDs; the lexicon previously conflated this display grain with sense-1 (SID)."}
+      - {signifier: "validation unit", referent: "the validation scope of the hyphenation checker (the phrase, not the word)", status: "distinct; qualify, never bare 'unit'"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: >-
+        The six referents are split into their real names (the SID/RID identity, ref,
+        unit_ref, RID, validation unit, and the display-block `render_block`); the bare
+        wrapper "unit" — and bare "segment" (ADR-017) — are retired. The unit of meaning is
+        named by its identifier; the display block by `render_block`. The only residue is the
+        live DB/JSON `units` stem, held until the v5 cutover dissolves it.
+      preferred_cure: Name the unit of meaning by its `SID`/`RID`; the identifier is the entity-noun. A `legacy_reference` for the citation string; `RID` for an embedding chunk; `render_block` for the source-edition display block (verse line | prose paragraph | speaker turn) the `units[]` array element carried. The v5 cutover eliminates `units`/`units_index`/`unit_ref` (CDP-055), not a rename to `segments`.
+    cites: [AX-TXT-02, INV-TXT-02, CDP-051, CDP-055, AP-021]
+    ban_order: 11
+    ban_cell: "*unit* / *Unit* — and bare *segment* — as a name for the addressable unit of meaning (the thing a `SID` identifies): name it by its `SID` (a range by `RID`); the identifier is the entity-noun, no separate bound noun (**ADR-017**). The `units[]` work-JSON array element — the source-edition display block (verse line / prose paragraph / speaker turn) — is `render_block` (a render-hint overlay over its `RID`), **not** the unit of meaning. The live DB tables `units` / `units_index` and the column `unit_ref` retain the stem **only** until the v5 cutover dissolves them; `validation unit` stays qualified."
+    replacement_cell: "**ADR-017** — name the unit of meaning by its `SID` / `RID`; the identifier is the entity-noun (the S in SID is Semantic)"
+
+  render_block:
+    signifier_form: render_block
+    canonical_referent: >-
+      A contiguous run of consecutive SIDs that a source edition presented as ONE
+      typographic block — a verse line, a prose paragraph, or a speaker turn. A
+      presentation (display) fact, not a semantic one. It is the real referent the v3
+      `units[]` array element carried (one display row of the source edition; ~0.1% carry
+      an internal newline — the block boundary IS the line/paragraph break).
+    canonical_sense: >-
+      The display grain — genre-polymorphic (line | paragraph | turn) and set by typography,
+      so its size varies from ~7 words (a hexameter line) to hundreds (a paragraph); it is
+      therefore NOT the machine grain. Three grains must stay distinct: the `SID` is the unit
+      of meaning (a clause; the alignment/index atom); the `RID` is the embedding/retrieval
+      granule (a range of SIDs); the `render_block` is the display grouping of 1+ SIDs. A
+      `render_block` is NOT a fixed multiple of SIDs (a verse line ≈ 1 SID; a prose paragraph
+      = many), which is exactly why it cannot double as the machine unit. In the cleaned
+      (v5) substrate the `render_block` is NOT a row — the substrate is flat SIDs (the decided
+      DB ontology: no row/paragraph/unit entity). It is a render-hint OVERLAY keyed to the
+      `RID` it groups (CDP-054: structural labels are render-hints over the grid, never text
+      rows). "Clean once, render many": the reading page reconstructs lines/paragraphs from
+      `render_block` overlays over the flat spine. Eulogikon-owned (the readable face); not
+      imported by EuGraphikon (the machine face does not render). Keyed to the shared `RID`.
+    canonical_term: render_block
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the source-edition display block (line/paragraph/turn); a render-hint overlay over a RID, distinct from the SID (meaning) and RID (retrieval) grains. Baptised 2026-06-21 (owner-ratified), retiring the units[] display sense of `unit`."}
+    cites: [CDP-051, CDP-054, CDP-055, ADR-017]
+
+  SID:
+    signifier_form: SID
+    canonical_referent: "Semantic ID. The identity of one unit of meaning — a clause (the default grain) — work-locally unique, stable across the pipeline, and the sole cross-language alignment key (a Greek clause pairs with its English clause; an arbitrary slice never would). The finer word/token grain is a `TID` (Token ID, reserved — below). The S is Semantic, not Segment (assign_sids.py performs \"semantic phrase identification\"; ADR-017). The thing IS its SID; the identifier is the entity-noun — never a bare generic noun, never a separate bound noun."
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent; INV-TXT-02 names it the sole alignment key; ADR-017 fixes S = Semantic.}
+    cites: [AX-TXT-02, INV-TXT-02, INV-TXT-03, ADR-017]
+
+  RID:
+    signifier_form: RID
+    canonical_referent: >-
+      The SORT (genus) of within-work range addressing: a range of SIDs (an inclusive
+      range of single semantic spans), addressed as `wid-rid`; the range sibling of the
+      point SID (the `wid-` prefix is the eul_wid, not a separate predicate). RID is a
+      TYPE, not a single referent — an identity-kind, like "integer" is a type and not one
+      number.
+    canonical_sense: >-
+      Within-work range addressing. RID is the genus; several KINDS of range coexist at one
+      position with DIFFERENT coordinates and nest freely, so a bare `RID` cannot name "the
+      range here" — that would be polysemy (CDP-051). Each kind is QUALIFIED (self-identifying
+      naming, CDP-056): an `embedding_chunk` (the encoder-bounded, SID-aligned embedding
+      granule), a `render_block` (the source-edition display block), a `legacy_reference`'s
+      span (a citation). Each kind's IDENTITY **is** its RID — what is forbidden is giving a
+      kind a SEPARATE KEY (do NOT mint `ordinal` or a serial id; the key is the RID), never
+      naming the kind itself (the precedent is `render_block`, a named range-kind keyed by its
+      RID). EuGraphikon's interim `embedding_unit`/`ordinal` retire to `embedding_chunk` keyed
+      by its RID. Imported by EuGraphikon.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "RID is a sort (a range of SIDs); concrete range-kinds (embedding_chunk, render_block, legacy_reference span) are qualified, each keyed BY its RID — no bare-RID polysemy."}
+    cites: [INV-WID-14, CDP-051, CDP-056]
+
+  embedding_chunk:
+    signifier_form: [embedding_chunk]
+    canonical_referent: >-
+      A KIND of RID: the encoder-bounded embedding granule — a contiguous range of SIDs
+      selected by the embedding chunker, token-bounded to a band [n, 2n] and cut ONLY at SID
+      boundaries (never mid-SID), tiling a work for the embedding store. Its IDENTITY is its
+      RID (`{sid_start:sid_end}`). The text it covers is `text`; its
+      vector is a `rid_embedding`.
+    canonical_sense: >-
+      The machine/retrieval granule — a named kind of RID, parallel to `render_block` (the
+      display kind keyed by its RID). NOT every RID is an embedding_chunk: a citation
+      (`legacy_reference` span) and a `render_block` are not. The chunker computes SID
+      boundaries and chooses a cut that lands the token count in [n, 2n], so a chunk never
+      splits a SID and may be smaller or larger than a `render_block` or a citation span,
+      nesting freely with them. Identified BY its RID — it mints no separate key (the
+      `ordinal` stand-in is retired). The band [n, 2n] is a chunker PARAMETER, not part of
+      identity. Embedded by EuGraphikon (the machine face); the term is owned here as a
+      RID-kind in the grid.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "A proper kind of RID (the encoder-bounded tiling granule), distinct from render_block (display) and a legacy_reference span (citation); identified by its RID, no separate key."}
+    cites: [CDP-051, CDP-054, CDP-056, INV-WID-14]
+
+  TID:
+    signifier_form: [TID]
+    canonical_referent: >-
+      Token ID — the identity of one token (a word) inside a clause, the grain one level
+      finer than the SID. RESERVED: named so the fine grain has a baptised home, but NOT
+      currently minted or used. Addressed as the SID's clause tail extended rightward to
+      the token (`abe-aca-aaa` clause -> `abe-aca-aaaa` 1st token); a 3-hyphen-part point
+      whose last segment is 4+ letters (vs the 3-letter SID). Never a `wid` (ADR-017).
+    canonical_sense: >-
+      The fifth identifier kind (AID / WID / SID / TID / RID). Token-grain addressing for
+      a future treebank / per-word layer; reserved now so nothing else claims the name and
+      so the word grain is never mis-called a `wid`. When minted it is self-identifying
+      like its siblings; until then it is a forward-declared point, not a live referent.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: local
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: false
+      kind: reserved
+      cause: One referent (the token/word point); reserved, not yet minted. Named to forbid the word being called a `wid` and to fix the grain below SID.
+    cites: [INV-WID-14, ADR-017]
+
+  Phase:
+    signifier_form: Phase
+    canonical_referent: "One of the lifecycle stages a Work passes through: raw, canonical, sid_assigned, translated, bilingual_paired, rendered."
+    canonical_sense: "A strict total order (AX-TXT-03). The pipeline spine of this lexicon. No backward transition is valid."
+    owner: {domain: TXT, file: docs/formal_logic/text_pipeline_formal_logic.yaml}
+    pipeline_reach: [raw, canonical, sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent; the spine itself.}
+    cites: [AX-TXT-03, INV-TXT-06]
+
+  RenderHint:
+    signifier_form: [RenderHint, "render hint"]
+    canonical_referent: >-
+      Formal-logic name for a keyed overlay attachment (legacy_reference, render_block,
+      speaker, marginalia, sigil, citing_author, latin_apparatus) — an attribute of
+      SID/RID that informs rendering or apparatus but never participates in identity
+      (§2.4). Canonical storage term: `overlay` / `overlays[]`.
+    canonical_term: overlay
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Formal-logic alias; canonical term is overlay (§2.4). INV-TXT-08 forbids overlay as a key."}
+    cites: [AX-TXT-04, AX-TXT-06, INV-TXT-08]
+
+  # ===========================================================================
+  # F. The diagnostic seed — the genuinely-untreated live polysemes the
+  #    exploration surfaced. Reconciliation reasoning: inventory_2026-06-10.md.
+  #    Recurring finding: most resolve into vocabulary ALREADY baptised by the
+  #    witness/identity work — the cure is to USE the precise term, not coin more.
+  # ===========================================================================
+
+  source:
+    signifier_form: source
+    canonical_referent: >-
+      AMBIGUOUS in bare form. Carries four referents: data_source_file (input),
+      comparison_edition (scar audit), citing_author (citing authority), and
+      a bibliographic "source edition".
+    owner: {domain: TXT, file: docs/governance/source_terminology.md}
+    status: open-with-residue
+    variant_senses:
+      - {signifier: source, referent: "conversion input", status: "use data_source_file"}
+      - {signifier: source, referent: "scar-audit edition", status: "use comparison_edition"}
+      - {signifier: source, referent: "citing authority", status: "use citing_author"}
+      - {signifier: source, referent: "a particular text edition (Jones vs Littré)", status: "use 'source edition' (qualified)"}
+    polysemy_debt:
+      has_debt: true
+      kind: residual-collision
+      cause: The witness sweep split three senses; bare "source" still appears unqualified in prose.
+      preferred_cure: Always qualify — never ship bare "source" where one of the four precise terms applies.
+
+  reference:
+    signifier_form: [reference]
+    canonical_referent: >-
+      A citation into a standard EXTERNAL edition, kept only to communicate with the
+      outside world (Stephanus, Bekker, Diels-Kranz, SVF, a source edition's
+      book.line/section numbering). A derived SID-keyed overlay per CDP-054 — never our
+      identity, never the lookup key. Genus: a {reference_scheme, reference_locus} pair.
+    canonical_sense: >-
+      ADR-014 cut this signifier to ONE referent. Internal addressing is the IDENTIFIER
+      stack (eul_aid / eul_wid / sid / rid); a reference is the EXTERNAL courtesy
+      citation we keep for interop. Distinct from citing_author (who quoted whom —
+      an ancient reporter, not an edition locus) and from the legacy_references `ref` /
+      `unit_ref` (the source-edition citation strings on a segment / index row).
+      CDP-055 RESOLVED (2026-06-17): bare "reference" floats (reference of what?) and is
+      RETIRED. The external standard-edition citation IS a `legacy_reference` — a reference
+      TO a passage (SID / RID) in a foreign edition's scheme; there is no second referent.
+      As an overlay kind (`overlay_kind = legacy_reference`) its parts are the qualified
+      overlay columns: `overlay_scheme` (Stephanus / Bekker / DK /
+      SVF), `overlay_value` (the value within the scheme, "327a"), and
+      `overlay_anchor` (the folded-Greek context that locates it). The prior
+      free-floating heads `reference` and `locus` are retired, nothing new coined beyond the
+      `legacy_reference` overlay kind and its `overlay_*` columns.
+    owner: {domain: TXT, file: docs/architecture/ADR-014-reference-names-external-citations-only.md}
+    status: retired
+    variant_senses:
+      - {signifier: "reference key", referent: "eul_wid as identity", status: "retired -> identifier (eul_wid); §10 + ADR-014 §7"}
+      - {signifier: "reference method", referent: "eul_wid as identity", status: "retired -> identifier; ADR-014 §7"}
+      - {signifier: reference, referent: "the segment's source-edition citation string", status: "retired -> legacy_reference (ref/unit_ref); ADR-014 + ADR-017 + CDP-055"}
+      - {signifier: reference, referent: "the external standard-edition citation (Stephanus / Bekker)", status: "retired -> legacy_reference (+ _scheme / _value / _anchor); CDP-055"}
+      - {signifier: reference, referent: "who quoted whom in a fragment", status: "use citing_author"}
+    polysemy_debt:
+      has_debt: false
+      kind: resolved
+      cause: ADR-014 cut "reference" to external citation only; CDP-055 then retired the bare floating head entirely. The external citation is a `legacy_reference` (referent-binding), realised as an overlay kind decomposed into overlay_scheme / overlay_value / overlay_anchor.
+    cites: [CDP-054, CDP-051, CDP-055]
+
+  overlay_scheme:
+    signifier_form: [overlay_scheme]
+    canonical_referent: >-
+      The named external citation system a legacy_reference overlay belongs to: Stephanus (Plato),
+      Bekker (Aristotle), Diels-Kranz (Presocratics), SVF (Stoics), a source edition's
+      book.line. "A Bekker is not a Stephanus." A `legacy_reference`-kind overlay column.
+    canonical_sense: >-
+      The scheme of a legacy_reference overlay; `overlay_`-qualified, its referent supplied by
+      `overlay_kind = legacy_reference` at row grain (CDP-056 declared-polymorphic exception).
+      Prior spellings `scheme_hint` (campaign code), `reference_scheme`, and the bare
+      per-field form are retired into this name. Qualify outside the
+      domain — never let bare "scheme" denote it.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent; the scheme of a legacy_reference overlay.}
+    cites: [CDP-054, CDP-055, CDP-056]
+
+  overlay_value:
+    signifier_form: [overlay_value]
+    canonical_referent: >-
+      The value of a legacy_reference overlay within its scheme: "17a" (Stephanus), "859b" (Bekker),
+      "B17" (Diels-Kranz). An {overlay_scheme, overlay_value} pair on a
+      `legacy_reference`-kind overlay points at a passage (SID / RID).
+    canonical_sense: >-
+      `overlay_`-qualified; its referent is supplied by `overlay_kind` at row grain (CDP-056
+      declared-polymorphic exception). NOT `_id`: "ID" is reserved for the identifier stack
+      (AID / WID / SID / TID / RID), which is identity; a legacy_reference is NEVER identity
+      and never a lookup key (CDP-054). The prior free-floating heads `locus` / `reference_locus`
+      and the bare per-field form are retired into this name; campaign code
+      spelling `locus` aligns to `overlay_value`.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent; the scheme-specific value of a legacy_reference overlay.}
+    cites: [CDP-054, CDP-055, CDP-056]
+
+  locus:
+    signifier_form: [locus, reference_locus]
+    canonical_referent: "RETIRED. A free-floating head (CDP-055 — 'a locus of what?')."
+    canonical_sense: >-
+      Retired into `overlay_value` (the value of a legacy_reference overlay within its
+      scheme). "locus" named a slot, not a referent; the value points at a passage (SID /
+      RID) and belongs to the `legacy_reference` overlay kind.
+    owner: {domain: TXT, file: docs/architecture/ADR-014-reference-names-external-citations-only.md}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: resolved, cause: Free-floating head retired to overlay_value (CDP-055).}
+    cites: [CDP-054, CDP-055]
+
+  overlay_anchor:
+    signifier_form: [overlay_anchor]
+    canonical_referent: >-
+      The folded-Greek context either side of a legacy_reference overlay's boundary, used to LOCATE
+      the legacy_reference in the canonical text by content (CDP-054 — the text is the index),
+      not by character offset or sid position.
+    canonical_sense: >-
+      The content-address of a legacy_reference overlay; `overlay_`-qualified, its referent
+      supplied by `overlay_kind` at row grain (CDP-056 declared-polymorphic exception).
+      Prior spellings `anchor` (campaign code), `reference_anchor`, and the bare
+      per-field form retire into this name.
+      Qualify outside the domain — never let bare "anchor" denote it (cf. the metaphorical
+      "anchor" in one_system.md).
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent; the content-address of a legacy_reference.}
+    cites: [CDP-054, CDP-055]
+
+  # --- keyed_window: the THING the keyed_window_binding act lands ----------------
+  # Baptised 2026-07-13. The system has exactly ONE sub-SID addressing mechanism, and
+  # it had four names: `keyed_window` (review-point record), `overlay_window` (v5),
+  # "content window" (CDP-062 §62), "context window" (spec prose). That is synonymy,
+  # not four referents — the bijection is restored by naming the thing ONCE here.
+  # Only TWO entries survive in this family, and they are a thing/act pair:
+  #   keyed_window          — the THING you land (this entry)
+  #   keyed_window_binding  — the ACT that lands it (engine/bind.go `Locate`)
+  # `overlay_window` is NOT a synonym: it is this referent carried on an overlay row —
+  # head `window` conserved, `overlay_` qualifier riding in front (CDP-051), exactly as
+  # overlay_value / overlay_class do. Genuinely distinct neighbours, held apart:
+  # `overlay_lift_fold` (the FOLD it is matched under) and CDP-062's CROSS-CHECK (the
+  # VERIFY act performed ON a keyed window — a different act from locating one).
+  keyed_window:
+    signifier_form: [keyed_window, KWB]
+    canonical_referent: >-
+      A unique window of clean Greek that addresses a site BY CONTENT rather than by position —
+      the system's ONE content-address, at every grain. Landed on every substrate modification and
+      every decode finding; carried on a v5 `sigil` as `overlay_window` (the mark in place, e.g.
+      "Τάχα δέ [γε] ἐπειδὰν"); shaped as ⟨before_fold, after_fold, cut, keyed_window_hash⟩ in a
+      review-point record; and the thing that HOLDS A SID IN PLACE — a settled SID is pinned to its
+      Greek by its keyed window, not by an opaque key that must be re-issued whenever a boundary moves.
+    canonical_sense: >-
+      Editorial marks and language boundaries sit BELOW token grain, so they can anchor neither at
+      SID/RID granularity nor at a character offset — an offset does not survive re-segmentation, a
+      content-addressed window does (CDP-054: the text is the index). ONE mechanism, TWO uses: it
+      locates a FINDING (which symbol the decoder broke on, and where) and it anchors an OVERLAY
+      (where an editorial mark sits). A decoder that cannot land a keyed window can neither report an
+      investigable failure (INV-TXT-14 addressability) nor emit conformant v5 — which is why the
+      keyed window is upstream of the substrate itself, not an observability afterthought.
+      The thing/act pair is the only split in this family: you LAND a `keyed_window`; the act that
+      lands it is `keyed_window_binding`. Substituting the act for the thing makes the sentence
+      circular ("anchored by a KWB, located by the keyed-window binding") — that circularity is the
+      test, and it is how the synonymy was caught.
+    owner: {domain: TXT, file: cluster-keyed-window-binding/PROGRAM.md}
+    pipeline_reach: [raw, canonical, sid_assigned]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent, one signifier. The ACT (keyed_window_binding) is the only sibling; overlay_window is this referent under a conserved head."}
+    retired_synonyms:
+      - {signifier: content window, referent: "the keyed window", status: "retired -> keyed_window. Survives in CANONICAL_DESIGN_PRINCIPLES §62's title ('the universal content-window cross-check') and in .eukoine SQL comment ('the sub-token content-window') — both are the same referent under a retired name."}
+      - {signifier: context window, referent: "the keyed window", status: "retired -> keyed_window. Coined synonym, no other domain use."}
+    notes:
+      - "`overlay_window` (v5 sigil field) is NOT retired and NOT a synonym — it is this referent under the conserved head `window` with an `overlay_` qualifier (CDP-051). Owned by .eukoine (CDP-057): any rename goes through the authorised sync cycle, never a mirror hand-edit."
+      - "CDP-062's CROSS-CHECK (verify) is a different ACT from keyed_window_binding (locate). Both operate on a keyed_window; neither is a synonym for it."
+    cites: [CDP-050, CDP-051, CDP-054, CDP-057, CDP-062, INV-TXT-13, INV-TXT-14]
+
+  # --- the sigil class set: what an editorial mark SAYS about the text -----------
+  # Baptised 2026-07-13. The whole set (`SIGIL_CLASSES_V5`, src/core/json_schema.py:333;
+  # `.eukoine` §2.4) was live in the schema and REGISTERED NOWHERE — an AP-023 gap across
+  # four signifiers, not one. Recorded together because they are one closed classifier and
+  # only make sense against each other.
+  #
+  # Each names the CONDITION OF THE TEXT — what the editor's mark CLAIMS. None is an
+  # operation, and none may be read as one: the canonical Greek is inviolable (CDP-042),
+  # no overlay removes a letter, and `overlay_display: suppress` hides the MARK, never the
+  # text. The distinction that matters downstream is EVIDENTIAL: is this Greek attested, or
+  # is it the editor's conjecture? The corpus-attestation flagger depends on the answer.
+  sigil_class:
+    signifier_form: [overlay_class]     # on an `overlay_kind: sigil` row
+    canonical_referent: >-
+      The closed classifier of what an editorial mark asserts about a span of text:
+      `supplement` (the editor SUPPLIED it — absent from the witnesses, a conjecture),
+      `interpolation` (a later hand INSERTED it — present in the witnesses, but judged
+      not authorial), `crux` (the text is CORRUPT and undecidable), `lacuna` (the text is
+      LOST). Attested: interpolation and crux YES; supplement and lacuna NO.
+    canonical_sense: >-
+      Every member is a NOUN naming the state of the text, never a verb naming an act on
+      it (CDP-051 §7.4: no mechanism-verb head). `supplement`, `interpolation`, `crux`,
+      `lacuna` are naturalised English and STAY under the de-Latinization rule
+      (.eukoine §3.6: "Naturalised English with Latin roots — fragment, edition, author —
+      stays"); the rule targets words that do not say what the thing IS, not Latin roots.
+      Greek jargon (`athetesis`) is REJECTED for the same reason `recension` and
+      `testimonium` were: it obscures.
+      NOTE the papyrological/text-critical INVERSION: `[X]` marks a RESTORATION in a
+      papyrus edition (not attested) and an INTERPOLATION in a literary one (attested but
+      doubted). The class cannot be read off the bracket glyph; `bracket_convention` is a
+      property of the work-edition and must be declared (cluster_v5_json/v5_text_spine_spec.md §7.3).
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    pipeline_reach: [canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One closed classifier; four disjoint conditions of the text."}
+    retired_synonyms:
+      - signifier: deletion
+        referent: "the sigil class for text a later hand inserted"
+        status: >-
+          retired -> interpolation. TWO faults. (1) POLYSEMY, and a dangerous one: `deletion`
+          is ALREADY BOUND in this project to CDP-042 — destroying a work's canonical JSON,
+          "the most severe class of violation in the project". One signifier, two referents,
+          one of them irrecoverable data loss. (2) PREDICATE-AS-HEAD (AP-023): it names a
+          MACHINE OPERATION where its three siblings name CONDITIONS OF THE TEXT. Nothing is
+          deleted — `.eukoine` §2.4 says of `[X]` "X PRESENT". The word misled a reader in a
+          single pass into asserting that restorations would be destroyed.
+          `interpolation` is the term `.eukoine`'s own prose already uses ("suspected
+          interpolation") — an IMPORT, not a coin.
+          PENDING THE CDP-057 SYNC -- `.eukoine` still declares `deletion`, so eulogikon's
+          SIGIL_CLASSES_V5 / example / tests stay conformant with it until the canonical copy
+          is amended and re-synced. Do not rename them locally first.
+    cites: [CDP-042, CDP-050, CDP-051, CDP-054, CDP-057, AP-023]
+
+  # --- structure_card: THE per-work answer to "what kind of work is this?" -------
+  # Baptised 2026-07-13. The cards are 4,059 committed JSONs — one per canonical work —
+  # and their own README calls them "the Bletchley index card… the binding contract
+  # between classification, God-source column geometry, and human-face wrap/keep"
+  # (CDP-065). They were REGISTERED NOWHERE. `display_disposition` (the RENDERING half)
+  # had an entry; `classification` (the half that says what the work IS) had none — so
+  # every front door outside the god-sources cluster was silent about the corpus's own
+  # genre vocabulary, and an agent asking "is this a papyrus or a manuscript?" had no
+  # canonical term to reach for and went hunting in an empty `source` block instead.
+  structure_card:
+    signifier_form: [structure_card]
+    canonical_referent: >-
+      The persistent per-work JSON in cluster-god-sources-xml/decode_god_sources_xml_file_structure/,
+      named identically to its canonical work. Holds `classification` (what the work IS),
+      `display_disposition` (how it renders), `god_source` (citation scheme, `col_span`, and
+      **`column_grid` — the authored per-ordinal column declaration**, categorization before decode),
+      `reconciliation`, `discovery_log`, `render_blocks`, and `decode_publication`. NOT build-time
+      ephemera: a committed hard copy, read by the decoder and by projection, written back by the
+      decode/confirm scripts.
+    canonical_sense: >-
+      It is THE STARTING POINT — the first thing to read about a work, before its text, its source,
+      or its provenance. Knowledge corrects the source when they disagree (`classification.record_authority: "card"`);
+      discordance is a FINDING, never a silent overwrite. Read it whenever the question is "what kind
+      of thing is this work?" — genre, **column declaration**, layout, wrap/keep, citation grid, or the editorial conventions
+      of its edition. It is a CORPUS fact that the decode programme happens to record, not a decode
+      artefact: consumers outside the god-sources cluster (v5 projection, attestation, publication)
+      are first-class readers.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_xml_file_structure/README.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One artefact, one per work, one home."}
+    cites: [CDP-065, CDP-054, CDP-059]
+
+  # --- classification: the genre axes. `structure` is the load-bearing one. --------
+  classification:
+    signifier_form: [classification, form_family, form_type, structure]
+    canonical_referent: >-
+      The genre block on a structure_card. THREE axes, each a closed or curated list:
+      `form_family` — the coarse kind (treatise, drama, history, oratory, commentary, compilation,
+      lyric, biography, …; ~20 values, ADR-018).
+      `form_type` — the fine kind (theology, tragedy, …; ~520 curated values).
+      `structure` — HOW THE TEXT SITS ON THE PAGE: `prose` | `fragmentary` | `verse` |
+      `prose-dialogue` | `verse-drama`. Five values, and the only one downstream logic branches on.
+      Plus `confidence` and `held` — the fail-loud pair: low confidence or `held: true` means REFER,
+      never guess (AP-029).
+    canonical_sense: >-
+      `structure` is load-bearing far beyond genre display. It decides (a) HUMAN-FACE WRAP/KEEP —
+      prose flows, verse keeps its lines (`display_disposition`, CDP-065); (b) THE SID BOUNDARY
+      SIGNAL — a fragmentary work has no clauses, so its SIDs are scraps delimited by lacunae, not by
+      punctuation (v5 text-spine spec §5); and (c) THE EDITORIAL BRACKET CONVENTION — in a
+      `fragmentary` work `[X]` is text the editor RESTORED into a hole (a conjecture, NOT attested);
+      elsewhere `[X]` is a suspected interpolation (attested, but doubted). Read the bracket by the
+      wrong convention and the attestation flagger learns a modern editor's guesses as if they were
+      transmitted Greek. NOT derivable from the title: Philodemus's `On Piety` is a Herculaneum
+      papyrus and says so nowhere but here.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_xml_file_structure/README.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt:
+      has_debt: true
+      kind: parallel_scheme
+      cause: >-
+        THREE classifications of a work exist and nothing reconciles them: the DB's `domain` + `format`
+        (coarse two-axis), the card's `form_family` + `form_type` + `structure` (fine; ADR-018 backfilled
+        them FROM `format × domain`, then curated), and a third `format` field on the canonical work JSON.
+        The card is the authority (`record_authority: "card"`; "knowledge corrects the source"), so the
+        other two are derived views — but that is not written down anywhere and no check enforces it.
+        Reconciliation is a named follow-on.
+    cites: [CDP-065, ADR-018, AP-029]
+
+  # --- display_disposition: flow/keep on the structure card (CDP-065) ------------
+  display_disposition:
+    signifier_form: display_disposition
+    canonical_referent: >-
+      Per-work human-face wrap/keep on the persistent structure card (CDP-065): flow vs
+      keep; decoder_confirmation cross-checked against XML — hard copy, not build-time ephemeral.
+    canonical_sense: >-
+      Operational spec: cluster-god-sources-xml/decode_god_sources_xml_file_structure/README.md
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_xml_file_structure/README.md}
+    pipeline_reach: [raw, canonical, rendered]
+    status: aligned
+    cites: [CDP-065, CDP-054]
+
+  # --- column_grid: the God-source table geometry — position IS meaning ----------
+  column_grid:
+    signifier_form: [column_grid, column_geometry]
+    canonical_referent: >-
+      The God-source render's table geometry, CONSUMED as the CSV frame
+      (russian_columns_csv, CDP-066; resolved_source_column_model_spec.md §0–§1):
+      per-ordinal permitted role sets whose sole role authority is the structure
+      card's `god_source.column_grid`. Reference and body cells carry the same
+      empty class; the card declares which ordinals may carry which roles. Grid
+      width authority is the CSV `grid_width` — never `col_span`-from-crossref.
+    canonical_sense: >-
+      INVIOLABLE (spec §0): categorization precedes decode. The card's column
+      declaration is primary; legend markup types within the declared role. Geometry
+      is never stripped or inferred at runtime. Sovereign render: russian_source
+      (restructured_v18 is flattened — CDP-060). Readable provenance face of the
+      same geometry: russian_columns_csv.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_column_model_spec.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Two signifier forms, one referent, one spec owner; the grid is consumed, never derived (v6 law)."}
+    cites: [CDP-060, CDP-054, CDP-065, CDP-066]
+
+  russian_columns_csv:
+    signifier_form: [russian_columns_csv]
+    canonical_referent: >-
+      The provenance shelf `z_no_git/provenance/russian_columns_csv/`: per-work occupancy-
+      expanded CSV of the russian_source column grid, PRIOR to the Russian HTML for grid
+      identification (owner directive). Digest-bound to russian HTML bytes; writers per
+      source lane: decode_export_column_grid_evidence.py (russian renders, sole segmenter)
+      and decode_repair_f1k_column_grid.py (the f1k/TEI repair lane).
+    canonical_sense: >-
+      CDP-066 / §66: INVIOLABLE readable basis of the column grid — the grid the decode
+      CONSUMES (csv_frame_contract.md), never matches, never re-derives; not var/ scratch;
+      not optional. The HTML does not present the grid as inspectable; open the CSV to
+      identify column contents. Falsifier AP-031. Not a synonym of column_grid (the
+      geometry/role law) nor of csv_frame (the coordinate system it carries).
+    owner: {domain: TXT, file: z_no_git/provenance/russian_columns_csv/README.md}
+    pipeline_reach: [raw]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Shelf name 1:1 with path; cites column_grid for the geometry law."}
+    cites: [CDP-066, CDP-060, CDP-049, AP-031]
+
+  csv_grid:
+    signifier_form: [csv_grid, cluster_god_sources_v6_csv_grid]
+    canonical_referent: >-
+      The CSV-grid-first program: the discipline in which russian_columns_csv is consumed
+      as the sole grid derivation (the law: "the decoder decodes the markup; it does not
+      decode the grid, because we already have the grid"). Home
+      cluster_god_sources_v6_csv_grid/ (owner-baptised name); ordering authority its
+      PROGRAM.md; wave ids csv_grid_w0_shelf … csv_grid_w7_faces_and_closure.
+    canonical_sense: >-
+      Head conserved from the owner's cluster baptism; the wave qualifiers ride behind it.
+      Not a synonym of russian_columns_csv (the shelf) nor column_grid (the geometry law) —
+      the program that consumes the former under the latter.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/PROGRAM.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Coined at cluster foundation with the wave namespace bound 1:1 to graph nodes."}
+    cites: [CDP-066, CDP-051, CDP-006]
+
+  csv_frame:
+    signifier_form: [csv_frame, FrameCell, frame]
+    canonical_referent: >-
+      The coordinate system carried by russian_columns_csv: 0-based source-<tr> rows
+      (empty rows count — H12) × occupancy ordinals, with per-cell byte spans
+      [byte_start, byte_end) into the raw render. Contract:
+      cluster_god_sources_v6_csv_grid/csv_frame_contract.md. Go consumer:
+      decode_god_sources_xml_reader/source/frame.go (FrameCell/Frame/ParseFrame).
+    canonical_sense: >-
+      The frame is CONSUMED: the exporter is the only segmenter per source lane; the reader
+      slices byte spans and never detects a boundary (PREVENTION_BARRAGE M3/M4). grid_row ==
+      origin_row == god_source_row — one shared frame, no reconciliation map. `frame` as a
+      bare Go package name is this referent inside the reader module only.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/csv_frame_contract.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent across CSV fields, Go types, and contract; byte-span fields conserved verbatim across the boundary."}
+    cites: [CDP-066, CDP-064, CDP-037]
+
+  column_grid_wc:
+    status_note: >-
+      RETIRED (owner ruling: the markup-first wave series cannot exist in the CSV-grid
+      universe). The wave ids below are banned tokens in live schedules and the v6 tree —
+      enforced by cluster_god_sources_v6_csv_grid/guardians/check_csv_grid_schedule.py.
+      The live wave namespace is csv_grid (see the csv_grid entry). This entry remains as
+      the retired-signifier record (a banned token is a status: retired entry, CDP-050).
+    signifier_form: [WC1, WC2, WC3, column_grid_wc]
+    canonical_referent: >-
+      The column-declaration cure spine of the god-sources program (year zero): WC1
+      (cards-first applicator — bumps legacy W1), W8 corpus card curation, W9
+      cards-first cut, WC2 (column-realize cell text by card role — bumps legacy W2),
+      WC3 (overlay lift within card-permitted roles — year-zero id of the former
+      column_grid_w3_overlay_lift). Graph nodes column_grid_wc1,
+      column_grid_w8_corpus_card_curation, column_grid_w9_cards_first_cut,
+      column_grid_wc2, column_grid_wc3 in
+      cluster_god_sources_v6_csv_grid/resolved_source_task_graph.yaml (sole status owner).
+    canonical_sense: >
+      WC = Wave Column (cards-first / column-declaration series). Not a synonym of
+      column_grid itself — the wave ids that schedule application of column_grid.
+      Head conserved: column_grid; WC* are campaign wave qualifiers. W8/W9 keep the
+      names the dual-face invariants baptised as wave owners (S1/S3/M3/H6).
+      Left-behind waves 0–6a are archived schedule, never live
+      (cluster_god_sources_xml_inversion.md §0.3; guardian
+      cluster_god_sources_v6_csv_grid/guardians/check_csv_grid_schedule.py).
+    owner: {domain: TXT, file: cluster-god-sources-xml/archive/decode_god_sources_xml_campaigns/decode_column_grid/campaign.yaml}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Wave ids bound 1:1 to graph nodes; legacy W1/W2 superseded, not deleted from the archived record."}
+    cites: [CDP-051, CDP-060]
+
+  # --- mechanical_ceiling: the boundary between formatting and sense (CDP-064) ----
+  mechanical_ceiling:
+    signifier_form: [mechanical_ceiling, decoder_ceiling]
+    canonical_referent: >-
+      Limit of context-blind mechanical layers on transmitted Greek (CDP-064 §64):
+      structure and formatting from markup only; sense-dependent repair is outside.
+    canonical_sense: >-
+      Falsifier AP-028. Full rule in CANONICAL_DESIGN_PRINCIPLES_EULOGIKON.md §64 and
+      resolved_source_dual_face_telos.md §4 — cite, do not restate.
+    owner: {domain: TXT, file: CANONICAL_DESIGN_PRINCIPLES_EULOGIKON.md}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    cites: [CDP-064, AP-028]
+
+  # --- keyed_window_binding: the ACT that consumes overlay_anchor -----------------
+  # Baptised 2026-07-09. The retrieval/projection act was previously code-only
+  # (`overlay_lift.locate` + `content_anchor.find_window`) with no domain term. Held
+  # apart from its three neighbours to keep the bijection: it is NOT overlay_anchor
+  # (the key), NOT overlay_lift_fold (the fold), NOT CDP-062's cross-check (verify).
+  keyed_window_binding:
+    signifier_form: [keyed_window_binding]
+    canonical_referent: >-
+      The content-addressed act that LOCATES a folded-Greek boundary window
+      (`overlay_anchor`) in the bare canonical body IN ITS SEQUENCE, BETWEEN ITS
+      NEIGHBOURS, binding a God-source coordinate (a legacy_reference / speaker /
+      title / line / sigil) to its position — unit+offset now, RID/SID at settle.
+      A window is NEVER located alone: the grid is ONE order-preserving assignment
+      solved whole, FORCED exactly where the earliest and latest valid orderings agree
+      (v5_text_spine_spec.md §4). Owner: `cluster-keyed-window-binding/engine/grid.go`
+      (`BindGrid`) — the single authority for the binding invariant; `engine/match.go`
+      (`Bind`) reports one window's own evidence and never chooses among candidates.
+    canonical_sense: >-
+      The retrieval/projection half of the content-window method: given the folded
+      Greek around a boundary, find where that junction falls in a work's body —
+      edition-independent (the text is the index, CDP-054), order-forced by the
+      SEQUENCE, self-identifying residue (unique / resolved / ambiguous /
+      undetermined / not_found). `resolved` = a recurring key pinned by the ORDERING;
+      `undetermined` = the ordering does not force it, so the engine REFUSES and names
+      the site (CDP-037), never guessing. The retired `monotonic floor` bounded the
+      search only from BELOW and so bound a corrupted site silently to any later
+      recurrence and called it success (measured: one altered character displaced an
+      Iliad boundary 56,413 characters and returned `resolved`); `out_of_order` was its
+      artifact and retires with it. THE FOLD IS `grc_fold` — accent-blind and
+      PUNCTUATION-PRESERVING; `lemma_foldkey` drops every non-letter and so collapses
+      two sites separated only by punctuation onto one folded position.
+      Held distinct from three neighbours to keep the bijection:
+      `overlay_anchor` is the KEY it consumes, `overlay_lift_fold` is the FOLD it
+      uses, and CDP-062's content-window CROSS-CHECK (the doctrine + decode-QA
+      corroboration) is the VERIFICATION act — this names the BINDING act only, never a
+      synonym for any of them. Head is `window` (conserved across `find_window` /
+      `overlay_window`); "…lookup" is rejected (CDP-051 §7.4 mechanism-verb-as-head;
+      CDP-054 reserves "lookup" for text → reference).
+    owner: {domain: TXT, file: cluster-keyed-window-binding/engine/bind.go}
+    pipeline_reach: [canonical, sid_assigned]
+    used_at:
+      - {path: cluster-keyed-window-binding/engine/bind.go, role: owner}
+      - {path: cluster-keyed-window-binding/engine/match.go, role: primitive}
+      - {path: cluster-keyed-window-binding/port/keyed_window_port.go, role: port}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism of a previously code-only, unnamed act; distinct from overlay_anchor / overlay_lift_fold / CDP-062 cross-check.}
+    cites: [CDP-051, CDP-054, CDP-060, CDP-061, CDP-062]
+
+  # --- keyed_window_hash: the join key across the LLM cold seam ------------------
+  # Baptised 2026-07-09 alongside keyed_window_binding. Names the STABLE IDENTITY of a
+  # keyed window across the deterministic-engine ↔ advisory-LLM seam; distinct from the
+  # binding ACT (keyed_window_binding) and the window KEY (overlay_anchor).
+  keyed_window_hash:
+    signifier_form: [keyed_window_hash]
+    canonical_referent: >-
+      The content-address of a keyed window: unkeyed BLAKE2s-256 (lowercase hex) over
+      `utf8(before_fold) ‖ utf8(after_fold) ‖ ascii(decimal(cut))`, where `‖` is U+2016.
+      It is the join key binding an LLM boundary/semantic verdict to the window it
+      judges; on replay a hash mismatch means the decode output shifted, so the verdict
+      is stale and the window is HELD (never applied — CDP-037).
+    canonical_sense: >-
+      The eul_wid-stable identity of a keyed window until v5 `sid`s settle (it re-keys
+      mechanically to `sid` later). Single owner of the byte-exact recipe: the
+      keyed-window-binding doctrine (§5); both the Go engine and the Python Judge compute
+      the documented twin. The seam CODE (the WindowHash implementation) lands with the
+      LLM-cluster effort; this names the contract.
+    owner: {domain: TXT, file: cluster-keyed-window-binding/doctrine/keyed_window_binding_doctrine.md}
+    pipeline_reach: [canonical, sid_assigned]
+    used_at:
+      - {path: cluster-keyed-window-binding/doctrine/keyed_window_binding_doctrine.md, role: owner}
+      - {path: cluster-llm-boundary-semantic/PROGRAM.md, role: cite-only}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; contract-only until the LLM-cluster effort implements the seam code.}
+    cites: [CDP-037, CDP-045, CDP-051, CDP-062]
+
+  # --- legacy_reference (the genus) and its two distinct members ----------------
+  # ADR-014 first coined a single `passage_label` over [ref, unit_ref]; that entry was
+  # RETIRED (it was both a synonym for `ref` and a false merge of two referents).
+  # schema_v2.sql adjudicates: `eulogikon.units.ref` and `eulogikon.units_index.unit_ref`
+  # are DISTINCT — different tables, keys, constraints, and text (raw vs normalized).
+  # The genus was briefly `legacy_locator` ("locator" floats, CDP-055); the owner's
+  # canonical term is `legacy_reference` (a legacy reference TO a passage).
+  legacy_reference:
+    signifier_form: [legacy_reference, legacy_locator]
+    canonical_referent: >-
+      The genus of the legacy citation strings carried on a segment as an overlay
+      (e.g. "1.1", "327a", "cod. 212") — each a legacy reference TO a passage; courtesy
+      metadata, NEVER identity (identity is the SID/RID; CDP-054). Two distinct members:
+      `ref` and `unit_ref` (below).
+    canonical_sense: >-
+      Referent-pointing per CDP-055: a `legacy_reference` is a reference TO a passage
+      (a `segment` / `RID`) in a foreign edition's scheme — the head binds its referent,
+      unlike the free-floating `reference` / `locator` / `ref`. It heads a family (external
+      standard-edition reconciliation, 2026-06-17): a legacy_reference overlay decomposes as
+      {`overlay_scheme` (Stephanus / Bekker / DK / SVF), `overlay_value`
+      (the value "327a")} and is located in the text by `overlay_anchor`; the bare
+      heads `reference` and `locus` are retired into this family. A RenderHint-class
+      attribute (informs citation, never identity). Works are keyed by `eul_wid`,
+      passages by `SID` / `RID` — **never** by a legacy_reference; and **SID/RID look up
+      legacy_references (text -> reference, CDP-054 Index Inversion), never the reverse**.
+      We do NOT segment by legacy references (CDP-055): a legacy_reference is an overlay
+      keyed to the grid, never a segmentation key. The prior name `legacy_locator` is
+      retired into this entry; today the grid is not minted, so these are the only
+      passage citations and they are dirty (variable grain, gaps, one-scheme-only works).
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Genus with two named members (ref, unit_ref); a legacy_reference binds its referent (a passage), CDP-055-compliant; supersedes the floating `legacy_locator`."}
+    cites: [CDP-054, CDP-055]
+
+  ref:
+    signifier_form: [ref]
+    canonical_referent: >-
+      A `legacy_reference` (raw grain) carried on a canonical segment —
+      `eulogikon.units.ref` (the JSON `ref` key). Nullable, non-unique, SUB-SECTION grain
+      (e.g. "1.5.1", "cod. 212"); hangs on the RAW `units.text_greek` row keyed
+      `(eul_wid, sequence_num)`. A legacy reference TO that segment, never its identity.
+    canonical_sense: >-
+      Returned by get_work_units. NOT identity and NOT `unit_ref` — a different grain and
+      text. The bare head "ref" FLOATS under CDP-055 (ref of what?); its referent is a
+      `legacy_reference` to a `segment`. As a JSON key it is a canonical-data field
+      (CDP-042), so the head-rename rides the v5 / CDP-055 reconciliation, not a cosmetic
+      swap. We do not segment by it (CDP-055).
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: true
+      kind: free-floating
+      cause: '"ref" is an abbreviation of reference and binds no referent (CDP-055); the value is a legacy_reference to a segment.'
+      preferred_cure: Treat as a `legacy_reference` (raw grain); rename the JSON/column head under the v5 / CDP-055 reconciliation (CDP-042 owner-gated), distinct from the burnt `unit_ref`.
+    cites: [CDP-054, CDP-055]
+
+  unit_ref:
+    signifier_form: [unit_ref]
+    canonical_referent: >-
+      BURNT (CDP-055). The live column `eulogikon.units_index.unit_ref` — NOT NULL, UNIQUE
+      per work, SECTION grain (e.g. "1.5") on the NORMALIZED row. Its name is doubly
+      free-floating: "unit" denotes nothing (a passage is a `segment`, not "unit type 74")
+      and "ref" floats (reference of what?).
+    canonical_sense: >-
+      The value IS a `legacy_reference` (normalized grain) and what it addresses IS a
+      `RID` (the cited span) — both already named. So the name is NOT cosmetically
+      renamed (no `citation_ref` / `reference_locus` synonym, CDP-055) — it is ELIMINATED
+      at v5: the address becomes the `RID` (grid key), the string a `legacy_reference`
+      overlay. Distinct grain from `ref` (the two do NOT round-trip; 68 works carry one
+      not the other). Live until v5; we do not segment by it (CDP-055).
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: retired
+    variant_senses:
+      - {signifier: unit_ref, referent: "the cited span (the address)", status: "retired -> RID (grid key)"}
+      - {signifier: unit_ref, referent: "the citation string", status: "retired -> legacy_reference (normalized grain)"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: '"unit" + "ref" are both free-floating (CDP-055); the referents are RID (the cited span) + legacy_reference (the string), both already named. Eliminated at v5, not renamed.'
+      preferred_cure: At v5, the address is a `RID` and the string a `legacy_reference` overlay; no `citation_*` / `reference_locus` synonym.
+    cites: [CDP-054, CDP-055]
+
+  units_index:
+    signifier_form: [units_index]
+    canonical_referent: >-
+      BURNT (CDP-055). The live table `eulogikon.units_index` (schema_v2.sql:334) — one
+      row per (eul_wid, unit_ref) carrying NORMALIZED Greek + a `reference_context` JSONB.
+      Its name is free-floating ("unit" denotes nothing; "index" of what?) AND it embodies
+      the forbidden pattern: it SEGMENTS THE CORPUS BY A LEGACY REFERENCE (its rows are
+      `legacy_reference_segment`s, keyed and addressed by `unit_ref`).
+    canonical_sense: >-
+      We do not segment by legacy references (CDP-055): the canonical segmentation is the
+      SID/RID grid. So this table is not cosmetically renamed (no `citation_index` /
+      `reference_index` synonym) — it is ELIMINATED when the grid is minted: its rows
+      (legacy_reference_segments) collapse onto the SID/RID grid, its normalized Greek
+      becomes a derived view, and its `unit_ref` splits into a `RID` key + a
+      `legacy_reference` overlay (CDP-054). Live until then; the search/citation surface
+      EuGraphikon consumes today.
+    owner: {domain: TXT, file: .eukoine/corpus_identity_and_schema.md}
+    status: retired
+    polysemy_debt:
+      has_debt: false
+      kind: clean-after-retirement
+      cause: 'Free-floating name AND a CDP-055 corollary violation (segments by legacy reference). Its rows are legacy_reference_segments; the grid abolishes them.'
+      preferred_cure: At grid-mint, eliminate the table; rows collapse onto the SID/RID grid, `unit_ref` -> `RID` key + `legacy_reference` overlay. No `citation_*` synonym.
+    cites: [CDP-054, CDP-055]
+
+  legacy_reference_segment:
+    signifier_form: [legacy_reference_segment]
+    canonical_referent: >-
+      A passage delimited by a legacy reference — a row of the (burnt) `units_index`,
+      where "section 1.5" is treated as a segmentation unit. The DEPRECATED notion of a
+      segment-defined-by-a-legacy-reference.
+    canonical_sense: >-
+      Names the thing CDP-055 abolishes: we do NOT segment by legacy references. The
+      canonical address is grid-defined (`SID`/`RID`); a legacy_reference_segment is the
+      legacy_reference_segment is the coarse, dirty, legacy-reference-delimited row that
+      the SID/RID grid replaces. Retained only to name the migration target for
+      elimination — never a structure to build on.
+    owner: {domain: TXT, file: docs/governance/cdp_registry.yaml}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the deprecated legacy-reference-delimited row the grid abolishes (CDP-055)."}
+    cites: [CDP-054, CDP-055]
+
+  reference_coverage_class:
+    signifier_form: [reference-found, flat-blob, line-only, no-margin, no-v18]
+    canonical_referent: >-
+      The reference-recovery verdict the detector assigns each work in
+      archive/cleaning_substrate/stages/substrate_40_reference_recovery/ (contact_points.yaml): reference-found (a
+      reference sequence decoded), flat-blob (sequence present but canonical collapsed
+      -> re-segment), line-only (only line counters), no-margin / no-v18 (no decodable
+      provenance margin).
+    owner: {domain: TXT, file: scripts/audit/check_reference_coverage.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One closed value set; the detector's coverage verdict.}
+    cites: [CDP-054]
+
+  row:
+    signifier_form: [row, WorkRow]
+    canonical_referent: >-
+      `WorkRow` = one interpreted passage row free of markup, with kind in
+      {title, speaker, testimony, text}. Head `Work` conserved + qualifier `Row`
+      — a correct baptismal head.
+    canonical_sense: "Distinct from the generic SQL 'row' (a table tuple), which is a local technical term, not a domain referent."
+    owner: {domain: TXT, file: src/core/work_rows.py}
+    status: aligned
+    polysemy_debt:
+      has_debt: false
+      kind: same-object-across-layers
+      cause: WorkRow conserves the Work head; bare "row" in SQL context is local technical vocabulary, not a competing domain referent.
+      preferred_cure: Keep WorkRow for the semantic object; bare "row" is fine only as a local SQL term.
+    cites: [CDP-051]
+
+  entry:
+    signifier_form: entry
+    canonical_referent: >-
+      AMBIGUOUS in bare form — three unrelated homonyms. Always qualify: a
+      collection-keyed item is a `collection entry`, a field in a JSON/dict object is a
+      `field`, a DB record is a `record`. Never ship bare "entry" where one of the three
+      applies.
+    status: aligned
+    variant_senses:
+      - {signifier: entry, referent: "a collection-keyed item (SVF 2.413)", status: "pinned -> collection entry"}
+      - {signifier: entry, referent: "a field in a JSON/dict object", status: "pinned -> field"}
+      - {signifier: entry, referent: "a DB record / row", status: "pinned -> record"}
+    polysemy_debt:
+      has_debt: false
+      kind: clean-by-qualification
+      cause: >-
+        Three low-stakes homonyms, each pinned to a precise term (collection entry /
+        field / record); bare "entry" is resolved by always qualifying.
+      preferred_cure: Use `collection entry` / `field` / `record`; never bare "entry".
+
+  text:
+    signifier_form: [text, GreekText, EnglishText]
+    canonical_referent: >-
+      The body text of a SID. The formal logic already baptises the distinct
+      forms: `GreekText` (cleaned Greek), `EnglishText` (translation). DB column
+      `text_greek_normalized` is the normalized GreekText.
+    canonical_sense: "Bare 'text' is the genus; the species GreekText/EnglishText are the precise terms. They are not polysemy — they are typed sub-referents."
+    owner: {domain: TXT, file: docs/formal_logic/text_pipeline_formal_logic.yaml}
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: false
+      kind: genus-species
+      cause: GreekText/EnglishText are typed species of the body-text genus; the only residue is bare "text" used where the language matters.
+      preferred_cure: Qualify with the language (GreekText / EnglishText / text_greek_normalized) wherever the body language is load-bearing.
+    cites: [INV-TXT-05]
+
+  greek_running_text:
+    signifier_form: [greek_running_text]
+    canonical_referent: >-
+      The faithful Greek-only PROJECTION of a stream: `greek_subsequence` with
+      inter-word whitespace kept — every non-Greek run collapsed to one space,
+      accents/case/final-sigma on letters preserved, exactly the `grc_conservation.GREEK_RE`
+      conservation class after NFC. A lossy reference/measurement artifact (the "Greek
+      floor"), owned by `cluster_greek_quality_gates/oracle/grc_conservation.py`.
+    canonical_sense: >-
+      DISTINCT from `GreekText` (the cleaned transmitted body text, with punctuation
+      and structure intact): this is a structure-free, punctuation-shorn projection,
+      not the body text. DISTINCT from `stream_fidelity.fold_for_fidelity` (the SEARCH
+      fold — lowercased, sigma-unified, diacritic-stripped, for locating a span): that
+      is a different owner answering a different question; the two folds must not be
+      merged. CDP-051 head: the subject is `text` (the registered genus), qualified
+      `greek_running`; the mechanism (the strip) is never the head.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/grc_conservation.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the faithful Greek-only projection; sibling to greek_subsequence (no spaces) and distinct from GreekText (the body text).}
+    cites: [CDP-051, CDP-053]
+
+  greek_running_text_rejoined:
+    signifier_form: [greek_running_text_rejoined, rejoined_greek_floor]
+    canonical_referent: >-
+      RETIRED. Was a gated, derived, conservation-preserving NORMALIZATION of
+      `greek_running_text` (stranded final-sigma and short-fragment splits glued iff
+      the concatenation's `lemma_foldkey` resolved in the EuMorphikon `form_lemma`
+      oracle). The referent was a fold used as a WRITER on Greek word boundaries,
+      which CDP-064 forbids. No live producer or consumer remains; the decode-output
+      body column is the gate input.
+    canonical_sense: >-
+      NOT a live stream. Head conserved from `greek_running_text` only as a retired
+      signifier so the name is not re-coined by accident.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/grc_conservation.py}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean, cause: "RETIRED: fold-as-writer on word boundaries (CDP-064). Gate input is the decode-output body column."}
+    cites: [CDP-042, CDP-046, CDP-051, CDP-062, CDP-064]
+
+  greek_floor:
+    signifier_form: [greek_floor]
+    canonical_referent: >-
+      The Greek-fidelity floor of the God-source decode: the per-work conservation
+      comparison OWNED by reader.Audit (decode_god_sources_xml_reader/audit.go) — the
+      raw v18 render bytes' ordered Greek codepoints (the genuinely independent
+      projection, CDP-060) diffed against the emitted resolved_source spine on every
+      run, exported per-work in the verdict (audited / outcome / fidelity) — TOGETHER
+      WITH its corpus roll-up decode_check_greek_floor.py, whose deterministic report
+      (decode_greek_floor_report.json) proves totality/liveness/consistency/coherence
+      of the accounting and backs decode_closure_record.json's crosscheck_report_ref.
+    canonical_sense: >-
+      One owner for the comparison (audit.go), one reporter for the accounting; a
+      second comparator over any projection (a russian body-column reference, a
+      russian_markup read, or a Python greekOfEmittedXML mirror) is the same-projection
+      guard condemned at retirement — never rebuild one. CDP-051 head: the subject is
+      the greek floor; the roll-up's mechanism (check) rides behind.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "Re-baptised at decode_column_grid W6b_greek_floor: the signifier binds to reader.Audit + the decode_check_greek_floor.py roll-up; any prior derived text-projection binding is retired."}
+    cites: [CDP-006, CDP-037, CDP-046, CDP-051, CDP-060, CDP-061]
+
+  greek_delta_class:
+    signifier_form: [greek_delta_class]
+    canonical_referent: >-
+      RETIRED. Was the closed classification of a per-work divergence between the
+      decoder-emitted Greek floor and a derived text-projection reference floor
+      (`match` · `orthographic` · `decoder_empty` · `floor_superset` ·
+      `decoder_superset` · `substantive` · `unexplained` · `missing_reference`).
+    canonical_sense: >-
+      RETIRED with its same-projection floor check. Live fidelity accounting is
+      owned by reader.Audit + decode_check_greek_floor.py.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean, cause: "RETIRED: enumerated divergences against a deleted derived reference floor."}
+    cites: [CDP-037, CDP-051, CDP-062]
+
+  greek_floor_divergence:
+    signifier_form: [greek_floor_divergence]
+    canonical_referent: >-
+      RETIRED. Was a per-work instance of a `greek_delta_class` (lengths +
+      fail/reported disposition against a derived reference floor).
+    canonical_sense: >-
+      RETIRED with greek_delta_class. Live witness is the per-work verdict fidelity
+      export from reader.Audit.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean, cause: "RETIRED with greek_delta_class: witness row of a check whose reference floor is deleted."}
+    cites: [CDP-037, CDP-051, CDP-062]
+
+  decode_emission:
+    signifier_form: [decode_emission, emitAlways]
+    canonical_referent: >-
+      The decode_reader law that every manifest work receives a resolved_source.xml file
+      on disk — partial body when decode progressed, identity stub when it did not —
+      regardless of decode_verdict.outcome. Emission is never withheld because the spine
+      carries foreign script or other residue.
+    canonical_sense: >-
+      The emission axis, DISTINCT from publication (decode_verdict.outcome). Owner:
+      decode_reader/cmd/decode_reader/main.go emitAlways. CDP-051 head: decode emission;
+      never conflated with substrate_green.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/cmd/decode_reader/main.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the always-write XML law.}
+    cites: [CDP-037, CDP-051, CDP-053]
+
+  decode_verdict:
+    signifier_form: [decode_verdict, verdict_outcome]
+    canonical_referent: >-
+      The per-work JSON record (stdout from decode_reader, persisted as
+      decode_current_state/verdicts/{eul_wid}.verdict.json) whose outcome field classifies
+      publication readiness. Stable outcome keys live in findings.go Outcome constants.
+    canonical_sense: >-
+      The publication axis, DISTINCT from decode_emission. success = substrate_green;
+      foreign_script = foreign_script_verdict (cleaning queue, XML still emitted).
+      Vocabulary: resolved_source_decode_verdict_vocabulary.md.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/findings/findings.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the closed outcome enum + JSON envelope.}
+    cites: [CDP-037, CDP-051, CDP-053]
+
+  greek_running_text_stream:
+    signifier_form: [greek_running_text_stream, greek_stream]
+    canonical_referent: >-
+      The ordered Greek codepoint stream extracted from one God-source render (unicode.Greek,
+      file order). Fusion keys russian_source apparatus events to offsets in the v18 stream;
+      compareStreams tests v18 against russian_source (and speakers variant against v18).
+    canonical_sense: >-
+      The fusion-precondition stream, DISTINCT from greek_floor (post-decode reference floor)
+      and from greek_running_text (the projection artifact). CDP-051 head: greek_running_text,
+      qualified stream (ordered extraction for fusion).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/decode.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the pre-fusion Greek stream.}
+    cites: [CDP-051, CDP-060, CDP-061]
+
+  greek_stream_divergence:
+    signifier_form: [greek_stream_divergence]
+    canonical_referent: >-
+      Pre-fusion witness: compareStreams found the v18 greek_running_text_stream and the
+      russian_source stream (or speakers_stream_fusion: speakers variant vs v18) differ at
+      the first offset or length. Fusion aborts; publication_witness_kind is
+      greek_stream_fusion or speakers_stream_fusion on decode_publication.
+    canonical_sense: >-
+      Source-agreement failure BEFORE fusion — past the mechanical ceiling; repair_lane
+      witness_reconciliation. DISTINCT from greek_reconstruction_divergence (post-decode audit:
+      v18 raw all-Greek vs emitted spine Greek). Never interchange with greek_floor_divergence.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/decode.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Split from overloaded greek_divergence outcome via publication_witness_kind.}
+    cites: [CDP-037, CDP-051, CDP-060, CDP-064]
+
+  greek_reconstruction_divergence:
+    signifier_form: [greek_reconstruction_divergence]
+    canonical_referent: >-
+      Post-decode audit witness: greekOfBytes(v18 raw) disagrees with greekOfEmittedXML
+      (line/title/heading spine) at the first offset. publication_witness_kind on
+      decode_publication; finding_detail carries offset and context runes.
+    canonical_sense: >-
+      Reconstruction fidelity failure AFTER fusion — repair_lane decoder_mechanical unless
+      audit scope mismatch (Greek in margins/speakers in raw only). DISTINCT from
+      greek_stream_divergence (pre-fusion) and greek_floor_divergence (retired same-projection floor tool).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the post-decode spine fidelity witness.}
+    cites: [CDP-037, CDP-051, CDP-060]
+
+  publication_witness_kind:
+    signifier_form: [publication_witness_kind]
+    canonical_referent: >-
+      RECORDED VIOLATION (see polysemy_debt). The closed classifier carried in
+      decode_verdict.fidelity.publication_witness_kind and surfaced by
+      decode_publication; it splits overloaded decode_verdict.outcome values into
+      inspectable kinds: greek_stream_fusion, speakers_stream_fusion,
+      greek_reconstruction_divergence, foreign_script_verdict, unknown_form_family_verdict, …
+    canonical_sense: >-
+      Observability field — one glance routing on structure cards and the queue-report
+      surface (re-founded at W5). CDP-050/051 violation: the head re-imports the retired
+      bare token into a sanctioned compound. Formerly emitted as the bare alias
+      `witness_kind`; retired from emitted data and reduced to the single primary form.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: true
+      kind: recorded-violation
+      cause: >-
+        One signifier head, many referents (CDP-050/051): the retired bare token
+        re-imported as the head of a sanctioned compound now covers the divergence
+        subtype on the verdict, repair-lane routing, structural defect counts,
+        residue scan tally, and audit pairing across the decoder; the
+        check_no_witness.py qualified-compound exemption sanctioned the leak.
+        Recorded in docs/predicate_vocabulary/witness_violations_register.md.
+      preferred_cure: >-
+        Replace with `fidelity.divergence_kind` (approved-unimplemented; exists only
+        when outcome == "greek_divergence") — one atomic cut per
+        .cursor/plans/decoder_vocabulary_repair_f3476da1.plan.md, no aliases, generated
+        state regenerated through the sole publisher at W5, never hand-edited.
+    cites: [CDP-037, CDP-050, CDP-051, CDP-055]
+
+  structural_defect_counts:
+    signifier_form: [structural_defect_counts]
+    canonical_referent: >-
+      The per-work structural correctness gap counts emitted in decode_verdict: unattached sigils,
+      zero-Greek lines, antilabe misassigns, unlifted indent flags, and composite waypoints.
+      These are gaps the text audit alone does not catch, reported separately from residue.
+    canonical_sense: >-
+      Observability field on decode_verdict and structure cards. CDP-051 head: structural,
+      qualified defect_counts. Replaces the bare overloaded `structural_witness` emitted field.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/verdict.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the per-work structural gap tally.}
+    cites: [CDP-037, CDP-051, CDP-055]
+
+  inspect_summary:
+    signifier_form: [inspect_summary]
+    canonical_referent: >-
+      The one-line human-readable repair-queue summary on decode_publication and in
+      publication_queue_report.csv — what failed, where, and which repair_lane owns it.
+    canonical_sense: >-
+      Anti-polysemy observability field; must be present on every structure card
+      decode_publication block. Not a chronicle — present-tense witness only.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the at-a-glance publication summary.}
+    cites: [CDP-037, CDP-051]
+
+  witness_reconciliation:
+    signifier_form: [witness_reconciliation, repair_lane.witness_reconciliation]
+    canonical_referent: >-
+      RECORDED VIOLATION (see polysemy_debt). The repair_lane for pre-fusion
+      greek_stream_divergence and speakers_stream_fusion — two God-source renders
+      disagree on the Greek stream; fix requires source-reading adjudication or
+      speaker-overlay reconciliation, not decoder regex widening (past mechanical
+      ceiling).
+    canonical_sense: >-
+      CDP-064 ceiling routing. DISTINCT from decoder_mechanical and kwb_llm_boundary.
+      CDP-050/051 violation: one lane signifier routes TWO referents under the
+      retired head.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: true
+      kind: recorded-violation
+      cause: >-
+        One lane signifier, two referents (CDP-050/051): greek-stream divergence
+        (source-reading adjudication across renders) and speaker-stream divergence
+        (speaker-overlay reconciliation) route under a single lane headed by the
+        retired bare token; the check_no_witness.py qualified-compound exemption
+        sanctioned the leak. Recorded in
+        docs/predicate_vocabulary/witness_violations_register.md.
+      preferred_cure: >-
+        Split into `greek_stream_adjudication` (source-reading divergence) and
+        `speaker_overlay_reconciliation` (speaker-stream divergence) —
+        approved-unimplemented; one atomic cut per
+        .cursor/plans/decoder_vocabulary_repair_f3476da1.plan.md at W5.
+    cites: [CDP-050, CDP-051, CDP-060, CDP-064]
+
+  divergence_kind:
+    signifier_form: [divergence_kind, fidelity.divergence_kind]
+    canonical_referent: >-
+      APPROVED-UNIMPLEMENTED successor of fidelity.publication_witness_kind: the
+      greek-divergence subtype carried in decode_verdict.fidelity.divergence_kind,
+      emitted only when outcome == "greek_divergence" — one of greek_stream_fusion,
+      speakers_stream_fusion, greek_reconstruction_divergence.
+    canonical_sense: >-
+      Contract decision of the deferred repair plan
+      (.cursor/plans/decoder_vocabulary_repair_f3476da1.plan.md): one atomic cut,
+      no old/new aliases; verdicts, cards, and reports regenerated through the sole
+      publisher at W5, never hand-edited. Violation record:
+      docs/predicate_vocabulary/witness_violations_register.md.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/verdict.go}
+    status: approved-unimplemented
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the greek-divergence subtype; not yet emitted."}
+    cites: [CDP-037, CDP-051, CDP-055]
+
+  greek_stream_adjudication:
+    signifier_form: [greek_stream_adjudication, repair_lane.greek_stream_adjudication]
+    canonical_referent: >-
+      APPROVED-UNIMPLEMENTED repair_lane for pre-fusion greek_stream_divergence:
+      two God-source renders disagree on the Greek stream; the fix adjudicates the
+      source readings across renders, not decoder regex widening (CDP-064 ceiling).
+      Successor of the greek half of the witness_reconciliation lane.
+    canonical_sense: >-
+      DISTINCT from decoder_mechanical, kwb_llm_boundary, and
+      speaker_overlay_reconciliation. Violation record:
+      docs/predicate_vocabulary/witness_violations_register.md; repair plan:
+      .cursor/plans/decoder_vocabulary_repair_f3476da1.plan.md.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: approved-unimplemented
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the source-reading divergence repair owner; not yet routed."}
+    cites: [CDP-051, CDP-060, CDP-064]
+
+  speaker_overlay_reconciliation:
+    signifier_form: [speaker_overlay_reconciliation, repair_lane.speaker_overlay_reconciliation]
+    canonical_referent: >-
+      APPROVED-UNIMPLEMENTED repair_lane for speakers_stream_fusion: the speaker
+      streams of two God-source renders disagree; the fix reconciles the speaker
+      overlay, not the decoder (CDP-064 ceiling). Successor of the speaker half of
+      the witness_reconciliation lane.
+    canonical_sense: >-
+      DISTINCT from decoder_mechanical, kwb_llm_boundary, and
+      greek_stream_adjudication. Violation record:
+      docs/predicate_vocabulary/witness_violations_register.md; repair plan:
+      .cursor/plans/decoder_vocabulary_repair_f3476da1.plan.md.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: approved-unimplemented
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the speaker-stream divergence repair owner; not yet routed."}
+    cites: [CDP-051, CDP-060, CDP-064]
+
+  foreign_script_verdict:
+    signifier_form: [foreign_script_verdict, foreign_script]
+    canonical_referent: >-
+      The decode_verdict outcome foreign_script: audit ForeignLetters > 0 — untyped
+      non-Greek letters in transmitted-text channels (line, title). XML is still emitted
+      (decode_emission); the work is not substrate_green (CDP-053).
+    canonical_sense: >-
+      Cleaning-queue verdict, not emission block. DISTINCT from foreign script in margins,
+      canon cards, or typed latin_apparatus overlays (excluded from residue scan). Feeds
+      the foreign-language lane after deterministic extractors. CDP-051 head: foreign_script,
+      qualified verdict (publication gate only).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the CDP-053 spine pollution verdict.}
+    cites: [CDP-037, CDP-051, CDP-053]
+
+  substrate_green:
+    signifier_form: [substrate_green, Green]
+    canonical_referent: >-
+      AuditReport.Green(): reconstructed Greek greek_running_text_stream byte-identical to
+      God Source AND zero foreign_script_verdict letters in line/title spine channels.
+    canonical_sense: >-
+      Publication-ready substrate tier; DISTINCT from decode_emission (always writes XML) and
+      from substrate_clean (zero residue of any class). decode_verdict.success implies
+      substrate_green when decode completed.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the green fidelity+monolingual gate.}
+    cites: [CDP-053, CDP-054]
+
+  substrate_clean:
+    signifier_form: [substrate_clean, Clean]
+    canonical_referent: >-
+      AuditReport.Clean(): substrate_green AND ResidueTotal == 0 (editorial marks, digits,
+      and other un-typed markers all lifted to overlays).
+    canonical_sense: >-
+      Fully-typed substrate tier; the coverage ratchet target after broadening. DISTINCT from
+      publishable-clean (human review gate).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/audit.go}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — green plus zero residue.}
+    cites: [CDP-053, CDP-054]
+
+  decode_publication:
+    signifier_form: [decode_publication]
+    canonical_referent: >-
+      The structure-card block stamped from decode_verdict JSON: outcome, publication_witness_kind,
+      lexicon_signifier, repair_lane, inspect_summary (required), optional kwb_ambiguity_kind,
+      substrate_green, foreign_letters, divergence_at, v18_context, other_context, form_family,
+      finding_detail, xml_source, verdict_source. The per-work repair-queue flag for inspection.
+    canonical_sense: >-
+      DISTINCT from decode_emission (XML always written) and decoder_confirmation (layout
+      ratchet only). repair_lane routes: none | decoder_mechanical | deterministic_extract |
+      kwb_llm_boundary | human_classification. Owner: decode_publication.py — the sole
+      verdict-to-publication transform (structure_confirm_display_disposition.py is burned);
+      the queue-report/card projection it feeds is re-founded at W5 per the deferred
+      repair plan.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the card-level publication witness.}
+    cites: [CDP-037, CDP-051, CDP-064]
+
+  repair_lane:
+    signifier_form: [repair_lane]
+    canonical_referent: >-
+      The closed routing enum on decode_publication: which downstream process owns the fix —
+      none (substrate_green), decoder_mechanical, deterministic_extract, kwb_llm_boundary,
+      witness_reconciliation, human_classification.
+    canonical_sense: >-
+      CDP-051 head: repair lane (the queue owner), not a verdict synonym. foreign_script_verdict
+      maps to kwb_llm_boundary, not decoder_mechanical.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_publication.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One closed enum for repair routing.}
+    cites: [CDP-051, CDP-064]
+
+  kwb_ambiguity_kind:
+    signifier_form: [kwb_ambiguity_kind, ambiguity_kind]
+    canonical_referent: >-
+      The llm_pending record classifier for a keyed window at the KWB cold seam:
+      inline_citation | latin_majority_line | sigma_c | metrical_label | bracket_leak, plus
+      decoder_mechanical kinds greek_stream_mismatch | unknown_marker.
+    canonical_sense: >-
+      Joins decode_publication to llm_pending/{eul_wid}.json per keyed_window_binding_doctrine
+      §5. CDP-051 head: kwb ambiguity, qualified kind.
+    owner: {domain: TXT, file: cluster-keyed-window-binding/doctrine/keyed_window_binding_doctrine.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the cold-seam classifier.}
+    cites: [CDP-045, CDP-051, CDP-064]
+
+  # --- the referral family: what the reader does with markup it cannot type ----
+  # Baptised 2026-07-13 (emit-and-refer landing; work report
+  # cluster-god-sources-xml/decode_god_sources_xml_work_reports/2026-07-13_referral_family_baptism.yaml).
+  # The emit-and-refer cut made these THREE signifiers load-bearing across the reader, the
+  # schema role registry, and the review-point seam — and registered none of them (AP-023).
+  # The family is a rule / a role / a field: ONE law, the span role it emits, and the token
+  # that role carries. Held apart below; the confusion they prevent is exact: a referred
+  # marker is NOT an exemption, and the overlay ROLE is NOT the finding KIND.
+
+  markup_supplement:
+    signifier_form: [markup_supplement, MarkupSupplement]
+    canonical_referent: >-
+      Markup supplied by the SENSE LANE (the kwb-llm, or a human) that DECLARES the type of
+      a span in the God Source which the decoder could not type from the source's own
+      markup. Anchored by a `keyed_window` (content-addressed, so it survives
+      re-segmentation and needs no offset); stored NON-DESTRUCTIVELY beside the frozen God
+      Source (z_no_git is a read-only vault and is never written); and read by the decoder
+      on the NEXT pass as an ordinary markup input, indistinguishable from markup the
+      source had carried all along. It is the INBOUND half of the referral loop, of which
+      `referral_rule` is the outbound half.
+    canonical_sense: >-
+      THE POINT OF THE NAME: the decoder never "applies a verdict" and therefore never
+      crosses the mechanical ceiling (CDP-064). It has exactly ONE mode, in every run,
+      forever — READ MARKUP, emit the body, refer what it cannot type. A markup_supplement
+      converts an ABOVE-the-ceiling judgement (what does this span MEAN?) into a
+      BELOW-the-ceiling FACT (the source now DECLARES its type), made once, auditably, and
+      frozen where a later reader can inspect it. The loop converges: each pass leaves
+      fewer unresolved sites.
+      NOTHING IS EVER DELETED — BECAUSE NOTHING IS EVER WRITTEN. The God Source is frozen
+      (CDP-060) and the supplement is purely ADDITIVE, so `source + supplement` is the
+      complete record, permanently, and v5 is a PROJECTION of it. A span declared pollution
+      is LIFTED TO A TYPED OVERLAY and excluded from the v5 body; the Latin of a Greek-only
+      corpus (CDP-053) is therefore NOT DISCARDED but NOT PROJECTED — re-decode and it is
+      back. Absent from a projection is not deleted from the record.
+      CONSEQUENCE: THERE IS NO IRREVERSIBLE ACT IN THE PIPELINE. A wrong mark is a BUG, not
+      a corruption — fix the supplement and re-run; the cost of a mistake is a RE-RUN, not a
+      LOSS. So correctness is never a PRECONDITION for emitting v5, only a DIRECTION OF
+      TRAVEL. Contrast the κ-rejoin, which was catastrophic because it wrote INTO the text
+      and destroyed the evidence of its own error in the same stroke. The difference is
+      STRUCTURAL, not procedural. The only irreversible loss possible is losing the God
+      Sources or the supplements themselves — so those, and only those, are what must be
+      protected.
+      Held DISTINCT from four neighbours, which is why the bijection needs it:
+      `legend` is the markup DICTIONARY (a class -> its meaning); a markup_supplement is an
+      INSTANCE declaring ONE span's type. `overlay` is the v5 output; a markup_supplement is
+      an INPUT that CAUSES one. `review_point` / `verdict` are the request/response of the
+      review record; a markup_supplement is what a response BECOMES once it lands on the
+      source. `keyed_window` is the ANCHOR it rides on, not the thing itself.
+      CDP-051 head: the subject is `markup` — conserved, because the decoder cannot tell it
+      from the source's own — qualified `supplement`: it ADDS to the source's markup and
+      never replaces or edits it. The non-destructiveness is in the name.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_markup_supplement_doctrine.md}
+    status: open-with-residue
+    polysemy_debt:
+      has_debt: false
+      kind: clean
+      cause: >-
+        Coined 2026-07-14 (owner ruling). The referent had NO name, and that absence is why
+        the review-seam design drifted to "verdict -> the decoder APPLIES it" (campaign R3):
+        with no word for the returning markup, a verdict was the only available shape — and
+        it puts meaning back INSIDE the decoder, which is what CDP-064 forbids. Naming the
+        artefact makes the correct architecture sayable.
+    cites: [CDP-006, CDP-054, CDP-060, CDP-064]
+
+  referral_rule:
+    signifier_form: [referral_rule]
+    canonical_referent: >-
+      The reader's decode law for markup it cannot type: the untypable is REFERRED —
+      emitted verbatim in place as an unresolved_marker span and reported as a located
+      finding carrying a keyed_window — never returned as a Go error that discards the
+      body (error is infrastructure-only), and never silently routed into the spine.
+      One of the closed non_legend_sources in the schema role registry; the legend_source
+      of the finding, keyed_window, before_fold, after_fold, detail, and claim elements.
+    canonical_sense: >-
+      The law that holds INV-TXT-14 (totality + addressability) and discharges AP-029: the
+      reader stops destroying the texts it reads, and every finding names its site. Sibling
+      of the other decode-time rules (ekthesis_rule, seam_rule, crux_rule,
+      latin_apparatus_rule, var_il_rule) — a subject-qualified rule, head `rule` with the
+      baptised subject riding in front (CDP-051). The fix is NEVER "extend the legend" (a
+      treadmill): the legend types what it declares; referral_rule governs the rest.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_schema_roles.yaml}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the refer-never-discard decode law; a closed non_legend_source, enumerated both ways by the G-B0 schema-role gate."}
+    cites: [CDP-037, CDP-039, CDP-051, CDP-064, AP-029, INV-TXT-14]
+
+  unresolved_marker:
+    signifier_form: [unresolved_marker, RoleUnresolvedMarker]
+    canonical_referent: >-
+      The span role resolved.RoleUnresolvedMarker: markup the reader could not type,
+      emitted VERBATIM, in place, with the Greek around it untouched — the page containing
+      a hyperlink is a fact about the page, never grounds to suppress a text (AP-029).
+      Carries its source token in `marker`; its site is located by a keyed_window.
+    canonical_sense: >-
+      Deliberately ABSENT from resolved.IsOverlayRole — a referred marker is NOT an
+      exemption: exempting it would relieve content of UNKNOWN type into the spine
+      unmeasured, precisely the blindness the residue ledger exists to prevent (AP-028).
+      A referred marker carrying Latin lands the work in foreign_script and routes it to
+      the kwb_llm_boundary repair_lane — the correct lane, not a laundered one. ANTI-POLYSEMY:
+      DISTINCT from unknown_marker — unresolved_marker is the XML overlay ROLE on the span
+      (the thing in the record); unknown_marker is findings.OutcomeUnknownMarker / FindingCode
+      "unknown_marker" (the verdict class, routed decoder_mechanical and listed on
+      kwb_ambiguity_kind). One names where the markup sits; the other names why the work was
+      routed.
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/resolved/role.go}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the reader-synthesised span role; single-owned in role.go beside its sibling synthetic roles (lacuna, latin_apparatus, parentheses, editorial_bracket, crux, font_scale)."}
+    cites: [CDP-054, CDP-064, AP-028, AP-029, INV-TXT-14]
+
+  v18_cell_concatenation:
+    signifier_form: [v18_cell_concatenation]
+    canonical_referent: >-
+      The closed finding code raised when restructured_v18 carries a second
+      content-bearing plain <td> in one row: v18 has already flattened the edition's
+      column grid to at most two cells, the first content cell is the body line, and
+      the second is the flattened right-margin column (class=R in every corpus row,
+      census 2026-07-14). The reader REFUSES the concatenation — the content never
+      reaches the body line; it is preserved verbatim as a claim on a located finding
+      (referral_rule; the margin column is russian_source-sovereign). The finding
+      does not set the Verdict outcome: it is absent from decodeFindingPrecedence, so
+      the audit classifies the work as before.
+    canonical_sense: >-
+      One of the referral_rule family: the reader refers what it cannot place, never
+      guesses and never discards (AP-029). ANTI-POLYSEMY: DISTINCT from
+      greek_stream_fusion (the two witnesses' Greek parting company) and from
+      unresolved_marker (an untypable inline span, emitted in place) —
+      v18_cell_concatenation is a CELL-LEVEL refusal in the flattened v18 grid, the
+      v18-side half of the column model (resolved_source_column_model_spec.md §0:
+      v18 keeps the citation and body columns; the margin column arrives flattened).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/source/v18_dom.go}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: "One referent — the refused second plain cell; single-owned in v18_dom.go parseCell, surfaced once in flattenV18."}
+    cites: [CDP-037, CDP-060, CDP-064, AP-029, INV-TXT-14]
+
+  marker:
+    signifier_form: [marker, Marker]
+    canonical_referent: >-
+      resolved.Span.Marker — the verbatim source token the reader could not type,
+      populated ONLY on an unresolved_marker span. Structural: a field carried on the
+      span, never a regex-derived token (the _marker_token prose regex retired with the
+      emit-and-refer landing — the marker token is structural now).
+    canonical_sense: >-
+      SCOPED signifier: bare `marker` denotes this referent ONLY as the field of an
+      unresolved_marker span. Elsewhere the bare noun is polysemous (editorial marker,
+      legend marker, the ~50-marker JS/CSS markup of the God-source render, gate/milestone
+      marker) — qualify it there. Conserving the bare head here is deliberate: the Go
+      field IS `Marker`, and the field's own type (unresolved_marker span) supplies the
+      qualification at every use site (CDP-051).
+    owner: {domain: TXT, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/resolved/model.go}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt:
+      has_debt: true
+      kind: residual-collision
+      cause: >-
+        Bare "marker" appears unqualified in prose across the repo (editorial marker, legend
+        marker, the ~50-marker JS/CSS markup of the God-source render, gate/milestone marker)
+        while the code field resolved.Span.Marker binds the bare token to ONE referent.
+      preferred_cure: >-
+        Qualify outside the one field — editorial marker / legend marker / gate marker; bare
+        `marker` only as the unresolved_marker span's token field.
+    cites: [CDP-050, CDP-051, CDP-064, AP-023, AP-029]
+
+  # ===========================================================================
+  # ASP-1 Greek-predicate unification (2026-06-29).
+  # The four Greek predicates are DISTINCT and single-owned.  No caller may
+  # re-derive the class, the letter test, the uppercase test, or a fold.
+  # ===========================================================================
+
+  conservation_greek:
+    signifier_form: [conservation_greek, GREEK_RE]
+    canonical_referent: >-
+      The codepoint CLASS whose presence is conserved across every cleaning edit:
+      Greek + Coptic (U+0370–U+03FF), Greek Extended (U+1F00–U+1FFF), and the
+      combining diacritical marks (U+0300–U+036F) that attach to Greek letters.
+      Owned as `GREEK_RE` in `cluster_greek_quality_gates/oracle/grc_conservation.py`; helpers
+      `greek_subsequence`, `greek_multiset`, `greek_running_text`, and
+      `has_greek` are views of the same class.
+    canonical_sense: >-
+      This is the CONSERVATION class, not the letter test and not a fold.  A stage
+      may relocate or delete non-Greek matter, but no codepoint in this class may
+      vanish from the corpus without reappearing in an overlay.  Consumers import
+      the owner; they never recompile `[Ͱ-Ͽἀ-῿]` or `[\u0370-\u03FF\u1F00-\u1FFF]`.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/grc_conservation.py}
+    pipeline_reach: [raw, canonical, sid_assigned, translated, bilingual_paired, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Single owner enforced by guardians/cli/check_single_definitions.py; migration complete.}
+    cites: [CDP-046, CDP-051, INV-TXT-11]
+
+  greek_letter:
+    signifier_form: [greek_letter, is_greek_letter]
+    canonical_referent: >-
+      The LETTER test: true iff a single character is a Greek letter (Unicode
+      category L in the Greek + Greek-Extended blocks).  Owned as
+      `is_greek_letter` in `cluster_greek_quality_gates/oracle/greek_normalizer.py`.
+    canonical_sense: >-
+      Distinct from `conservation_greek` (which includes combining marks, spacing
+      accents, and Greek-block symbols) and from `is_greek_char` (the
+      Unicode-name-based codepoint test used for Latin detection / `_desigma`).
+      This predicate answers ONLY "is this a Greek letter?".
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/greek_normalizer.py}
+    pipeline_reach: [raw, canonical, sid_assigned]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Single owner selected 2026-06-29 (D-letter); retiring scripts/audit/check_speaker_coverage._is_greek_letter.}
+    cites: [CDP-046, CDP-051]
+
+  greek_allcaps:
+    signifier_form: [greek_allcaps, is_allcaps_greek]
+    canonical_referent: >-
+      The UPPERCASE test: true iff a string contains at least one uppercase Greek
+      letter and NO lowercase Greek letter.  Punctuation, digits, and non-Greek
+      characters are transparent.  Owned as `is_allcaps_greek` in
+      `cluster_greek_quality_gates/oracle/greek_normalizer.py`; built on `greek_letter` so the letter test
+      stays single-owned.
+    canonical_sense: >-
+      Titlecase precomposed capitals (category Lt) count as upper.  This is the
+      predicate for detecting numbered-book / section headings that are all-caps
+      Greek.  Distinct from the conservation class and from the search fold.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/greek_normalizer.py}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Single owner selected 2026-06-29 (D-home); retiring scripts/audit/check_speaker_coverage._is_allcaps_greek.}
+    cites: [CDP-046, CDP-051]
+
+  conservation_fold:
+    signifier_form: [conservation_fold, greek_subsequence, greek_multiset]
+    canonical_referent: >-
+      The diacritic-preserving, case-preserving, final-sigma-preserving fold used
+      for conservation accounting.  Implemented in `cluster_greek_quality_gates/oracle/grc_conservation.py`
+      as `greek_subsequence` (order-preserving) and `greek_multiset` (order-blind).
+    canonical_sense: >-
+      This fold answers "did any Greek codepoint disappear, appear, or (for the
+      subsequence) reorder?"  It must NOT strip accents, lower-case, or unify
+      sigma.  Distinct from `search_fold` and `geometry_fold`.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/grc_conservation.py}
+    pipeline_reach: [canonical, sid_assigned]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One of four correctly distinct folds; single owner.}
+    cites: [CDP-046, CDP-051, INV-TXT-11]
+
+  search_fold:
+    signifier_form: [search_fold, fold_for_fidelity]
+    canonical_referent: >-
+      The diacritic-insensitive, lowercased, sigma-unified fold used to COMPARE
+      a work to the God Source (v18) under orthographic noise.  Owned as
+      `fold_for_fidelity` in `src/core/stream_fidelity.py`.
+    canonical_sense: >-
+      This fold answers "where does this Greek content appear in the God Source
+      if we ignore accents, case, and lunate/final-sigma distinctions?"  It
+      keeps spaces/punctuation so the alignment can follow the source's word
+      geometry.  It builds on `conservation_greek` (importing `GREEK_RE`) but is
+      NOT the conservation class.  Distinct from `overlay_lift_fold` and
+      `geometry_fold`.
+    owner: {domain: TXT, file: src/core/stream_fidelity.py}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One of four correctly distinct folds; single owner.}
+    cites: [CDP-046, CDP-051]
+
+  overlay_lift_fold:
+    signifier_form: [overlay_lift_fold, lemma_foldkey, grc_fold]
+    canonical_referent: >-
+      The Greek match-fold family used to LOCATE a margin coordinate in the
+      canonical body (titles, lines, references, speakers) and to merge
+      lexicon/surface forms. Two live bindings share the ratified Greek core
+      (lowercase, strip combining, final/lunate sigma ς/Ϲϲ→σ, single-pass
+      iota-adscript canonicalisation): the Python letters-only merge-key
+      `lemma_foldkey` in `cluster_greek_quality_gates/oracle/greek_normalizer.py`
+      and the SQL boundary-preserving search-fold `grc_fold`
+      (`eulogikon.grc_fold`). They are NOT byte-identical: the merge-key keeps
+      letters only and glues, while the search-fold keeps boundaries. Coherence
+      invariant: `lemma_foldkey(t) == letters_only(grc_fold(t))`. A byte-identical Go
+      twin lands in `cluster_greek_quality_gates/grcfold/` on the record ring's first
+      consumer (golden-mastered against this owner).
+    canonical_sense: >-
+      This fold answers "do these two Greek strings match under accent, case,
+      punctuation, sigma-variant (incl. lunate), and iota adscript/subscript
+      variance?" The Python binding drops all non-letters; the SQL `grc_fold`
+      binding keeps spaces/punctuation/digits so search can follow word
+      geometry. Distinct from `search_fold` (God-source fidelity,
+      `fold_for_fidelity`) and `geometry_fold`.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/greek_normalizer.py}
+    pipeline_reach: [raw, canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One match-fold family with two bindings (Python merge-key / SQL search-fold) related by letter-projection; lunate→σ conformed to the ratified core 2026-07-09; consolidated from `majusculize.fold_compare` 2026-07-01.}
+    cites: [CDP-046, CDP-051]
+
+  geometry_fold:
+    signifier_form: [geometry_fold, fold_char, fold_str]
+    canonical_referent: >-
+      The structure-repair fold used by the monolith defuse process to compare
+      source and canonical spans at the ekthesis geometry boundary.  Owned as
+      `fold_char` / `fold_str` in
+      `archive/cleaning_substrate/stages/substrate_30_structure_repair/defuse_monolith.py`.
+    canonical_sense: >-
+      This fold answers "do these two spans match at the boundary where
+      segmentation may have changed?"  It is tuned for the defuse geometry
+      comparison and is deliberately distinct from `search_fold` and
+      `conservation_fold`.
+    owner: {domain: TXT, file: archive/cleaning_substrate/stages/substrate_30_structure_repair/defuse_monolith.py}
+    pipeline_reach: [canonical]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One of four correctly distinct folds; single owner.}
+    cites: [CDP-046, CDP-051]
+
+  editorial_marks:
+    signifier_form: [editorial_marks, EDITORIAL_MARKS]
+    canonical_referent: >-
+      The conserved set of editorial signs: angle brackets and aliases (U+3008/9,
+      U+2329/A, U+27E8/9), square brackets, and the cruces † ‡ ÷.  Owned as
+      `EDITORIAL_MARKS` in `cluster_greek_quality_gates/oracle/grc_conservation.py`.
+    canonical_sense: >-
+      These marks are conserved until the Stage-8 decision that judges them; none
+      is created or destroyed before then.  Distinct from apparatus-sigil sets
+      (which may include metric symbols and `×`).  Consumers import the owner;
+      they never recompile a dagger/obelus literal.
+    owner: {domain: TXT, file: cluster_greek_quality_gates/oracle/grc_conservation.py}
+    pipeline_reach: [raw, canonical, sid_assigned]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Single owner; obelus ÷ added 2026-06-24 per ASP-6 owner ruling.}
+    cites: [CDP-046, CDP-051]
+
+  hyphen_chars:
+    signifier_form: [hyphen_chars, HYPHEN_CHARS]
+    canonical_referent: >-
+      The set of hyphen/codepoint characters used in the hyphenation pipeline:
+      soft hyphen (U+00AD) and hyphen (U+2010).  Owned as `HYPHEN_CHARS` in
+      `src/hyphenation/constants.py`.
+    canonical_sense: >-
+      A narrow mechanical set, not a Greek predicate.  Consumers import the owner;
+      they never recompile `[\u00AD\u2010-]`.
+    owner: {domain: hyphenation, file: src/hyphenation/constants.py}
+    pipeline_reach: local
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Single owner enforced by guardians/cli/check_single_definitions.py.}
+    cites: [CDP-046, CDP-051]
+
+  scope:
+    signifier_form: scope
+    canonical_referent: >-
+      The corpus-scope discipline: the set of works a pipeline stage operates over
+      — "every work in the corpus", never a per-work subset. A stage is correct for
+      its whole scope or it is broken (CDP-040).
+    canonical_sense: >-
+      "Scope" in eulogikon is about CORPUS COVERAGE, not retrieval. NOTE (cross-repo):
+      the sister repo EuGraphikon binds "scope" to a DIFFERENT referent (the set of
+      collections a retrieval role searches). Adjacent repos, one signifier, two
+      referents — EuGraphikon must qualify as `retrieval_scope` to avoid the
+      collision. Flagged by EuGraphikon/scripts/check_shared_vocabulary.py.
+    owner: {domain: TXT, file: docs/specification/doctrine/no_per_case_patching.md}
+    status: aligned
+    polysemy_debt:
+      has_debt: false
+      kind: clean-but-cross-repo-adjacent
+      cause: One referent within eulogikon (corpus coverage); the cross-repo clash with EuGraphikon's retrieval-scope is the importer's to disambiguate.
+    cites: [CDP-040]
+
+  qualifier_head:
+    signifier_form: [qualifier_head, "Qualifier-Head"]
+    canonical_referent: >-
+      The database-identifier naming grammar (CDP-056 / §56): every schema, table,
+      column, and key reads `{qualifier...}_{head}` — the head a baptised subject
+      registered here, each qualifier a registered referent narrowing it. The
+      noun-grammar dual of CDP-051 (Subject-Verb-Object). The name reconstructs
+      referent + role without reading the DDL.
+    canonical_sense: >-
+      Two tests both pass: the head is a baptised subject and every token resolves
+      to one referent (declares); no `db_wrapper_denylist` member is the head or a
+      standalone grain, and no mechanism word sits at the head (no empty wrapper).
+      Permutation diagnostic decides void names (segment_unit ~ unit_segment).
+      Mirror of EuGraphikon's EUG-044 — one rule, family-wide. Held review-gate;
+      the EuKoine-pinned corpus-contract guardian flags failing live-schema identifiers.
+    owner: {domain: TXT, file: docs/governance/cdp_registry.yaml}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the DB naming grammar of CDP-056.}
+    cites: [CDP-051, CDP-055, CDP-056]
+
+  db_wrapper_denylist:
+    signifier_form: [db_wrapper_denylist]
+    canonical_referent: >-
+      The closed set of empty wrapper nouns forbidden (CDP-056) as a database
+      identifier head or standalone grain — each answers "X of what?" with no
+      referent (CDP-055 free-floating): unit, segment, ref, item, object, entry,
+      record, data, value, info, thing, element, part, piece, portion, span. Plus
+      the mechanism words forbidden at the head: base, dao, handler, manager,
+      provider, app, schema.
+    canonical_sense: >-
+      Several members are already retired in their own right (unit ->
+      SID/RID, ADR-017; segment, ADR-017; ref -> legacy_reference,
+      ADR-014). This entry generalises the ban to the database-naming surface. A
+      registered baptised head whose final token historically was a wrapper but
+      which as a whole binds its referent (legacy_reference) is NOT a violation —
+      the ban is on the BARE wrapper as head. A SECOND exception (CDP-056
+      declared-polymorphic-table): a {subject}_-qualified wrapper column
+      ({subject}_value / {subject}_scheme / {subject}_class) in a table DECLARED
+      polymorphic with a mandatory {subject}_kind discriminator over a closed,
+      registered kind-set is NOT a violation — the discriminator supplies the
+      referent at row grain (overlay_value <- overlay_kind). A bare or
+      non-discriminated value / scheme column remains banned.
+    owner: {domain: TXT, file: docs/governance/cdp_registry.yaml}
+    status: retired
+    polysemy_debt: {has_debt: false, kind: clean-after-retirement, cause: Closed denylist of empty wrappers; CDP-056.}
+    cites: [CDP-055, CDP-056]
+
+  embedding:
+    signifier_form: [embedding]
+    canonical_referent: >-
+      The vector representation of an addressed Greek thing (a SID, or an RID
+      range) for similarity search — `eulogikon.units_index.embedding` (pgvector).
+      A baptised CDP-056 head: `{sid|rid}_embedding` reads "the vector of that
+      SID/RID".
+    canonical_sense: >-
+      A legitimate head (answers "what is this?": a vector). Distinct from the
+      thing embedded (the SID/RID) and from the model that produced it.
+    owner: {domain: TXT, file: cluster-corpus-database/src/database_cluster/ddl/schema_v2.sql}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the vector of an addressed thing.}
+    cites: [CDP-056]
+
+  citation_unit:
+    signifier_form: [citation_unit, CitationUnit]
+    canonical_referent: >-
+      IL[1] of a work's source-declared citation hierarchy: the NAMED GRAIN the
+      edition's reference scheme counts in (Fragment / Page / Section / Epigram /
+      Entry / Stephanus page / Book / ...). Derived from — never independent of —
+      the registered `citation_level_labels` list: `citation_unit == citation_level_labels[1]`
+      (falling back to [0] for a single-level work). Emitted as the `citation_unit`
+      attribute of the `<citation_scheme>` element on every resolved_source record.
+    canonical_sense: >-
+      A QUALIFIED signifier, and legitimate as such: it says what it is a unit OF
+      (the citation), unlike the bare `unit` that CDP-055 retires as free-floating.
+      Registered here because it CROSSES A BOUNDARY (Go struct -> XML attribute ->
+      the emitted store and the structure cards) and an unbaptised boundary-crossing
+      name is a CDP-051 violation regardless of how clear it reads. It is a
+      DERIVED VIEW of `citation_level_labels`, never a second source of that fact:
+      both are read from the one `var IL = [...]` declaration in the russians-layer
+      God Source, whose reading is owned by that entry. Independent evidence of a
+      work's form (a triangulation cross-check against form_family/structure), never
+      an authority over it. CDP-051 head: the subject is the `unit` grain, qualified
+      `citation`; the head is conserved from `citation_level_labels`' own wording.
+    owner: {domain: decode, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_reader/decode.go}
+    status: aligned
+    polysemy_debt:
+      has_debt: false
+      kind: clean
+      cause: >-
+        The Go reader's internal field is renamed to `CitationLevelLabels`, matching
+        the registered `citation_level_labels` head. Both readers (Go tokenizer and
+        Python regex) still read the one immutable `var IL = [...]` God Source; the
+        single-level fallback (`len(levels)==1 → levels[0]` in `citationUnit`) is
+        documented as the contract for flat works and is now shared knowledge.
+    cites: [CDP-006, CDP-050, CDP-051, CDP-055, CDP-060]
+
+  citation_level_labels:
+    signifier_form: [citation_level_labels]
+    canonical_referent: >-
+      The ordered list of source-declared citation-level names for a work,
+      extracted from the `var IL = [...]` array in the russians-layer source HTML.
+      IL[0] is always "Line" (the finest level); IL[1] is the citation unit
+      (Fragment / Page / Section / Epigram / Entry / Stephanus page / ...);
+      IL[2+] are coarser (Book / Volume / Play). Stored at the `source` level of
+      the provenance index, sibling to `edition`.
+    canonical_sense: >-
+      Materialises the source's citation-hierarchy declaration so consumers know
+      the semantic NAME of each hierarchy level without re-reading the HTML.
+      Distinct from `edition.citation_style`, which carries only the format string
+      and `hierarchy_depth` (a count) — the labels are not recoverable from the
+      depth. The citation unit (IL[1]) is independent evidence of a work's form,
+      a triangulation cross-check against form_family/structure, never an
+      authority over it.
+    owner: {domain: provenance, file: scripts/provenance/build_provenance_index.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the source-declared citation-level labels.}
+    cites: [CDP-006, CDP-049, CDP-051, INV-MD-08]
+
+  doxography:
+    signifier_form: [doxography]
+    canonical_referent: >-
+      A work-level form_family (ADR-018 §2, 21-family locked list): the genre of
+      reports of philosophers' doctrines+writings — the Placita tradition (Aëtius,
+      ps-Plutarch), Theophrastus' founding Physikōn doxai, Arius Didymus, and the
+      Diels-Kranz testimony sections. The value stored in
+      eulogikon.works.form_family / authors.form_family.
+    canonical_sense: >-
+      One referent, one role: doxography is a form_family ONLY. It was formerly a
+      form_type leaf under `compilation`; that leaf is RETIRED (CDP-006/CDP-051
+      bijection — a signifier may not be both a family and a sub-kind). Distinct
+      from `biography` (reports of lives) and from `compilation` (gatherings of
+      excerpts: florilegium/anthology) and from `paradoxography` (reports of
+      marvels — a different genre that merely shares the 'doxograph' substring and
+      stays a compilation form_type).
+    owner: {domain: TXT, file: scripts/audit/check_classification_coherence.py}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: resolved, cause: form_type leaf retired on promotion to family (2026-06-23); one referent.}
+    cites: [ADR-018, CDP-006, CDP-051]
+
+  decode_closure_record:
+    signifier_form: [decode_closure_record, closure record]
+    canonical_referent: >-
+      The machine-derived, non-forgeable proof that the God-source decode closure
+      gates were run at a checkpoint —
+      `cluster_god_sources_v6_csv_grid/decode_god_sources_xml_data/decode_closure_record.json`, written solely by
+      decode_check_closure.py. Content-addressed by the freshness triple
+      (legend_hash, reader_source_hash, gate_scripts_hash); carries the gate exit
+      codes and any open blocking_findings; no timestamp (the triple is identity).
+    canonical_sense: >-
+      One referent: the committed record IS the checkpoint proof. `--verify`
+      re-derives the triple and diffs, so a missing or stale record is a provable
+      skip, never an agent's prose claim. DISTINCT from the resolved_source
+      `exception_ledger` (a closure register of works that could not be decoded,
+      each with a stated reason — a T3 concern) and from a coverage table (an
+      ephemeral read-model tabulation). The two must not merge (CDP-051 bijection).
+    owner: {domain: decode, file: cluster_god_sources_v6_csv_grid/decode_god_sources_xml_code/decode_check_closure.py}
+    pipeline_reach: local
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: One referent — the decode checkpoint proof artifact.}
+    cites: [CDP-006, CDP-037, CDP-047, AP-018]
+
+
+  greek_quality_gate:
+    signifier_form: [greek_quality_gate]
+    canonical_referent: >-
+      The stand-alone cluster (`cluster_greek_quality_gates/`) that proves "one
+      Greek, every word real Greek" over any text set (God-source renders, decode
+      outputs, canonical v3, future v5, bare texts) by running seven axes — the
+      encoding floor (NFC, sigma, fold authority, subscript-iota), the morphological
+      keystone (every word real under Morpheus / `form_lemma`; hyphen-rejoin into a
+      valid word), and the advisory LLM judge — and emitting a per-text
+      `quality_verdict`.
+    canonical_sense: >-
+      One referent: the cluster and its narrow typed port (`GreekQualityGate`). It
+      analyses and reports; it never edits canonical text (CDP-042). DISTINCT from
+      the deprecated `archive/cleaning_substrate/greek-quality-gates/` folder (a catch-all
+      location, superseded — see cleaning_substrate/DEPRECATED.md) and from the LLM
+      judge (axis 7 lives in cluster-llm-boundary-semantic). Head is `gate` (the
+      regulated acceptance bar); "quality check" is rejected (mechanism-verb as head).
+    owner: {domain: GRC, file: cluster_greek_quality_gates/PROGRAM.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; supersedes the deprecated cleaning_substrate folder; one referent.}
+    cites: [CDP-042, CDP-050, CDP-051, CDP-059]
+
+  quality_verdict:
+    signifier_form: [quality_verdict]
+    canonical_referent: >-
+      The per-text output of the Greek quality gate: the seven-axis result for one
+      text in one `text_set`, plus the aggregate `gate` (pass | fail | undecided).
+    canonical_sense: >-
+      One referent: the verdict artifact (never replacement Greek). DISTINCT from a
+      decode `Verdict` (a reader outcome) and from an LLM `judge` verdict (axis 7
+      only). Head is `verdict`.
+    owner: {domain: GRC, file: cluster_greek_quality_gates/PROGRAM.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; held distinct from decode Verdict and LLM judge verdict.}
+    cites: [CDP-037, CDP-042, CDP-051]
+
+  text_set:
+    signifier_form: [text_set]
+    canonical_referent: >-
+      Any keyed collection of Greek strings the Greek quality gate can analyse — one
+      of {God-source renders, decode outputs, canonical v3, future v5, bare texts} —
+      yielded by a small adapter, each string keyed by `eul_wid` (+ `sid` when
+      available).
+    canonical_sense: >-
+      One referent: the adapter-abstraction that makes the gate text-set agnostic.
+      DISTINCT from a `work` (one `eul_wid`) and from the corpus (all works). Head is
+      `set`.
+    owner: {domain: GRC, file: cluster_greek_quality_gates/PROGRAM.md}
+    pipeline_reach: [raw, canonical, sid_assigned, rendered]
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; names the adapter input, never a work or the corpus.}
+    cites: [CDP-051, CDP-059]
+
+  resolved_source_task_graph:
+    signifier_form: [resolved_source_task_graph, task_graph]
+    canonical_referent: >-
+      The machine-readable dependency DAG of the god-sources program's forward work
+      (decode_god_sources_central_plan/resolved_source_task_graph.yaml): one node per
+      task, hard/soft finish-to-start edges, three-point estimates, statuses. The
+      single computation source for the program's critical path, subordinate to
+      cluster-god-sources-xml/ROADMAP.md (the ordering authority; the graph computes,
+      the document rules).
+    canonical_sense: >-
+      One referent: the computed-instrument DAG. DISTINCT from ROADMAP.md (governing
+      roadmap), from campaign wave tables (bindings, never orderings), and from the
+      generated analysis report (regenerated state in decode_current_state/). CDP-051
+      head: the baptised program subject `resolved_source`, qualified `task_graph`.
+      Figure discipline: node names/notes carry no counts; they cite figure
+      authorities.
+    owner: {domain: TXT, file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_task_graph.yaml}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; one artifact, one referent.}
+    cites: [CDP-047, CDP-051, CDP-059]
+
+  task:
+    signifier_form: [task]
+    canonical_referent: >-
+      One node of the resolved_source_task_graph: a unit of program work, or a
+      zero-duration milestone/gate/owner-decision marker, carrying status
+      (pending | active | done), hard/soft dependency edges, and a three-point
+      estimate (or duration zero).
+    canonical_sense: >-
+      Scoped to the sequencing instrument — a planning-layer node, never a corpus or
+      text-pipeline object. DISTINCT from a campaign wave (a binding over tasks), a
+      review point (a decoder emission), and a work (an eul_wid). Head is `task`.
+    owner: {domain: TXT, file: .claude/skills/sequence/references/task_graph_spec.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; scoped to the task-graph instrument.}
+    cites: [CDP-051]
+
+  sequence:
+    signifier_form: [sequence]
+    canonical_referent: >-
+      The development-time planning skill (.claude/skills/sequence/) and its
+      deterministic engine (scripts/cpa.py): validate the resolved_source_task_graph
+      as a DAG, run the CPM forward/backward pass for float and the critical chain,
+      Monte-Carlo the three-point estimates, render visuals, and emit the analysis
+      report — strictly under the authority of cluster-god-sources-xml/ROADMAP.md.
+    canonical_sense: >-
+      One referent: the computing instrument (skill + engine). It computes; the
+      document rules. DISTINCT from the legacy DB column sequence_num (unit ordering).
+      Head is `sequence` (the discipline's canonical CPM/sequencing sense; O/M/P, te,
+      float, ES/EF/LS/LF are imported from that canon, not coined).
+    owner: {domain: TXT, file: .claude/skills/sequence/SKILL.md}
+    status: aligned
+    polysemy_debt: {has_debt: false, kind: clean, cause: Fresh baptism; held distinct from sequence_num.}
+    cites: [CDP-046, CDP-051]
+
+  observational_defect:
+    signifier_form: [observational_defect, OD]
+    canonical_referent: >-
+      A standing defect found by inspecting code or doctrine — a retrieve-path that
+      drops, collapses, or frames as anomaly a preservation kind the dual face
+      requires — catalogued under an OD-* id in
+      cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_observational_defect_register.md.
+      Not a runtime crash, not a gate-red alone, not CDP-046 rot.
+    canonical_sense: >-
+      One referent: code-inspection loss of a named preservation kind. Head is
+      `defect` (observational is the qualifier). DISTINCT from a review point (decoder
+      emission), a gate failure (live falsifier red), and rot (dead live-graph structure).
+    owner:
+      {
+        domain: TXT,
+        file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_observational_defect_register.md,
+      }
+    status: aligned
+    polysemy_debt:
+      {
+        has_debt: false,
+        kind: clean,
+        cause: Fresh baptism; scoped to the observational-defect register.,
+      }
+    cites: [CDP-047, CDP-051]
+
+  preservation_kind:
+    signifier_form: [preservation_kind, K-]
+    canonical_referent: >-
+      A named class of data that must survive God source → resolved_source → v5 → dual
+      face end-to-end (e.g. K-greek, K-seam, K-grid, K-overlay, K-whitespace,
+      K-waypoint, K-speaker). Each kind requires a retrieve path, a dual-face
+      invariant, and a falsifier — ideally a regulator axis or sub-axis under
+      reg_resolved_source_preservation.
+    canonical_sense: >-
+      One referent: the taxonomy unit for end-to-end preservation obligations. Head is
+      `kind` (preservation is the qualifier). DISTINCT from an overlay_kind (v5 overlay
+      type) and from a review_kind (sense/form adjudication).
+    owner:
+      {
+        domain: TXT,
+        file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_observational_defect_register.md,
+      }
+    status: aligned
+    polysemy_debt:
+      {
+        has_debt: false,
+        kind: clean,
+        cause: Fresh baptism; held distinct from overlay_kind / review_kind.,
+      }
+    cites: [CDP-051]
+
+  spacer:
+    signifier_form: [spacer]
+    canonical_referent: >-
+      The resolved_source layout node `<spacer>` (and RusEvent EvSpacer) for a full-row
+      qS/qSpace section-divider cell in the russian_source — functional vertical
+      whitespace retrieved for the human face (H12). Legend class_role is spacer;
+      distinct from inline BETA horizontal spacer glyphs and from blank_line (class B).
+    canonical_sense: >-
+      One referent: the section-divider layout element in the store. Head is `spacer`
+      (legend role conserved). DISTINCT from blank_line (stanza/paragraph B cells) and
+      from HTML/BETA <spacer type=horizontal> width glyphs.
+    owner:
+      {
+        domain: TXT,
+        file: cluster-god-sources-xml/decode_god_sources_central_plan/resolved_source_schema_roles.yaml,
+      }
+    status: aligned
+    polysemy_debt:
+      {
+        has_debt: false,
+        kind: clean,
+        cause: "Fresh baptism; element replaces former span[@role=spacer] for cell-level qS.",
+      }
+    cites: [CDP-051]

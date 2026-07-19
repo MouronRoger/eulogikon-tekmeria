@@ -1,0 +1,32 @@
+---
+description: >-
+  EKDP-032 / CDP-057 — `.eukoine/` is the family single source. Pointer-only elsewhere;
+  no secondary re-derivations.
+alwaysApply: true
+---
+
+# EKDP-032 / CDP-057 — `.eukoine/` single source
+
+**Principle:** eulogikon `CDP-057` · EuKoine `EKDP-032` (`docs/governance/registry.yaml`).
+
+**Canonical documents** (the only places that *state* this material):
+
+| Document | States (canonically) |
+|---|---|
+| [`.eukoine/corpus_identity_and_schema.md`](.eukoine/corpus_identity_and_schema.md) | identity grid, v5, schema, `corpus_api` |
+| [`.eukoine/interim_head_citation.md`](.eukoine/interim_head_citation.md) | interim head citation while passage identity is provisional |
+| [`.eukoine/predicate_vocabulary.md`](.eukoine/predicate_vocabulary.md) | consult-before-coin obligation (shared code lexicon) |
+| [`.eukoine/predicate_lexicon.yaml`](.eukoine/predicate_lexicon.yaml) | positive registry of baptised code signifiers |
+| [`.eukoine/WRITE_ACCESS.md`](.eukoine/WRITE_ACCESS.md) | write protection, synchronizing-agent workflow, git safety |
+
+## Agent obligations (every repo)
+
+1. **Read freely** — use the canonical documents above.
+2. **Pointer only elsewhere** — no summary, explanation, reinterpretation, or re-derivation of
+   `.eukoine/` content in any other file (EKDP-004/005; rot G4). Cite by path; never copy
+   normative prose.
+3. **Never hand-edit a member's `.eukoine/` mirror** — there is one canonical copy at the hub; a
+   member copy is a byte-identical output of `naming/sync.py`, so a hand-edit is drift, rejected by the
+   content-bound guard. A change is made to the hub's canonical copy and re-synced — the cycle is
+   drivable from any family repo ([`WRITE_ACCESS.md`](.eukoine/WRITE_ACCESS.md)).
+4. **Drift** — fix the implementation; never patch the spec to match broken code.

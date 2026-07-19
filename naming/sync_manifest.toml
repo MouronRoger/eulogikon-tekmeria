@@ -1,0 +1,192 @@
+# EuKoine synchronising set — the synchronising artefacts pushed byte-identical to members from their canonical copy at the hub.
+#
+# This table IS the definition of the synchronising set. The sync tool iterates from
+# these declared keys; it NEVER discovers artefacts or repos by a filesystem glob
+# (EKDP-016 / ROT.md A5). A file under .eukoine/ not listed here is a finding, not an
+# auto-target. Membership is an owner decision (EKDP-027).
+#
+# Per the 2026-06-26 ruling: the hub PUSHES the shared-law document set and the
+# sync-protection enforcement down to members (byte-identical). It does NOT push any
+# member's own rot/cut doctrine — the three cuts are converging, but convergence is a
+# deliberate owner-gated motion, not an auto-sync (EKDP-031).
+
+# The canonical hub. Its `name` is the hub's directory name; the sync/lock tools
+# resolve it from any repo (self when run in the hub, else the sibling of that
+# name — override with the EUKOINE_HUB env var). Mirror paths below are resolved
+# relative to the resolved hub root, so the unlock/sync/relock cycle is drivable
+# from every family repo, not only the hub.
+[hub]
+name = "eukoine"
+
+[mirrors]
+eulogikon = "../eulogikon"
+EuGraphikon = "../EuGraphikon"
+EuMorphikon = "../EuMorphikon"
+eulogikon-semeia = "../eulogikon-semeia"
+
+# ── Synchronising DOCUMENTS — locked (OS-immutable + session-gated under .eukoine/) ──
+[[artefacts]]
+path = ".eukoine/corpus_identity_and_schema.md"
+kind = "document"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = ".eukoine/WRITE_ACCESS.md"
+kind = "document"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = ".eukoine/interim_head_citation.md"
+kind = "document"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = ".eukoine/predicate_vocabulary.md"
+kind = "document"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = ".eukoine/predicate_lexicon.yaml"
+kind = "document"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Sync-protection ENFORCEMENT — identical guard + cursor rule everywhere ──
+# The "no divergent interpretation" set; NOT a member's own cut doctrine.
+[[artefacts]]
+path = "scripts/audit/check_eukoine_spec_protected.py"
+kind = "enforcement"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = ".cursor/rules/eukoine-single-source-readonly.mdc"
+kind = "enforcement"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Family governance schema — FCH structure law ──────────────────────────────────────────
+[[artefacts]]
+path = ".eukoine/functional_concern_homes.schema.yaml"
+kind = "schema"
+locked = true
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Sync toolchain — the unlock/sync/relock cycle, runnable from every repo ──
+# The tools are synced byte-identical so any member can drive the cycle against
+# the resolved hub. They are ordinary tracked files (never OS-locked): the guard
+# and the lock apply to the .eukoine/ spec, not to the tooling that maintains it.
+[[artefacts]]
+path = "naming/sync.py"
+kind = "tooling"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = "naming/_manifest.py"
+kind = "tooling"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = "naming/sync_manifest.toml"
+kind = "tooling"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = "scripts/eukoine_spec_lock.py"
+kind = "tooling"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Greek-fold authority enforcement ───────────────────────────────────────
+# One guard implementation and one regular-suite contract across the active
+# development repositories.  Branch campaigns point to STANDARDS.md but are
+# deliberately outside this enforced set until their later revisit.
+[[artefacts]]
+path = "scripts/audit/check_fold_authority.py"
+kind = "enforcement"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = "tests/test_fold_authority.py"
+kind = "test"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+[[artefacts]]
+path = "tests/test_fold_authority_guard.py"
+kind = "test"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Greek-fold Python authority — the ONE definition, vendored byte-identical ─
+# greek_normalizer.py (lemma_foldkey + canonical_lemma) is the sole Python fold
+# authority (STANDARDS.md §2a). Vendored byte-identical into each member so no
+# consumer reaches across `../eukoine` at runtime; the fold guard exempts the
+# authority at this path in every repo, and `sync verify` proves the copy equals
+# the hub. Self-contained (stdlib only, no file I/O).
+[[artefacts]]
+path = "tooling/normalization/greek_normalizer.py"
+kind = "binding"
+locked = false
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+
+# ── Greek-fold SQL binding — the canonical definition, single-sourced ─────────
+# grc_fold is the SQL twin of lemma_foldkey (STANDARDS.md §2a). ONE writable
+# definition lives at the hub; eulogikon loads it byte-identical via `\ir` from
+# scripts/database/svf_rag_setup.sql instead of re-typing the body — so there is
+# no second writable source that can drift. Only eulogikon deploys the shared-DB
+# function, so it is the sole target.
+[[artefacts]]
+path = "tooling/normalization/grc_fold.sql"
+kind = "binding"
+locked = false
+targets = ["eulogikon"]
+
+# ── Greek-fold GO binding — the third twin (owner decision, 2026-07-14) ───────
+# The SAME character rule as grc_fold.sql and greek_normalizer.py, in the language the
+# substrate engines are written in. Admitted because TWO Go modules must fold IDENTICALLY
+# — the keyed-window binding engine and the God-source decode reader — and a fold they
+# each rolled themselves is precisely the fork this set exists to prevent.
+#
+# WHY IT MATTERS: a keyed window folded with the WORD-KEY grain (lemma_foldkey, which drops
+# every non-letter) collapses two sites separated only by punctuation onto ONE folded
+# position — "λόγος, δέ" and "λόγος δέ" both become "λογοσδε" — so the binder can no longer
+# tell them apart and refuses a well-formed text. Binding folds with grc_fold: accent-blind,
+# PUNCTUATION-PRESERVING. Same character rule, two grains.
+#
+# Proven at landing against a live database and the Python authority:
+#   Go grc_fold == SQL grc_fold, and lettersOnly(GrcFold(t)) == lemma_foldkey(t), 18/18.
+# The golden vectors travel with the twin (grc_fold_test.go). go.mod/go.sum are vendored so
+# each consumer `replace`s to its local copy and compiles the hub's literal bytes — never a
+# proxy fetch, never a second definition.
+[[artefacts]]
+path = "tooling/normalization/grc_fold.go"
+kind = "binding"
+locked = false
+targets = ["eulogikon"]
+
+[[artefacts]]
+path = "tooling/normalization/grc_fold_test.go"
+kind = "test"
+locked = false
+targets = ["eulogikon"]
+
+[[artefacts]]
+path = "tooling/normalization/go.mod"
+kind = "binding"
+locked = false
+targets = ["eulogikon"]
+
+[[artefacts]]
+path = "tooling/normalization/go.sum"
+kind = "binding"
+locked = false
+targets = ["eulogikon"]

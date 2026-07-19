@@ -1,0 +1,48 @@
+# Title: EuKoine family — functional concern homes schema
+# Status: active
+# Authority_level: family law — defines the required structure for every member's functional_concern_homes.yaml
+# Scope: all enrolled family members
+# Relationship_to:
+#   law: docs/governance/canonical_design_principles.md    # EKDP-033
+#   standard: docs/governance/functional_grouping_standard.md
+
+# This file is the authoritative schema for the concern-home placement map that every enrolled
+# family member must maintain as docs/governance/functional_concern_homes.yaml. It travels
+# byte-identical to enrolled members via naming/sync_manifest.toml. The SCHEMA (this file) is
+# universal; the HOMES content in each member's instantiation is member-local.
+
+schema_version: "1.0"
+authority: "EKDP-033"
+
+# ── Canonical placement_test wording ─────────────────────────────────────────────────────────
+# Every member file must carry this wording as its placement_test.
+canonical_placement_test: >
+  When working on a concern, open its functional home first.
+  The answer to "where do I look?" must have one answer — not a comparison hunt across directories.
+
+# ── Required fields in every member functional_concern_homes.yaml ────────────────────────────
+required_fields:
+  top_level:
+    - schema_ref        # must equal ".eukoine/functional_concern_homes.schema.yaml"
+    - title             # five-field header (EKDP-010)
+    - status            # five-field header; values: draft | active | deprecated
+    - authority_level   # five-field header; "member navigation index — authoritative on placement, not on content"
+    - scope             # five-field header; "the {member} repo"
+    - relationship_to   # five-field header; must include family_schema and family_law keys
+    - authority         # must be "EKDP-033" (or successor)
+    - placement_test    # use canonical_placement_test wording above
+    - homes             # array; at least one entry
+
+  per_home_entry:
+    - concern           # one-line description of the concern
+    - home              # path relative to repo root
+
+  optional_per_home_entry:
+    - id                # navigation aid; pattern: FCH-{concern-slug}; member-local, not a family-wide designator
+    - others_may        # link/constraint policy for non-home locations
+    - firewall          # hard separation warning; use when two concerns must never be conflated
+    - state             # consolidated | home-to-confirm | reserved | partial
+    - owner_cite        # governing principle ID (EKDP-*, CDP-*, EMDP-*, etc.)
+
+  optional_top_level:
+    - code_homes        # only for members that ship engine code; hub omits this (EKDP-001: hub ships no engine)
