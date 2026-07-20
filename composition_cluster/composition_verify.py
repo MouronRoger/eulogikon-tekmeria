@@ -560,7 +560,7 @@ def check_bare_greek(con: sqlite3.Connection) -> Check:
     (slash-pair or gloss); the only tokens allowed to stand alone are the
     subject word and blacklist terms. Greek script in an English field is
     always a defect (evidence Greek lives in block.greek, not here). This is
-    the rule stated in prose_rules.md 'Greek script in English prose' and
+    the rule stated in STYLE.md § Formatting cross-check and
     'Words in English fields', enforced.
     """
     allowed = _allowed_translit_terms(con)

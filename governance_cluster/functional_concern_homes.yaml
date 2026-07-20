@@ -33,26 +33,26 @@ homes:
     state: consolidated
 
   - id: FCH-prose-authority
-    concern: "What a Tekmerion is as writing: balance, framing, endings, citations"
+    concern: "What a Tekmerion is as writing: balance, framing, endings, and formatting cross-check"
     home: STYLE.md
     owner_cite: "TDP-012"
     others_may: >
-      Greek-in-English craft at compose time is owned at
-      composition_cluster/prose_rules.md; STYLE points there and does not
-      restate it
+      composition-only boundaries (ecclesiastical exclusion, translation warrant)
+      live at composition_cluster/prose_rules.md; voice guidelines at craft.md;
+      neither restates formatting cross-check
     firewall: >
-      STYLE.md governs published-form prose and never procedure; the tekmerion
-      skill governs procedure and never prose; prose_rules.md governs
-      composition-field craft and never balance/framing/endings. None restates
-      the others.
+      STYLE.md governs published-form prose and the formatting cross-check;
+      the tekmerion skill governs procedure and never prose; prose_rules.md
+      governs composition-only boundaries and never balance/framing/endings
+      or field formatting. None restates the others.
     state: consolidated
 
   - id: FCH-composition-prose-craft
-    concern: "Greek-in-English rules for composition fields: gloss, physis, blacklist-safe English"
+    concern: "Composition-only prose boundaries: ecclesiastical exclusion, translation warrant, blacklist compose-time checks"
     home: composition_cluster/prose_rules.md
     owner_cite: "TDP-012"
     others_may: >
-      cite it; never restate its rules in STYLE or the skill
+      cite it; formatting cross-check is STYLE.md § Formatting cross-check only
     state: consolidated
 
   - id: FCH-composition-voice
@@ -60,10 +60,11 @@ homes:
     home: composition_cluster/craft.md
     owner_cite: "TDP-012"
     others_may: >
-      cite it; never restate its advice in STYLE or prose_rules
+      cite it; never restate formatting cross-check or prose_rules boundaries
     firewall: >
       craft.md governs reader interest at compose time; STYLE governs published
-      form; prose_rules governs field mechanics. None restates the others.
+      form including formatting cross-check; prose_rules governs composition-only
+      boundaries. None restates the others.
     state: consolidated
 
   - id: FCH-governance

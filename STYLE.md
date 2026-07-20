@@ -232,49 +232,14 @@ they are looking at, and occasionally what the arrangement makes newly visible.
 
 ## Evidence blocks
 
-Every Greek witness gets three lines. A reader without Greek must be able to
-follow the witness.
+Every Greek witness gets Greek, transliteration, and translation together so
+a reader without Greek can follow the station. Field-level rules and the
+pre-publish checklist are in **Formatting cross-check**.
 
-1. **The original Greek**, exactly as the corpus yields it, kept and never
-   replaced.
-2. **A transliteration**, normally ALA-LC: η -> ē, ω -> ō, θ -> th, φ -> ph,
-   χ -> ch, ψ -> ps, ξ -> x, rough breathing -> h.
-3. **An English translation**, without quotation marks around the whole line.
-
-The Greek is the evidence; the transliteration lets the non-reader hear it; the
-translation lets them read it. All three belong together.
-
-Long witnesses may be excerpted when the omitted material is not needed for the
-point at hand. Mark omissions plainly with ellipses in the Greek and in the
-translation where needed.
-
----
-
-## Greek in English prose
-
-Running English (commentary, framing, chapter leads, secondary pointers,
-ending) is **plain English** for a public reader. Greek belongs in the three
-evidence lines of a primary witness block. **Never bare untranslated Greek** on
-the published page.
-
-The subject word of the essay and blacklist-protected terms (*physis*, *psyche*,
-and the rest) may stay transliterated; everything else is English. Operational
-rules for composition fields live in
-[`composition_cluster/prose_rules.md`](composition_cluster/prose_rules.md).
 Voice guidelines (history of ideas, not verification voice) live in
-[`composition_cluster/craft.md`](composition_cluster/craft.md). Both apply to
-**every extended Tekmerion**, not one term only.
-
-When Greek script appears in running prose outside a witness block, every token
-needs an inline companion (transliteration or gloss); bare Greek script is a
-defect.
-
-Translations should usually be English. Use Greek script in a translation only
-when the untranslated form is itself the object of the note.
-
-**No em dashes (U+2014).** Repunctuate with colons, commas, parentheses, or
-middle dots (·). En dashes (U+2013) in reference ranges (e.g. `1078b17–31`) are
-fine. Details and examples are in the README.
+[`composition_cluster/craft.md`](composition_cluster/craft.md). Composition-only
+boundaries (ecclesiastical exclusion, translation warrant) live in
+[`composition_cluster/prose_rules.md`](composition_cluster/prose_rules.md).
 
 ---
 
@@ -368,30 +333,91 @@ a modern gloss (and even then, prefer landscape over "a definition that fits").
 
 ## Citations
 
-Each primary witness needs both the linked work title and the visible `wid`:
+The `wid` is the stable key; the reference locates the passage inside the work.
+Resolve the URL from the database; never hand-guess a display string.
+
+Citation shape, witness-block placement, and secondary pointers are in
+**Formatting cross-check** below. Dating-trap audit, verification voice, and
+corpus-metadata corrections stay in the composition store, not on the page.
+
+---
+
+## Formatting cross-check
+
+One checklist for mechanical rules on every English field and on published HTML
+before sign-off. Run it at the end of composition and again after projection.
+
+Composition-only boundaries (ecclesiastical exclusion, translation warrant,
+blacklist compose-time checks) are in
+[`composition_cluster/prose_rules.md`](composition_cluster/prose_rules.md).
+Phase 6 verifier checks (`composition_verify.py`): `bare_greek`,
+`apparatus_brackets`, `ecclesiastical_excluded`, blacklist, U+2014.
+
+### Titles, headings, and registry
+
+These are **running English**, same rule as commentary:
+
+- `<title>`, `<h1>`, breadcrumbs, `og:title`, `twitter:title`, JSON-LD
+  `headline`, meta descriptions, and `posts.json` title/blurb.
+- The essay's **subject word** is **Roman transliteration** (*philostorgia*),
+  never Greek script.
+- Blacklist-protected terms stay transliterated (*physis*, *psyche*).
+
+### Running English
+
+Commentary, framing, chapter leads, secondary pointers, ending, and all fields
+above.
+
+- **Plain English** for a public reader.
+- **Never bare untranslated Greek**: no Greek script and no bare ALA-LC
+  transliteration standing alone in an English field.
+- Subject word and blacklist terms may stay transliterated; everything else is
+  English (the wise, not spoudaios; cherishing, not storge; by *physis*, not
+  bare katà phýsin in commentary).
+- Greek script is allowed only when exact form matters (morphology, corpus
+  absence, lexical contrast). Every token needs an inline companion: slash pair
+  (`κατὰ φύσιν`/katà phýsin) or transliteration plus gloss (*philostorgia*,
+  family-affection).
+- Secondary `<p class="cite">` lines: English only.
+
+| Avoid in English fields | Prefer |
+|---|---|
+| psychai, psychē (inflected) | *psyche*, or plain English |
+| phýsei, physikḗ (inflected) | by *physis* |
+| spoudaios, phaulos, storge, archē, … | the wise, the base, cherishing, starting-point, … |
+| declined phrases from the excerpt | say it in English |
+
+### Witness blocks
+
+Each Greek blockquote is one witness with exactly three evidence lines:
+
+1. **Greek** verbatim from the corpus (ellipses for excerpted material).
+2. **Transliteration** ALA-LC (see
+   [`.claude/skills/tekmerion/references/transliteration.md`](.claude/skills/tekmerion/references/transliteration.md)).
+   The transliteration line may mirror Greek grammar; English fields do not.
+3. **English translation** without quotation marks around the whole line; **no
+   square brackets**; no editorial insertions. Interpretation belongs in
+   commentary below.
+
+One citation per witness in `<p class="witness-ref">` above the three lines.
+Optional framing above the citation; commentary below the translation. Do not
+duplicate the reference in framing and again after the translation.
+
+Example citation:
 
 > Demosthenes, *On the Embassy*, Eulogikon: fsm-cc, ref. Or19 1
 
-The `wid` is the stable key. The reference locates the passage inside the work.
-Resolve the URL from the database; never hand-guess a display string.
+### Punctuation
 
-### One citation per witness
+- **No em dashes (U+2014).** Repunctuate with colons, commas, parentheses, or
+  middle dots (·). Examples in [`README.md`](README.md).
+- En dashes (U+2013) in reference ranges (`1078b17–31`) are fine.
 
-Each Greek blockquote is one witness: one station in the corpus. It gets one
-citation, placed above the three lines in `<p class="witness-ref">`.
+### Blacklist-safe English
 
-Optional framing prose may sit above the citation. Commentary follows the
-translation.
-
-Do not repeat the reference in the framing prose and again after the
-translation. Do not bury the station identifier below the evidence while
-duplicating it in the lead-in.
-
-Inline `<p class="cite">` is for **secondary pointers** only: a parallel
-passage worth naming in one English sentence, not a stripped-down witness
-block. Write the pointer in plain English; **never bare untranslated Greek**
-in a cite line. It is not for dating-trap audit, verification voice, or corpus-
-metadata corrections; those stay in the composition store.
+Where *physis* is meant, English **nature** and **by nature** are forbidden.
+Prefer *physis*, by *physis*, affection by *physis*. Spelling: **physis**
+(ALA-LC), not phusis.
 
 ---
 

@@ -23,8 +23,9 @@ Provenance discipline (tekmerion skill):
   eventual corpus-boundaries section.
 * Titles, wids, refs, and URLs are CATALOG: resolved by query this session
   (recorded in the verification report), never from the survey JSON.
-* English-field craft: see ``composition_cluster/prose_rules.md`` and
-  ``composition_cluster/craft.md``. The ``blacklist_physis_nature`` rule forbids English "nature" / "by nature";
+* English-field formatting: ``STYLE.md`` § Formatting cross-check.
+  Composition-only boundaries: ``composition_cluster/prose_rules.md``.
+  The ``blacklist_physis_nature`` rule forbids English "nature" / "by nature";
   use *physis* / by *physis* in commentary and translations (transliteration
   lines may keep case forms that mirror the Greek, e.g. ``phýsei`` for φύσει).
 """

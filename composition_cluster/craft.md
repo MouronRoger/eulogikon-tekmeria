@@ -6,7 +6,8 @@ the **What this is** section of
 and alongside [`prose_rules.md`](prose_rules.md).
 
 This is not published-form authority ([`STYLE.md`](../STYLE.md)). It is not
-field mechanics (Greek-in-English, blacklist). It is a short set of **guidelines**
+formatting cross-check or composition-only boundaries ([`prose_rules.md`](prose_rules.md)).
+It is a short set of **guidelines**
 for writing prose a reader would keep reading.
 
 Before drafting blocks, skim a published exemplar on tekmeria.eulogikon.org
@@ -32,18 +33,12 @@ quote discipline belong in the composition store and verification report, not
 on the public page. The ending may carry a few reader-facing caveats
 (doxography, coverage limits); it is not a verification dump.
 
-**Plain English on the page.** The subject word of the essay and blacklist
-terms (*physis*, *psyche*) may stay transliterated; every other Greek word
-becomes English (the wise, not spoudaios; cherishing, not storge). **Never
-bare untranslated Greek** in framing, commentary, chapter prose, secondary
-pointers, or the ending. Greek belongs in the three evidence lines of a primary
-witness block.
+**Plain English on the page.** Field rules and the pre-publish checklist:
+[`STYLE.md`](../STYLE.md) § **Formatting cross-check**. Do not restate them here.
 
 **No ecclesiastical material.** Christian, patristic, and theological
 witnesses are outside the survey: not stations, not afterlife colour, not a
-closing flourish, never discussed within the entry. Do not reach past the
-surveyed span to reach them ("the word travels one step further into the
-Christian writers" is off the map). Full rule and enforcement in
+closing flourish, never discussed within the entry. Full rule and enforcement in
 [`prose_rules.md`](prose_rules.md).
 
 **Show, do not crown.** Commentary says what the line shows; it does not award

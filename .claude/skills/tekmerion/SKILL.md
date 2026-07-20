@@ -89,17 +89,19 @@ not a quote the agent types), and never hand-write `<p>`, `<em>`,
 - **STYLE.md**, obtained fresh this session (balance, framing, endings, citations).
   Do not work from memory of it. If absent, request it before composing.
 - **Composition phase only:** read
-  `composition_cluster/prose_rules.md` for Greek-in-English field craft and
+  `STYLE.md` § **Formatting cross-check** for all field formatting rules;
+  `composition_cluster/prose_rules.md` for composition-only boundaries;
   `composition_cluster/craft.md` for voice guidelines. If absent, request them
   before writing blocks.
 
 ## Division of authority
 
 - **STYLE.md**: authoritative for published-form prose (what a Tekmerion is,
-  balance, framing, evidence blocks, endings, citations).
-- **composition_cluster/prose_rules.md**: authoritative for Greek-in-English
-  craft at compose time (transliteration default, single-word gloss, *physis*,
-  translation warrant in English fields). STYLE points here; do not restate.
+  balance, framing, evidence blocks, endings, citations) and **Formatting
+  cross-check** (the single mechanical checklist).
+- **composition_cluster/prose_rules.md**: composition-only boundaries
+  (ecclesiastical exclusion, translation warrant, blacklist compose-time
+  checks). Does not restate formatting cross-check.
 - **composition_cluster/craft.md**: voice guidelines for composition (read
   the exemplars; avoid apparatus and philology on the page). Not published-form
   authority.
@@ -316,10 +318,10 @@ it. Write the section skeleton with the hinge stated early.
 
 ### Composition (Phases 4–5)
 
-Judgment only: write into the store, never into HTML. Read
-`composition_cluster/prose_rules.md` and `composition_cluster/craft.md` this
-session before drafting English fields. Do not run verification or projection
-in this phase.
+Judgment only: write into the store, never into HTML. Read `STYLE.md` §
+**Formatting cross-check**, `composition_cluster/prose_rules.md`, and
+`composition_cluster/craft.md` this session before drafting English fields.
+Do not run verification or projection in this phase.
 
 #### Phase 4: Stations, in chunks
 
@@ -338,18 +340,19 @@ heavy blocks of the prior chunk (the sliding window). Then, per station:
 5. **Three lines**: Greek verbatim; ALA-LC transliteration
    (`references/transliteration.md`); English translation with no quotation
    marks around the whole line and **no square brackets** (no editorial
-   insertions). **Translation warrant rule** (also in `prose_rules.md`): the
+   insertions). **Translation warrant rule** (`prose_rules.md`): the
    translation contains nothing without warrant in the Greek excerpt.
    Interpretation and hermeneutic argument belong in the commentary below the
-   block, where they are visibly the writer's. Prefer *physis* / by *physis*
-   over bare case forms in English fields.
+   block, where they are visibly the writer's. Running-English formatting:
+   `STYLE.md` § Formatting cross-check.
 6. **Blacklist: transliterate at the source.** The authoritative blacklist
    scan is **not** a manual step here: it is `check_blacklist` in
    `composition_verify.py`, which runs automatically on every verification
    pass (Phase 6) against every English field in the store and fails the
    report on any hit. The compose-time job is therefore to *not create* hits:
    where a Greek term would be flattened by its English gloss, leave it
-   transliterated and gloss in commentary (`prose_rules.md`, φύσις / *physis*).
+   transliterated and gloss in commentary (`prose_rules.md`, φύσις / *physis*;
+   full table in STYLE § Formatting cross-check).
    The single most common self-inflicted failure is rendering φύσει as "by
    nature": `blacklist_physis_nature` bans bare **nature** and **by nature**
    outright, so write **by *physis*** in every English field, including
@@ -421,7 +424,7 @@ contains, explicitly:
    prose, secondary pointer, ending) carries bare Greek script or a bare
    transliterated form. Every Greek token in running English has an inline
    companion (slash-pair or gloss); only the subject word and blacklist terms
-   stand alone (`prose_rules.md`, Greek-in-English). Enforced by the verifier,
+   stand alone (`STYLE.md` § Formatting cross-check). Enforced by the verifier,
    not left to the eye.
 4. **Apparatus brackets**: editorial brackets (⟨ ⟩ 〈 〉 [ ] † †) are kept in
    `block.greek` as a faithful record and **stripped on projection**; none may
@@ -481,8 +484,9 @@ The store is the state; the conversation is not.
 the store's `candidate` table (corpus drift surfaces here); continue from the
 first incomplete scaffold step.
 
-**Composition-only resume:** obtain STYLE.md,
-`composition_cluster/prose_rules.md`, and `composition_cluster/craft.md`;
+**Composition-only resume:** obtain STYLE.md (including § Formatting
+cross-check), `composition_cluster/prose_rules.md`, and
+`composition_cluster/craft.md`;
 read the index (hinge, section lines,
 claims register) and the blocks of the current chunk; continue from the first
 `pending` station. Never recompose a `checked` station from memory; to change a
@@ -530,8 +534,9 @@ the composition writers, not in HTML; re-project and sync.
 
 - [ ] STYLE.md obtained and read this session; prior Tekmeria and lexicon
       consulted
-- [ ] Composition phase: `composition_cluster/prose_rules.md` and
-      `composition_cluster/craft.md` read this session
+- [ ] Composition phase: STYLE.md § Formatting cross-check,
+      `composition_cluster/prose_rules.md`, and `composition_cluster/craft.md`
+      read this session
 - [ ] Live DB confirmed; question, hinge, complete-coverage predicate,
       trajectory confirmed by user
 - [ ] Candidate rows generated by one recorded query; stations derived in the

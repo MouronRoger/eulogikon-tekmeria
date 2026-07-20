@@ -57,4 +57,4 @@ two inside one piece.)
   `p.translit` (see witness-block.md).
 - In running English prose, use the same romanization for Greek words:
   pneûma, psychē, philostorgía, kólasis. Greek script in prose only where
-  exact form matters (STYLE.md, "Greek in English prose").
+  exact form matters (`STYLE.md` § Formatting cross-check).

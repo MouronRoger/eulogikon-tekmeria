@@ -8,6 +8,9 @@ no generators, no build step).
 
 ## Style
 
+Mechanical formatting (Greek in English, witness blocks, citations, punctuation,
+titles/meta): [`STYLE.md`](STYLE.md) § **Formatting cross-check**.
+
 **No em dashes (U+2014).** Repunctuate with colons, commas, parentheses, or middle
 dots (·) instead. Examples:
 

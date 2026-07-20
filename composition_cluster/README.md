@@ -4,8 +4,9 @@ Extended Tekmerion state and tooling. The per-term SQLite store (`*.db`) is
 gitignored working state; the committed Python modules and sidecar JSON/SQL
 files are the durable, rebuildable record.
 
-Read [`prose_rules.md`](prose_rules.md) for field craft and [`craft.md`](craft.md)
-for voice guidelines during the composition phase.
+Read [`STYLE.md`](../STYLE.md) § **Formatting cross-check** for field
+formatting; [`prose_rules.md`](prose_rules.md) for composition-only
+boundaries; [`craft.md`](craft.md) for voice during the composition phase.
 Procedure: [`.claude/skills/tekmerion/SKILL.md`](../.claude/skills/tekmerion/SKILL.md).
 Published-form prose (balance, framing, endings): [`STYLE.md`](../STYLE.md).
 
@@ -18,10 +19,11 @@ Pre-composition (Phases 0–3)  →  Composition (Phases 4–5)  →  Post-compo
 | Phase | Skill steps | Entry / scripts | Done when |
 |---|---|---|---|
 | **Pre-composition** | 0 Load, 1 gate, 2 candidates/stations, 3 trajectory | [`composition_build_store.py`](composition_build_store.py) from a candidates TSV | Essay, chapters, candidates, stations, `idx`, claims in the store; all stations `pending`; **zero** `block` rows |
-| **Composition** | 4 blocks (chunked), 5 ending | [`composition_write_blocks.py`](composition_write_blocks.py), [`composition_write_ending.py`](composition_write_ending.py) | Every station-disposition unit has block(s); ending in chapter VI; stations `drafted`; [`prose_rules.md`](prose_rules.md) and [`craft.md`](craft.md) applied. **No** verify, **no** HTML, **no** `posts.json` |
+| **Composition** | 4 blocks (chunked), 5 ending | [`composition_write_blocks.py`](composition_write_blocks.py), [`composition_write_ending.py`](composition_write_ending.py) | Every station-disposition unit has block(s); ending in chapter VI; stations `drafted`; STYLE § Formatting cross-check, [`prose_rules.md`](prose_rules.md), and [`craft.md`](craft.md) applied. **No** verify, **no** HTML, **no** `posts.json` |
 | **Post-composition** | 6 verify, 7 project, publish | [`composition_verify.py`](composition_verify.py), [`composition_project.py`](composition_project.py), then [`site_cluster/posts.json`](../site_cluster/posts.json) + [`site_build_index.py`](../site_cluster/site_build_index.py) | Clean verification report; stations `checked`; HTML under `site_cluster/public/`; index and sitemap in sync |
 
-A **composition-only** agent needs: the store, [`prose_rules.md`](prose_rules.md),
+A **composition-only** agent needs: the store, STYLE § Formatting cross-check,
+[`prose_rules.md`](prose_rules.md),
 [`craft.md`](craft.md), the whole `idx`, prior-chunk blocks, live corpus DB
 (QUOTE/CATALOG), and STYLE for balance. It does not run verify or projection.
 
@@ -50,7 +52,8 @@ see [`composition_verify.py`](composition_verify.py) module docstring.
   deterministic projection of the store.
 - **Single write path**: judgment lives in the writers and the store, not in
   hand-edited projected HTML.
-- **Same craft for every term**: [`prose_rules.md`](prose_rules.md),
+- **Same craft for every term**: STYLE § Formatting cross-check,
+  [`prose_rules.md`](prose_rules.md),
   [`craft.md`](craft.md), [`STYLE.md`](../STYLE.md), and this skill's
   **What this is** section apply to the next long-form Tekmerion, not only the
   current prototype.
