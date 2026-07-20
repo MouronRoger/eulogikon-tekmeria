@@ -1,15 +1,17 @@
 # IndexNow for tekmeria.eulogikon.org.
 #
-# Runs on push to main. Submits only when the HEAD commit message contains
-# the opt-in flag [indexnow]. Manual runs can submit the full sitemap.
+# Submits ONLY published essay URLs from posts.json. Never the index page,
+# assets, drafts, or any non-post path.
+#
+# Runs on push to main only when the HEAD commit message contains [indexnow].
+# Manual runs can submit every registered post.
 #
 # Setup:
-#   1. Repository secret INDEXNOW_KEY = the key string (same as
-#      site_cluster/public/<key>.txt).
-#   2. Deploy the key file (ordinary push to main).
-#   3. To submit changed pages: include [indexnow] in the commit message.
-#   4. To bootstrap / resubmit everything: Actions → indexnow → Run workflow
-#      with "Submit all sitemap URLs" checked.
+#   1. Repository secret INDEXNOW_KEY = the key string (same as the live
+#      /<key>.txt verification file on the published site root).
+#   2. To submit changed published posts: include [indexnow] in the commit
+#      message on main.
+#   3. To submit all published posts: Actions → indexnow → Run workflow.
 #
 # Best-effort: IndexNow failures are logged but do not fail the build.
 
@@ -21,7 +23,7 @@ on:
   workflow_dispatch:
     inputs:
       submit_all:
-        description: "Submit all sitemap URLs (not just the push diff)"
+        description: "Submit all published posts from posts.json"
         type: boolean
         default: true
 
@@ -42,8 +44,8 @@ jobs:
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
             if [[ "$SUBMIT_ALL" == "true" ]]; then
-              echo "mode=sitemap" >> "$GITHUB_OUTPUT"
-              echo "Manual run: submit full sitemap"
+              echo "mode=all-posts" >> "$GITHUB_OUTPUT"
+              echo "Manual run: submit all published posts"
             else
               echo "mode=skip" >> "$GITHUB_OUTPUT"
               echo "Manual run with submit_all=false — nothing to do"
@@ -54,7 +56,7 @@ jobs:
           msg=$(git log -1 --format='%B' "${{ github.sha }}")
           if echo "$msg" | grep -qF '[indexnow]'; then
             echo "mode=diff" >> "$GITHUB_OUTPUT"
-            echo "Commit message contains [indexnow] — submit push diff"
+            echo "Commit message contains [indexnow] — submit changed posts"
           else
             echo "mode=skip" >> "$GITHUB_OUTPUT"
             echo "No [indexnow] flag — submissions off by default"
@@ -66,7 +68,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Submit URLs to IndexNow
+      - name: Submit published post URLs to IndexNow
         if: steps.gate.outputs.mode != 'skip'
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -79,8 +81,8 @@ jobs:
             exit 0
           fi
 
-          if [[ "$MODE" == "sitemap" ]]; then
-            python .github/scripts/indexnow_submit.py --from-sitemap \
+          if [[ "$MODE" == "all-posts" ]]; then
+            python .github/scripts/indexnow_submit.py --all-posts \
               || echo "IndexNow submission reported errors (non-fatal)"
             exit 0
           fi
