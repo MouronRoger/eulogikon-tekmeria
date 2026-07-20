@@ -6,3 +6,27 @@ https://semeia.eulogikon.org/*  https://tekmeria.eulogikon.org/:splat  301
 /parakletos.html  /parakletos-by-your-side  301
 /euchomai  /what-marcus-prays-for  301
 /euchomai.html  /what-marcus-prays-for  301
+
+# Explicit 410s for known non-page paths (middleware is the real gate).
+/.eukoine/*  /  410
+/.github/*  /  410
+/.claude/*  /  410
+/.cursor/*  /  410
+/.codex/*  /  410
+/naming/*  /  410
+/scripts/*  /  410
+/tests/*  /  410
+/tooling/*  /  410
+/composition_cluster/*  /  410
+/governance_cluster/*  /  410
+/work_reports/*  /  410
+/CLAUDE.md  /  410
+/AGENTS.md  /  410
+/README.md  /  410
+/STYLE.md  /  410
+/ROT.md  /  410
+/CHARTERS.md  /  410
+/philostorgia_corpus.json  /  410
+/philostorgia_tekmerion.md  /  410
+/posts.json  /  410
+/wrangler.toml  /  410
