@@ -1,0 +1,96 @@
+# IndexNow for tekmeria.eulogikon.org.
+#
+# Runs on push to main. Submits only when the HEAD commit message contains
+# the opt-in flag [indexnow]. Manual runs can submit the full sitemap.
+#
+# Setup:
+#   1. Repository secret INDEXNOW_KEY = the key string (same as
+#      site_cluster/public/<key>.txt).
+#   2. Deploy the key file (ordinary push to main).
+#   3. To submit changed pages: include [indexnow] in the commit message.
+#   4. To bootstrap / resubmit everything: Actions → indexnow → Run workflow
+#      with "Submit all sitemap URLs" checked.
+#
+# Best-effort: IndexNow failures are logged but do not fail the build.
+
+name: indexnow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: "Submit all sitemap URLs (not just the push diff)"
+        type: boolean
+        default: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether to submit
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SUBMIT_ALL: ${{ github.event.inputs.submit_all }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            if [[ "$SUBMIT_ALL" == "true" ]]; then
+              echo "mode=sitemap" >> "$GITHUB_OUTPUT"
+              echo "Manual run: submit full sitemap"
+            else
+              echo "mode=skip" >> "$GITHUB_OUTPUT"
+              echo "Manual run with submit_all=false — nothing to do"
+            fi
+            exit 0
+          fi
+
+          msg=$(git log -1 --format='%B' "${{ github.sha }}")
+          if echo "$msg" | grep -qF '[indexnow]'; then
+            echo "mode=diff" >> "$GITHUB_OUTPUT"
+            echo "Commit message contains [indexnow] — submit push diff"
+          else
+            echo "mode=skip" >> "$GITHUB_OUTPUT"
+            echo "No [indexnow] flag — submissions off by default"
+          fi
+
+      - name: Set up Python
+        if: steps.gate.outputs.mode != 'skip'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Submit URLs to IndexNow
+        if: steps.gate.outputs.mode != 'skip'
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          MODE: ${{ steps.gate.outputs.mode }}
+        run: |
+          if [[ -z "$INDEXNOW_KEY" ]]; then
+            echo "INDEXNOW_KEY secret is not set — skipping"
+            exit 0
+          fi
+
+          if [[ "$MODE" == "sitemap" ]]; then
+            python .github/scripts/indexnow_submit.py --from-sitemap \
+              || echo "IndexNow submission reported errors (non-fatal)"
+            exit 0
+          fi
+
+          if [[ "$BEFORE_SHA" == "0000000000000000000000000000000000000000" ]]; then
+            echo "first push on branch — skipping IndexNow submission"
+            exit 0
+          fi
+
+          python .github/scripts/indexnow_submit.py \
+            --base "$BEFORE_SHA" \
+            --head "$AFTER_SHA" \
+            || echo "IndexNow submission reported errors (non-fatal)"
