@@ -1,3 +1,5 @@
 name = "eulogikon-tekmeria"
+# Deploy from the site root only. Run: npx wrangler pages deploy site_cluster/public
+# Cloudflare Git builds use root_dir = site_cluster/public (set in project config).
 pages_build_output_dir = "site_cluster/public"
 compatibility_date = "2025-01-01"
