@@ -100,6 +100,19 @@ body:has(.tekmeria-index) .container {
 }
 .tekmeria-essay .witness-ref a:hover { border-bottom-style: solid; }
 
+/* Catalog-style numbered entry labels */
+.tekmeria-essay .entry-label {
+    margin: 1.8em 0 0.2em;
+    font-weight: 600;
+    color: #1a202c;
+}
+.tekmeria-essay .entry-sublabel {
+    margin: 1.2em 0 0.15em;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #4a5568;
+}
+
 /* --- Inline corpus citations (secondary pointers only) --- */
 .tekmeria-essay .cite {
     color: #718096;
