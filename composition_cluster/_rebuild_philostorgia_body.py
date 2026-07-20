@@ -455,7 +455,7 @@ def build_body(greek_by_sid: dict[int, str]) -> str:
         1538679: ("<h2>Early Hellenistic and historian uses (-320 to -50)</h2>", None),
         2120777: (
             "<h2>The Stoic core: every citation</h2>",
-            '<p class="chapter-lead">Chrysippus defines the term; later Stoics moralise, limit, and reclaim it. The spine runs from definition through natural affection, excess, social institutions, and virtue. Lemma search (form_to_lemma + term_distribution via grc_fold) flags 18 distinct Stoic units across noun, adjective, adverb, verb, and privative forms.</p>',
+            '<p class="chapter-lead">Chrysippus defines the term; later Stoics moralise, limit, and reclaim it. The spine runs from definition through natural affection, excess, social institutions, and virtue: eighteen Stoic passages, across noun, adjective, adverb, verb, and the privative form.</p>',
         ),
         612642: ("<h2>Roman period historians and rhetors (50–200 CE)</h2>", None),
         2124342: ("<h2>Post-Stoic philosophical reception (200–540 CE)</h2>", None),
