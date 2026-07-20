@@ -5,3 +5,6 @@
 # Wrangler local state
 .wrangler/
 node_modules/
+
+# Tekmerion composition working store data product (state, not published)
+composition_cluster/*.db

@@ -1,0 +1,131 @@
+# Title: Predicate lexicon, Tekmeria (eulogikon-semeia)
+# Status: active
+# Authority_level: member lexicon. Member-local signifiers ONLY. Family
+#   signifiers are owned at .eukoine/predicate_lexicon.yaml and are never
+#   copied, restated, or redefined here.
+# Scope: signifiers this repo coins for its own referents: the composition
+#   store schema, the skill's procedural vocabulary, the governance ids.
+# Relationship_to:
+#   family_registry: .eukoine/predicate_lexicon.yaml
+#   family_obligation: .eukoine/predicate_vocabulary.md
+#   principle: governance_cluster/canonical_design_principles.md TDP-005
+#
+# Obligation (family): consult the family registry before coining any
+# signifier; use the canonical term verbatim where a referent is already
+# baptised; on correction DELETE the wrong word rather than adding a synonym
+# beside it. Read that obligation at its owner path; it is not restated here.
+#
+# This lexicon covers the SHARED code and schema lexicon, not the Greek
+# glossary. A reading of a Greek term is not a signifier entry.
+
+schema_version: "1.0"
+scope: member-local
+
+entries:
+
+  tekmerion:
+    signifier_form: [tekmerion, tekmeria]
+    canonical_referent: >-
+      One published evidence-led essay on this site, and its plural. Never a
+      synonym for the site itself (that is Tekmeria, capitalised, the product
+      name) and never for the composition store that produced it.
+    status: aligned
+
+  station:
+    signifier_form: [station]
+    canonical_referent: >-
+      One corpus unit that carries a full evidence block in a Tekmerion, and
+      its row in the store. A station is a unit; coverage is counted at unit
+      level. Distinct from `block`: a station may carry several blocks.
+    status: aligned
+
+  block:
+    signifier_form: [block, evidence block]
+    canonical_referent: >-
+      One presented excerpt in the finished piece: citation, Greek,
+      transliteration, translation, commentary. One block carries exactly one
+      citation.
+    status: aligned
+
+  hinge:
+    signifier_form: [hinge]
+    canonical_referent: >-
+      The sentence on which the piece turns, confirmed at the scope gate and
+      held verbatim in the store. Not a thesis and not a summary.
+    status: aligned
+
+  incipit:
+    signifier_form: [incipit]
+    canonical_referent: >-
+      The opening words of a station's primary quoted span, verbatim Greek,
+      recorded as the content-matching leg of the durable anchor set. Never a
+      display string and never an identifier.
+    status: aligned
+
+  disposition:
+    signifier_form: [disposition]
+    canonical_referent: >-
+      What a candidate row becomes: station, secondary, or set-aside. Every
+      candidate carries exactly one, and every set-aside inside the coverage
+      set carries a reason.
+    status: aligned
+
+  station_type:
+    signifier_form: [station_type]
+    canonical_referent: >-
+      What kind of witness a station is (original speech, doxography,
+      testimonium, scholium, and the rest of the STYLE.md vocabulary). It is
+      what a period claim is checked against; an author floruit is not a
+      composition date.
+    status: aligned
+
+  complete_coverage_set:
+    signifier_form: [complete-coverage set, coverage_predicate]
+    canonical_referent: >-
+      The exact corpus predicate defining the subset a piece commits to
+      including exhaustively, as distinct from background and afterlife
+      material selected by judgment. Dispositions inside it are row by row.
+    status: aligned
+
+  provenance_class:
+    signifier_form: [QUOTE, CATALOG, HAND]
+    canonical_referent: >-
+      The three classes every printed fact belongs to, exactly one each, which
+      determine how the fact is verified. Not a confidence level and not a
+      source citation.
+    status: aligned
+
+  store:
+    signifier_form: [store, composition store]
+    canonical_referent: >-
+      The single writable home of one composition's state. Never called a
+      database in prose where the corpus is also under discussion, and never
+      called a cache, an index, or a working file.
+    status: aligned
+
+  projection:
+    signifier_form: [projection, project]
+    canonical_referent: >-
+      The deterministic conversion of a completed store into essay HTML. Never
+      called generation, rendering, or a build: those imply editorial content
+      may be added, and none may.
+    status: aligned
+
+  ref:
+    signifier_form: [ref, unit_ref]
+    canonical_referent: >-
+      RETIRED in new work. One slot that was at once a locator, a label, and a
+      row identity. The family name for the citation string is
+      `legacy_reference`.
+    status: retired
+    replacement: legacy_reference
+
+  slug:
+    signifier_form: [slug, url_slug, file_id]
+    canonical_referent: >-
+      RETIRED family-wide. Imported key-as-URL thinking. Identity is `eul_wid`
+      and `eul_aid`; the decorative URL or filename prefix is a display string,
+      an attribute and never a key.
+    status: retired
+    replacement: eul_wid / display string
+    owner: .eukoine/predicate_lexicon.yaml

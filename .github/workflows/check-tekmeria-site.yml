@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Verify posts manifest, index, and sitemap stay in sync
-        run: python scripts/sync_tekmeria_site.py --check
+        run: python site_cluster/site_build_index.py --check

@@ -1,0 +1,375 @@
+# term: φιλοστοργ- family (noun φιλοστοργία, adj φιλόστοργος, adv φιλοστόργως, verb φιλοστοργέω, privative ἀφιλόστοργος)
+# discovery: philostorgia_corpus.json occurrences (sid=units.id); 368 distinct units from 411 tokens
+# grounding query (live DB, 2026-07-19): SELECT u.id sid,u.eul_wid wid,u.ref,a.eul_aid,a.name_english author,a.affiliation,a.period,COALESCE(w.domain,a.domain) domain,COALESCE(w.format,a.format) format,a.fl_from,a.fl_to,w.title_english,char_length(u.text_greek) length FROM eulogikon.units u JOIN eulogikon.works w ON w.eul_wid=u.eul_wid JOIN eulogikon.authors a ON a.eul_aid=w.eul_aid WHERE u.id=ANY(ARRAY[<368 sids>]) ORDER BY a.fl_from,a.eul_aid,u.eul_wid,u.sequence_num;
+# drift check vs discovery: 368/368 sids resolve; 0 wid/ref mismatches
+# counts: units=368 tokens=411 stoic_units=18
+# NOTE token_count = discovery token count from JSON (grc_fold path blocked in read-only MCP); attestation is the row, not the count.
+unit_id	wid	ref	author	eul_aid	affiliation	period	domain	format	fl_from	fl_to	title	token_count	length	lexical_status	headwords
+979376	ajg-aa	book 194.1	Greek Anthology	ajg	None	archaic	poetry	verse	-650	-650	Anthology, Volume V	1	48	proper_name	Φιλοστόργιος
+744895	bhc-aa	199	Theano of Croton	bhc	pythagorean	archaic	philosophy	treatise	-530	-500	Pythagorean Teachings and Letters	2	2201	concept	φιλοστοργέω|φιλοστοργία
+794093	lrw-aa	3 (100)	Zeno of Rhodes	lrw	None	hellenistic	history	prose	-523	-118	Rhodian Historical Fragments	1	2625	concept	φιλοστοργία
+344155	bko-aa	1 4	Heraclitus of Ephesus II	bko	presocratic	archaic	philosophy	treatise	-504	-501	Allegories Or Homeric Questions	1	638	concept	φιλοστόργως
+1924481	emo-ag	book 274(?)b.28.2	Aeschylus the Tragedian	emo	None	classical	drama	verse	-499	-456	Fragments of the Oresteia	1	100	concept	φιλοστοργία
+1672066	bqs-ah	72	Antiphon of Athens	bqs	sophist	classical	oratory	oration	-480	-411	On Sedition and Political Defense	1	158	concept	φιλόστοργος
+791913	cto-ab	2.427	Xenophon Scholia	cto	None	classical	grammar	prose	-450	-450	Scholia-Euripides' Hippolytus	1	375	concept	φιλοστοργία
+792661	cto-ab	2.628	Xenophon Scholia	cto	None	classical	grammar	prose	-450	-450	Scholia-Euripides' Hippolytus	1	375	concept	φιλοστοργία
+1680826	cto-aj	sch Ph 1078	Xenophon Scholia	cto	None	classical	grammar	prose	-450	-450	Scholia on Euripides	1	439	concept	φιλόστοργος
+1681162	cto-aj	sch Hipp 627	Xenophon Scholia	cto	None	classical	grammar	prose	-450	-450	Scholia on Euripides	1	378	concept	φιλοστοργία
+1681791	cto-aj	sch Andr 529	Xenophon Scholia	cto	None	classical	grammar	prose	-450	-450	Scholia on Euripides	1	235	concept	φιλοστοργία
+136035	dck-aa	50	Aresas of Lucania	dck	pythagorean	classical	philosophy	treatise	-450	-450	On Human Nature	1	1089	concept	φιλοστοργία
+2047647	ezq-ag	Cyr.1.3.2	Xenophon of Athens	ezq	None	classical	history	prose	-400	-355	Cyropaedia	1	886	concept	φιλόστοργος
+2047665	ezq-ag	Cyr.1.4.2	Xenophon of Athens	ezq	None	classical	history	prose	-400	-355	Cyropaedia	1	963	concept	φιλοστοργία
+2045970	ezq-ai	Ages.7.7	Xenophon of Athens	ezq	None	classical	history	prose	-400	-355	Agesilaus	1	970	concept	φιλόστοργος
+1691399	ffk-bm	Leg.931.b	Plato of Athens	ffk	platonist	classical	philosophy	dialogue	-390	-347	Laws	1	10580	concept	φιλοστοργέω
+610434	fxc-aa	8 1 (t)	Philip II King of Macedonia	fxc	None	classical	None	epistle	-359	-336	Philip's Diplomatic Letters	2	1539	concept	φιλόστοργος
+753273	ljk-ar	Piet 19	Theophrastus of Eresus	ljk	peripatetic	hellenistic	philosophy	treatise	-340	-280	On Piety	1	847	concept	φιλοστοργέω
+897351	hgw-av	HA 611a	Aristotle	hgw	aristotelian	classical	philosophy	treatise	-335	-323	History of Animals	1	1888	concept	φιλόστοργος
+897371	hgw-av	HA 621a	Aristotle	hgw	aristotelian	classical	philosophy	treatise	-335	-323	History of Animals	1	1916	concept	φιλοστόργως
+198622	hgw-bf	Phgn 809b	Aristotle	hgw	aristotelian	classical	philosophy	treatise	-335	-323	Physiognomics	1	2335	concept	φιλόστοργος
+910464	hki-aa	3	Clearchus of Soli	hki	peripatetic	classical	philosophy	collection	-325	-325	On Hunting with Mirrors	1	709	concept	φιλοστοργία
+910544	hki-aa	73	Clearchus of Soli	hki	peripatetic	classical	philosophy	collection	-325	-325	On Hunting with Mirrors	1	448	concept	φιλοστοργέω
+1532130	hlw-aa	110	Demades of Paeania	hlw	None	classical	oratory	collection	-325	-325	In Defense of the Twelve Years	1	149	concept	φιλοστοργία
+1538679	hoe-ac	3a,264,F 25 (850)	Hecataeus of Abdera	hoe	None	hellenistic	history	collection	-320	-305	On Egyptian Philosophy and Religion	1	4089	concept	φιλοστοργία
+1538682	hoe-ac	3a,264,F 25 (1000)	Hecataeus of Abdera	hoe	None	hellenistic	history	collection	-320	-305	On Egyptian Philosophy and Religion	1	4185	concept	φιλοστοργία
+344824	iiy-aa	2	Hermesianax of Cyprus	iiy	None	hellenistic	history	prose	-300	-250	Phrygian Histories and Myths	1	572	concept	φιλοστοργία
+1249541	izc-ad	book 18.10	Theocritus of Syracuse	izc	None	hellenistic	poetry	verse	-275	-260	Idylls	1	239	concept	φιλόστοργος
+1539700	jds-ab	2a,81,F 36	Phylarchus of Athens	jds	None	hellenistic	history	collection	-270	-220	Historical Fragments and Anecdotes	2	923	concept	φιλοστοργία
+254884	kau-ab	1a,32,F 14 (50)	Dionysius Scytobrachion of Mytilene	kau	None	hellenistic	grammar	collection	-250	-200	Argonautic Genealogical Fragments	1	3839	concept	φιλοστοργία
+874180	klo-ac	Epit 2 579	Aristophanes of Byzantium	klo	None	hellenistic	grammar	treatise	-240	-180	Epitome of the Histories of Animals	1	416	concept	φιλόστοργος
+2120777	kms-ae	292	Chrysippus of Soli	kms	stoic	hellenistic	philosophy	collection	-240	-210	Moral Fragments	2	523	concept	φιλοστοργία
+2121102	kms-ae	731	Chrysippus of Soli	kms	stoic	hellenistic	philosophy	collection	-240	-210	Moral Fragments	1	197	concept	φιλοστοργία
+854380	knc-aa	26 1	Antigonus of Carystus	knc	None	hellenistic	biography	prose	-240	-240	Collection of Marvelous Histories	1	448	concept	φιλοστοργία
+209259	kzk-ab	6	Bolus of Mendes	kzk	None	hellenistic	medicine	treatise	-200	-200	On Sympathies and Antipathies	1	188	concept	φιλόστοργος
+1694973	lcc-aa	62	Antipater of Tarsus	lcc	stoic	hellenistic	philosophy	collection	-180	-129	Testimonies and Fragments	1	1187	concept	φιλοστοργία
+1694974	lcc-aa	63	Antipater of Tarsus	lcc	stoic	hellenistic	philosophy	collection	-180	-129	Testimonies and Fragments	1	2903	concept	φιλοστοργία
+1204048	ldg-ab	Hist.9.13.2	Polybius of Megalopolis	ldg	None	hellenistic	history	collection	-180	-120	Histories	1	188	concept	φιλοστοργία
+1206334	ldg-ab	Hist.16.17.9	Polybius of Megalopolis	ldg	None	hellenistic	history	collection	-180	-120	Histories	1	284	concept	φιλοστοργία
+1207876	ldg-ab	Hist.22.20.3	Polybius of Megalopolis	ldg	None	hellenistic	history	collection	-180	-120	Histories	1	151	concept	φιλοστοργία
+1209320	ldg-ab	Hist.31.25.2	Polybius of Megalopolis	ldg	None	hellenistic	history	collection	-180	-120	Histories	1	197	concept	φιλοστοργία
+1545691	msa-ab	417 (50)	Posidonius of Apameia and Rhodes	msa	stoic	hellenistic	philosophy	dialogue	-110	-60	Fragments on Ocean Tides	3	627384	concept	φιλοστοργία
+1545647	msa-ac	1052 003.2a,87,F.108r	Posidonius of Apameia and Rhodes	msa	stoic	hellenistic	philosophy	collection	-110	-60	Fragments on Customs and Wars	1	668	concept	φιλοστοργία
+1701162	nde-ab	1.64.14	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	308	concept	φιλοστοργία
+1701210	nde-ab	1.71.4	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	350	concept	φιλοστοργία
+1701986	nde-ab	3.58.2	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	464	concept	φιλοστοργία
+1701988	nde-ab	3.58.4	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	587	concept	φιλοστοργία
+1702272	nde-ab	4.38.1	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	169	concept	φιλοστοργία
+1702297	nde-ab	4.44.1	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	237	concept	φιλοστοργία
+1702402	nde-ab	4.61.5	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	452	concept	φιλοστοργία
+1707299	nde-ab	19.32.3	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	618	concept	φιλοστόργως
+1707300	nde-ab	19.33.2	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 18-20	1	681	concept	φιλοστοργέω
+922274	nde-ac	31 19 3	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 21-40	1	364	concept	φιλοστοργέω
+922500	nde-ac	34/35 4 2	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 21-40	1	467	concept	φιλοστοργία
+922510	nde-ac	34/35 11 1	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 21-40	1	700	concept	φιλοστοργία
+922562	nde-ac	36 2a 1	Diodorus of Sicily	nde	None	hellenistic	history	prose	-60	-60	Historical Library, Books 21-40	1	1365	concept	φιλοστοργία
+200388	nac-aa	87,2	Arius Didymus of Alexandria	nac	stoic	hellenistic	philosophy	prose	-53	-3	Book-the Sects of Philosophers	1	1492	concept	φιλοστοργία
+1547211	ngg-aa	2 48/49c	Scholia on Theocritus	ngg	None	hellenistic	grammar	prose	-50	-50	Scholia-Theocritus	2	511	concept	φιλοστοργέω|φιλοστοργία
+2199955	ndy-al	8.54.1	Dionysius of Halicarnassus	ndy	None	hellenistic	history	oration	-30	20	Roman Antiquities	1	656	concept	φιλόστοργος
+1545212	ndy-am	Rh 11 6	Dionysius of Halicarnassus	ndy	None	hellenistic	history	oration	-30	20	Rhetorical Art	1	1153	concept	φιλόστοργος
+855535	nlq-ab	20 (n)	Apion Alexandrinus	nlq	sophist	roman	grammar	treatise	5	55	Homeric Glosses (Recension B)	1	241	concept	φιλοστοργία
+616238	lgi-ac	Abr 168	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Abraham	1	468	concept	φιλοστοργία
+616260	lgi-ac	Abr 197	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Abraham	1	452	concept	φιλόστοργος
+614402	lgi-ah	158	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Rewards, Punishments, and Curses	1	331	concept	φιλόστοργος
+612642	lgi-aj	Mos 1 150	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On the Life of Moses, Books I-II	1	558	concept	φιλοστοργία
+614254	lgi-au	QGen 4 202a	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	Questions on Genesis	1	527	concept	φιλοστοργία
+611568	lgi-bd	Legat 36	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	Embassy to Gaius	1	230	concept	φιλοστοργία
+614871	lgi-bg	Spec 2 239	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Special Laws	2	1296	concept	φιλοστοργία|φιλόστοργος
+615013	lgi-bg	Spec 3 152	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Special Laws	1	687	concept	φιλόστοργος
+615016	lgi-bg	Spec 3 156	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Special Laws	1	519	concept	φιλόστοργος
+616613	lgi-bj	Virt 91	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Virtues	1	538	concept	φιλόστοργος
+616641	lgi-bj	Virt 128	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Virtues	1	426	concept	φιλοστοργία
+616697	lgi-bj	Virt 192	Philo of Alexandria	lgi	jewish	hellenistic	philosophy	treatise	10	60	On Virtues	1	230	concept	φιλόστοργος
+217912	nwk-aa	2.293	Comarius the Alchemist	nwk	None	roman	science	treatise	50	50	Komarios the Philosopher High Priest Instructing Cleopatra in the Sacred Art	1	1294	concept	φιλόστοργος
+1709295	ocy-aa	99 (200)	Nicolaus of Damascus	ocy	None	roman	history	prose	60	70	On the Life of Antipater	1	1607	concept	φιλοστοργία
+1709299	ocy-aa	101 (50)	Nicolaus of Damascus	ocy	None	roman	history	prose	60	70	On the Life of Antipater	1	3052	concept	φιλοστοργία
+1709300	ocy-aa	101 (100)	Nicolaus of Damascus	ocy	None	roman	history	prose	60	70	On the Life of Antipater	1	2168	concept	φιλοστοργία
+1709317	ocy-aa	101 (950)	Nicolaus of Damascus	ocy	None	roman	history	prose	60	70	On the Life of Antipater	1	2487	concept	φιλοστοργία
+1096494	ofq-aa	BJ 1 523	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish War-the Romans	1	642	concept	φιλόστοργος
+1096575	ofq-aa	BJ 1 622	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish War-the Romans	1	195	concept	φιλόστοργος
+1096585	ofq-aa	BJ 1 633	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish War-the Romans	1	340	concept	φιλοστοργία
+1097642	ofq-aa	BJ 4 323	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish War-the Romans	1	161	concept	φιλοστοργέω
+1098798	ofq-aa	BJ 7 390	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish War-the Romans	1	263	concept	φιλόστοργος
+1091360	ofq-ad	AJ.4.135	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	347	concept	φιλοστόργως
+1091457	ofq-ad	AJ.4.272	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	500	concept	φιλοστοργία
+1092090	ofq-ad	AJ.7.43	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	482	concept	φιλοστόργως
+1092169	ofq-ad	AJ.7.149	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	335	concept	φιλοστοργία
+1092254	ofq-ad	AJ.7.252	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	401	concept	φιλόστοργος
+1092501	ofq-ad	AJ.8.193	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	613	concept	φιλοστοργία
+1093286	ofq-ad	AJ.11.195	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	377	concept	φιλόστοργος
+1094462	ofq-ad	AJ.15.16	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	307	concept	φιλοστόργως
+1094499	ofq-ad	AJ.15.64	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	652	concept	φιλοστόργως
+1094500	ofq-ad	AJ.15.67	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	483	concept	φιλοστοργία
+1094502	ofq-ad	AJ.15.70	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	376	concept	φιλόστοργος
+1094512	ofq-ad	AJ.15.83	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	307	concept	φιλοστοργία
+1094616	ofq-ad	AJ.15.221	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	292	concept	φιλοστοργία
+1094779	ofq-ad	AJ.16.11	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	502	concept	φιλοστοργία
+1094787	ofq-ad	AJ.16.21	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	390	concept	φιλοστοργία
+1094870	ofq-ad	AJ.16.144	Josephus the Historian	ofq	None	roman	history	prose	70	90	Jewish Antiquities	1	273	concept	φιλοστοργία
+2058609	npw-aa	2.8.7	Chariton of Aphrodisias	npw	None	roman	fiction	prose	80	130	On Chaerea and Callirhoe	1	605	concept	φιλοστοργία
+2058623	npw-aa	2.10.8	Chariton of Aphrodisias	npw	None	roman	fiction	prose	80	130	On Chaerea and Callirhoe	1	497	concept	φιλοστοργία
+2059117	npw-aa	8.7.5	Chariton of Aphrodisias	npw	None	roman	fiction	prose	80	130	On Chaerea and Callirhoe	1	413	concept	φιλοστοργία
+107253	nti-aa	1.8	Biographer Anonymous	nti	None	roman	biography	prose	80	130	Book of Suntipa	1	1408	concept	φιλοστόργως
+1974146	ojw-ac	1.11	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	15	6417	concept	φιλοστοργέω|φιλοστοργία|φιλοστόργως|φιλόστοργος
+1974158	ojw-ac	1.23	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	1	1189	concept	φιλοστοργία
+1974182	ojw-ac	2.17	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	2	6558	concept|privative_antonym	φιλόστοργος|ἀφιλόστοργος
+1974208	ojw-ac	3.17	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	1	1222	likely_proper_name	Φιλόστοργος (personal name)
+1974209	ojw-ac	3.18	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	1	1324	concept	φιλόστοργος
+1974215	ojw-ac	3.24	Epictetus the Stoic	ojw	stoic	roman	philosophy	dialogue	90	135	Discourses of Epictetus by Arrian	7	21250	concept	φιλοστοργία|φιλόστοργος
+661107	okg-ae	56 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	How One Might Distinguish the Flatterer from the Friend	1	283	concept	φιλόστοργος
+1192009	okg-as	963 A	Plutarch of Chaeronea	okg	platonist	roman	philosophy	dialogue	90	120	Whether Land or Water Animals Are Wiser	1	3122	concept	φιλοστοργία
+1192021	okg-as	975 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	dialogue	90	120	Whether Land or Water Animals Are Wiser	3	29961	concept	φιλόστοργος
+1192023	okg-as	985 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	dialogue	90	120	Whether Land or Water Animals Are Wiser	1	31846	concept	φιλόστοργος
+1710757	okg-bt	634 E	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Books of Symposiastic Problems	1	230	concept	φιλοστοργία
+668281	okg-cb	148 E	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Symposium of the Seven Sages	1	583	concept	φιλοστόργως
+1186226	okg-cg	t 1	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	233	concept	φιλοστοργία
+1186231	okg-cg	494 A	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	805	concept	φιλόστοργος
+1186233	okg-cg	494 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	1123	concept	φιλοστοργία
+1186237	okg-cg	495 B	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	777	concept	φιλόστοργος
+1186242	okg-cg	496 A	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	561	concept	φιλόστοργος
+1186245	okg-cg	496 D	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	371	concept	φιλόστοργος
+1186251	okg-cg	497 D	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Affection for Offspring	1	766	concept	φιλόστοργος
+659178	okg-ci	106 B	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Consolation to Apollonius	1	598	concept	φιλοστόργως
+1189742	okg-cl	608 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Consolation to His Wife	1	1020	concept	φιλόστοργος
+1189746	okg-cl	609 A	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Consolation to His Wife	2	763	concept	φιλόστοργος
+1189749	okg-cl	609 D	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Consolation to His Wife	1	633	concept	φιλόστοργος
+1195728	okg-cq	258 D	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Virtues of Women	1	386	concept	φιλοστόργως
+1186322	okg-cs	Agis 17 4	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Agis and Cleomenes	1	311	concept	φιλοστοργία
+1186352	okg-cs	Agis 22 2	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Agis and Cleomenes	1	566	concept	φιλόστοργος
+663977	okg-db	140 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Marriage Precepts	1	434	privative_antonym	ἀφιλόστοργος
+664003	okg-db	144 F	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Marriage Precepts	1	591	concept	φιλόστοργος
+1187855	okg-dc	480 A	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Brotherly Love	1	692	concept	φιλόστοργος
+1187872	okg-dc	483 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Brotherly Love	1	533	concept	φιλόστοργος
+1187906	okg-dc	489 C	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Brotherly Love	1	314	concept	φιλοστοργία
+1188598	okg-df	CatMi 11 4	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Cato the Younger	1	202	concept	φιλόστοργος
+664090	okg-dk	451 E	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	On Moral Virtue	1	433	concept	φιλοστοργία
+1190756	okg-dn	Fab 21 1	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Fabius Maximus	1	116	concept	φιλοστόργως
+659620	okg-dv	Dem.31.7	Plutarch of Chaeronea	okg	platonist	roman	philosophy	dialogue	90	120	Demosthenes	1	33425	concept	φιλόστοργος
+664722	okg-et	Per t 1	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Pericles	1	335	concept	φιλόστοργος
+1187983	okg-fg	Brut 13 4	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Brutus	1	177	concept	φιλόστοργος
+1193879	okg-fn	Sol 7 3	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Solon	1	392	concept	φιλόστοργος
+660042	okg-fp	Dio 51 4	Plutarch of Chaeronea	okg	platonist	roman	philosophy	prose	90	120	Dion	1	353	concept	φιλοστόργως
+239556	okq-ab	9 (n)	Dio Chrysostom of Prusa	okq	None	roman	oratory	collection	90	110	Fragments on Household Management	1	94	concept	φιλοστοργία
+239782	okq-ac	3 131	Dio Chrysostom of Prusa	okq	None	roman	oratory	oration	90	110	Orations	1	279	concept	φιλόστοργος
+2082535	omy-ac	2.19.11	Soranus of Ephesus	omy	None	roman	medicine	treatise	98	178	Four Books-Women	1	343	concept	φιλοστοργία
+2082536	omy-ac	2.19.12	Soranus of Ephesus	omy	None	roman	medicine	treatise	98	178	Four Books-Women	1	554	concept	φιλόστοργος
+1549680	oho-ac	348	Dorotheus of Sidon	oho	None	roman	science	treatise	105	155	Greek Fragments	1	2091	concept	φιλόστοργος
+1549682	oho-ac	350	Dorotheus of Sidon	oho	None	roman	science	treatise	105	155	Greek Fragments	1	1803	concept	φιλόστοργος
+1713188	peq-aa	96,10	Favorinus of Arelate	peq	pyrrhonian	roman	philosophy	collection	120	150	Fragments on Old Age and Pleasure	1	2000	concept	φιλόστοργος
+529701	pfk-ab	Par 59	Lucian of Samosata	pfk	None	roman	oratory	oration	120	180	On the Parasite, that Parasite is an Art	1	889	concept	φιλοστοργία
+529492	pfk-al	Merc Cond 34	Lucian of Samosata	pfk	None	roman	oratory	oration	120	180	On Those Living in Misthos	1	1476	concept	φιλόστοργος
+529860	pfk-bt	Abdic 15	Lucian of Samosata	pfk	None	roman	oratory	oration	120	180	Renounced	1	1176	concept	φιλοστοργία
+530513	pfk-ca	Tyr t	Lucian of Samosata	pfk	None	roman	oratory	oration	120	180	Tyrannicide	1	353	concept	φιλοστοργία
+2159833	phs-ai	2.3.34	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	540	concept	φιλόστοργος
+2159836	phs-ai	2.3.38	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	837	concept	φιλόστοργος
+2160016	phs-ai	3.14.20	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	742	concept	φιλόστοργος
+2160018	phs-ai	3.14.24	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	1604	concept	φιλόστοργος
+2160022	phs-ai	3.14.33	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	501	concept	φιλόστοργος
+2160063	phs-ai	4.5.10	Ptolemy of Alexandria	phs	None	roman	mathematics	treatise	127	141	Tetrabiblos	1	205	concept	φιλόστοργος
+1553966	pjq-aa	43	Apollonius the Grammarian	pjq	None	roman	grammar	treatise	130	170	Homeric Lexicon	1	1734	concept	φιλοστοργία
+1557770	ple-ac	2b,257,F 34	Phlegon of Tralles	ple	None	roman	history	collection	130	140	On the Olympic Games	1	479	proper_name	Φιλοστόργιος
+1718938	ppu-af	P 6 39a	Pindar Commentary	ppu	None	roman	grammar	prose	140	170	Scholia on Pindar (Olympians, Pythians, Isthmians)	1	215	concept	φιλόστοργος
+697518	pyq-ab	2 3	Pseudo-Plutarch	pyq	None	roman	philosophy	prose	150	150	On Rivers	1	505	concept	φιλοστοργία
+1723688	pzu-aa	76	Vettius Valens of Antioch	pzu	None	roman	science	treatise	150	175	Nine Books of Anthologies	1	1892	concept	φιλόστοργος
+1723716	pzu-aa	104	Vettius Valens of Antioch	pzu	None	roman	science	treatise	150	175	Nine Books of Anthologies	1	1949	concept	φιλόστοργος
+1723895	pzu-aa	283	Vettius Valens of Antioch	pzu	None	roman	science	treatise	150	175	Nine Books of Anthologies	1	1946	concept	φιλοστοργία
+1723896	pzu-aa	284	Vettius Valens of Antioch	pzu	None	roman	science	treatise	150	175	Nine Books of Anthologies	1	2274	concept	φιλόστοργος
+319425	qmm-dn	14 236	Galen of Pergamon	qmm	None	roman	medicine	treatise	160	200	On Theriac to Piso	1	1020	concept	φιλοστοργία
+319473	qmm-dn	14 284	Galen of Pergamon	qmm	None	roman	medicine	treatise	160	200	On Theriac to Piso	1	800	concept	φιλοστοργία
+319182	qmm-dt	1 576	Galen of Pergamon	qmm	None	roman	medicine	treatise	160	200	On Temperaments	1	1031	concept	φιλόστοργος
+2070684	qpy-aa	1.9.1	Marcus Aurelius the Stoic Philosopher	qpy	stoic	roman	philosophy	treatise	161	180	To Himself	1	656	concept	φιλόστοργος
+2070701	qpy-aa	1.17.8	Marcus Aurelius the Stoic Philosopher	qpy	stoic	roman	philosophy	treatise	161	180	To Himself	1	338	concept	φιλόστοργος
+2070707	qpy-aa	2.5.1	Marcus Aurelius the Stoic Philosopher	qpy	stoic	roman	philosophy	treatise	161	180	To Himself	1	706	concept	φιλοστοργία
+2070841	qpy-aa	6.30.1	Marcus Aurelius the Stoic Philosopher	qpy	stoic	roman	philosophy	treatise	161	180	To Himself	1	1367	concept	φιλόστοργος
+2071049	qpy-aa	11.18.4	Marcus Aurelius the Stoic Philosopher	qpy	stoic	roman	philosophy	treatise	161	180	To Himself	1	761	concept	φιλοστόργως
+1974126	qrw-aa	book 179	Dionysius of Corinth	qrw	None	roman	epic	verse	170	171	On Christian Charity and Tradition	1	569	concept	φιλόστοργος
+1012342	qsg-ar	15 6	Hippolytus of Rome	qsg	christian	roman	theology	treatise	170	236	Against the Heresy of Noetus	1	390	concept	φιλοστοργία
+379443	qsg-bj	3 7 3	Hippolytus of Rome	qsg	christian	roman	theology	treatise	170	236	Commentary-Daniel	1	342	concept	φιλοστοργία
+1196693	qsq-aa	5 114	Pollux of Naucratis	qsq	None	roman	grammar	treatise	170	180	Lexicon of Names	2	387	concept	φιλοστόργως|φιλόστοργος
+1196892	qsq-aa	6 167	Pollux of Naucratis	qsq	None	roman	grammar	treatise	170	180	Lexicon of Names	1	495	concept	φιλόστοργος
+2055901	que-aa	5.5.2	Achilles Tatius of Alexandria	que	sophist	roman	fiction	prose	170	161	Adventures of Leucippe and Clitophon	1	354	concept	φιλοστοργία
+2056141	que-aa	7.9.5	Achilles Tatius of Alexandria	que	sophist	roman	fiction	prose	170	161	Adventures of Leucippe and Clitophon	1	249	concept	φιλόστοργος
+137116	qwm-aq	76	Aristides the Orator	qwm	None	roman	oratory	oration	170	161	Funeral Oration for Eteoneus	1	1766	concept	φιλόστοργος
+2122465	qwm-ax	3.1.8	Aristides the Orator	qwm	None	roman	oratory	oration	170	161	On Political Discourse	1	985	concept	φιλόστοργος
+2059443	qya-ac	10.94.1	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Exhortation to the Greeks	1	773	concept	φιλόστοργος
+2122638	qya-ag	6.35.1	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	852	concept	φιλόστοργος
+2122651	qya-ag	6.39.2	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	710	concept	φιλοστοργία
+2122658	qya-ag	6.41.3	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	396	concept	φιλόστοργος
+2122831	qya-ag	11.97.1	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	666	concept	φιλόστοργος
+2123130	qya-ag	10.93.1	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	152	concept	φιλόστοργος
+2123513	qya-ag	12.96.4	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Instructor	1	511	concept	φιλόστοργος
+2124338	qya-ah	9.41.2	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Stromata	1	264	concept	φιλοστοργία
+2124342	qya-ah	9.41.6	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Stromata	2	169	concept	φιλοστοργία
+2124462	qya-ah	16.75.2	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Stromata	1	405	concept	φιλοστοργία
+2125390	qya-ah	19.121.1	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Stromata	1	169	concept	φιλοστοργία
+2125402	qya-ah	20.125.2	Clement of Alexandria	qya	christian	roman	theology	treatise	180	210	Stromata	1	678	concept	φιλόστοργος
+1725444	rda-aa	2,2 100	Athenaeus of Naucratis	rda	None	roman	oratory	oration	190	210	Deipnosophists Epitome	1	1975	concept	φιλοστοργέω
+1725465	rda-aa	2,2 121	Athenaeus of Naucratis	rda	None	roman	oratory	oration	190	210	Deipnosophists Epitome	1	2408	concept	φιλοστοργία
+1570322	rda-ab	Deipn 9 48	Athenaeus of Naucratis	rda	None	roman	oratory	oration	190	210	Deipnosophists	1	2008	concept	φιλοστοργία
+1570660	rda-ab	Deipn 13 2	Athenaeus of Naucratis	rda	None	roman	oratory	oration	190	210	Deipnosophists	1	1574	concept	φιλοστοργέω
+1570750	rda-ab	Deipn 13 85	Athenaeus of Naucratis	rda	None	roman	oratory	oration	190	210	Deipnosophists	2	2296	concept	φιλοστοργία
+54439	ria-ab	NA 2 39	Aelian of Praeneste	ria	sophist	roman	oratory	oration	200	220	On the Nature of Animals	1	1195	concept	φιλόστοργος
+54633	ria-ab	NA 6 24	Aelian of Praeneste	ria	sophist	roman	oratory	oration	200	220	On the Nature of Animals	1	1612	concept	φιλοστοργία
+54818	ria-ab	NA 10 8	Aelian of Praeneste	ria	sophist	roman	oratory	oration	200	220	On the Nature of Animals	1	792	concept	φιλόστοργος
+55118	ria-ab	NA epi 1	Aelian of Praeneste	ria	sophist	roman	oratory	oration	200	220	On the Nature of Animals	1	1977	concept	φιλόστοργος
+603234	uhs-bt	12 9	Origen of Alexandria	uhs	christian	late-antique	theology	treatise	203	254	Commentaries-Romans	1	340	concept	φιλόστοργος
+798654	rjo-ab	Vit.2.120	Diogenes Laertius	rjo	None	roman	biography	prose	220	230	Lives and Opinions: Book II (Socratics)	1	667	concept	φιλόστοργος
+798671	rjo-ab	Vit.2.136	Diogenes Laertius	rjo	None	roman	biography	prose	220	230	Lives and Opinions: Book II (Socratics)	1	539	concept	φιλοστοργία
+798797	rjo-ag	Vit.7.120	Diogenes Laertius	rjo	None	roman	biography	prose	220	230	Lives and Opinions: Book VII (The Stoics)	1	480	concept	φιλοστοργία
+2085478	rnk-aa	5.2.2	Xenophon of Ephesus	rnk	None	roman	fiction	prose	250	250	Story of Anthia and Habrocomes	1	647	concept	φιλοστοργία
+1818736	udm-ac	10 252-253	Porphyry of Tyre	udm	neoplatonist	late-antique	philosophy	dialogue	260	305	Remains of Homeric Questions Pertaining to the Iliad	1	240256	concept	φιλοστοργία
+684858	udm-av	2 32	Porphyry of Tyre	udm	neoplatonist	late-antique	philosophy	treatise	260	305	On Abstinence	1	778	concept	φιλοστοργέω
+684911	udm-av	3 22	Porphyry of Tyre	udm	neoplatonist	late-antique	philosophy	treatise	260	305	On Abstinence	1	2706	concept	φιλοστοργία
+2148580	udw-ab	Vit Pyth 7 34	Iamblichus of Chalcis	udw	neoplatonist	late-antique	philosophy	treatise	280	325	Discourse-the Pythagorean Life	1	486	concept	φιλόστοργος
+2148585	udw-ab	Vit Pyth 8 39	Iamblichus of Chalcis	udw	neoplatonist	late-antique	philosophy	treatise	280	325	Discourse-the Pythagorean Life	1	910	concept	φιλοστοργία
+1815717	udw-ac	Comm Math 23	Iamblichus of Chalcis	udw	neoplatonist	late-antique	philosophy	treatise	280	325	On Common Mathematical Knowledge	1	2210	concept	φιλοστοργία
+502744	rxk-aa	3 358	John VI Kantakouzenos	rxk	None	late-antique	history	prose	340	331	Histories	1	1116	concept	φιλοστοργία
+1248330	rye-bj	267 d	Themistius the Philosopher	rye	eclectic	late-antique	philosophy	oration	345	388	On Friendship	1	484	concept	φιλόστοργος
+913029	shk-aa	1.7.(50)	Cyranides  Anonymous	shk	None	late-antique	science	treatise	350	350	Cyranides	1	3041	concept	φιλοστοργέω
+301671	sma-aa	25	Eutecnius the Paraphrast	sma	None	late-antique	oratory	oration	350	350	Paraphrase of Oppian's Cynegetica	1	2639	concept	φιλόστοργος
+1790214	soi-ab	5 4	Oribasius of Pergamon	soi	None	late-antique	medicine	treatise	360	400	Medical Collections, Uncertain Books	1	578	concept	φιλόστοργος
+1616267	spc-ac	8.175	Sopater of Athens	spc	None	late-antique	oratory	oration	361	363	Division of Questions	1	1273	concept	φιλόστοργος
+1616322	spc-ac	8.230	Sopater of Athens	spc	None	late-antique	oratory	oration	361	363	Division of Questions	1	1048	concept	φιλόστοργος
+1616423	spc-ac	8.336	Sopater of Athens	spc	None	late-antique	oratory	oration	361	363	Division of Questions	1	1405	concept	φιλοστοργία
+2065448	sru-aa	9.24.7	Heliodorus of Emesa	sru	None	late-antique	fiction	prose	370	361	Ethiopian Tales	1	524	concept	φιλόστοργος
+2209301	swk-ag	40.2	Libanius of Antioch	swk	None	late-antique	oratory	oration	390	381	Declamations 1–51	1	946	concept	φιλοστοργία
+2209317	swk-ag	40.2.24	Libanius of Antioch	swk	None	late-antique	oratory	oration	390	381	Declamations 1–51	1	565	concept	φιλόστοργος
+2209319	swk-ag	40.2.27	Libanius of Antioch	swk	None	late-antique	oratory	oration	390	381	Declamations 1–51	1	1222	concept	φιλοστοργία
+2209360	swk-ag	40.2.78	Libanius of Antioch	swk	None	late-antique	oratory	oration	390	381	Declamations 1–51	1	903	concept	φιλόστοργος
+2209429	swk-ag	42.1.21	Libanius of Antioch	swk	None	late-antique	oratory	oration	390	381	Declamations 1–51	1	547	concept	φιλοστοργία
+1771192	taq-ac	phi 518	Hesychius the Alexandrian	taq	None	late-antique	grammar	prose	401	500	Lexicon Π–Ω	1	185	concept	φιλόστοργος
+2142844	tco-ab	174	Hephaestion of Thebes	tco	None	late-antique	science	treatise	410	420	Effects	1	1313	concept	φιλόστοργος
+749039	tds-ai	83.533	Theodoret of Cyrus	tds	christian	late-antique	theology	treatise	423	457	Compendium of Heretical Fables	1	2363	concept	φιλοστοργία
+749054	tds-ai	83.552	Theodoret of Cyrus	tds	christian	late-antique	theology	treatise	423	457	Compendium of Heretical Fables	1	2601	concept	φιλόστοργος
+1796144	tem-aa	4.95	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	1318	concept	φιλόστοργος
+1796145	tem-aa	4.96	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	1036	concept	φιλόστοργος
+1796440	tem-aa	4.469	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	3816	concept	φιλόστοργος
+1796486	tem-aa	4.539	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	1651	concept	φιλόστοργος
+1796567	tem-aa	4.646	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	1949	concept	φιλόστοργος
+1796596	tem-aa	4.678	Syrianus, Sopater, and Marcellinus	tem	None	late-antique	grammar	prose	430	450	Scholia-Hermogenes's Book-Issues	1	1766	concept	φιλόστοργος
+724381	tga-aa	HE 4 6	Socrates of Constantinople	tga	None	late-antique	history	prose	440	431	Ecclesiastical History	1	1338	concept	φιλοστοργία
+1632814	tjc-aa	10 90	Michael Apostolius the Proverb-Writer	tjc	None	late-antique	grammar	prose	450	441	Collection of Proverbs	1	357	concept	φιλόστοργος
+2001457	tni-aa	1.49	John Stobaeus of Stobi	tni	pagan	late-antique	philosophy	prose	450	450	Anthologium	1	182928	concept	φιλοστοργία
+2001550	tni-aa	3.36	John Stobaeus of Stobi	tni	pagan	late-antique	philosophy	prose	450	450	Anthologium	1	4175	concept	φιλοστοργία
+2001573	tni-aa	4.19	John Stobaeus of Stobi	tni	pagan	late-antique	philosophy	prose	450	450	Anthologium	2	110650	concept	φιλοστοργία
+2001578	tni-aa	4.28	John Stobaeus of Stobi	tni	pagan	late-antique	philosophy	prose	450	450	Anthologium	1	38087	concept	φιλοστοργία
+2002437	tns-aa	book 4	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	589	concept	φιλόστοργος
+2002458	tns-aa	book 5	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	431	concept	φιλόστοργος
+2002547	tns-aa	book 11	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	644	concept	φιλόστοργος
+2002563	tns-aa	book 12	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	587	concept	φιλόστοργος
+2002577	tns-aa	book 13	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	604	concept	φιλόστοργος
+2002581	tns-aa	book 13	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	468	concept	φιλόστοργος
+2002585	tns-aa	book 13	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	871	concept	φιλόστοργος
+2002606	tns-aa	book 15	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	694	concept	φιλόστοργος
+2002680	tns-aa	book 21	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Paraphrase of the Gospel of John	1	445	concept	φιλόστοργος
+1121875	tns-ab	book 3.175.5	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	43	concept	φιλόστοργος
+1122155	tns-ab	book 4.15.1	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	42	concept	φιλόστοργος
+1122976	tns-ab	book 5.370.4	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	44	concept	φιλόστοργος
+1123054	tns-ab	book 5.2	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	38	concept	φιλόστοργος
+1123276	tns-ab	book 6.3	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	42	concept	φιλόστοργος
+1124492	tns-ab	book 9.90.5	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	41	concept	φιλόστοργος
+1125232	tns-ab	book 11.80.4	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	38	concept	φιλόστοργος
+1125793	tns-ab	book 12.120.4	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	41	concept	φιλόστοργος
+1127644	tns-ab	book 16.145.4	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	43	concept	φιλόστοργος
+1127957	tns-ab	book 17.55.2	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	41	concept	φιλόστοργος
+1128364	tns-ab	book 18.65.2	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	40	concept	φιλόστοργος
+1128634	tns-ab	book 18.335.2	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	45	concept	φιλόστοργος
+1133803	tns-ab	book 33.10.3	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	39	concept	φιλόστοργος
+1135891	tns-ab	book 37.3	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	39	concept	φιλόστοργος
+1136380	tns-ab	book 38.195.1	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	38	concept	φιλόστοργος
+1138411	tns-ab	book 42.360.1	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	45	concept	φιλόστοργος
+1140130	tns-ab	book 47.40.2	Nonnus of Panopolis	tns	None	late-antique	epic	verse	450	470	Dionysiaca	1	41	concept	φιλόστοργος
+1814359	uvo-aa	7.1.31	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	485	concept	φιλοστοργία
+1814382	uvo-aa	8.1.25	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	1103	concept	φιλοστοργία
+1814403	uvo-aa	8.1.54	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	347	concept	φιλοστοργία
+1814485	uvo-aa	12.2.2	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	717	concept	φιλοστοργία
+1814527	uvo-aa	12.2.63	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	375	concept	φιλοστοργία
+1814705	uvo-aa	20.2.13	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	567	concept	φιλόστοργος
+1814726	uvo-aa	20.2.43	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	657	concept	φιλοστοργία
+1814727	uvo-aa	20.2.45	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	1077	concept	φιλόστοργος
+1814848	uvo-aa	26.1.5	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	626	concept	φιλοστοργία
+1814860	uvo-aa	26.2.15	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	375	concept	φιλοστοργία
+1814873	uvo-aa	26.2.34	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	537	concept	φιλόστοργος
+1814888	uvo-aa	26.2.54	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	585	concept	φιλόστοργος
+1815121	uvo-aa	34.1.2	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	584	concept	φιλοστοργία
+1815149	uvo-aa	35.2.30	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	734	concept	φιλοστοργία
+1815161	uvo-aa	35.2.51	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	435	concept	φιλόστοργος
+1815173	uvo-aa	35.2.68	Choricius the Sophist of Gaza	uvo	None	late-antique	oratory	oration	500	520	Encomium for Bishop Marcian	1	680	concept	φιλοστοργία
+506515	uxc-an	Aet Mund.322	John Philoponus of Alexandria	uxc	christian	late-antique	philosophy	treatise	510	570	On the Eternity of the World	1	1203	concept	φιλόστοργος
+506516	uxc-an	Aet Mund.323	John Philoponus of Alexandria	uxc	christian	late-antique	philosophy	treatise	510	570	On the Eternity of the World	1	724	concept	φιλόστοργος
+1828331	uyg-ad	1.189	Damascius of Damascus	uyg	neoplatonist	late-antique	philosophy	treatise	515	538	On Principles	1	2306	concept	φιλοστοργία
+1227397	uyq-ab	book 25.77	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Dubious Songs	1	416	concept	φιλόστοργος
+2226234	uyq-ac	694	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Genuine Songs	1	32	concept	φιλόστοργος
+1227739	uyq-ad	book 5	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Songs	1	436	concept	φιλόστοργος
+1228619	uyq-ad	book pro 1	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Songs	1	128	concept	φιλόστοργος
+1228818	uyq-ad	book 23	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Songs	1	410	concept	φιλόστοργος
+1229157	uyq-ad	book 17	Romanos the Melodist	uyq	None	late-antique	poetry	verse	518	555	Songs	1	456	concept	φιλόστοργος
+259958	uza-aa	unit_327	Ephraem of Aenus	uza	None	late-antique	history	verse	520	540	Chronicle	1	722	concept	φιλόστοργος
+723320	uzu-ac	in Epict.85	Simplicius of Cilicia	uzu	neoplatonist	late-antique	philosophy	treatise	520	540	Commentary-Epictetus' Handbook	1	2492	concept	φιλοστοργία
+1829000	vjk-ag	14 9 (t)	Hippiatric Compilation Anonymous	vjk	None	late-antique	medicine	treatise	550	550	Berlin Veterinary Works	1	940	concept	φιλόστοργος
+374012	vjk-ah	7	Hippiatric Compilation Anonymous	vjk	None	late-antique	medicine	treatise	550	550	Fragments of Anatolius	1	805	concept	φιλόστοργος
+1831209	vjk-ai	1065	Hippiatric Compilation Anonymous	vjk	None	late-antique	medicine	treatise	550	550	Paris Veterinary Works	1	1104	concept	φιλόστοργος
+1659753	vko-aa	5 19a	Arsenius the Paroemiographer	vko	None	late-antique	grammar	prose	550	550	Sayings	1	858	concept	φιλοστοργία
+919239	vky-aa	20.112	Demosthenes Scholia	vky	None	late-antique	grammar	prose	550	550	Scholia-Demosthenes	1	406	concept	φιλοστοργία
+864752	vrc-aa	1 19 (t1)	Aristaenetus the Epistolographer	vrc	None	late-antique	None	epistle	550	550	Epistles on Love and Beauty	1	2589	concept	φιλοστόργως
+2143566	vta-ad	1 330	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	393	concept	φιλόστοργος
+2143715	vta-ad	2 99	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	150	concept	φιλοστοργία
+2144808	vta-ad	5 213	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	149	concept	φιλοστοργία
+2145938	vta-ad	10 7	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	410	concept	φιλοστοργία
+2146962	vta-ad	14 145	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	115	concept	φιλοστοργία
+2147338	vta-ad	16 12	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Odyssey	1	363	concept	φιλοστόργως
+1902330	vta-ae	1 352b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	348	concept	φιλοστοργία
+1906812	vta-ae	6 406	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	180	concept	φιλοστοργία
+1906874	vta-ae	6 448a1	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	2	479	concept	φιλοστοργία
+1906878	vta-ae	6 450-4a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	304	concept	φιλοστοργία
+1906879	vta-ae	6 450-4b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	211	concept	φιλοστοργία
+1906893	vta-ae	6 462-3	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	209	concept	φιλοστοργία
+1906906	vta-ae	6 472a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	167	concept	φιλοστοργία
+1907135	vta-ae	7 104-8	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	316	concept	φιλοστόργως
+1908750	vta-ae	9 323a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	567	concept	φιλοστοργία
+1908921	vta-ae	9 437a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	468	concept	φιλοστοργία
+1908985	vta-ae	9 481b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	2	417	concept	φιλοστοργία
+1910885	vta-ae	11 611	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	257	concept	φιλοστοργία
+1911684	vta-ae	12 333b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	255	concept	φιλόστοργος
+1911685	vta-ae	12 334a1	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	86	concept	φιλόστοργος
+1915149	vta-ae	16 247	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	319	concept	φιλόστοργος
+1915174	vta-ae	16 268	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	277	concept	φιλόστοργος
+1915701	vta-ae	16 784-5a2	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	438	concept	φιλοστόργως
+1915804	vta-ae	17 4a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	501	concept	φιλόστοργος
+1915805	vta-ae	17 4b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	130	concept	φιλόστοργος
+1915807	vta-ae	17 5a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	288	concept	φιλόστοργος
+1915809	vta-ae	17 5c1	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	86	concept	φιλόστοργος
+1915972	vta-ae	17 133-6	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	532	concept	φιλόστοργος
+1915976	vta-ae	17 134-6c	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	2	139	concept	φιλοστοργία
+1916458	vta-ae	17 652-3a2	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	190	concept	φιλοστοργία
+1916471	vta-ae	17 670a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	317	concept	φιλοστόργως
+1916934	vta-ae	18 325a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	207	concept	φιλοστοργία
+1916953	vta-ae	18 342	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	235	concept	φιλοστόργως
+1917992	vta-ae	20 125b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	402	concept	φιλοστοργία
+1919791	vta-ae	22 380	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	203	concept	φιλοστόργως
+1920019	vta-ae	23 44a	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	124	concept	φιλόστοργος
+1920043	vta-ae	23 67	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	119	concept	φιλοστοργία
+1921203	vta-ae	24 215b	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Scholia-Iliad	1	167	concept	φιλοστόργως
+1668597	vta-af	6 458	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Old Scholia on Iliad	1	123	concept	φιλοστοργία
+1668693	vta-af	9 323	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Old Scholia on Iliad	1	396	concept	φιλοστοργία
+1668717	vta-af	9 482bis	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Old Scholia on Iliad	1	195	concept	φιλοστοργία
+1668977	vta-af	13 237	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Old Scholia on Iliad	1	272	concept	φιλοστοργία
+1841668	vta-ah	13 249	Homer Commentary	vta	None	late-antique	grammar	prose	550	550	Eustathian Scholia on Iliad	1	148	concept	φιλοστοργία
+109450	vtu-ac	alpha 78	Seguerian Lexicons	vtu	None	late-antique	grammar	prose	550	550	Anonymous Anti-Atticist	1	1115	concept	φιλοστοργία
+91298	pqy-aa	250	Aesop Life-anonymous	pqy	None	roman	fiction	prose	564	620	Life of Aesop Pl or Accursiana	1	767	concept	φιλοστόργως
+91390	pqy-ae	37	Aesop Life-anonymous	pqy	None	roman	fiction	prose	564	620	Life W	1	1299	concept	φιλοστόργως
+2108152	woy-an	omicron 356	Photius of Constantinople	woy	None	byzantine	grammar	collection	858	886	Lexicon, Part 2 (Epsilon–Omega)	1	1083	concept	φιλόστοργος
+2108256	woy-an	pi 459	Photius of Constantinople	woy	None	byzantine	grammar	collection	858	886	Lexicon, Part 2 (Epsilon–Omega)	1	828	concept	φιλοστοργέω
+2011869	wus-aa	α 3397	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Α	2	2091	proper_name	Φιλοστόργιος
+2011887	wus-aa	α 3415	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Α	1	971	concept	φιλοστοργία
+2013756	wus-ab	β 150	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Β	2	2055	proper_name	Φιλοστόργιος
+2022111	wus-ac	γ 450	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Γ	2	3057	proper_name	Φιλοστόργιος
+2022673	wus-ai	ι 501	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Ι	1	660	concept	φιλοστοργία
+2026027	wus-ak	λ 254	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Λ	1	2634	proper_name	Φιλοστόργιος
+2164554	wus-ap	π 1685	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Π	1	447	concept	φιλόστοργος
+2037366	wus-as	τ 553	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Τ	1	900	concept	φιλόστοργος
+2030884	wus-au	φ 527	Suda	wus	None	byzantine	grammar	collection	950	1000	Lexicon, Letter Φ	1	834	proper_name	Φιλοστόργιος
+2107361	xpw-ac	Od.1.363	Eustathius of Thessalonica	xpw	None	byzantine	grammar	treatise	1150	1194	Commentary on Homer's Odyssey	1	4477	concept	φιλοστοργία
+2107553	xpw-ac	Od.2.112	Eustathius of Thessalonica	xpw	None	byzantine	grammar	treatise	1150	1194	Commentary on Homer's Odyssey	1	4462	concept	φιλοστοργία
+2107554	xpw-ac	Od.2.113	Eustathius of Thessalonica	xpw	None	byzantine	grammar	treatise	1150	1194	Commentary on Homer's Odyssey	1	4464	concept	φιλοστοργία
+2107572	xpw-ac	Od.2.131	Eustathius of Thessalonica	xpw	None	byzantine	grammar	treatise	1150	1194	Commentary on Homer's Odyssey	1	4421	concept	φιλοστοργία
+2115266	yem-aa	phi 1810	Pseudo-Zonaras	yem	None	byzantine	grammar	collection	1450	1590	Lexicon	1	808	concept	φιλόστοργος
+3136501	xie-aa	φ 152	Great Etymological Work	xie	None	byzantine	lexicography	collection	None	None	Great Etymological Work	2	145	concept	φιλόστοργος

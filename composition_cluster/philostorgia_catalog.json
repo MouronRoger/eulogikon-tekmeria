@@ -1,0 +1,29 @@
+{
+  "_note": "CATALOG class: canonical work URLs resolved from the eulogikon DB via src.core.url_composer.canonical_work_url (never hand-guessed). Titles are the composition-store candidate titles. Consumed by composition_project.py; regenerate if a wid's display string changes.",
+  "works": {
+    "bhc-aa": {"title": "Pythagorean Teachings and Letters", "url": "https://eulogikon.org/works/theano-croton-teachings-letters-bhc-aa"},
+    "bko-aa": {"title": "Allegories Or Homeric Questions", "url": "https://eulogikon.org/works/heraclitus-ephesus-allegories-homeric-bko-aa"},
+    "emo-ag": {"title": "Fragments of the Oresteia", "url": "https://eulogikon.org/works/aeschylus-oresteia-fragments-emo-ag"},
+    "bqs-ah": {"title": "On Sedition and Political Defense", "url": "https://eulogikon.org/works/antiphon-athens-sedition-defense-bqs-ah"},
+    "dck-aa": {"title": "On Human Nature", "url": "https://eulogikon.org/works/aresas-lucania-human-nature-dck-aa"},
+    "ezq-ag": {"title": "Cyropaedia", "url": "https://eulogikon.org/works/xenophon-athens-cyropaedia-ezq-ag"},
+    "ezq-ai": {"title": "Agesilaus", "url": "https://eulogikon.org/works/xenophon-athens-agesilaus-ezq-ai"},
+    "ffk-bm": {"title": "Laws", "url": "https://eulogikon.org/works/plato-laws-ffk-bm"},
+    "hgw-av": {"title": "History of Animals", "url": "https://eulogikon.org/works/aristotle-history-animals-hgw-av"},
+    "hgw-bf": {"title": "Physiognomics", "url": "https://eulogikon.org/works/aristotle-physiognomics-hgw-bf"},
+    "hki-aa": {"title": "On Hunting with Mirrors", "url": "https://eulogikon.org/works/clearchus-soli-hunting-mirrors-hki-aa"},
+    "kms-ae": {"title": "Moral Fragments", "url": "https://eulogikon.org/works/chrysippus-soli-moral-fragments-kms-ae"},
+    "lcc-aa": {"title": "Testimonies and Fragments", "url": "https://eulogikon.org/works/antipater-of-tarsus-testimonies-lcc-aa"},
+    "msa-ac": {"title": "Fragments on Customs and Wars", "url": "https://eulogikon.org/works/posidonius-apameia-rhodes-customs-wars-msa-ac"},
+    "nde-ac": {"title": "Historical Library, Books 21-40", "url": "https://eulogikon.org/works/diodorus-sicily-historical-library-21-40-nde-ac"},
+    "nac-aa": {"title": "Book-the Sects of Philosophers", "url": "https://eulogikon.org/works/arius-didymus-alexandria-sects-philosophers-nac-aa"},
+    "ofq-ad": {"title": "Jewish Antiquities", "url": "https://eulogikon.org/works/josephus-antiquities-ofq-ad"},
+    "okg-as": {"title": "Whether Land or Water Animals Are Wiser", "url": "https://eulogikon.org/works/plutarch-chaeronea-land-water-animals-wiser-okg-as"},
+    "okg-cg": {"title": "On Affection for Offspring", "url": "https://eulogikon.org/works/plutarch-chaeronea-affection-offspring-okg-cg"},
+    "ojw-ac": {"title": "Discourses of Epictetus by Arrian", "url": "https://eulogikon.org/works/epictetus-discourses-ojw-ac"},
+    "qmm-dt": {"title": "On Temperaments", "url": "https://eulogikon.org/works/galen-pergamon-temperaments-qmm-dt"},
+    "qpy-aa": {"title": "To Himself", "url": "https://eulogikon.org/works/marcus-aurelius-to-himself-qpy-aa"},
+    "qya-ac": {"title": "Exhortation to the Greeks", "url": "https://eulogikon.org/works/clement-alexandria-exhortation-qya-ac"},
+    "taq-ac": {"title": "Lexicon Π–Ω", "url": "https://eulogikon.org/works/hesychius-alexandria-lexicon-taq-ac"}
+  }
+}

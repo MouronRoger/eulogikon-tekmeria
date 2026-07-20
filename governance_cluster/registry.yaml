@@ -1,0 +1,214 @@
+# Title: Principle and anti-pattern registry, Tekmeria (eulogikon-semeia)
+# Status: active
+# Authority_level: member registry. Holds ids, owners, and checks. It does NOT
+#   hold rule text: the statement of every principle lives once, in its owner
+#   file, and a second copy here would be TAP-007.
+# Scope: the eulogikon-semeia repo
+# Relationship_to:
+#   principles: governance_cluster/canonical_design_principles.md
+#   rot: ROT.md
+#   family_law: ../eukoine/GOVERNANCE.md
+#
+# owner_marker is the literal substring that must appear in the owner file.
+# It is what makes "this rule has a real home" mechanically falsifiable.
+# scripts/check_registry_owners.py enforces it.
+#
+# check:  machine (a script fails on violation)
+#       | gate    (a procedure refuses to proceed)
+#       | doctrine (held by reading and adversarial attack)
+# phase:  plan | compose | verify | close | always
+
+schema_version: "1.0"
+id_prefixes:
+  principle: TDP
+  anti_pattern: TAP
+
+principles:
+
+  - id: TDP-001
+    name: provenance-class-per-fact
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "belongs to exactly one class"
+    check: gate
+    phase: [compose, verify]
+
+  - id: TDP-002
+    name: discovery-is-never-a-source
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "The survey JSON is discovery only"
+    check: gate
+    phase: [compose, verify]
+
+  - id: TDP-003
+    name: verification-is-produced
+    owner: .claude/skills/tekmerion/references/ledger.md
+    owner_marker: "A check with no record did not happen"
+    check: gate
+    phase: [verify, close]
+
+  - id: TDP-004
+    name: durable-anchor-set
+    owner: .eukoine/interim_head_citation.md
+    owner_marker: "Required durable anchor set"
+    check: doctrine
+    phase: [always]
+
+  - id: TDP-005
+    name: identity-never-from-display-string
+    owner: .eukoine/predicate_lexicon.yaml
+    owner_marker: "the only identifiers are eul_wid / eul_aid"
+    check: doctrine
+    phase: [always]
+
+  - id: TDP-006
+    name: mechanical-ceiling
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "is the floor of this work, not the work"
+    check: doctrine
+    phase: [compose]
+
+  - id: TDP-007
+    name: translation-warrant
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "Translation warrant rule"
+    check: gate
+    phase: [compose, verify]
+
+  - id: TDP-008
+    name: store-is-the-state
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "The store is the state; the conversation is not"
+    check: gate
+    phase: [always]
+
+  - id: TDP-009
+    name: page-is-a-projection
+    owner: .claude/skills/tekmerion/SKILL.md
+    owner_marker: "deterministic projection"
+    check: gate
+    phase: [compose, close]
+
+  - id: TDP-010
+    name: capability-port-shape
+    owner: governance_cluster/capability_port.md
+    owner_marker: "If you cannot write the port signature, you do not have a port"
+    check: gate
+    phase: [plan]
+
+  - id: TDP-011
+    name: derived-facts-are-carried
+    owner: ../eukoine/schema_naming_law.md
+    owner_state: >-
+      family-owned and NOT in the synchronising set, so it is reached by a
+      cross-repo path rather than a mirror. Deliberately left unbound: a marker
+      check here would fail in any clone without the hub as a sibling, and a
+      guardian that fails for the wrong reason teaches people to ignore it.
+    check: doctrine
+    phase: [always]
+
+  - id: TDP-012
+    name: parsimony-and-where-it-stops
+    owner: governance_cluster/canonical_design_principles.md
+    owner_marker: "Prefer the smallest structure that carries the work"
+    check: doctrine
+    phase: [always]
+
+  - id: TDP-013
+    name: adversarial-cross-check
+    owner: governance_cluster/adversarial_cross_check.md
+    owner_marker: "A bare \"looks fine\" is a non-run"
+    check: gate
+    phase: [plan, close]
+
+  - id: TDP-014
+    name: cold-reading
+    owner: governance_cluster/cold_reading.md
+    owner_marker: "The tracer and the judge are different passes"
+    check: gate
+    phase: [plan, close]
+
+  - id: TDP-015
+    name: script-terminal-state
+    owner: governance_cluster/script_lifecycle.md
+    owner_marker: "A probe is the one transient state"
+    check: machine
+    machine_check: scripts/check_script_lifecycle.py
+    phase: [verify, close]
+
+anti_patterns:
+
+  - id: TAP-001
+    name: period-claim-on-attributed-floruit
+    violates: [TDP-001]
+    detection: >-
+      An "earliest attestation" or period word attached to a witness whose
+      station type is pseudepigraphic or of contested date, with the framing
+      not carrying the trap.
+    remediation: >-
+      Re-date the claim or make the station type visible in the framing.
+
+  - id: TAP-002
+    name: token-count-as-attestation-count
+    violates: [TDP-001]
+    detection: >-
+      A table or prose figure that counts word-family tokens where it reports
+      attestations, or the two conflated in one column.
+    remediation: >-
+      Count units. Report token counts as token counts, separately labelled.
+
+  - id: TAP-003
+    name: composing-into-the-page
+    violates: [TDP-008, TDP-009]
+    detection: >-
+      Editorial content authored into published HTML; a fact present on the
+      page and absent from the store.
+    remediation: >-
+      Author into the store; re-project the page.
+
+  - id: TAP-004
+    name: interpretation-in-the-translation-line
+    violates: [TDP-007]
+    detection: >-
+      An added subject, a supplied connective asserting a relation the Greek
+      does not, or a gloss, inside a translation line.
+    remediation: >-
+      Move it below the block, where it is visibly the writer's.
+
+  - id: TAP-005
+    name: fact-printed-from-discovery-data
+    violates: [TDP-002]
+    detection: >-
+      A count, era string, floruit, work title, or Greek quotation traceable to
+      a survey artifact rather than to a query or a fetch run at composition
+      time.
+    remediation: >-
+      Re-derive under a provenance class or remove the fact.
+
+  - id: TAP-006
+    name: durable-record-on-a-provisional-id
+    violates: [TDP-004]
+    detection: >-
+      A stored row, ledger line, or citation recoverable only through a
+      provisional unit id, with no incipit and no legacy_reference.
+    remediation: >-
+      Record the full anchor set at the moment the quoted span is matched.
+
+  - id: TAP-007
+    name: second-source
+    violates: [TDP-012]
+    detection: >-
+      A helpful summary, a restated subset of a rule, a parallel "current
+      understanding", or a second copy of normative content owned elsewhere.
+    remediation: >-
+      Delete the copy; cite the owner by path. Where the copy and the owner
+      disagree, the copy is the defect.
+
+  - id: TAP-008
+    name: blocking-pettifogging
+    violates: [TDP-012]
+    detection: >-
+      A rule invoked or invented to obstruct sensible reversible work that
+      names no invariant it protects.
+    remediation: >-
+      Cut the rule. A rule that names its invariant stays; one that names none
+      is this anti-pattern. The agent is fully empowered.

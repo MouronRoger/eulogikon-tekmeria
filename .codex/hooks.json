@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "command": ".codex/hooks/code_rot_check.sh" }
+    ]
+  }
+}

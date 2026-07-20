@@ -1,0 +1,185 @@
+# This file conforms to .eukoine/functional_concern_homes.schema.yaml (EKDP-033).
+#
+# NOTE on one deliberate exception to this repo's U+2014 ban: family law
+# requires placement_test to carry the canonical wording VERBATIM, and that
+# wording contains an em dash. Family law outranks a member style rule
+# (../eukoine/GOVERNANCE.md §3), so the character stands here and only here.
+# The em-dash guardian exempts this field by name, never this file wholesale.
+
+schema_ref: ".eukoine/functional_concern_homes.schema.yaml"
+
+title: "Functional concern homes, Tekmeria (eulogikon-semeia)"
+status: active
+authority_level: "member navigation index: authoritative on placement, not on content"
+scope: "the eulogikon-semeia repo"
+relationship_to:
+  family_schema: ".eukoine/functional_concern_homes.schema.yaml"
+  family_law: "../eukoine/GOVERNANCE.md"
+  member_principles: "governance_cluster/canonical_design_principles.md"
+
+authority: "EKDP-033"
+
+placement_test: >
+  When working on a concern, open its functional home first.
+  The answer to "where do I look?" must have one answer — not a comparison hunt across directories.
+
+homes:
+
+  - id: FCH-composition-procedure
+    concern: "How an extended Tekmerion is composed, tracked, and verified"
+    home: .claude/skills/tekmerion/
+    owner_cite: "TDP-001, TDP-006, TDP-008"
+    others_may: "cite it; never restate its procedure"
+    state: consolidated
+
+  - id: FCH-prose-authority
+    concern: "What a Tekmerion is as writing: balance, framing, endings, citations"
+    home: STYLE.md
+    owner_cite: "TDP-012"
+    others_may: >
+      Greek-in-English craft at compose time is owned at
+      composition_cluster/prose_rules.md; STYLE points there and does not
+      restate it
+    firewall: >
+      STYLE.md governs published-form prose and never procedure; the tekmerion
+      skill governs procedure and never prose; prose_rules.md governs
+      composition-field craft and never balance/framing/endings. None restates
+      the others.
+    state: consolidated
+
+  - id: FCH-composition-prose-craft
+    concern: "Greek-in-English rules for composition fields: gloss, physis, blacklist-safe English"
+    home: composition_cluster/prose_rules.md
+    owner_cite: "TDP-012"
+    others_may: >
+      cite it; never restate its rules in STYLE or the skill
+    state: consolidated
+
+  - id: FCH-composition-voice
+    concern: "Composition-phase voice guidelines: history of ideas, not philology on the page"
+    home: composition_cluster/craft.md
+    owner_cite: "TDP-012"
+    others_may: >
+      cite it; never restate its advice in STYLE or prose_rules
+    firewall: >
+      craft.md governs reader interest at compose time; STYLE governs published
+      form; prose_rules governs field mechanics. None restates the others.
+    state: consolidated
+
+  - id: FCH-governance
+    concern: "Principles, anti-patterns, registries, script lifecycle"
+    home: governance_cluster/
+    owner_cite: "TDP-012"
+    state: consolidated
+
+  - id: FCH-doctrine
+    concern: "The non-negotiables: capability port, adversarial cross-check, cold reading"
+    home: governance_cluster/
+    owner_cite: "TDP-010, TDP-013, TDP-014"
+    state: consolidated
+
+  - id: FCH-rot
+    concern: "Decay classes and what stops the turn"
+    home: ROT.md
+    state: consolidated
+
+  - id: FCH-composition-store
+    concern: "The per-term composition state: candidates, plan, stations, blocks, index, claims"
+    home: composition_cluster/
+    owner_cite: "TDP-008, TDP-010"
+    others_may: >
+      read it through the port only; the projection to HTML is a consumer, not
+      a second writer; phase map at composition_cluster/README.md
+    state: consolidated
+
+  - id: FCH-published-pages
+    concern: "The published Tekmeria and the site chrome"
+    home: site_cluster/public/
+    owner_cite: "TDP-009"
+    others_may: >
+      This is the deploy output surface: the static host serves
+      site_cluster/public as the site root (pinned in wrangler.toml), so path
+      still equals URL and a published page keeps its address. This is the one
+      place file-kind colocation is overridden by a deploy constraint, and it
+      applies to served artifacts only, never to working ones.
+    state: consolidated
+
+  - id: FCH-site-registry
+    concern: "posts.json, index cards, sitemap, and keeping them in step"
+    home: site_cluster/
+    others_may: >
+      the sync machinery is site_cluster/site_build_index.py; posts.json is the
+      registry; README.md documents the workflow; CI enforces the check
+    state: consolidated
+
+  - id: FCH-guardians
+    concern: "Cheap structural checks over shipped artifacts"
+    home: scripts/audit/
+    owner_cite: "TDP-015"
+    firewall: >
+      A guardian checks shape and is never the evidence that work is correct.
+      Correctness claims are tests.
+    state: partial
+
+  - id: FCH-chronicle
+    concern: "What was true once: findings, closures, adversarial passes"
+    home: work_reports/
+    owner_cite: "TDP-003, TDP-015"
+    firewall: >
+      Chronicle only. Governing documents state the present fact and never
+      carry history; history lives here and is linked, never embedded.
+    state: consolidated
+
+  - id: FCH-family-mirror
+    concern: "The family single source: identity spec, predicate lexicon, write access"
+    home: .eukoine/
+    owner_cite: "TDP-004, TDP-005, TDP-011"
+    others_may: >
+      point at it; never summarise, restate, or hand-edit it. Written only by
+      the hub sync tool.
+    state: consolidated
+
+  - id: FCH-hub-policy-surface
+    concern: >
+      The synced family surface: the sync toolchain, the spec lock, the
+      spec-protection and fold guards, and the fold authority tests.
+    home: naming/, scripts/, tests/
+    owner_cite: "../eukoine/naming/sync_manifest.toml"
+    firewall: >
+      These are file-type buckets and therefore violate EKDP-033, which names
+      taxonomic dispersion as its own violation and lists tests as something
+      that must live beside its concern. They are recorded here rather than
+      fixed because the violation is not this member's to fix: the hub manifest
+      declares ONE path per artefact with no per-member destination, so every
+      artefact lands at the same literal path in all four members. eulogikon,
+      EuGraphikon and EuMorphikon carry the identical buckets for the identical
+      reason. Moving them locally breaks byte-identical parity, and the next
+      sync recreates them.
+    others_may: >
+      nothing here is edited by hand. The hub sync tool is the only writer.
+      Consolidating them into one home is hub work, tracked as a finding
+      reported up, not a local move.
+    state: home-to-confirm
+
+code_homes:
+
+  - id: FCH-store-driver
+    concern: "The single writable owner of composition state and its state machine"
+    home: composition_cluster/
+    owner_cite: "TDP-010"
+    state: reserved
+
+  - id: FCH-corpus-read
+    concern: "Read-only access to the shared corpus through the published contract"
+    home: composition_cluster/
+    owner_cite: "TDP-005, TDP-011"
+    others_may: >
+      nothing else opens a corpus connection or composes corpus SQL. Reads go
+      to corpus_api, never to physical eulogikon tables.
+    state: reserved
+
+  - id: FCH-projection
+    concern: "Deterministic projection of a completed store into essay HTML"
+    home: composition_cluster/
+    owner_cite: "TDP-009"
+    state: reserved

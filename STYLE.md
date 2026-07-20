@@ -10,15 +10,18 @@ strongest examples rather than policing a prior checklist.*
 
 ## What a Tekmerion is
 
-A **Tekmerion** (τεκμήριον, plural **Tekmeria**) is an evidence-led corpus
-note. It begins from a question about what the Eulogikon corpus contains, then
-sets down the passages that answer that question: original Greek, transliteration,
-translation, and enough framing for the reader to know what they are looking at.
+A **Tekmerion** (τεκμήριον, plural **Tekmeria**) is an evidence-led walk through
+the history of a concept over the Eulogikon corpus. It begins from a question
+about what the corpus contains, then sets down the passages that answer it:
+original Greek, transliteration, translation, and enough framing for the reader
+to know what they are looking at. The interest is **hermeneutic**: what Greek
+authors meant, how a term moved through time, not philological apparatus or
+metadata audit on the public page.
 
 It is not a conventional essay with a thesis imposed on the evidence. It is also
 not a bare concordance. The best Tekmeria rearrange something the reader thought
 they already knew (an English gloss, an empty search, an expected spokesman,
-a familiar lemma) by placing witnesses until that rearrangement is visible.
+a familiar word) by placing witnesses until that rearrangement is visible.
 
 The writer may orient the reader. The writer may name a visible pattern. The
 writer may say where a term changes function, where a later witness preserves an
@@ -37,7 +40,7 @@ The form walks a narrow path.
 
 | Too dry | The aim | Too much |
 |---|---|---|
-| Lemma entry, period table, no hinge | Informative and interesting | Miniature monograph or manifesto |
+| Lexicon entry, period table, no hinge | Informative and interesting | Miniature monograph or manifesto |
 | Passages listed without a reason to read | Suggestive | Speculative synthesis the stations were recruited to illustrate |
 | Fear of any framing | Honest | Admiration language, crowning verdicts, invented spokesmen |
 
@@ -59,7 +62,7 @@ the corpus had announced your reading.
 
 **Honest** means station type, absence, gap, and provenance are first-class.
 Doxography is not original speech. Author floruit is not composition date for
-pseudepigrapha. An empty noun-search is not an empty topic if adjacent lemmas
+pseudepigrapha. An empty noun-search is not an empty topic if adjacent words
 carry the load (*philía*). No one needs to say "this is not yet metaphysics"
 if idle tools beside a missing noun beside Plato's silence already show it.
 
@@ -95,7 +98,7 @@ finish speaking.
 
 **Cautionary (serviceable, thinner as a model):**
 
-- *kólasis*: clear layers, but closer to a lemma entry ending in a definition;
+- *kólasis*: clear layers, but closer to a lexicon entry ending in a definition;
   local reading of witnesses is lighter; less distinctive hinge than Marcus or
   Aletheia.
 
@@ -119,7 +122,7 @@ Good controlling questions (from published pieces):
   absent there.)
 - Does English *truth* fit what the corpus does with *alḗtheia*? (Interest:
   verbs, opposites, domains.)
-- Do the Later Stoics talk about love? (Interest: nouns sparse; adjacent lemmas
+- Do the Later Stoics talk about love? (Interest: nouns sparse; adjacent words
   and early Stoa carry the topic.)
 
 Weaker as a sole question: "Survey *kólasis* diachronically." That can still
@@ -148,7 +151,7 @@ Two viable centers of gravity:
    *paráklētos*, ἀεργοί / ἐνεργοί).
 
 Both are Tekmeria if they serve a corpus question. The form is not "always a
-lemma from archaic to late antique."
+word from archaic to late antique."
 
 ---
 
@@ -249,19 +252,22 @@ translation where needed.
 
 ## Greek in English prose
 
-Use transliteration in running English by default: *pneûma*, *psychē*,
-*tetrágōnos*, *kólasis*, *energós*. Give a plain-English gloss where useful.
+Running English (commentary, framing, chapter leads, secondary pointers,
+ending) is **plain English** for a public reader. Greek belongs in the three
+evidence lines of a primary witness block. **Never bare untranslated Greek** on
+the published page.
 
-Greek script is allowed in running prose when exact form matters:
+The subject word of the essay and blacklist-protected terms (*physis*, *psyche*,
+and the rest) may stay transliterated; everything else is English. Operational
+rules for composition fields live in
+[`composition_cluster/prose_rules.md`](composition_cluster/prose_rules.md).
+Voice guidelines (history of ideas, not verification voice) live in
+[`composition_cluster/craft.md`](composition_cluster/craft.md). Both apply to
+**every extended Tekmerion**, not one term only.
 
-- morphology: `τετράγωνον` is neuter, not feminine;
-- corpus absence: the phrase `ἡ τετράγωνος ψυχή` does not occur;
-- lexical contrast: `πνεῦμα` is paired with `ἀήρ` in the witness;
-- table cells where the Greek form itself is the datum.
-
-Do not make English prose unreadable for a reader without Greek. If a sentence
-uses Greek script, give enough transliteration, gloss, or context for the
-sentence to remain legible.
+When Greek script appears in running prose outside a witness block, every token
+needs an inline companion (transliteration or gloss); bare Greek script is a
+defect.
 
 Translations should usually be English. Use Greek script in a translation only
 when the untranslated form is itself the object of the note.
@@ -352,9 +358,11 @@ a modern gloss (and even then, prefer landscape over "a definition that fits").
 - **Sort the word-family when needed.** Adjective, verb, and noun may tell
   different stories (ἐνεργός / ἐνεργέω / ἐνέργεια). A noun-only survey can miss
   the hinge.
-- **Test apparent early hits for station type.** Testimonia, floruit traps, and
-  mis-tagged quotations are part of the evidence story when they matter; they
-  are not witnesses of the attributed author.
+- **Test apparent early hits at compose time.** Floruit traps, testimonia,
+  and mis-tagged quotations are resolved during station checks and recorded in
+  the store; they are **not** a public chapter and **not** secondary pointers
+  for the reader. If a hit cannot be honoured as a witness, set it aside and
+  start the trajectory at the first secure attestation (here, Xenophon).
 
 ---
 
@@ -365,7 +373,7 @@ Each primary witness needs both the linked work title and the visible `wid`:
 > Demosthenes, *On the Embassy*, Eulogikon: fsm-cc, ref. Or19 1
 
 The `wid` is the stable key. The reference locates the passage inside the work.
-Resolve the URL from the database; never hand-guess a slug.
+Resolve the URL from the database; never hand-guess a display string.
 
 ### One citation per witness
 
@@ -379,9 +387,11 @@ Do not repeat the reference in the framing prose and again after the
 translation. Do not bury the station identifier below the evidence while
 duplicating it in the lead-in.
 
-Inline `<span class="cite">` is for secondary pointers only: parallel
-witnesses, cross-references, lexicographical glosses, or corpus-boundary notes.
-It is not for the primary witness block.
+Inline `<p class="cite">` is for **secondary pointers** only: a parallel
+passage worth naming in one English sentence, not a stripped-down witness
+block. Write the pointer in plain English; **never bare untranslated Greek**
+in a cite line. It is not for dating-trap audit, verification voice, or corpus-
+metadata corrections; those stay in the composition store.
 
 ---
 
