@@ -1,0 +1,3 @@
+name = "eulogikon-tekmeria"
+pages_build_output_dir = "site_cluster/public"
+compatibility_date = "2025-01-01"

@@ -1,0 +1,349 @@
+/* Tekmeria: essay-specific typography layered on eulogikon-base.css.
+   Base provides the chrome (navbar, footer, container, fonts); this styles the
+   prose body of a Tekmeria essay. Scope everything under .tekmeria-essay so it can
+   never collide with a lifted corpus rule. */
+
+/* Page column: ~75% of the viewport (was a fixed 760px / ~50%).
+   Width 100% keeps mobile pages full-bleed inside the padded card. */
+.tekmeria-essay {
+    width: 100%;
+    max-width: 75vw;
+    margin: 0 auto;
+    padding: 8px 4px 64px;
+    color: #2D3748;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 1.12em;
+    line-height: 1.72;
+}
+
+/* Let the card grow with the wider column on large screens. */
+body:has(.tekmeria-essay) .container,
+body:has(.tekmeria-index) .container {
+    max-width: min(1600px, 90vw);
+}
+
+/* --- Title block --- */
+.tekmeria-essay .post-header {
+    margin: 12px 0 36px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 28px;
+}
+.tekmeria-essay .post-header h1 {
+    font-weight: 300;
+    font-size: 2.1em;
+    line-height: 1.2;
+    color: #2D3748;
+    margin: 0 0 14px;
+}
+.tekmeria-essay .post-meta {
+    color: #718096;
+    font-size: 0.92em;
+    font-style: italic;
+}
+.tekmeria-essay .post-meta a { color: #718096; }
+
+/* --- Section headings --- */
+.tekmeria-essay h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #2D3748;
+    margin: 2.2em 0 0.6em;
+    line-height: 1.3;
+}
+.tekmeria-essay h3 {
+    font-weight: 600;
+    font-size: 1.12em;
+    color: #4a5568;
+    margin: 1.8em 0 0.5em;
+}
+
+.tekmeria-essay p { margin: 0 0 1.1em; }
+
+/* --- Greek source quotations --- */
+.tekmeria-essay blockquote.grc {
+    margin: 0.5em 0 0.4em;
+    padding: 0.6em 1.1em;
+    border-left: 4px solid #cbd5e0;
+    background: #f7fafc;
+    border-radius: 0 4px 4px 0;
+    font-size: 1.12em;
+    line-height: 1.8;
+    color: #2D3748;
+}
+.tekmeria-essay .translit {
+    margin: 0 0 0.2em 1.1em;
+    color: #718096;
+    font-size: 0.94em;
+    letter-spacing: 0.01em;
+}
+.tekmeria-essay .translation {
+    margin: 0 0 1.4em 1.1em;
+    color: #4a5568;
+    font-style: italic;
+    font-size: 0.98em;
+}
+
+/* Primary station citation: one per witness, above the three lines */
+.tekmeria-essay .witness-ref {
+    margin: 1.4em 0 0.35em;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #2D3748;
+}
+.tekmeria-essay .witness-ref a {
+    color: #2b6cb0;
+    text-decoration: none;
+    border-bottom: 1px dotted #90cdf4;
+    font-variant-numeric: tabular-nums;
+}
+.tekmeria-essay .witness-ref a:hover { border-bottom-style: solid; }
+
+/* --- Inline corpus citations (secondary pointers only) --- */
+.tekmeria-essay .cite {
+    color: #718096;
+    font-size: 0.95em;
+}
+.tekmeria-essay .cite a {
+    color: #2b6cb0;
+    text-decoration: none;
+    border-bottom: 1px dotted #90cdf4;
+    font-variant-numeric: tabular-nums;
+}
+.tekmeria-essay .cite a:hover { border-bottom-style: solid; }
+
+/* --- Summary tables ---
+   eulogikon-base.css styles all tables as corpus passage viewers (hidden
+   thead, hover-only ref column, enlarged Greek in last column). Reset
+   everything under .tekmeria-essay table.summary.
+
+   Layout rules (no horizontal scroll):
+   1. Text and tables share the widened essay column (max-width: 75vw).
+   2. table-layout: fixed + width 100% keeps every column inside the page.
+   3. Cells always wrap; never nowrap long titles or Greek phrases (that is
+      what caused work/phrase collisions).
+   4. Per-table customization: modifier classes, cell utilities, or
+      <col class="col-*"> width hints (percentages of the table). */
+
+.tekmeria-essay .table-scroll {
+    margin: 1.4em 0;
+    overflow-x: visible;
+}
+.tekmeria-essay .table-scroll table.summary {
+    margin: 0;
+}
+
+.tekmeria-essay table.summary {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 1.4em 0;
+    font-size: 0.98em;
+}
+.tekmeria-essay table.summary thead {
+    display: table-header-group !important;
+}
+.tekmeria-essay table.summary tbody {
+    display: table-row-group;
+}
+.tekmeria-essay table.summary tr {
+    display: table-row;
+}
+.tekmeria-essay table.summary th,
+.tekmeria-essay table.summary td {
+    display: table-cell;
+    opacity: 1 !important;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Arial, sans-serif;
+    font-size: inherit;
+    line-height: 1.45;
+    font-weight: 400;
+    color: #2D3748;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    word-break: normal;
+    hyphens: manual;
+}
+.tekmeria-essay table.summary thead th {
+    border-bottom: 2px solid #cbd5e0;
+    background-color: #4A5568;
+    color: #E2E8F0;
+    font-weight: 600;
+    white-space: normal;
+    line-height: 1.3;
+}
+.tekmeria-essay table.summary td a {
+    color: #2b6cb0;
+    text-decoration: none;
+    border-bottom: 1px dotted #90cdf4;
+    overflow-wrap: anywhere;
+}
+.tekmeria-essay table.summary td a:hover {
+    border-bottom-style: solid;
+}
+
+/* --- Column / cell utilities (opt-in per table) --- */
+.tekmeria-essay table.summary .wrap,
+.tekmeria-essay table.summary .cell-wrap {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+/* nowrap only for short tokens that fit their column (wid codes, counts) */
+.tekmeria-essay table.summary .nowrap,
+.tekmeria-essay table.summary .cell-nowrap {
+    white-space: nowrap;
+}
+.tekmeria-essay table.summary .cell-mono {
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 0.92em;
+}
+
+/* <col> width hints: percentages of the table width */
+.tekmeria-essay table.summary col.col-narrow { width: 9%; }
+.tekmeria-essay table.summary col.col-meta { width: 11%; }
+.tekmeria-essay table.summary col.col-author { width: 14%; }
+.tekmeria-essay table.summary col.col-work { width: 28%; }
+.tekmeria-essay table.summary col.col-phrase { width: 38%; }
+.tekmeria-essay table.summary col.col-note { width: 36%; }
+
+/* Diachronic shape: Period | Count | Character */
+.tekmeria-essay table.summary.diachronic th,
+.tekmeria-essay table.summary.diachronic td {
+    padding: 10px 12px;
+}
+.tekmeria-essay table.summary.diachronic th:first-child,
+.tekmeria-essay table.summary.diachronic td:first-child {
+    width: 22%;
+    font-weight: 600;
+}
+.tekmeria-essay table.summary.diachronic th:nth-child(2),
+.tekmeria-essay table.summary.diachronic td:nth-child(2) {
+    width: 12%;
+    font-weight: 600;
+    text-align: right;
+}
+.tekmeria-essay table.summary.diachronic th:nth-child(3),
+.tekmeria-essay table.summary.diachronic td:nth-child(3) {
+    width: 66%;
+}
+
+/* Lemma counts by period: Period + N lemma columns */
+.tekmeria-essay table.summary.lemma-counts thead th {
+    white-space: normal;
+    line-height: 1.3;
+}
+.tekmeria-essay table.summary.lemma-counts th:first-child,
+.tekmeria-essay table.summary.lemma-counts td:first-child {
+    width: 18%;
+    font-weight: 600;
+}
+.tekmeria-essay table.summary.lemma-counts th:not(:first-child),
+.tekmeria-essay table.summary.lemma-counts td:not(:first-child) {
+    text-align: right;
+}
+
+/* Passage / reference survey: column order varies by essay.
+   Default: first col slightly emphatic; last col takes remaining space. */
+.tekmeria-essay table.summary.survey th:first-child,
+.tekmeria-essay table.summary.survey td:first-child {
+    font-weight: 600;
+}
+
+/* Sources cited: Author | Title | wid | Passages cited */
+.tekmeria-essay table.summary.sources th:first-child,
+.tekmeria-essay table.summary.sources td:first-child {
+    width: 20%;
+    font-weight: 600;
+}
+.tekmeria-essay table.summary.sources th:nth-child(2),
+.tekmeria-essay table.summary.sources td:nth-child(2) {
+    width: 42%;
+}
+.tekmeria-essay table.summary.sources th:nth-child(3),
+.tekmeria-essay table.summary.sources td:nth-child(3) {
+    width: 12%;
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 0.92em;
+}
+.tekmeria-essay table.summary.sources th:nth-child(4),
+.tekmeria-essay table.summary.sources td:nth-child(4) {
+    width: 26%;
+}
+
+/* Term gloss: Term | Root | In the passage */
+.tekmeria-essay table.summary.terms th:first-child,
+.tekmeria-essay table.summary.terms td:first-child {
+    width: 22%;
+    font-weight: 600;
+}
+.tekmeria-essay table.summary.terms th:nth-child(2),
+.tekmeria-essay table.summary.terms td:nth-child(2) {
+    width: 18%;
+}
+.tekmeria-essay table.summary.terms th:nth-child(3),
+.tekmeria-essay table.summary.terms td:nth-child(3) {
+    width: 60%;
+}
+
+/* --- Closing caveats block --- */
+.tekmeria-essay .caveats {
+    margin-top: 2.4em;
+    padding: 1.2em 1.4em;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.98em;
+}
+.tekmeria-essay .caveats h2 { margin-top: 0; font-size: 1.2em; }
+.tekmeria-essay .caveats li { margin-bottom: 0.7em; }
+
+@media (max-width: 768px) {
+    /* Keep Tekmeria tables as real tables; base.css switches all tables to
+       display:block and hides thead on small screens. */
+    .tekmeria-essay {
+        max-width: 100%;
+    }
+    .tekmeria-essay table.summary {
+        display: table !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+    .tekmeria-essay table.summary thead {
+        display: table-header-group !important;
+    }
+    .tekmeria-essay table.summary tbody {
+        display: table-row-group !important;
+    }
+    .tekmeria-essay table.summary tr {
+        display: table-row !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+    .tekmeria-essay table.summary thead,
+    .tekmeria-essay table.summary tbody {
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+    .tekmeria-essay table.summary th,
+    .tekmeria-essay table.summary td {
+        display: table-cell !important;
+        white-space: normal !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .tekmeria-essay { font-size: 1.05em; padding: 4px 2px 48px; }
+    .tekmeria-essay .post-header h1 { font-size: 1.65em; }
+    .tekmeria-essay table.summary th,
+    .tekmeria-essay table.summary td {
+        padding: 8px 8px;
+        font-size: 0.95em;
+    }
+}

@@ -1,0 +1,10 @@
+# robots.txt for Tekmeria (tekmeria.eulogikon.org)
+# Essays from the Eulogikon ancient Greek corpus
+
+User-agent: *
+Allow: /
+
+# Content signals for search engines and AI training (IETF Content-Signal draft).
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
+Sitemap: https://tekmeria.eulogikon.org/sitemap.xml
