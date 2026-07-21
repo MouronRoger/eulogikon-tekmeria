@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # Import the LOCAL vendored authority (position 0 wins over any same-named module,
 # e.g. eulogikon's cluster_greek_quality_gates/oracle/greek_normalizer.py).
 sys.path.insert(0, str(ROOT / "tooling" / "normalization"))
-from greek_normalizer import canonical_lemma, lemma_foldkey  # noqa: E402
+from greek_normalizer import canonical_lemma, grc_fold, lemma_foldkey  # noqa: E402
 
 # Canonical fold outputs, generated from the hub authority. Covers sigma (ς/ϲ/Ϲ/Σ→σ),
 # the symbol-variant glyphs (ϐϑϕϰϱϖϵ→βθφκρπε) with stigma ϛ PRESERVED, iota adscript→
@@ -63,3 +63,48 @@ def test_fold_golden_vectors() -> None:
 def test_canonical_lemma_present() -> None:
     """canonical_lemma is exported and applies the symbol-variant map (ϐ→β)."""
     assert canonical_lemma("ϐίβλοϲ") == "βίβλοσ"
+
+
+# The WHOLE-TEXT grain. These are the SAME vectors carried by
+# tooling/normalization/grc_fold_test.go — the Python twin must agree byte-for-byte
+# with the Go and SQL bindings on every one (STANDARDS.md §2a). Note the punctuation,
+# brackets, digits and spaces that SURVIVE: that is what lets a keyed window tell two
+# sites apart ("λόγος, δέ" ≠ "λόγος δέ"), the property lemma_foldkey deliberately loses.
+GOLDEN_GRCFOLD = {
+    "μῆνιν ἄειδε, θεά, Πηληϊάδεω· Ἀχιλῆος": "μηνιν αειδε, θεα, πηληιαδεω· αχιληοσ",
+    "λόγος, δέ": "λογοσ, δε",
+    "λόγος δέ": "λογοσ δε",
+    "λόγῳ": "λογω", "λόγωι": "λογω",
+    "μεριμνᾷ": "μεριμνα", "μεριμνᾶι": "μεριμνα",
+    "χώραι": "χωραι", "ἥρωϊ": "ηρωι",
+    "Ηιι": "ηι", "λόγωιι": "λογωι",  # one adscript iota per vowel; a 2nd bare iota is kept
+    "ΒΊΒΛΟΣ": "βιβλοσ", "βίβλος": "βιβλοσ", "βίβλοϲ": "βιβλοσ", "ϐίβλος": "βιβλοσ",
+    "ΣΟΦΊΑ σοφία σοφίας": "σοφια σοφια σοφιασ",
+    "ὁ ἄνθρωπος (τις) — καὶ [τοῦτο];": "ο ανθρωποσ (τισ) — και [τουτο];",
+    "Ἀκουσί[λ]αος": "ακουσι[λ]αοσ",
+    "θεός· 42": "θεοσ· 42",
+    "ϑεός ϕύσις ϰαί ϱόδον ϖῦρ ϵἶ": "θεοσ φυσισ και ροδον πυρ ει",
+}
+
+
+def test_grc_fold_golden_vectors() -> None:
+    """The vendored grc_fold twin folds every whole-text vector to its pinned output."""
+    drift = {v: (grc_fold(v), exp) for v, exp in GOLDEN_GRCFOLD.items() if grc_fold(v) != exp}
+    assert not drift, f"grc_fold drifted from the Go/SQL binding: {drift}"
+
+
+def test_grc_fold_word_key_parity() -> None:
+    """The two grains are one rule: lettersOnly(grc_fold(t)) == lemma_foldkey(t)."""
+    off = {
+        v: ("".join(c for c in grc_fold(v) if c.isalpha()), lemma_foldkey(v))
+        for v in {**GOLDEN, **GOLDEN_GRCFOLD}
+        if "".join(c for c in grc_fold(v) if c.isalpha()) != lemma_foldkey(v)
+    }
+    assert not off, f"whole-text and word-key grains disagree: {off}"
+
+
+def test_grc_fold_keeps_punctuation() -> None:
+    """The binding-fold regression: two sites split only by punctuation stay distinct
+    (the Ninus defect), while the word-key grain collapses them. Same rule, two grains."""
+    assert grc_fold("λόγος, δέ") != grc_fold("λόγος δέ")
+    assert lemma_foldkey("λόγος, δέ") == lemma_foldkey("λόγος δέ")

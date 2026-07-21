@@ -23,37 +23,38 @@ eulogikon = "../eulogikon"
 EuGraphikon = "../EuGraphikon"
 EuMorphikon = "../EuMorphikon"
 eulogikon-semeia = "../eulogikon-semeia"
+eulogikon_grid = "../eulogikon_grid"
 
 # ── Synchronising DOCUMENTS — locked (OS-immutable + session-gated under .eukoine/) ──
 [[artefacts]]
 path = ".eukoine/corpus_identity_and_schema.md"
 kind = "document"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = ".eukoine/WRITE_ACCESS.md"
 kind = "document"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = ".eukoine/interim_head_citation.md"
 kind = "document"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = ".eukoine/predicate_vocabulary.md"
 kind = "document"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = ".eukoine/predicate_lexicon.yaml"
 kind = "document"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Sync-protection ENFORCEMENT — identical guard + cursor rule everywhere ──
 # The "no divergent interpretation" set; NOT a member's own cut doctrine.
@@ -61,20 +62,20 @@ targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
 path = "scripts/audit/check_eukoine_spec_protected.py"
 kind = "enforcement"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = ".cursor/rules/eukoine-single-source-readonly.mdc"
 kind = "enforcement"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Family governance schema — FCH structure law ──────────────────────────────────────────
 [[artefacts]]
 path = ".eukoine/functional_concern_homes.schema.yaml"
 kind = "schema"
 locked = true
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Sync toolchain — the unlock/sync/relock cycle, runnable from every repo ──
 # The tools are synced byte-identical so any member can drive the cycle against
@@ -84,25 +85,25 @@ targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
 path = "naming/sync.py"
 kind = "tooling"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = "naming/_manifest.py"
 kind = "tooling"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = "naming/sync_manifest.toml"
 kind = "tooling"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = "scripts/eukoine_spec_lock.py"
 kind = "tooling"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Greek-fold authority enforcement ───────────────────────────────────────
 # One guard implementation and one regular-suite contract across the active
@@ -112,19 +113,19 @@ targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
 path = "scripts/audit/check_fold_authority.py"
 kind = "enforcement"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = "tests/test_fold_authority.py"
 kind = "test"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 [[artefacts]]
 path = "tests/test_fold_authority_guard.py"
 kind = "test"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Greek-fold Python authority — the ONE definition, vendored byte-identical ─
 # greek_normalizer.py (lemma_foldkey + canonical_lemma) is the sole Python fold
@@ -136,7 +137,7 @@ targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
 path = "tooling/normalization/greek_normalizer.py"
 kind = "binding"
 locked = false
-targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia"]
+targets = ["eulogikon", "EuGraphikon", "EuMorphikon", "eulogikon-semeia", "eulogikon_grid"]
 
 # ── Greek-fold SQL binding — the canonical definition, single-sourced ─────────
 # grc_fold is the SQL twin of lemma_foldkey (STANDARDS.md §2a). ONE writable
