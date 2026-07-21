@@ -295,6 +295,21 @@ def lemma_foldkey(text: str) -> str:
     return "".join(out)
 
 
+_SURFACE_PUNCT = ".,··•;·:·—-–―()[]{}«»‹›“”‘’··∷‧、。'"
+
+
+def norm_surface_form(form: str | None) -> str:
+    """Fold a token surface for cross-witness alignment (treebank probes).
+
+    Single shared helper — every consumer imports this instead of re-copying
+    lemma_foldkey + punct normalization locally.
+    """
+    if not form:
+        return ""
+    folded = lemma_foldkey(form)
+    return folded.strip(_SURFACE_PUNCT).replace("’", "'").replace("ʼ", "'")
+
+
 # ---------------------------------------------------------------------------
 # grc_fold — the WHOLE-TEXT grain of the same character rule. Where lemma_foldkey
 # drops every non-letter (the word-key grain, for headword identity), grc_fold
