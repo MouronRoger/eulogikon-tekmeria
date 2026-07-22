@@ -2637,3 +2637,58 @@ entries:
         cause: "Fresh baptism; element replaces former span[@role=spacer] for cell-level qS.",
       }
     cites: [CDP-051]
+
+  # ===========================================================================
+  # G. The traversal cluster — an architectural rule mistaken for a law of the
+  #    subject matter. Caught at TWO referents (the witness disease was found at
+  #    seven), on the owner's correction, 2026-07-22.
+  # ===========================================================================
+
+  hop:
+    signifier_form: [hop, "dead hop", "hop trace"]
+    canonical_referent: >-
+      A step of INDIRECTION IN CODE — one link in a call chain, a shim layer, a relay
+      between an entry point and the site that actually does the work. The thing the cut
+      ledger deletes ("dead hop"), and the thing a regulator `trace` must carry evidence
+      for at every step (scholar -> terminal).
+    canonical_sense: >-
+      `hop` is about PROGRAM STRUCTURE and nothing else. Multi-hop is a defect: each extra
+      hop is indirection that displaces ownership. The term never applies to distance in
+      the subject matter the code reasons over.
+    owner: {domain: ARCH, file: .claude/skills/cut/references/cut_plan_template.md}
+    status: aligned
+    variant_senses:
+      - signifier: max_hops
+        referent: "traversal depth in the derivational graph (base lemma -> derivative)"
+        status: "retired -> genea; owner ruling 2026-07-22"
+    polysemy_debt:
+      has_debt: true
+      kind: cross_domain
+      cause: >-
+        The graph sense reached a governance document (docs/governance/script_lifecycle.md,
+        "hop-2 p99/max is the consumer-cap contract"), which is what allowed an architectural
+        rule to be read as a constraint on Greek word-formation. A third string collision
+        exists as a clause id (docs/meaning_workstation_roadmap.md "HOP-2").
+    cites: [EMDP-012, EMDP-014, CDP-051]
+
+  genea:
+    signifier_form: [genea, max_genea]
+    canonical_referent: >-
+      DERIVATIONAL DISTANCE — the number of word-formation steps separating a base lemma
+      from a derivative on the morph_family graph. λογιστικός stands at genea 2 from λόγος
+      (λόγος -> λογισμός -> λογιστικός). A property of GREEK, measured on the spine; never
+      a statement about program structure.
+    canonical_sense: >-
+      γενεά is generation/descent, and derivation IS descent from a base — a derivative is
+      a later generation of its root. Chosen (owner, 2026-07-22) so the distinction from
+      `hop` is carried by the glyphs, making the category mistake unavailable to a reader.
+      Any bound on genea is a LINGUISTIC and CONSUMER decision — what Greek word-formation
+      requires, and what family sizes a consumer can hold — and inherits no authority
+      whatever from the architectural ban on multi-hop.
+    owner: {domain: MORPH, file: campaigns/regulator_lexical_components/campaign.yaml}
+    status: aligned
+    polysemy_debt:
+      has_debt: false
+      kind: clean
+      cause: "Fresh baptism; replaces the graph sense of `hop`, which is retired to this head."
+    cites: [EMDP-012, EMDP-014, CDP-051]
